@@ -1,0 +1,20 @@
+.navbar-img {
+    width: 170px;
+    height: 37px;
+    alt: "Logo";
+    margin: 4px;
+}
+.nav-button{
+    color:white;
+    transition: color 0.3s
+}
+.nav-button:hover{
+    color: blueviolet;
+}
+.nav-dropdown-dark-example .dropdown-toggle::after {
+    display: none;
+}
+.nav-dropdown-dark-example .dropdown-menu {
+    transform: translateY(-20px);
+    margin-left: 20px;
+}
