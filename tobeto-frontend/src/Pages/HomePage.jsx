@@ -1,8 +1,13 @@
 import React from "react";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
 import "../Styles/PagesStyles/HomePageStyle.css";
+import link from "../Assets/Images/anasayfa-left-first.svg";
+import link2 from "../Assets/Images/anasayfa-right.svg";
+import link3 from "../Assets/Images/anasayfa-left-inside.png";
+import link4 from "../Assets/Images/istanbulkodluyor-black.svg";
 
 const HomePage = () => {
   return (
@@ -11,10 +16,27 @@ const HomePage = () => {
       <Header />
 
       <div className="main-content">
-        <h1>Anasayfa</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas totam nesciunt commodi consectetur impedit dolore? Soluta suscipit, dolores aliquid, voluptates expedita adipisci ea illum sapiente cupiditate numquam necessitatibus aspernatur architecto incidunt at ullam consectetur asperiores consequuntur! Inventore, tempora suscipit? Corrupti natus, doloribus dolorum fuga eius nulla veritatis! Eius hic sapiente mollitia nobis eaque officia asperiores consequatur quos iure, quae voluptatibus molestiae optio, nostrum vero facilis error blanditiis. Impedit quae numquam quidem, nemo magni illum consequuntur consequatur suscipit harum a sunt cupiditate fugiat deserunt dolores odio natus at nesciunt similique quo modi magnam mollitia itaque! Ad sunt explicabo ullam perferendis omnis, quasi ratione in, laudantium soluta delectus quibusdam, dicta aliquid voluptate hic odio expedita quaerat fuga et perspiciatis magnam nobis conseq
-        </p>
+        <Container className="mt-4">
+          <Row>
+            <Col md={6} className="image-container">
+              <Image src={link} fluid />
+              <div className="overlay">
+                <p>
+                  Hayalindeki teknoloji kariyerini başlat! İstediğin yoldan
+                  hızda
+                </p>
+                <img src={link3} alt="Ek Görsel" style={{height:"150px",width:"150px"}} />
+              </div>
+            </Col>
+            <Col md={6} className="image-container">
+              <Image src={link2} fluid className="rounded" />
+              <div className="overlay">
+                <p>Aradığın " İş " Burada!</p>
+                <img src={link4} alt="Ek Görsel" style={{height:"150px",width:"150px"}} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
 
       <Footer />

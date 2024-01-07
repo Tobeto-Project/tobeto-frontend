@@ -22,6 +22,7 @@ const SignIn = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     dispatch(loginRequest());
+    
     if (!email || !password) {
       dispatch(loginFailure("E-posta ve şifre boş bırakılamaz!"));
       return;

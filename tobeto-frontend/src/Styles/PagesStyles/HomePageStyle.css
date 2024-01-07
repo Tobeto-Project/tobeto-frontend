@@ -10,3 +10,31 @@
   .main-content {
     flex: 1;
   }
+  .image-container {
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .overlay p {
+    color: white; /* Yazı rengi */
+    font-size: 20px; /* Yazı boyutu */
+    z-index: 2;
+  }
+  
+  .overlay img {
+    /* Ek görsel için stil */
+    max-width: 50%; /* veya ihtiyaca göre bir değer */
+    z-index: 2;
+  }
+  

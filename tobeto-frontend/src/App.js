@@ -32,7 +32,6 @@ function App() {
         <Route path='/girisyap' element={<SignIn/>}/>
         <Route path='/uyeol' element={<SignUp/>}/>
         <Route path='/kurs' element={<Education/>}/>
-
       </Routes>
     </Router>
   );
