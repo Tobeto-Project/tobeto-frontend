@@ -12,8 +12,10 @@ import KurumlarIcin from './Pages/KurumlarIcin';
 import Takvim from './Pages/Takvim';
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
+import Education from './Pages/Education';
 
 function App() {
+  
   return (
     <Router>
       <Routes>
@@ -29,6 +31,8 @@ function App() {
         <Route path='/Takvim' element={<Takvim/>}/>
         <Route path='/girisyap' element={<SignIn/>}/>
         <Route path='/uyeol' element={<SignUp/>}/>
+        <Route path='/kurs' element={<Education/>}/>
+
       </Routes>
     </Router>
   );

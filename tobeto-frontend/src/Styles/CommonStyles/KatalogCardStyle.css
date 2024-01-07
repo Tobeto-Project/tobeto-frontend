@@ -1,0 +1,37 @@
+.education-card {
+    width: 280px; 
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .education-card .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-info {
+    position: absolute;
+    bottom: 0;
+    background: rgba(42, 42, 42, 0.9); /* Yarı saydam arka plan */
+    color: white;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .card-info .card-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-info h4 {
+    margin-top: 10px;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap; /* Eğer kartlar sığmazsa, yeni satıra geçmesini sağlar */
+    gap: 20px; /* Kartlar arasında boşluk bırakır */
+    justify-content: center; /* Kartları merkeze hizalar */
+  }
+  

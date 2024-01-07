@@ -7,8 +7,13 @@ import "../../Styles/LayoutStyles/HeaderStyle.css";
 import logo from "../../Assets/Images/tobeto-white-logo.png";
 import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Store/Actions/authActions.js";
 
 const Header = () => {
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <Navbar expand="sm" bg="dark">
@@ -25,20 +30,29 @@ const Header = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={Link} to="/bizkimiz"className="fw-bold ms-3 d-none d-xl-inline-block mt-3">
-              <p className="nav-button">Biz Kimiz?</p>
+              <Nav.Link
+                as={Link}
+                to="/bizkimiz"
+                className="fw-bold ms-3 d-none d-xl-inline-block mt-3"
+              >
+                <p className="nav-button">Biz Kimiz?</p>
               </Nav.Link>
-              
+
               <NavDropdown
                 id="nav-dropdown-dark-example"
-                title={<span className="nav-button fw-bold ms-3 d-none d-xl-inline-block ">Neler Sunuyoruz?</span>}
+                title={
+                  <span className="nav-button fw-bold ms-3 d-none d-xl-inline-block ">
+                    Neler Sunuyoruz?
+                  </span>
+                }
                 menuVariant="dark"
-                className="mt-3 nav-dropdown-dark-example">
+                className="mt-3 nav-dropdown-dark-example"
+              >
                 <NavDropdown.Item as={Link} to="/bireylericin">
                   Bireyler İçin
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/kurumlaricin">
-                 Kurumlar İçin
+                  Kurumlar İçin
                 </NavDropdown.Item>
               </NavDropdown>
 
@@ -58,13 +72,17 @@ const Header = () => {
               </Nav.Link>
               <NavDropdown
                 id="nav-dropdown-dark-example"
-                title={<span className="nav-button fw-bold ms-3 d-none d-xl-inline-block ">Tobeto'da Bu Ay</span>}
+                title={
+                  <span className="nav-button fw-bold ms-3 d-none d-xl-inline-block ">
+                    Tobeto'da Bu Ay
+                  </span>
+                }
                 menuVariant="dark"
                 className="mt-3 nav-dropdown-dark-example"
               >
                 <NavDropdown.Item as={Link} to="/Blog">
                   Blog
-                </NavDropdown.Item >
+                </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/Basindabiz">
                   Basında Biz
                 </NavDropdown.Item>
@@ -76,18 +94,32 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Button as={Link} to="/girisyap"
-              className="rounded-pill "
-              variant="outline-light"
-            >
-              Giriş Yap
-            </Button>
-            <Button as={Link} to="/uyeol"
-              className="rounded-pill "
-              variant="outline-light mx-1"
-            >
-              Ücretsiz Üye Ol
-            </Button>
+            {!isLoggedIn && (
+              <Button
+                as={Link}
+                to="/girisyap"
+                className="rounded-pill "
+                variant="outline-light"
+              >
+                Giriş Yap
+              </Button>
+            )}
+            {!isLoggedIn && (
+              <Button
+                as={Link}
+                to="/uyeol"
+                className="rounded-pill "
+                variant="outline-light mx-1"
+              >
+                Ücretsiz Üye Ol
+              </Button>
+            )}
+            {isLoggedIn && (
+              <>
+                <span className="text-white me-3">{user.name}</span>
+                <Button onClick={() => dispatch(logout())}>Çıkış Yap</Button>
+              </>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

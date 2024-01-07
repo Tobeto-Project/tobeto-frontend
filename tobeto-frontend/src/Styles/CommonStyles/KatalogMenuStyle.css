@@ -1,0 +1,16 @@
+.dark-list-group {
+    background-color: #343a40; /* Koyu arka plan rengi */
+    color: white; /* Yazı rengi */
+    width: auto; /* Genişliği içeriğe göre ayarla */
+    max-width: 100%; /* Maksimum genişlik 100% olsun */
+    margin: auto; /* Merkeze hizala */
+    display: inline-block; /* Yalnızca gerekli alanı kapla */
+  }
+  
+  .dark-list-group .list-group-item {
+    background-color: transparent; /* List item'ların arka planını transparent yap */
+    border-color: #454d55; /* Kenarlık rengi */
+    color: white; /* Yazı rengini beyaz yap */
+
+  }
+  

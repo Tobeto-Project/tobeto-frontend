@@ -12,7 +12,24 @@ const BizKimiz = () => {
       <div className="main-content">
         <h1>Biz Kimiz ?</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas totam nesciunt commodi consectetur impedit dolore? Soluta suscipit, dolores aliquid, voluptates expedita adipisci ea illum sapiente cupiditate numquam necessitatibus aspernatur architecto incidunt at ullam consectetur asperiores consequuntur! Inventore, tempora suscipit? Corrupti natus, doloribus dolorum fuga eius nulla veritatis! Eius hic sapiente mollitia nobis eaque officia asperiores consequatur quos iure, quae voluptatibus molestiae optio, nostrum vero facilis error blanditiis. Impedit quae numquam quidem, nemo magni illum consequuntur consequatur suscipit harum a sunt cupiditate fugiat deserunt dolores odio natus at nesciunt similique quo modi magnam mollitia itaque! Ad sunt explicabo ullam perferendis omnis, quasi ratione in, laudantium soluta delectus quibusdam, dicta aliquid voluptate hic odio expedita quaerat fuga et perspiciatis magnam nobis conseq
+          Geleceğin mesleklerindeki yetenek açığını, geleneksel "headhunting"
+          yaklaşımının "headfarming" olarak değişmesiyle çözülebileceğine
+          inanarak yola çıktık. <br /> Tobeto, "headfarming" yaklaşımıyla yeteneği
+          potansiyel olarak değerlendirir, en kıymetli olacağı alanda
+          yetiştirir, değer yaratacağı projeler ve kurumlarla eşleştirir. Bu
+          fırsata Y.E.S. (Yetiş-Eşleş-Sürdür) diyen herkesi Tobeto’lu olmaya
+          çağırıyoruz. <br /> Günümüzde iş bulmak, bir projeye dahil olmak veya
+          kariyerinde yükselmek gibi değer yaratma yolları için en önemli
+          unsurların başında dijital beceri sahibi olmak geliyor. Tam da bu
+          ihtiyaçları kapsamak üzere, Tobeto'da eğitim içeriklerimizi hem
+          dijital beceri sahibi olmak isteyen yeteneklerin teknik beceri
+          kazanması hem de genç profesyonellerin, ihtiyaçlarına uygun olarak
+          yenilenmeleri ve yetkinliklerini geliştirmelerini kapsayacak şekilde
+          tek platformda birleştirdik. <br /> Tobeto’da hem bireylere hem de kurumlara
+          hizmet eden yapımızla, doğru yetenekle doğru pozisyonun sürdürülebilir
+          bir şekilde eşleşmesine ve birlikte gelişmelerine alan açıyoruz. Kurum
+          içi çözümlere destek veriyor, eğitim ve istihdam arasında köprü
+          görevini üstleniyoruz.
         </p>
       </div>
 
@@ -21,4 +38,4 @@ const BizKimiz = () => {
   );
 };
 
-export default BizKimiz
+export default BizKimiz;

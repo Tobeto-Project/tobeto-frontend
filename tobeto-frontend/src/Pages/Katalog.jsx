@@ -2,22 +2,29 @@ import React from "react";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
+import KatalogCard from "../Components/Common/KatalogCard";
+import KatalogMenu from "../Components/Common/KatalogMenu";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import KatalogFilter from "../Components/Common/KatalogFilter";
 
 const Katalog = () => {
   return (
     <div className="bg-dark body-container bg-dark">
       <Banner />
       <Header />
-
       <div className="main-content">
-        <h1>Katalog</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas totam nesciunt commodi consectetur impedit dolore? Soluta suscipit, dolores aliquid, voluptates expedita adipisci ea illum sapiente cupiditate numquam necessitatibus aspernatur architecto incidunt at ullam consectetur asperiores consequuntur! Inventore, tempora suscipit? Corrupti natus, doloribus dolorum fuga eius nulla veritatis! Eius hic sapiente mollitia nobis eaque officia asperiores consequatur quos iure, quae voluptatibus molestiae optio, nostrum vero facilis error blanditiis. Impedit quae numquam quidem, nemo magni illum consequuntur consequatur suscipit harum a sunt cupiditate fugiat deserunt dolores odio natus at nesciunt similique quo modi magnam mollitia itaque! Ad sunt explicabo ullam perferendis omnis, quasi ratione in, laudantium soluta delectus quibusdam, dicta aliquid voluptate hic odio expedita quaerat fuga et perspiciatis magnam nobis conseq
-        </p>
+      <KatalogFilter/>
+        <Container className="mt-4">
+          <Row>
+            <Col sm={3}><KatalogMenu /></Col>
+            <Col sm={9}><KatalogCard /></Col>
+          </Row>
+        </Container>
       </div>
-
       <Footer />
     </div>
   );
 };
-export default Katalog
+export default Katalog;
