@@ -11,7 +11,7 @@ import KatalogFilter from "../Components/Common/KatalogFilter";
 
 const Katalog = () => {
   return (
-    <div className="bg-dark body-container bg-dark">
+    <div className="bg-dark body-container">
       <Banner />
       <Header />
       <div className="main-content">

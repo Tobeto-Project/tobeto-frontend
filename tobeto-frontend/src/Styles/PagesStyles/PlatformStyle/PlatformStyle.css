@@ -1,0 +1,11 @@
+.text-center-platform {
+    position: relative; /* Pozisyon referans noktası olarak ayarlanır */
+  }
+.img-platform {
+    position: absolute;
+    right: 50px;
+    top: -40px; /* Resmi 20px yukarı it */
+    z-index: -1;
+    max-width: 100%;
+    height: auto;
+  }
