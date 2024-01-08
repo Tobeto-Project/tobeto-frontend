@@ -18,6 +18,7 @@ import Degerlendirmeler from './Pages/Platform/Degerlendirmeler';
 import Profil from './Pages/Platform/Profil';
 import PlatformKatalog from './Pages/Platform/PlatformKatalog';
 import PlatformTakvim from './Pages/Platform/PlatformTakvim';
+import PrivateRoute from './Routes/PrivateRoute';
 
 function App() {
   
@@ -36,12 +37,12 @@ function App() {
         <Route path='/Takvim' element={<Takvim/>}/>
         <Route path='/girisyap' element={<SignIn/>}/>
         <Route path='/uyeol' element={<SignUp/>}/>
-        <Route path='/kurs' element={<Education/>}/>
-        <Route path='/platform' element={<Platform/>}/>
-        <Route path='/degerlendirmeler' element={<Degerlendirmeler/>}/>
-        <Route path='/profil' element={<Profil/>}/>
-        <Route path='/platform-katalog' element={<PlatformKatalog/>}/>
-        <Route path='/platform-takvim' element={<PlatformTakvim/>}/>
+        <Route path='/kurs' element={<PrivateRoute><Education/></PrivateRoute>}/>
+        <Route path='/platform' element={<PrivateRoute><Platform/></PrivateRoute>}/>
+        <Route path='/degerlendirmeler' element={<PrivateRoute><Degerlendirmeler/></PrivateRoute>}/>
+        <Route path='/profil' element={<PrivateRoute><Profil/></PrivateRoute>}/>
+        <Route path='/platform-katalog' element={<PrivateRoute><PlatformKatalog/></PrivateRoute>}/>
+        <Route path='/platform-takvim' element={<PrivateRoute><PlatformTakvim/></PrivateRoute>}/>
       </Routes>
     </Router>
   );
