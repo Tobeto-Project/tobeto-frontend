@@ -1,10 +1,12 @@
 const users = [
   {
+    profilimg: "https://avatars.githubusercontent.com/u/74327275?v=4",
     name: "Hasan Can Midi",
     email: "hasancanmidi@hotmail.com",
     password: "1234"
   },
   {
+    profilimg: "https://cdn.pixabay.com/photo/2014/06/03/19/38/test-361512_1280.jpg",
     name: "Test Kullanıcı",
     email: "test",
     password: "test"

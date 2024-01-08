@@ -5,10 +5,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../../Styles/LayoutStyles/PlatformHeaderStyle.css";
 import logo from "../../Assets/Images/tobeto-black.png";
-import logo2 from "../../Assets/Images/platform-tobeto-icon.svg"
+import logo2 from "../../Assets/Images/platform-tobeto-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Store/Actions/authActions.js";
+import { Dropdown } from "react-bootstrap";
 
 const PlatformHeader = () => {
   const { isLoggedIn, user } = useSelector((state) => state.auth);
@@ -17,8 +18,8 @@ const PlatformHeader = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/girisyap')
-  }
+    navigate("/girisyap");
+  };
 
   return (
     <div>
@@ -82,13 +83,41 @@ const PlatformHeader = () => {
               >
                 <p className="nav-button-platform">İstanbul Kodluyor</p>
               </Nav.Link>
-              
             </Nav>
             {isLoggedIn && (
               <>
-                <Link to="/"><img src={logo2} style={{width:"40px", marginRight:"0.8rem"}}/></Link>
-                <span className="text-dark me-3">{user.name}</span>
-                <Button onClick={handleLogout}>Çıkış Yap</Button>
+                <Link to="/">
+                  <img
+                    src={logo2}
+                    style={{ width: "40px", marginRight: "0.8rem" }}
+                  />
+                </Link>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="success"
+                    id="dropdown-basic"
+                    className="text-dark me-3 d-flex align-items-center"
+                  >
+                    <img
+                      src={user.profilimg}
+                      alt={`${user.name}'s profile`}
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        marginRight: "10px",
+                        borderRadius: "50%",
+                      }} // Profil resmi için stil
+                    />
+                    {user.name}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={handleLogout}>
+                      Çıkış Yap
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/kisiselbilgiler">Profil Bilgileri</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </>
             )}
           </Navbar.Collapse>
@@ -98,5 +127,4 @@ const PlatformHeader = () => {
   );
 };
 
-
-export default PlatformHeader
+export default PlatformHeader;
