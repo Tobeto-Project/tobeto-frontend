@@ -1,23 +1,20 @@
 import React from "react";
-import Banner from "../Components/Layouts/Banner";
-import Header from "../Components/Layouts/Header";
-import Footer from "../Components/Layouts/Footer";
 
 const IstanbulKodluyor = () => {
   return (
-    <div className="bg-dark body-container bg-dark">
-      <Banner />
-      <Header />
-
-      <div className="main-content">
+    <div className="body-container bg-white">
+      <div>
         <h1>IstanbulKodluyor</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas totam nesciunt commodi consectetur impedit dolore? Soluta suscipit, dolores aliquid, voluptates expedita adipisci ea illum sapiente cupiditate numquam necessitatibus aspernatur architecto incidunt at ullam consectetur asperiores consequuntur! Inventore, tempora suscipit? Corrupti natus, doloribus dolorum fuga eius nulla veritatis! Eius hic sapiente mollitia nobis eaque officia asperiores consequatur quos iure, quae voluptatibus molestiae optio, nostrum vero facilis error blanditiis. Impedit quae numquam quidem, nemo magni illum consequuntur consequatur suscipit harum a sunt cupiditate fugiat deserunt dolores odio natus at nesciunt similique quo modi magnam mollitia itaque! Ad sunt explicabo ullam perferendis omnis, quasi ratione in, laudantium soluta delectus quibusdam, dicta aliquid voluptate hic odio expedita quaerat fuga et perspiciatis magnam nobis conseq
+          Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.
+          Aradığın “İş” Burada! Türkiye’nin İlk Sosyal Etki Tahvili: “İstanbul
+          Kodluyor” Projesi Sanayi ve Teknoloji Bakanlığı Kalkınma Ajansları
+          Genel Müdürlüğü koordinasyonunda İstanbul Kalkınma Ajansı (İSTKA) ve
+          İngiltere merkezli Bridges Outcomes Partnerships iş birliğinde
+          başladı!
         </p>
       </div>
-
-      <Footer />
     </div>
   );
 };
-export default IstanbulKodluyor
+export default IstanbulKodluyor;

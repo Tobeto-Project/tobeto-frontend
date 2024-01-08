@@ -3,16 +3,22 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "../../Styles/LayoutStyles/HeaderStyle.css";
 import logo from "../../Assets/Images/tobeto-white-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Store/Actions/authActions.js";
+import "../../Styles/LayoutStyles/HeaderStyle.css"
 
 const Header = () => {
   const { isLoggedIn, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const HandleLogout = () =>{
+    dispatch(logout());
+    navigate("/girisyap")
+  }
 
   return (
     <div>
@@ -116,8 +122,8 @@ const Header = () => {
             )}
             {isLoggedIn && (
               <>
-                <span className="text-white me-3">{user.name}</span>
-                <Button onClick={() => dispatch(logout())}>Çıkış Yap</Button>
+                <Link to="/platform"><span className="text-white me-3">{user.name}</span></Link>
+                <Button onClick={HandleLogout}>Çıkış Yap</Button>
               </>
             )}
           </Navbar.Collapse>

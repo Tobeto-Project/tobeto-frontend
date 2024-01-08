@@ -1,13 +1,15 @@
 const users = [
-    {
-      email: "hasancanmidi@hotmail.com",
-      password: "password"
-    },
-    {
-      email: "test",
-      password : "test"
-    }
-  ];
+  {
+    name: "Hasan Can Midi",
+    email: "hasancanmidi@hotmail.com",
+    password: "1234"
+  },
+  {
+    name: "Test Kullanıcı",
+    email: "test",
+    password: "test"
+  }
+];
   export const validateUser = ( email, password) => {
     const user = users.find(u => u.email === email);
     if (!user) {
@@ -15,5 +17,5 @@ const users = [
     } else if (user.password !== password) {
       return { isValid: false, message: "Yanlış şifre." };
     }
-    return { isValid: true, message: "Başarılı giriş." };
+    return { isValid: true, message: "Başarılı giriş.",user };
   };

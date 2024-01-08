@@ -29,8 +29,8 @@ const SignIn = () => {
     }
     const result = validateUser(email, password);
     if (result.isValid) {
-      dispatch(loginSuccess({ name: 'Hasan Can Midi', email }));
-      navigate('/')
+      dispatch(loginSuccess(result.user));
+      navigate('/platform')
     } else {
       dispatch(loginFailure("Yanlış e-posta veya şifre!"));
     }

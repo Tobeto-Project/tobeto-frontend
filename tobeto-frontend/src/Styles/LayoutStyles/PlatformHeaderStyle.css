@@ -1,0 +1,20 @@
+.navbar-img-platform {
+    width: 170px;
+    height: 37px;
+    alt: "Logo";
+    margin: 4px;
+}
+.nav-button-platform{
+    color: black;
+    transition: color 0.3s
+}
+.nav-button-button:hover{
+    color: blueviolet;
+}
+.nav-dropdown-dark-example-platform .dropdown-toggle::after {
+    display: none;
+}
+.nav-dropdown-dark-exampl-platform .dropdown-menu {
+    transform: translateY(-20px);
+    margin-left: 20px;
+}
