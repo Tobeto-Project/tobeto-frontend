@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Card, Nav } from "react-bootstrap";
 import logo from "../../Assets/Images/istanbulkodluyor-black.svg";
+import PlatformEducationCard from "../Common/PlatformEducationCard";
 
 const PlatformNavigation = () => {
-  const [activeTab, setActiveTab] = useState("basvurularim");
+  const [activeTab, setActiveTab] = useState("egitimlerim");
 
   const renderContent = () => {
     switch (activeTab) {
       case "basvurularim":
         return <Card.Body>Başvurularım içeriği burada gösterilecek.</Card.Body>;
       case "egitimlerim":
-        return <Card.Body>Eğitimlerim içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body><PlatformEducationCard/></Card.Body>;
       case "duyuruHaberler":
         return (
           <Card.Body>
@@ -32,7 +33,7 @@ const PlatformNavigation = () => {
       </p>
       <p className="text-center fs-2 fw-bold">Aradığın “İş” Burada!</p>
       <Card.Header>
-        <Nav variant="tabs" defaultActiveKey="#basvurularim">
+        <Nav variant="tabs" defaultActiveKey="#egitimlerim">
           <Nav.Item>
             <Nav.Link
               href="#basvurularim"

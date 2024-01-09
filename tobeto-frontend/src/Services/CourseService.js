@@ -1,5 +1,5 @@
 
-const educationData = [
+const courseData = [
     {
       id: 1,
       image: "https://picsum.photos/id/237/200/200",
@@ -43,6 +43,6 @@ const educationData = [
       subject: "Fizik İlkeleri",
     },
   ];
-  export const getEducationData = () => {
-    return Promise.resolve(educationData);
+  export const getCourseData = () => {
+    return Promise.resolve(courseData);
   };

@@ -1,0 +1,37 @@
+/* EducationCardStyles.css */
+
+.education-card {
+    border-radius: 20px; /* Yuvarlak köşeler */
+  }
+  
+  .education-card:hover {
+    border: 4px solid #9B33FC; /* Hover durumunda border rengi */
+    transition: border 0.2s ease;
+  }
+
+
+.education-card .card-img-top {
+    width: 100%; /* Resmin genişliğini koru */
+    height: auto; /* Yüksekliği otomatik ayarla */
+    max-height: 200px; /* Maksimum yüksekliği sınırla */
+    object-fit: cover; /* Resmi kırpma olmadan sığdır */
+  }
+  
+  .education-card .card-title,
+.education-card .card-subtitle  {
+    font-size: 0.9rem; /* İçerik yazı boyutu */
+  }
+  
+  .education-card .btn-primary {
+    width: 100%; /* Butonun genişliğini %100 yap */
+    background-color: #F0F0F0;
+    color: #333;
+    border-radius: 50px;
+    border: none;
+    /* Diğer stil tanımlamaları... */
+  }
+  
+  .education-card .btn-primary:hover {
+    background-color: #e6e6e6;
+    /* Hover durumu için diğer stil tanımlamaları... */
+  }

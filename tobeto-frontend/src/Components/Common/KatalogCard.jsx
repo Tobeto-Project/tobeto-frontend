@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import "../../Styles/CommonStyles/KatalogCardStyle.css";
-import { getEducationData } from "../../Services/CourseService";
+import { getCourseData } from "../../Services/CourseService";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const KatalogCard = () => {
-    const [educationList, setEducationList] = useState([]);
+    const [courseList, setCourseList] = useState([]);
     const { isLoggedIn } = useSelector(state => state.auth);
     const navigate = useNavigate();
 
@@ -19,15 +19,15 @@ const KatalogCard = () => {
     }
 
     useEffect(() => {
-        getEducationData().then(data =>{
-            setEducationList(data);
+        getCourseData().then(data =>{
+            setCourseList(data);
         });
     },[])
 
 return (
     <>
     <div className="card-container">
-      {educationList.map((data) => (
+      {courseList.map((data) => (
         <Card className="education-card" key={data.id} onClick={handleCardClick}>
           <Card.Img variant="top" src={data.image} />
           <div className="card-info">
