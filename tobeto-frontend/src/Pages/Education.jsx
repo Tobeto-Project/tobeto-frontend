@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react'
-import Header from '../Components/Layouts/Header'
-import Footer from '../Components/Layouts/Footer'
 const Education = () => {
 
   return (
     <>
-    <Header/>
-    <div>Egitim Sayfasi</div>
-    <Footer/>
+    <div> IMS Egitim Sayfasi</div>
     </>
   )
 }

@@ -4,7 +4,7 @@ import PlatformHeader from '../../../Components/Layouts/PlatformHeader';
 import PlatformForm from '../../../Components/Layouts/PlatformForm';
 
 function PlatformKisiselMenu() {
-  const [activeTab, setActiveTab] = useState("basvurularim");
+  const [activeTab, setActiveTab] = useState("kisiselbilgilerim");
 
 
   const renderContent = () => {

@@ -18,6 +18,7 @@ import Degerlendirmeler from './Pages/Platform/Degerlendirmeler';
 import Profil from './Pages/Platform/Profil';
 import PlatformKatalog from './Pages/Platform/PlatformKatalog';
 import PlatformTakvim from './Pages/Platform/PlatformTakvim';
+import MyEducation from './Pages/Platform/MyEducation';
 import PrivateRoute from './Routes/PrivateRoute';
 import KisiselBilgiler from './Pages/Platform/ProfilBilgileri/KisiselBilgiler'
 
@@ -45,6 +46,7 @@ function App() {
         <Route path='/platform-katalog' element={<PrivateRoute><PlatformKatalog/></PrivateRoute>}/>
         <Route path='/platform-takvim' element={<PrivateRoute><PlatformTakvim/></PrivateRoute>}/>
         <Route path='/kisiselbilgiler' element={<PrivateRoute><KisiselBilgiler/></PrivateRoute>}/>
+        <Route path='/egitimlerim' element={<PrivateRoute><MyEducation/></PrivateRoute>}/>
       </Routes>
     </Router>
   );
