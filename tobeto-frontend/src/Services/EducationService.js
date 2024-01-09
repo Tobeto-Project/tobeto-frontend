@@ -27,6 +27,34 @@ const educationData = [
         EducationDate: "2 Ekim 2023",
         EducationBroadcastTime: "03:00"
       },
+      {
+        id: "4",
+        EducationImage: "https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg",
+        EducationTitle: "Hoşgeldin Buluşması - 2",
+        EducationDate: "2 Ekim 2023",
+        EducationBroadcastTime: "03:00"
+      },
+      {
+        id: "4",
+        EducationImage: "https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg",
+        EducationTitle: "Hoşgeldin Buluşması - 2",
+        EducationDate: "2 Ekim 2023",
+        EducationBroadcastTime: "03:00"
+      },
+      {
+        id: "4",
+        EducationImage: "https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg",
+        EducationTitle: "Hoşgeldin Buluşması - 2",
+        EducationDate: "2 Ekim 2023",
+        EducationBroadcastTime: "03:00"
+      },
+      {
+        id: "4",
+        EducationImage: "https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg",
+        EducationTitle: "Hoşgeldin Buluşması - 2",
+        EducationDate: "2 Ekim 2023",
+        EducationBroadcastTime: "03:00"
+      },
 ]
 
 export const getEducationData = () => {

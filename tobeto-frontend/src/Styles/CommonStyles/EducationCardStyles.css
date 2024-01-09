@@ -1,11 +1,19 @@
 /* EducationCardStyles.css */
 
 .education-card {
+  margin-top: 2rem;
     border-radius: 20px; /* Yuvarlak köşeler */
   }
+
+  .education-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* İçeriği düzgünce dağıt */
+    height: 100%; /* Kart içeriğinin tamamını kapla */
+}
   
   .education-card:hover {
-    border: 4px solid #9B33FC; /* Hover durumunda border rengi */
+    border: 2px solid #9B33FC; /* Hover durumunda border rengi */
     transition: border 0.2s ease;
   }
 
@@ -18,8 +26,14 @@
   }
   
   .education-card .card-title,
-.education-card .card-subtitle  {
-    font-size: 0.9rem; /* İçerik yazı boyutu */
+  .education-card .card-subtitle {
+      font-size: 0.9rem; /* İçerik yazı boyutu */
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Maksimum satır sayısı */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 3em; /* İki satır için yeterli yükseklik */
   }
   
   .education-card .btn-primary {

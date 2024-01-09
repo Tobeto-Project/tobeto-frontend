@@ -42,6 +42,13 @@ const courseData = [
       duration: "8:15",
       subject: "Fizik İlkeleri",
     },
+    {
+      id: 89,
+      image: "https://picsum.photos/id/232/200/200",
+      teacher: "Jane Doe",
+      duration: "8:15",
+      subject: "Fizik İlkeleri",
+    },
   ];
   export const getCourseData = () => {
     return Promise.resolve(courseData);

@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import logo from '../../Assets/Images/tobeto-white-logo.png'
 const PlatformFooter = () => {
+  
   return (
     <div className="footer-main">
       <footer style={{ backgroundColor: '#9933FC', color: 'white' }}>

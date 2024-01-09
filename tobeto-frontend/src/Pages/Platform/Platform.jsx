@@ -12,6 +12,7 @@ const Platform = () => {
   return (
     <>
       <PlatformHeader />
+
       <Container className="mb-5">
         <Row>
           <Col sm={12}>
@@ -33,6 +34,7 @@ const Platform = () => {
           </Col>
         </Row>
       </Container> 
+      
       <PlatformFooter/>
     </>
   );
