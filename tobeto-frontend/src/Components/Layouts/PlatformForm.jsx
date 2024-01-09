@@ -23,14 +23,14 @@ const PlatformForm = () => {
           <Row  className="mt-2">
             <Col>
               <Form.Group controlId="formFirstName">
-                <Form.Label>Ad</Form.Label>
-                <Form.Control type="text" placeholder="Adınız" />
+                <Form.Label>Adınız</Form.Label>
+                <Form.Control type="text" placeholder={user.name} />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="formLastName">
                 <Form.Label>Soyad</Form.Label>
-                <Form.Control type="text" placeholder="Soyadınız" />
+                <Form.Control type="text" placeholder={user.Lastname} />
               </Form.Group>
             </Col>
           </Row>
@@ -40,13 +40,13 @@ const PlatformForm = () => {
             <Col>
               <Form.Group controlId="formPhone">
                 <Form.Label>Telefon Numaranız</Form.Label>
-                <Form.Control type="tel" placeholder="Telefon Numaranız" />
+                <Form.Control type="tel" placeholder={user.PhoneNumber} />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="formBirthDate">
                 <Form.Label>Doğum Tarihi</Form.Label>
-                <Form.Control type="date" />
+                <Form.Control type="date"/>
               </Form.Group>
             </Col>
           </Row>
@@ -56,13 +56,13 @@ const PlatformForm = () => {
             <Col>
               <Form.Group controlId="formTC">
                 <Form.Label>TC Kimlik No</Form.Label>
-                <Form.Control type="text" placeholder="TC Kimlik No" />
+                <Form.Control type="text" placeholder={user.IdentityNumber} />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="formEmail">
                 <Form.Label>E-posta</Form.Label>
-                <Form.Control type="email" placeholder="E-posta" />
+                <Form.Control type="email" placeholder={user.email} />
               </Form.Group>
             </Col>
           </Row>
@@ -102,7 +102,7 @@ const PlatformForm = () => {
           {/* Hakkında */}
           <Form.Group controlId="formAbout" className="mt-2">
             <Form.Label>Hakkında</Form.Label>
-            <Form.Control as="textarea" rows={3} placeholder="Hakkında" />
+            <Form.Control as="textarea" rows={3} placeholder={user.AboutMe} />
           </Form.Group>
 
           {/* Kaydet Butonu */}
