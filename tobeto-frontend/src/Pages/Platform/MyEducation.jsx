@@ -3,6 +3,7 @@ import PlatformHeader from '../../Components/Layouts/PlatformHeader'
 import MiddleBanner from '../../Components/Common/MiddleBanner'
 import { getEducationData } from '../../Services/EducationService';
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import EducationCard from '../../Components/Common/EducationCard';
 
 
 const MyEducation = () => {
