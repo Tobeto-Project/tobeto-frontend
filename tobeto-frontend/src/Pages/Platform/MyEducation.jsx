@@ -15,30 +15,19 @@ const MyEducation = () => {
   }, []);
   return (
     <>
-        <PlatformHeader/>
-        <MiddleBanner>
-           <p style={{fontSize:'6rem'}} className='text-white fw-bold'>Eğitimlerim</p>
-        </MiddleBanner>
-        <Container className='mt-4'>
+      <PlatformHeader />
+      <MiddleBanner>
+        <p style={{ fontSize: '6rem' }} className='text-white fw-bold'>Eğitimlerim</p>
+      </MiddleBanner>
+      <Container className='mt-4'>
         <Row xs={1} md={2} lg={4} className="g-1">
-         {educationList.map((data) => (
-          <Col key={data.id}>
-            <Card className="education-card">
-              <Card.Img variant="top" src={data.EducationImage} />
-              <Card.Body>
-                <Card.Title>{data.EducationTitle}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {data.EducationDate} {data.EducationBroadcastTime}
-                </Card.Subtitle>
-                <Button variant="primary" className="btn-primary mt-2">
-                  Eğitime Git
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-     </Row>
-     </Container>
+          {educationList.map((data) => (
+            <Col key={data.id}>
+              <EducationCard data={data} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </>
   )
 }
