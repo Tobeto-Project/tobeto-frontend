@@ -11,7 +11,7 @@ const users = [
     PhoneNumber: "05389716422"
   },
   {
-    profilimg: "https://cdn.pixabay.com/photo/2014/06/03/19/38/test-361512_1280.jpg",
+    profilimg: "https://alfaomegaeditor.com.ar/wp-content/uploads/2023/02/unnamed.png",
     name: "Test Kullanıcı",
     email: "test",
     password: "test"
