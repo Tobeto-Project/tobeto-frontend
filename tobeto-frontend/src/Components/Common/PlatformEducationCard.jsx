@@ -8,7 +8,7 @@ import "../../Styles/CommonStyles/EducationCardStyles.css";
 
 const PlatformEducationCard = () => {
   const [educationList, setEducationList] = useState([]);
-  
+
   const navigate = useNavigate();
 
   const handleMoreClick = () => {
@@ -26,18 +26,7 @@ const PlatformEducationCard = () => {
       <Row xs={1} md={2} lg={4} className="g-4">
         {educationList.slice(0, 4).map((data) => (
           <Col key={data.id}>
-            <Card className="education-card ">
-              <Card.Img variant="top" src={data.EducationImage} />
-              <Card.Body>
-                <Card.Title>{data.EducationTitle}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {data.EducationDate} {data.EducationBroadcastTime}
-                </Card.Subtitle>
-                <Button variant="primary" className="btn-primary mt-2">
-                  Eğitime Git
-                </Button>
-              </Card.Body>
-            </Card>
+            <EducationCard data={data} />
           </Col>
         ))}
       </Row>
@@ -47,9 +36,9 @@ const PlatformEducationCard = () => {
             onClick={handleMoreClick}
             variant="shadow-lg"
             className="rounded-circle shadow-sm"
-            style={{ width: "50px", height: "50px" , padding: 0 }}
+            style={{ width: "50px", height: "50px", padding: 0 }}
           >
-            <SlArrowRight className="fs-3 ms-1"  />
+            <SlArrowRight className="fs-3 ms-1" />
           </Button>
           <div className="mt-2">Daha Fazla Göster</div>
         </Col>
