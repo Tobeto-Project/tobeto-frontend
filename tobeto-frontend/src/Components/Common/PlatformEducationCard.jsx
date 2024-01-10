@@ -5,6 +5,7 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { getEducationData } from "../../Services/EducationService";
 import "../../Styles/CommonStyles/EducationCardStyles.css";
+import EducationCard from "./EducationCard";
 
 const PlatformEducationCard = () => {
   const [educationList, setEducationList] = useState([]);
