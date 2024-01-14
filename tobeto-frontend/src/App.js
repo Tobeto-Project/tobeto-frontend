@@ -21,6 +21,7 @@ import PlatformTakvim from './Pages/Platform/PlatformTakvim';
 import MyEducation from './Pages/Platform/MyEducation';
 import PrivateRoute from './Routes/PrivateRoute';
 import KisiselBilgiler from './Pages/Platform/ProfilBilgileri/KisiselBilgiler'
+import NotFound from './Pages/NotFound';
 
 function App() {
   
@@ -38,6 +39,7 @@ function App() {
         <Route path='/KurumlarIcin'element={<KurumlarIcin/>}/>
         <Route path='/Takvim' element={<Takvim/>}/>
         <Route path='/girisyap' element={<SignIn/>}/>
+        <Route path='*' element={<NotFound/>}/>
         <Route path='/uyeol' element={<SignUp/>}/>
         <Route path='/kurs' element={<PrivateRoute><Education/></PrivateRoute>}/>
         <Route path='/platform' element={<PrivateRoute><Platform/></PrivateRoute>}/>

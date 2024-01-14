@@ -1,8 +1,8 @@
 import React from "react";
 import "../../Styles/CommonStyles/PackageContainer.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const PackageCard = ({ title, buttonText, backgroundColor,onClick }) => {
+const PackageCard = ({ title, buttonText, backgroundColor }) => {
   const cardStyle = {
     backgroundColor: backgroundColor,
   };
@@ -11,29 +11,24 @@ const PackageCard = ({ title, buttonText, backgroundColor,onClick }) => {
     <div className="package-card" style={cardStyle}>
       <div className="details">
         <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>{title}</h1>
-        <button className="btn btn-primary "  onClick={onClick}>{buttonText}</button>
+        <button className="btn btn-primary ">{buttonText}</button>
       </div>
     </div>
   );
 };
 
 const PackageContainer = () => {
-    const navigate = useNavigate();
     
-    const handleClickCreateProfile = () => {
-      navigate("/kisiselbilgiler");
-    };
   
     return (
       <div className="container">
-        <div className="new-packs my-5 d-flex justify-content-between text-white">
-          <PackageCard
-            onClick={handleClickCreateProfile}
+        <div className="new-packs my-5 d-flex justify-content-between">
+          <Link to={"/kisiselbilgiler"} className="text-white"><PackageCard
             title="Profilini oluştur"
             buttonText="Başla"
-          />
-          <PackageCard title="Kendini değerlendir" buttonText="Başla" />
-          <PackageCard title="Öğrenmeye başla" buttonText="Başla" />
+          /></Link>
+          <Link to={"/degerlendirmeler"} className="text-white"><PackageCard title="Kendini değerlendir" buttonText="Başla" /></Link>
+          <Link to={"/platform-egitimler"} className="text-white"><PackageCard title="Öğrenmeye başla" buttonText="Başla" /></Link>
         </div>
       </div>
     );
