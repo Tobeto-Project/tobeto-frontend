@@ -5,9 +5,23 @@ import photo from "../../Assets/Images/anasayfa-isim-arkası.svg";
 import "../../Styles/PagesStyles/PlatformStyle/PlatformStyle.css";
 import PlatformNavigation from "../../Components/Layouts/PlatformNavigation";
 import PlatformFooter from "../../Components/Layouts/PlatformFooter";
+import { ExamList } from "../../Components/Common/ExamComponent";
+import PackageContainer from "../../Components/Common/PackageContainer";
+
 
 const Platform = () => {
   const { user } = useSelector((state) => state.auth);
+  const innerDivStyle = {
+    // İçeriğinizi stilleyin
+
+    padding: '10px',
+    borderRadius: '8px',
+    boxShadow: '5px 5px 5px 4px rgba(0, 0, 0, 0.1)',
+    marginTop: "15px",
+    overflow: 'hidden',
+  };
+
+  
 
   return (
     <>
@@ -32,6 +46,24 @@ const Platform = () => {
                 <PlatformNavigation/>
             </div>
           </Col>
+        </Row>
+        <Row>
+          <Col sm={12} >
+          
+              <div style={innerDivStyle}>
+                <ExamList />
+              </div>
+          </Col>
+
+        </Row>
+        <Row>
+          <Col sm={12} >
+
+            <div style={innerDivStyle}>
+            <PackageContainer/>
+            </div>
+          </Col>
+
         </Row>
       </Container> 
       

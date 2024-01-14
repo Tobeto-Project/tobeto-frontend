@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PlatformHeader from '../../Components/Layouts/PlatformHeader'
-import MiddleBanner from '../../Components/Common/MiddleBanner'
+import PlatformHeader from '../../Components/Layouts/PlatformHeader';
+import MiddleBanner from '../../Components/Common/MiddleBanner';
 import { getEducationData } from '../../Services/EducationService';
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import EducationCard from '../../Components/Common/EducationCard';
-
+import PlatformFooter from '../../Components/Layouts/PlatformFooter';
 
 const MyEducation = () => {
   const [educationList, setEducationList] = useState([]);
@@ -14,6 +14,7 @@ const MyEducation = () => {
       setEducationList(data);
     });
   }, []);
+
   return (
     <>
       <PlatformHeader />
@@ -29,8 +30,9 @@ const MyEducation = () => {
           ))}
         </Row>
       </Container>
+      <PlatformFooter />
     </>
-  )
+  );
 }
 
-export default MyEducation
+export default MyEducation;
