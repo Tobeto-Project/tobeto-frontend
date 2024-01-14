@@ -1,0 +1,26 @@
+.package-card {
+    width: 220px;
+    height: 240px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 35px 35px 35px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+background: linear-gradient(to bottom left, #3C0B8C,#D89CF7);
+   
+}
+
+.details {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.btn-primary {
+    margin-top: 60px;
+    width: 180px;
+    border-radius: 40px !important;
+    background-color: #822BD9 !important;
+    font-weight: bold !important;
+}

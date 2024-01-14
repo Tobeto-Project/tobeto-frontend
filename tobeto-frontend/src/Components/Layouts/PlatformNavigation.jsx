@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { Card, Nav } from "react-bootstrap";
 import logo from "../../Assets/Images/istanbulkodluyor-black.svg";
 import PlatformEducationCard from "../Common/PlatformEducationCard";
+import ApplicationStatusCard from "../Common/ApplicationStatusCard";
+
+
+import NotificationContainer from "../Common/NotificationCard";
+import { ExamCard, ExamList } from "../Common/ExamComponent";
+import PackageContainer from "../Common/PackageContainer";
+
 
 const PlatformNavigation = () => {
   const [activeTab, setActiveTab] = useState("egitimlerim");
@@ -9,17 +16,19 @@ const PlatformNavigation = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "basvurularim":
-        return <Card.Body>Başvurularım içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body className="mx-0"><ApplicationStatusCard />
+        </Card.Body>;
       case "egitimlerim":
-        return <Card.Body><PlatformEducationCard/></Card.Body>;
+        return <Card.Body><PlatformEducationCard /></Card.Body>;
       case "duyuruHaberler":
         return (
-          <Card.Body>
-            Duyuru ve Haberlerim içeriği burada gösterilecek.
+          <Card.Body className="d-flex justify-content-center">
+            <NotificationContainer />
           </Card.Body>
         );
       case "anketlerim":
-        return <Card.Body>Anketlerim içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body >anket içeriği burada olacak   </Card.Body>;
+
       default:
         return <Card.Body>İçerik bulunamadı.</Card.Body>;
     }
@@ -66,6 +75,8 @@ const PlatformNavigation = () => {
               Anketlerim
             </Nav.Link>
           </Nav.Item>
+    
+
         </Nav>
       </Card.Header>
       {renderContent()}

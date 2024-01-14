@@ -1,0 +1,50 @@
+/* ApplicationStatusCard.css */
+
+.form-info {
+   
+    margin-bottom: 10px;
+}
+
+.form-date {
+    font-size: small;
+   
+}
+
+.header-info {
+    display: flex;
+   align-items: center;
+    /* Bu satır ile Col'ların arasındaki boşluğu sıfırlıyoruz */
+}
+
+.form-name {
+display: block;
+    font-weight: bold;
+}
+
+.form-status {
+    background-color: #076B34;
+    color: white;
+    padding: 5px;
+    border-top-left-radius: 15px;
+        /* Sol üst köşe */
+        border-bottom-left-radius: 15px;
+        font-size: small;
+        margin-left: auto !important;
+       
+}
+
+.application {
+    max-width: 550px;
+    /* İstenilen genişlik değeri */
+    border-top-left-radius: 7px;
+        /* Sol üst köşe */
+        border-bottom-left-radius: 7px;
+margin: 0;
+border-left: 5px solid #00956E !important;
+}
+
+
+.status-icon:hover {
+    color: yellow !important;
+    /* Hover durumunda renk değiştirme */
+}
