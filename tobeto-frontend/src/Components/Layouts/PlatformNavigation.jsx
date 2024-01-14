@@ -3,15 +3,12 @@ import { Card, Nav } from "react-bootstrap";
 import logo from "../../Assets/Images/istanbulkodluyor-black.svg";
 import PlatformEducationCard from "../Common/PlatformEducationCard";
 import ApplicationStatusCard from "../Common/ApplicationStatusCard";
-
-
 import NotificationContainer from "../Common/NotificationCard";
-import { ExamCard, ExamList } from "../Common/ExamComponent";
-import PackageContainer from "../Common/PackageContainer";
+
 
 
 const PlatformNavigation = () => {
-  const [activeTab, setActiveTab] = useState("egitimlerim");
+  const [activeTab, setActiveTab] = useState("basvurularim");
 
   const renderContent = () => {
     switch (activeTab) {
@@ -42,7 +39,7 @@ const PlatformNavigation = () => {
       </p>
       <p className="text-center fs-2 fw-bold">Aradığın “İş” Burada!</p>
       <Card.Header>
-        <Nav variant="tabs" defaultActiveKey="#egitimlerim">
+        <Nav variant="tabs" defaultActiveKey="#basvurularim">
           <Nav.Item>
             <Nav.Link
               href="#basvurularim"
