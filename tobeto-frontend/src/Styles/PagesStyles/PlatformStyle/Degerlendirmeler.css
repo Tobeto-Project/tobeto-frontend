@@ -1,9 +1,6 @@
 .dashboard-card {
 background: linear-gradient(to left, #3C0B8C, #D89CF7) !important;
-text-align: center;
 border-radius: 0 35px 35px 35px !important;
-
-
 }
 .equal-box {
     background: linear-gradient(to bottom left, #1D0B8B, #D89CF7) !important;
@@ -12,11 +9,7 @@ border-radius: 0 35px 35px 35px !important;
     height: 340px !important;
 }
 .dashboard-card-slim {
-    height: 50px !important;
     background: linear-gradient(to bottom left, #1D0B8B, #D89CF7) !important;
-    
-    
-   
 }
 .btn {
 
