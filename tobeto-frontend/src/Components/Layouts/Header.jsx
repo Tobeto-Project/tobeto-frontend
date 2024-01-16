@@ -8,17 +8,17 @@ import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Store/Actions/authActions.js";
-import "../../Styles/LayoutStyles/HeaderStyle.css"
+import "../../Styles/LayoutStyles/HeaderStyle.css";
 
 const Header = () => {
   const { isLoggedIn, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const HandleLogout = () =>{
+  const HandleLogout = () => {
     dispatch(logout());
-    navigate("/girisyap")
-  }
+    navigate("/girisyap");
+  };
 
   return (
     <div>
@@ -122,8 +122,24 @@ const Header = () => {
             )}
             {isLoggedIn && (
               <>
-                <Link to="/platform"><span className="text-white me-3">{user.name}</span></Link>
-                <Button onClick={HandleLogout}>Çıkış Yap</Button>
+                  <Link  to={"/platform"}><div
+                    variant="dark"
+                    id="dropdown-basic"
+                    className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-primary border-light m-0 p-1 text-white"
+                  >
+                    <img
+                      src={user.profilimg}
+                      alt={`${user.name}'s profile`}
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        marginRight: "20px",
+                        borderRadius: "50%",
+                      }} // Profil resmi için stil
+                    />
+                    {user.name}
+                  </div></Link>
+                <Button className="m-0 p-2" onClick={HandleLogout}>Çıkış Yap</Button>
               </>
             )}
           </Navbar.Collapse>
