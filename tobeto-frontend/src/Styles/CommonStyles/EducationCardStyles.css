@@ -13,7 +13,7 @@
 }
   
   .education-card:hover {
-    border: 2px solid #9B33FC; /* Hover durumunda border rengi */
+    border: 1px solid #9B33FC; /* Hover durumunda border rengi */
     transition: border 0.2s ease;
   }
 
