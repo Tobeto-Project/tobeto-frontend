@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
@@ -11,11 +11,46 @@ import {
   Image,
   Card,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import link from "../Assets/Images/tobeto-black.png";
 import link2 from "../Assets/Images/istanbulkodluyor-black.svg";
+import { register } from '../Services/RegisterService';
 
 const SignUp = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Parola doğrulaması
+    if (password !== confirmPassword) {
+      alert("Parolalar eşleşmiyor!");
+      return;
+    }
+
+    try {
+      const userData = {
+          firstName,
+          lastName,
+          email,
+          password,
+          phoneNumber
+      };
+      const response = await register(userData);
+      navigate('/girisyap');
+      alert("Kaydınız oluşturuldu.")
+      } catch (error) {
+      console.error('Kayıt sırasında hata oluştu', error.response ? error.response.data : error);
+    }
+  };
+
   return (
     <div className="body-container">
       <Banner />
@@ -25,7 +60,10 @@ const SignUp = () => {
         <Container>
           <Row className="justify-content-md-center">
             <Col xs={12} md={6}>
-              <Form className="border rounded-3 my-4 mb-5 p-5">
+              <Form
+                className="border rounded-3 my-4 mb-5 p-5"
+                onSubmit={handleSubmit}
+              >
                 <div className="text-center mt-2 mb-5">
                   <Image className="my-2" src={link} fluid />
                 </div>
@@ -34,17 +72,38 @@ const SignUp = () => {
                 </div>
 
                 <Form.Group className="mb-4 mx-5" controlId="formBasicName">
-                  <Form.Control type="text" placeholder="Ad*" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Ad*"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-4 mx-5" controlId="formBasicLastname">
-                  <Form.Control type="text" placeholder="Soyad*" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Soyad*"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-4 mx-5" controlId="formPhoneNumber">
+                  <Form.Control
+                    type="tel"
+                    placeholder="Telefon numaranızı girin*"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-4 mx-5" controlId="formBasicEmail">
                   <Form.Control
                     type="email"
                     placeholder="E-posta adresinizi girin*"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </Form.Group>
 
@@ -52,6 +111,8 @@ const SignUp = () => {
                   <Form.Control
                     type="password"
                     placeholder="Parolanızı girin*"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
 
@@ -62,6 +123,8 @@ const SignUp = () => {
                   <Form.Control
                     type="password"
                     placeholder="Tekrar Parolanızı girin*"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </Form.Group>
 

@@ -7,7 +7,7 @@ import {Container,Form,Button,Row,Col,Image,Card,
 import { Link, useNavigate } from "react-router-dom";
 import link from "../Assets/Images/tobeto-black.png";
 import link2 from "../Assets/Images/istanbulkodluyor-black.svg";
-import { validateUser } from "../Services/UserService";
+import { validateUser } from "../Services/AuthService";
 import { useDispatch } from "react-redux";
 import { loginFailure, loginRequest, loginSuccess } from "../Store/Actions/authActions";
 
@@ -19,7 +19,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     dispatch(loginRequest());
     
@@ -27,16 +27,18 @@ const SignIn = () => {
       dispatch(loginFailure("E-posta ve şifre boş bırakılamaz!"));
       return;
     }
-    const result = validateUser(email, password);
-    if (result.isValid) {
-      dispatch(loginSuccess(result.user));
-      navigate('/platform')
-    } else {
-      dispatch(loginFailure("Yanlış e-posta veya şifre!"));
+    try{
+      const result = await validateUser(email, password);
+      if (result) {
+        dispatch(loginSuccess(result.user));
+        navigate('/platform')
+      } else {
+        dispatch(loginFailure("Yanlış e-posta veya şifre!"));
+      }
+    } catch(error){
+      dispatch(loginFailure("Login işlemi sırasında bir hata oluştu!"));
     }
   };
-
-
 
   return (
     <div className="body-container">
@@ -109,13 +111,13 @@ const SignIn = () => {
                     Aradığın "iş" burada!
                   </Card.Title>
                   <div className="text-center">
-                    <Button
+                    <Nav.Link to='/uyeol'><Button
                       variant="primary"
                       type="submit"
                       className="btn-lg btn-info rounded-pill px-5"
                     >
                       Kayıt Ol
-                    </Button>
+                    </Button></Nav.Link>
                   </div>
                 </Card.Body>
               </Card>

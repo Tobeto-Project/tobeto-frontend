@@ -6,7 +6,6 @@ import ApplicationStatusCard from "../Common/ApplicationStatusCard";
 import NotificationContainer from "../Common/NotificationCard";
 
 
-
 const PlatformNavigation = () => {
   const [activeTab, setActiveTab] = useState("basvurularim");
 

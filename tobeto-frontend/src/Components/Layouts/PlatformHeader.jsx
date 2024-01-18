@@ -98,17 +98,7 @@ const PlatformHeader = () => {
                     id="dropdown-basic"
                     className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-outline-dark border-light shadow-5"
                   >
-                    <img
-                      src={user.profilimg}
-                      alt={`${user.name}'s profile`}
-                      style={{
-                        width: "35px",
-                        height: "35px",
-                        marginRight: "20px",
-                        borderRadius: "50%",
-                      }} // Profil resmi için stil
-                    />
-                    {user.name}
+                    {/* {user.FirstName + user.LastName} */}
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>

@@ -127,17 +127,7 @@ const Header = () => {
                     id="dropdown-basic"
                     className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-primary border-light m-0 p-1 text-white"
                   >
-                    <img
-                      src={user.profilimg}
-                      alt={`${user.name}'s profile`}
-                      style={{
-                        width: "30px",
-                        height: "30px",
-                        marginRight: "20px",
-                        borderRadius: "50%",
-                      }} // Profil resmi için stil
-                    />
-                    {user.name}
+                    {/* {user.FirstName + user.LastName} */}
                   </div></Link>
                 <Button className="m-0 p-2" onClick={HandleLogout}>Çıkış Yap</Button>
               </>
