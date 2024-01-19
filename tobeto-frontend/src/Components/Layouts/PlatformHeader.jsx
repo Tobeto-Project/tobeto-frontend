@@ -12,7 +12,7 @@ import { logout } from "../../Store/Actions/authActions.js";
 import { Dropdown } from "react-bootstrap";
 
 const PlatformHeader = () => {
-  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const { isLoggedIn,user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

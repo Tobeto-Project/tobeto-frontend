@@ -5,7 +5,6 @@ import { thunk } from 'redux-thunk';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  // buraya diğer reducer'larınızı ekleyebilirsiniz
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -1,15 +1,13 @@
 import React from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
 const PlatformForm = () => {
-  const { user } = useSelector((state) => state.auth);
   return (
     <div>
       <Container>
         <Form>
           {/* Profil Resmi */}
-          <Form.Group>
+          {/* <Form.Group>
             <div className="my-3 d-flex justify-content-center align-items-center">
               <img
                 src={user.profilimg}
@@ -17,20 +15,20 @@ const PlatformForm = () => {
                 style={{ width: "300px", height: "300px", borderRadius: "50%" }} // Profil resmi için stil
               />
             </div>
-          </Form.Group>
+          </Form.Group> */}
 
           {/* Ad ve Soyad */}
           <Row  className="mt-2">
             <Col>
               <Form.Group controlId="formFirstName">
                 <Form.Label>Adınız</Form.Label>
-                <Form.Control type="text" placeholder={user.name} />
+                <Form.Control type="text" placeholder="Adı*" />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="formLastName">
                 <Form.Label>Soyad</Form.Label>
-                <Form.Control type="text" placeholder={user.Lastname} />
+                <Form.Control type="text" placeholder="Soyadı*" />
               </Form.Group>
             </Col>
           </Row>
@@ -40,7 +38,7 @@ const PlatformForm = () => {
             <Col>
               <Form.Group controlId="formPhone">
                 <Form.Label>Telefon Numaranız</Form.Label>
-                <Form.Control type="tel" placeholder={user.PhoneNumber} />
+                <Form.Control type="tel" />
               </Form.Group>
             </Col>
             <Col>
@@ -56,13 +54,13 @@ const PlatformForm = () => {
             <Col>
               <Form.Group controlId="formTC">
                 <Form.Label>TC Kimlik No</Form.Label>
-                <Form.Control type="text" placeholder={user.IdentityNumber} />
+                <Form.Control type="text" />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="formEmail">
                 <Form.Label>E-posta</Form.Label>
-                <Form.Control type="email" placeholder={user.email} />
+                <Form.Control type="email"  />
               </Form.Group>
             </Col>
           </Row>
@@ -102,7 +100,7 @@ const PlatformForm = () => {
           {/* Hakkında */}
           <Form.Group controlId="formAbout" className="mt-2">
             <Form.Label>Hakkında</Form.Label>
-            <Form.Control as="textarea" rows={3} placeholder={user.AboutMe} />
+            <Form.Control as="textarea" rows={3}  />
           </Form.Group>
 
           {/* Kaydet Butonu */}

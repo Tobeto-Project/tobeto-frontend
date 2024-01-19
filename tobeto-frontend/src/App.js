@@ -22,6 +22,7 @@ import MyEducation from './Pages/Platform/MyEducation';
 import PrivateRoute from './Routes/PrivateRoute';
 import KisiselBilgiler from './Pages/Platform/ProfilBilgileri/KisiselBilgiler'
 import NotFound from './Pages/NotFound';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
@@ -51,6 +52,7 @@ function App() {
         <Route path='/egitimlerim' element={<PrivateRoute><MyEducation/></PrivateRoute>}/>
       </Routes>
     </Router>
+    
   );
 }
 

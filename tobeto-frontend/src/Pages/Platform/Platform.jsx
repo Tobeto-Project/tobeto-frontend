@@ -7,13 +7,14 @@ import PlatformNavigation from "../../Components/Layouts/PlatformNavigation";
 import PlatformFooter from "../../Components/Layouts/PlatformFooter";
 import { ExamList } from "../../Components/Common/ExamComponent";
 import PackageContainer from "../../Components/Common/PackageContainer";
-
+import React from 'react';
 
 const Platform = () => {
-  const { user } = useSelector((state) => state.auth);
-  const innerDivStyle = {
-    // İçeriğinizi stilleyin
+  const userDetails = useSelector(state => state.auth);
+  console.log('User Details:', userDetails);
 
+
+  const innerDivStyle = {
     padding: '10px',
     borderRadius: '8px',
     boxShadow: '5px 5px 5px 4px rgba(0, 0, 0, 0.1)',
@@ -22,7 +23,6 @@ const Platform = () => {
   };
 
   
-
   return (
     <>
       <PlatformHeader />
@@ -34,8 +34,7 @@ const Platform = () => {
               <div className="fs-1">
                 <span style={{ color: "#9933FC" }}>TOBETO</span>'ya hoş geldin
               </div>
-
-              {/* <div className="fs-2 mb-3">{user.FirstName}</div> */}
+              {userDetails && <div className="fs-2 mb-3">Hoş geldin, {userDetails.firstName}</div>}
               <div className="fs-4">
                 Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda
                 senin yanında!

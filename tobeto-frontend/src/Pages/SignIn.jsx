@@ -111,13 +111,13 @@ const SignIn = () => {
                     Aradığın "iş" burada!
                   </Card.Title>
                   <div className="text-center">
-                    <Nav.Link to='/uyeol'><Button
+                    <Link to='/uyeol'><Button
                       variant="primary"
                       type="submit"
                       className="btn-lg btn-info rounded-pill px-5"
                     >
                       Kayıt Ol
-                    </Button></Nav.Link>
+                    </Button></Link>
                   </div>
                 </Card.Body>
               </Card>

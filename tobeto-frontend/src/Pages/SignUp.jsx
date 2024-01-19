@@ -16,6 +16,7 @@ import link from "../Assets/Images/tobeto-black.png";
 import link2 from "../Assets/Images/istanbulkodluyor-black.svg";
 import { register } from '../Services/RegisterService';
 
+
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -46,6 +47,7 @@ const SignUp = () => {
       const response = await register(userData);
       navigate('/girisyap');
       alert("Kaydınız oluşturuldu.")
+
       } catch (error) {
       console.error('Kayıt sırasında hata oluştu', error.response ? error.response.data : error);
     }
