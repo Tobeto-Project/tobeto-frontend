@@ -1,14 +1,14 @@
-
 export const loginRequest = () => {
     return {
       type: 'LOGIN_REQUEST',
     };
 };
 
-export const loginSuccess = (token, userDetails) => {
+
+export const loginSuccess = (decodedToken, userDetails) => {
   return {
       type: 'LOGIN_SUCCESS',
-      payload: { token, userDetails },
+      payload: { token: decodedToken, userDetails },
   };
 };
 
@@ -24,5 +24,3 @@ export const logout = () => {
       type: 'LOGOUT',
     };
 };
-
-

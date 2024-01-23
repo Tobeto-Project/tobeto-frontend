@@ -27,10 +27,11 @@ const SignIn = () => {
       dispatch(loginFailure("E-posta ve şifre boş bırakılamaz!"));
       return;
     }
+    
     try{
-      const result = await validateUser(email, password);
+      const result = await validateUser(email, password ,dispatch);
       if (result) {
-        dispatch(loginSuccess(result.user));
+        dispatch(loginSuccess(result.decodedToken, result.userDetails));
         navigate('/platform')
       } else {
         dispatch(loginFailure("Yanlış e-posta veya şifre!"));

@@ -11,7 +11,9 @@ import { logout } from "../../Store/Actions/authActions.js";
 import "../../Styles/LayoutStyles/HeaderStyle.css";
 
 const Header = () => {
-  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const userDetails = useSelector(state => state.auth.userDetails);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -125,9 +127,9 @@ const Header = () => {
                   <Link  to={"/platform"}><div
                     variant="dark"
                     id="dropdown-basic"
-                    className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-primary border-light m-0 p-1 text-white"
+                    className=" me-3  rounded-pill btn btn-primary border-light m-0 p-2 text-white"
                   >
-                    {/* {user.FirstName + user.LastName} */}
+                    {userDetails.firstName +" "+ userDetails.lastname}
                   </div></Link>
                 <Button className="m-0 p-2" onClick={HandleLogout}>Çıkış Yap</Button>
               </>

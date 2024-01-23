@@ -12,7 +12,8 @@ import { logout } from "../../Store/Actions/authActions.js";
 import { Dropdown } from "react-bootstrap";
 
 const PlatformHeader = () => {
-  const { isLoggedIn,user } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const userDetails = useSelector(state => state.auth.userDetails);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -98,7 +99,7 @@ const PlatformHeader = () => {
                     id="dropdown-basic"
                     className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-outline-dark border-light shadow-5"
                   >
-                    {/* {user.FirstName + user.LastName} */}
+                  {userDetails.firstName +" "+ userDetails.lastname}
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>

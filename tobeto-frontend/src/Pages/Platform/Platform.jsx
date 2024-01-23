@@ -10,8 +10,8 @@ import PackageContainer from "../../Components/Common/PackageContainer";
 import React from 'react';
 
 const Platform = () => {
-  const userDetails = useSelector(state => state.auth);
-  console.log('User Details:', userDetails);
+
+  const userDetails = useSelector(state => state.auth.userDetails);
 
 
   const innerDivStyle = {

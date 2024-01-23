@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { setUserDetails } from '../Store/Actions/userActions';
 
 // Kullanıcıların listesini almak için kullanılır
 export const getUserDetailsById = async (userId) => {
     try {
+        console.log("userId" , userId)
         const response = await axios.get('http://localhost:5082/api/Users/GetList/getlist?PageIndex=0&PageSize=15');
         const user = response.data.items.find(u => u.id === userId);
         return user;
@@ -11,22 +13,14 @@ export const getUserDetailsById = async (userId) => {
     }
 };
 
-// Redux'a kullanıcı detaylarını dispatch etmek için kullanılır
-export const fetchUserDetails = (userId) => {
-    return async (dispatch) => {
-        try {
-            const userDetails = await getUserDetailsById(userId);
-            dispatch(setUserDetails(userDetails));
-        } catch (error) {
-            console.error('Kullanıcı bilgileri alınırken hata', error);
-        }
-    };
+export const fetchUserDetails = async (userId, dispatch) => {
+    try {
+        const userDetails = await getUserDetailsById(userId);
+        dispatch(setUserDetails(userDetails)); // dispatch ile Redux action'ını çağır
+        return userDetails;
+    } catch (error) {
+        console.error('Kullanıcı bilgileri alınırken hata', error);
+    }
 };
 
-// Kullanıcı detaylarını Redux state'ine eklemek için kullanılır
-export const setUserDetails = (userDetails) => {
-    return {
-        type: 'SET_USER_DETAILS',
-        payload: userDetails,
-    };
-};
+
