@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import "../../Styles/LayoutStyles/PlatformHeaderStyle.css";
 import logo from "../../Assets/Images/tobeto-black.png";
 import logo2 from "../../Assets/Images/platform-tobeto-icon.svg";
+import userphoto from "../../Assets/Images/user-photo.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Store/Actions/authActions.js";
@@ -97,8 +98,18 @@ const PlatformHeader = () => {
                   <Dropdown.Toggle
                     variant="dark"
                     id="dropdown-basic"
-                    className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-outline-dark border-light shadow-5"
+                    className="text-dark me-3 d-flex align-items-center rounded-pill btn btn-outline-dark border-light shadow-5 text-muted"
                   >
+                    <img
+                      src={userphoto}
+                      alt={`${userDetails.firstName}'s profile`}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        marginRight: "10px",
+                        borderRadius: "50%",
+                      }} // Profil resmi için stil
+                    />
                   {userDetails.firstName +" "+ userDetails.lastname}
                   </Dropdown.Toggle>
 

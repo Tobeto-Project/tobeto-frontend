@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import userphoto from "../../Assets/Images/user-photo.png"
+
 
 const PlatformForm = () => {
   const userDetails = useSelector(state => state.auth.userDetails);
@@ -9,16 +11,15 @@ const PlatformForm = () => {
     <div>
       <Container>
         <Form>
-          {/* Profil Resmi */}
-          {/* <Form.Group>
+          <Form.Group>
             <div className="my-3 d-flex justify-content-center align-items-center">
               <img
-                src={user.profilimg}
+                src={userphoto}
                 alt="Profil Resmi"
                 style={{ width: "300px", height: "300px", borderRadius: "50%" }} // Profil resmi için stil
               />
             </div>
-          </Form.Group> */}
+          </Form.Group>
 
           {/* Ad ve Soyad */}
           <Row  className="mt-2">

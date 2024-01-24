@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../../Assets/Images/tobeto-white-logo.png";
+import userphoto from "../../Assets/Images/user-photo.png"
 import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
@@ -129,9 +130,18 @@ const Header = () => {
                     id="dropdown-basic"
                     className=" me-3  rounded-pill btn btn-primary border-light m-0 p-2 text-white"
                   >
+                    <img
+                      src={userphoto}
+                      alt={`${userDetails.firstName}'s profile`}
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        marginRight: "10px",
+                        borderRadius: "50%",
+                      }} // Profil resmi için stil
+                    />
                     {userDetails.firstName +" "+ userDetails.lastname}
                   </div></Link>
-                <Button className="m-0 p-2" onClick={HandleLogout}>Çıkış Yap</Button>
               </>
             )}
           </Navbar.Collapse>
