@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
 
 const Sidebar = () => {
-    const [activeTab, setActiveTab] = useState('kisiselbilgilerim');
+    const [activeTab, setActiveTab] = useState('platform');
 
     const renderContent = () => {
       switch (activeTab) {
         case "platform":
-          return <Card.Body>images</Card.Body>;
+          return <Card.Body>platform eğitimi ekle çıkar</Card.Body>;
         case "katalog":
-          return <Card.Body>katalog içeriği burada gösterilecek.</Card.Body>;
+          return <Card.Body>katalog eğitimi ekle çıkar</Card.Body>;
         case "ogrenci":
           return <Card.Body>ogrenci Hayatım içeriği burada gösterilecek.</Card.Body>;
         case "egitmen":
@@ -18,6 +18,8 @@ const Sidebar = () => {
             return <Card.Body>image Hayatım içeriği burada gösterilecek.</Card.Body>;
         case "calendar":
             return <Card.Body>calendar Hayatım içeriği burada gösterilecek.</Card.Body>
+        default:
+            return <Card.Body>İçerik bulunamadı.</Card.Body>;
       }
     };
   

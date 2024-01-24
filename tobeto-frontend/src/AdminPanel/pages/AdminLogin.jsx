@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import '../../AdminPanel/styles/AdminLoginStyle.css';
 import { useNavigate } from "react-router-dom";
 import { validateAdmin } from "../services/adminService";
+import { toast, ToastContainer } from 'react-toastify';
 
 const AdminLogin = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
@@ -13,9 +14,12 @@ const AdminLogin = ({ setIsAuthenticated }) => {
     event.preventDefault(); 
     if (validateAdmin(username, password)) {
       setIsAuthenticated(true);
-      navigate('/adminpanel');
+      toast.success("Giriş Başarılı.", {
+        autoClose: 50,
+        onClose: () => navigate('/adminpanel') // Toast kapanınca yönlendirme yap
+      });
     } else {
-      alert('Yanlış kullanıcı adı veya şifre!');
+      toast.error("Login işlemi sırasında bir hata oluştu!");
     }
   };
 
@@ -60,9 +64,10 @@ const AdminLogin = ({ setIsAuthenticated }) => {
             />
           </div>
         </form>
-
       </div>
     </div>
+    <ToastContainer position="bottom-right" autoClose={2000} />
+
     </div>
   );
 };

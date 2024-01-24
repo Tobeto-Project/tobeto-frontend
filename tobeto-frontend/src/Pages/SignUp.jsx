@@ -15,7 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import link from "../Assets/Images/tobeto-black.png";
 import link2 from "../Assets/Images/istanbulkodluyor-black.svg";
 import { register } from '../Services/RegisterService';
-
+import { toast, ToastContainer } from 'react-toastify';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -30,8 +30,13 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Parola doğrulaması
+    if (!firstName || !lastName || !email || !phoneNumber || !password || !confirmPassword) {
+      toast.error("Lütfen tüm alanları doldurunuz!"); 
+      return;
+    }
+
     if (password !== confirmPassword) {
+      toast.error("Parolalar eşleşmiyor!");
       alert("Parolalar eşleşmiyor!");
       return;
     }
@@ -44,12 +49,13 @@ const SignUp = () => {
           password,
           phoneNumber
       };
-      const response = await register(userData);
-      navigate('/girisyap');
-      alert("Kaydınız oluşturuldu.")
-
+      await register(userData);
+      toast.success("Kaydınız oluşturuldu.", {
+        autoClose: 200,
+        onClose: () => navigate('/girisyap') // Toast kapanınca yönlendirme yap
+      });
       } catch (error) {
-      console.error('Kayıt sırasında hata oluştu', error.response ? error.response.data : error);
+      toast.error('Kayıt sırasında hata oluştu');
     }
   };
 
@@ -173,6 +179,7 @@ const SignUp = () => {
                     >
                       Kayıt Ol
                     </Button>
+                    <ToastContainer position="bottom-right" autoClose={2000} />
                   </div>
                 </Card.Body>
               </Card>

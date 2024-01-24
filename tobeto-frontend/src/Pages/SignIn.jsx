@@ -10,7 +10,7 @@ import link2 from "../Assets/Images/istanbulkodluyor-black.svg";
 import { validateUser } from "../Services/AuthService";
 import { useDispatch } from "react-redux";
 import { loginFailure, loginRequest, loginSuccess } from "../Store/Actions/authActions";
-
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const SignIn = () => {
@@ -24,6 +24,7 @@ const SignIn = () => {
     dispatch(loginRequest());
     
     if (!email || !password) {
+      toast.error("E-posta ve şifre boş bırakılamaz!");
       dispatch(loginFailure("E-posta ve şifre boş bırakılamaz!"));
       return;
     }
@@ -31,12 +32,18 @@ const SignIn = () => {
     try{
       const result = await validateUser(email, password ,dispatch);
       if (result) {
+        toast.success("Giriş Başarılı.", {
+          autoClose: 50,
+          onClose: () => navigate('/platform') // Toast kapanınca yönlendirme yap
+        });
         dispatch(loginSuccess(result.decodedToken, result.userDetails));
-        navigate('/platform')
+        // Yönlendirme toast mesajının kapanmasını bekleyecek
       } else {
+        toast.error("Yanlış e-posta veya şifre!");
         dispatch(loginFailure("Yanlış e-posta veya şifre!"));
       }
     } catch(error){
+      toast.error("Login işlemi sırasında bir hata oluştu!");
       dispatch(loginFailure("Login işlemi sırasında bir hata oluştu!"));
     }
   };
@@ -119,6 +126,7 @@ const SignIn = () => {
                     >
                       Kayıt Ol
                     </Button></Link>
+                    <ToastContainer position="bottom-right" autoClose={2000} /> 
                   </div>
                 </Card.Body>
               </Card>
