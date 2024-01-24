@@ -24,15 +24,17 @@ import KisiselBilgiler from './Pages/Platform/ProfilBilgileri/KisiselBilgiler'
 import NotFound from './Pages/NotFound';
 import AdminLogin from './AdminPanel/pages/AdminLogin';
 import AdminPanel from './AdminPanel/pages/AdminPanel';
+import PrivateRouteAdmin from './AdminPanel/routes/PrivateRouteAdmin';
+import { useState } from 'react';
 
 function App() {
-  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <Router>
       <Routes>
-        <Route path='/admin' element={<AdminLogin/>}/>
-        <Route path='/adminpanel' element={<AdminPanel/>}/>
-        <Route path='/' element={<HomePage/>}/>
+        <Route path='/admin' element={<AdminLogin setIsAuthenticated={setIsAuthenticated}/>}/>
+        <Route path='/adminpanel' element={<PrivateRouteAdmin isAuthenticated={isAuthenticated}><AdminPanel/></PrivateRouteAdmin>}/><Route path='/' element={<HomePage/>}/>
         <Route path='/bizkimiz' element={<BizKimiz/>}/>
         <Route path='/bireylericin' element={<BireylerIcın/>}/>
         <Route path='/BasindaBiz' element={<BasindaBiz/>}/>
