@@ -1,0 +1,123 @@
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.admin-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Sayfa yüksekliğini ekranın yüksekliği kadar yapar */
+    background: linear-gradient(135deg, #fc00ff, #00dbde);
+}
+
+.wrapper {
+    max-width: 500px;
+    margin:  auto;
+}
+
+.wrapper .card {
+    max-width: 400px;
+    min-height: 300px;
+    margin: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0.8rem;
+}
+
+.wrapper .card a {
+    text-decoration: none;
+    color: #eee;
+}
+
+.wrapper .card a:hover {
+    color: #fff;
+}
+
+.wrapper .card .input-field {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #eee;
+    padding: 0.3rem;
+}
+
+.wrapper .card .input-field input {
+    background-color: inherit;
+}
+
+.wrapper .card .input-field input.form-control,
+.wrapper .card .input-field input.form-control:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: #eee;
+}
+
+.wrapper .card .input-field button.btn {
+    color: #eee;
+    padding: 0rem;
+    padding-right: 0.5rem;
+}
+
+.wrapper .card .input-field button.btn:hover {
+    color: #fff;
+}
+
+.wrapper .card .input-field button.btn:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.wrapper .card .input-field input::placeholder {
+    color: #eee;
+}
+
+.wrapper .card .option {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    user-select: none
+}
+
+.wrapper .card .option span.text-light-white:hover {
+    color: #fff;
+
+}
+
+.wrapper .card .option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0
+}
+
+
+
+@media(max-width: 370px) {
+    .wrapper .card .line:after {
+        left: 27%;
+    }
+}
+
+@media(max-width: 350px) {
+    .wrapper {
+        margin: 10px auto;
+    }
+
+    .wrapper .card {
+        margin: 10px;
+    }
+}

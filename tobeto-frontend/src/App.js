@@ -22,12 +22,14 @@ import MyEducation from './Pages/Platform/MyEducation';
 import PrivateRoute from './Routes/PrivateRoute';
 import KisiselBilgiler from './Pages/Platform/ProfilBilgileri/KisiselBilgiler'
 import NotFound from './Pages/NotFound';
+import AdminLogin from './Pages/AdminPanel/AdminLogin';
 
 function App() {
   
   return (
     <Router>
       <Routes>
+        <Route path='/admin' element={<AdminLogin/>}/>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/bizkimiz' element={<BizKimiz/>}/>
         <Route path='/bireylericin' element={<BireylerIcın/>}/>
