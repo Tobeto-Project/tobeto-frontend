@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
+import Students from '../pages/Sidebar/Students';
 
 const Sidebar = () => {
-    const [activeTab, setActiveTab] = useState('platform');
+    const [activeTab, setActiveTab] = useState('ogrenci');
 
     const renderContent = () => {
       switch (activeTab) {
@@ -11,7 +12,7 @@ const Sidebar = () => {
         case "katalog":
           return <Card.Body>katalog eğitimi ekle çıkar</Card.Body>;
         case "ogrenci":
-          return <Card.Body>ogrenci Hayatım içeriği burada gösterilecek.</Card.Body>;
+          return <Card.Body><Students/></Card.Body>;
         case "egitmen":
             return <Card.Body>egitmen Hayatım içeriği burada gösterilecek.</Card.Body>;
         case "image":
@@ -28,7 +29,7 @@ const Sidebar = () => {
         <Container className='p-0'>
           <Row>
             {/* Sol Taraf: Dikey Menü */}
-            <Col md={2}>
+            <Col md={2} className='p-0'>
               <Nav className="flex-column vh-100" style={{backgroundColor:'#9833FF'}}>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("platform")}>Platform Eğitim</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("katalog")}>Katalog Eğitim</Nav.Link>
@@ -41,7 +42,7 @@ const Sidebar = () => {
             </Col>
   
             {/* Sağ Taraf: İçerik Alanı */}
-            <Col md={9}>
+            <Col md={10} className='p-0'>
               {renderContent()}
             </Col>
           </Row>
