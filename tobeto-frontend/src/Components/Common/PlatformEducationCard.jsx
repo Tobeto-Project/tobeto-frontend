@@ -9,18 +9,11 @@ import EducationCard from "./EducationCard";
 
 const PlatformEducationCard = () => {
   const [educationList, setEducationList] = useState([]);
-
   const navigate = useNavigate();
 
  const handleMoreClick = async () => {
-    // Scroll to the top of the page
     window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // Simulate loading or fetching more data
-    // Here you can call an API to fetch additional data if needed
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Redirect to the "/egitimlerim" route
     navigate("/egitimlerim");
   };
 

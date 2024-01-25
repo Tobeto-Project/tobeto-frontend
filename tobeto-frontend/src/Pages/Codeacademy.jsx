@@ -10,7 +10,7 @@ import Button from "react-bootstrap/esm/Button";
 
 const Codeacademy = () => {
   return (
-    <div className="bg-dark body-container">
+    <div className="body-container" style={{backgroundColor:"#000000"}}>
       <Banner />
       <Header />
       <div className="container">
@@ -84,6 +84,7 @@ const Codeacademy = () => {
           <Button className="m-0 mb-5">Hemen abone ol!</Button>
         </div>
       </div>
+      <div className="border-bottom border-secondary"></div>
       <Footer />
     </div>
   );
