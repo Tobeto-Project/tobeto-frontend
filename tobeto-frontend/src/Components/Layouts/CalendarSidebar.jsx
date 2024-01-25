@@ -6,14 +6,15 @@ const CalendarSidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="search-section">
-        <div htmlFor="course-search">Eğitim Arama:</div>
+      <div className="search-section ms-5 mt-5 ">
+        <div htmlFor="course-search" className='mb-2'>Eğitim Arama:</div>
         <input type="text" id="course-search" placeholder="Eğitim ara..." />
       </div>
 
-      <div className="instructor-section">
+      <div className="instructor-section ms-5 mt-3 ">
         <div htmlFor="instructor-select">Eğitmen:</div>
-        <select 
+        <select
+          className='mt-2'
           id="instructor-select" 
           value={selectedInstructor} 
           onChange={e => setSelectedInstructor(e.target.value)}
@@ -26,7 +27,7 @@ const CalendarSidebar = () => {
         </select>
       </div>
 
-      <div className="education-status-section">
+      <div className="education-status-section ms-5 mt-4">
         <p>Eğitim Durumu:</p>
         <div>
           <input 
