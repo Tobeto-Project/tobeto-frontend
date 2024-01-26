@@ -4,8 +4,8 @@ import { setUserDetails } from '../Store/Actions/userActions';
 // Kullanıcıların listesini almak için kullanılır
 export const getUserDetailsById = async (userId) => {
     try {
-        console.log("userId" , userId)
         const response = await axios.get('http://localhost:5082/api/Users/GetList/getlist?PageIndex=0&PageSize=15');
+        console.log("response",response)
         const user = response.data.items.find(u => u.id === userId);
         return user;
     } catch (error) {
