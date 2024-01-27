@@ -5,6 +5,7 @@ import foto from "../../Assets/Images/user-photo.png";
 import { useSelector } from "react-redux";
 import { IoEyeOutline } from "react-icons/io5";
 import RadarChart from "../../Components/Common/RadarChart";
+import { TfiWorld } from "react-icons/tfi";
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
@@ -58,10 +59,10 @@ const Profil = () => {
                       <Row>
                         <Col md={2}>
                           <div className="info-icon-name">
-                            <img src="https://tobeto.com/cv-date.svg" 
-                            style={{ width: "3rem" }}
+                            <img src="https://tobeto.com/cv-date.svg"
+                              style={{ width: "3rem" }}
                             />
-                            
+
                           </div>
                         </Col>
                         <Col md={10}>
@@ -82,8 +83,8 @@ const Profil = () => {
                       <Row>
                         <Col md={2}>
                           <div className="info-icon-name">
-                            <img src="https://tobeto.com/cv-mail.svg" 
-                            style={{ width: "3rem" }}/>
+                            <img src="https://tobeto.com/cv-mail.svg"
+                              style={{ width: "3rem" }} />
                           </div>
                         </Col>
                         <Col md={10}>
@@ -104,8 +105,8 @@ const Profil = () => {
                       <Row>
                         <Col md={2}>
                           <div className="info-icon-name">
-                            <img src="https://tobeto.com/cv-phone.svg" 
-                            style={{ width: "3rem" }}/>
+                            <img src="https://tobeto.com/cv-phone.svg"
+                              style={{ width: "3rem" }} />
                           </div>
                         </Col>
                         <Col md={10}>
@@ -141,7 +142,9 @@ const Profil = () => {
                 <Card.Body>
                   <Card.Title>Yetkinliklerim</Card.Title>
                   <hr style={{ color: "purple" }} />
-                  <Card.Text></Card.Text>
+                  <Card.Text>
+                    Henüz bir yetkinlik eklemedin.
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </div>
@@ -151,7 +154,24 @@ const Profil = () => {
                 <Card.Body>
                   <Card.Title>Yabancı Dillerim</Card.Title>
                   <hr style={{ color: "purple" }} />
-                  <Card.Text>{userDetails.userLanguage}</Card.Text>
+                  <Card.Text>
+                    <div className="mylanguage w-100" style={{ padding: 5 }}>
+                      <Row>
+                        <Col md={2}>
+                          <TfiWorld />
+                        </Col>
+                        <Col md={8}>
+                          <div className="d-flex flex-column">
+                            <span style={{ fontSize: "15px", color: "#828282" }}>Dil  {userDetails.userLanguage}</span>
+                            <span style={{ fontSize: "12px", color: "#828282CC" }}> Seviye </span>
+                          </div>
+                        </Col>
+                        <Col md={2}>
+                          <img src="https://tobeto.com/home.svg" />
+                        </Col>
+                      </Row>
+                    </div>
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </div>
@@ -161,7 +181,9 @@ const Profil = () => {
                 <Card.Body>
                   <Card.Title>Sertifikalarım</Card.Title>
                   <hr style={{ color: "purple" }} />
-                  <Card.Text></Card.Text>
+                  <Card.Text>
+                  Henüz bir sertifika yüklemedin.
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </div>
@@ -171,7 +193,9 @@ const Profil = () => {
                 <Card.Body>
                   <Card.Title>Medya Hesaplarım</Card.Title>
                   <hr style={{ color: "purple" }} />
-                  <Card.Text></Card.Text>
+                  <Card.Text>
+                  Henüz bir hesap eklemedin.
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </div>
