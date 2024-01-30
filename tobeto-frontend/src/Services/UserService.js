@@ -3,6 +3,7 @@ import { setUserDetails } from "../Store/Actions/userActions";
 
 
 export const getUserDetailsById = async (userId) => {
+
   try {
     console.log("UserService userId", userId);
     const response = await axios.get(
@@ -13,6 +14,8 @@ export const getUserDetailsById = async (userId) => {
   } catch (error) {
     throw error;
   }
+
+   
 };
 
 export const fetchUserDetails = async (userId, dispatch) => {
