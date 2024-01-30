@@ -37,4 +37,23 @@
     max-width: 50%; /* veya ihtiyaca göre bir değer */
     z-index: 2;
   }
-  
+
+
+ 
+/* HomePageStyle.css */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+
+        
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInOut {
+  animation: fadeInOut 1s ease-in-out;
+}

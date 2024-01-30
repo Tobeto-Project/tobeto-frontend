@@ -13,7 +13,7 @@ const iconPath = 'https://tobeto.com/_next/static/media/tobeto-tag-purple.e3e78d
 const videoUrl = 'https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4';
 const logoUrl = 'https://tobeto.com/_next/static/media/tbtLogo.3fb5d7fd.svg';
 
-const gradientBarStyleTopToBottom = {
+export const gradientBarStyleTopToBottom = {
   content: '""',
   width: '15px',
   height: '200px',
@@ -22,7 +22,7 @@ const gradientBarStyleTopToBottom = {
   borderRadius: '7px 7px'
 };
 
-const gradientBarStyleBottomToTop = {
+export const gradientBarStyleBottomToTop = {
   ...gradientBarStyleTopToBottom,
   backgroundImage: 'linear-gradient(to top, rgba(150, 56, 215, 1), rgba(232, 213, 237, 0))'
 };
