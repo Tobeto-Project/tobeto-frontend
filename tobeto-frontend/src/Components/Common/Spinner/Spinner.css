@@ -1,0 +1,41 @@
+/* Spinner.css */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo {
+    width: 100px;
+    /* İstediğiniz genişliği ayarlayabilirsiniz */
+    height: auto;
+    margin-bottom: 20px;
+    animation: spinLogo 2s linear infinite;
+    /* Logo için dönme animasyonu eklendi */
+}
+
+.spinner {
+display: none;
+}
+
+@keyframes spinLogo {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
