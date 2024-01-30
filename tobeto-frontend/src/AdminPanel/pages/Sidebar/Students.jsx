@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import { fetchAllStudents } from '../../services/studentService';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 const Students = () => {
     const [students, setStudents] = useState([]);
@@ -23,7 +25,10 @@ const Students = () => {
     }, []);
 
     if (isLoading) {
-        return <div>Yükleniyor...</div>;
+        return 
+        <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+       </Spinner>;
     }
 
     return (
