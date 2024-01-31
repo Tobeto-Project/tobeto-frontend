@@ -6,11 +6,11 @@ import Chart from 'chart.js/auto';
 
 const RadarChart = () => {
   const data = {
-    labels: ['Yemek', 'Uyku', 'İş', 'Eğlence', 'Spor', 'Yazılım'],
+    labels: ['', '', '', '', '', ''],
     datasets: [
       {
         label: 'Kişisel İstatistikler',
-        data: [5, 6, 7, 8, 5, 9],
+        data: [5,5,5,5,5,5,5,5],
         backgroundColor: 'rgba(34, 202, 236, 0.2)',
         borderColor: 'rgba(34, 202, 236, 1)',
         borderWidth: 1,
