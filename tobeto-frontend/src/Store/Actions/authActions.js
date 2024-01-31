@@ -1,4 +1,4 @@
-
+//authActions.js
 
 export const loginRequest = () => {
   return {
@@ -21,9 +21,9 @@ export const loginFailure = (error) => {
 };
 
 export const logout = () => {
+ 
+  localStorage.removeItem("jwtToken");
   return {
     type: "LOGOUT",
   };
 };
-
-

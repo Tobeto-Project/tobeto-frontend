@@ -1,12 +1,14 @@
+//ResgisterService.js
 import axios from 'axios';
+import API_CONFIG from "./ApiConfig";
+import * as ENDPOINTS from "./ApiEndpoints";
 
-const API_URL = "http://localhost:60629/api/Auth/";
 
 export const register = async (userData) => {
-    try {
-        const response = await axios.post(API_URL + 'register', userData);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+  try {
+     const response = await axios.post(API_CONFIG.REGISTER, userData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
