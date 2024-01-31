@@ -25,3 +25,6 @@ yarn-error.log*
 
  
 # config.js =>> will be creat
+
+/src/Services/config.js
+
