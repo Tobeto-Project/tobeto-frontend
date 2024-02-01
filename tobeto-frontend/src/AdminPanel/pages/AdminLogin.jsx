@@ -24,10 +24,10 @@ const AdminLogin = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <div className="admin-body">
-    <div className="wrapper">
-      <div className="card">
-        <form action="#" className="d-flex flex-column" onSubmit={handleLogin}>
+    <div className="admin-body ">
+    <div className="wrapper ">
+      <div className="card btn-rainbow-card">
+        <form action="#" className="d-flex flex-column " onSubmit={handleLogin}>
           <div className="h3 text-center text-white">Tobeto Admin</div>
           <div className="d-flex align-items-center input-field my-3">
             <span className="far fa-user p-2" />

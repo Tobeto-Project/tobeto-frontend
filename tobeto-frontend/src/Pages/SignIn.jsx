@@ -57,7 +57,7 @@ const SignIn = () => {
         <Container>
           <Row className="justify-content-md-center">
             <Col xs={12} md={6}>
-              <Form className="border rounded-3 my-4 mb-5 p-5">
+              <Form className="my-4 mb-5 p-5 btn-rainbow-card">
                 <div className="text-center mt-2 mb-5">
                   <Image className="my-2" src={link} fluid />
                 </div>

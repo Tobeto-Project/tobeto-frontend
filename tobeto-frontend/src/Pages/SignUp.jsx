@@ -69,13 +69,14 @@ const SignUp = () => {
           <Row className="justify-content-md-center">
             <Col xs={12} md={6}>
               <Form
-                className="border rounded-3 my-4 mb-5 p-5"
+                className="my-4 mb-5 p-5 btn-rainbow-card"
                 onSubmit={handleSubmit}
+              
               >
-                <div className="text-center mt-2 mb-5">
+                <div className="text-center mt-1 mb-4">
                   <Image className="my-2" src={link} fluid />
                 </div>
-                <div className="text-center my-5 fs-1 fw-bold text-dark">
+                <div className="text-center my-4 fs-1 fw-bold text-dark">
                   Hemen Kayıt ol
                 </div>
 
@@ -155,7 +156,7 @@ const SignUp = () => {
             </Col>
             <Col xs={12} md={6}>
               <Card
-                className="mt-4 border rounded-3  "
+                className="mt-4 border rounded-3 "
                 style={{ padding: "8.7rem" }}
               >
                 <Card.Body className="mt-5 mb-5">

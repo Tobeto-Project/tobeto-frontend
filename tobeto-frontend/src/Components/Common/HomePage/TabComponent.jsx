@@ -31,8 +31,8 @@ const TabComponent = () => {
 
     const handleClick = (button) => {
         setButtonState((prev) => ({
-            button1: { background: button === "button1" ? "white" : "black", hover: false },
-            button2: { background: button === "button2" ? "white" : "black", hover: false },
+            button1: { background: button === "button1" ? "white" : "#181717", hover: false },
+            button2: { background: button === "button2" ? "white" : "#181717", hover: false },
         }));
 
         setActiveButton(button);
@@ -69,7 +69,7 @@ const TabComponent = () => {
         background: buttonState[button].background,
         color: buttonState[button].background === "white" ? "black" : "white",
         transition: "background 0.3s linear, color 0.3s ease, border 0.3s ease",
-        border: activeButton !== buttonIndex && buttonState[buttonIndex].hover ? "2px solid white" : "2px solid black",
+        border: activeButton !== buttonIndex && buttonState[buttonIndex].hover ? "2px solid white" : "2px solid #181717",
         marginBottom: "10px",
         cursor: "pointer",
     });
@@ -77,7 +77,7 @@ const TabComponent = () => {
     return (
         <Row>
             <Col lg={5} xs={12}>
-                <h3 className="text-white mt-5">Hangi Konuda Kendini Geliştirmek İstersin?</h3>
+                <h3 className="text-white mt-5 fw-bold fs-2">Hangi Konuda Kendini Geliştirmek İstersin?</h3>
                 <div>
                     <button
                         className="mt-5"
@@ -110,7 +110,7 @@ const TabComponent = () => {
                 </div>
             </Col>
             <Col>
-                <div className={`bg-dark body-container bg-dark ${isFadeInOut ? 'fadeInOut' : ''}`} aria-labelledby="v-pills-home-tab">
+                <div className={`${isFadeInOut ? 'fadeInOut' : ''}`} aria-labelledby="v-pills-home-tab">
                     <div className="custom-container" style={{ backgroundColor: "grey", padding: "20px", borderRadius: "10px" }}>
                         <Row className="justify-content-between">
                             {currentData.map((item, index) => (

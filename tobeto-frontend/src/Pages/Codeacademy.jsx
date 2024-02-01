@@ -10,7 +10,7 @@ import Button from "react-bootstrap/esm/Button";
 
 const Codeacademy = () => {
   return (
-    <div className="body-container" style={{backgroundColor:"#000000"}}>
+    <div className="body-container pages-content">
       <Banner />
       <Header />
       <div className="container">

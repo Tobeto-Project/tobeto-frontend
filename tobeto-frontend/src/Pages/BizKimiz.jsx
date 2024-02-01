@@ -31,13 +31,13 @@ export const gradientBarStyleBottomToTop = {
 
 const BizKimiz = () => {
   return (
-    <div className="bg-dark text-white">
+    <div className="pages-content">
       <Banner />
       <Header />
-      <div className="position-relative">
-        <Container className="mt-5">
-          <Row  >
-            <Col md={5} xs={12} className=" d-flex justify-content-between">
+      <div className="position-relative main-content">
+        <Container >
+          <Row >
+            <Col md={5} xs={12} className=" d-flex justify-content-between mt-5">
               <div className="flex-col">
              
                 <img src={logoUrl} alt="Tobeto Logo" style={{ width: '200px', height: '200px' }} />
@@ -47,7 +47,7 @@ const BizKimiz = () => {
                 <p className="aboutus-text"></p>
               </div>
             </Col>
-            <Col md={5} xs={12} className="my-10 d-flex">
+            <Col md={5} xs={12} className="my-10 d-flex mt-5">
            
               <video width="100%" className="modal-height youtube-video img-fluid" controls>
                 <source src={videoUrl} type="video/mp4" />

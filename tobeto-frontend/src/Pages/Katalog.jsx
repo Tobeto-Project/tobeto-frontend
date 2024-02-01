@@ -11,7 +11,7 @@ import MiddleBanner from "../Components/Common/MiddleBanner";
 
 const Katalog = () => {
   return (
-    <div className="bg-dark body-container">
+    <div className="pages-content body-container">
       <Banner />
       <Header />
       <div className="main-content">

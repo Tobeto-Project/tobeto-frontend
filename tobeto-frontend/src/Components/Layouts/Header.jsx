@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar expand="sm" bg="black">
+      <Navbar expand="sm" style={{backgroundColor:"#181717",marginTop:"70px"}} fixed="top">
         <Container fluid>
           <Navbar.Brand href="#home">
             <Link to="/">
@@ -117,8 +117,8 @@ const Header = () => {
               <Button
                 as={Link}
                 to="/uyeol"
-                className="rounded-pill "
-                variant="outline-light mx-1"
+                className="btn btn-black rounded-pill btn-rainbow my-2 ms-2"
+                variant="mx-1"
               >
                 Ücretsiz Üye Ol
               </Button>

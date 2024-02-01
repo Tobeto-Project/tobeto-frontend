@@ -75,7 +75,7 @@ const Accordions = () => {
                                     e.stopPropagation(); // Prevent card click from triggering accordion toggle
                                 }}
                                 style={{
-                                    color: "#6F32AD",
+                                    color: "#9833FF",
                                     textDecoration: "none",
                                     fontSize: "1.2rem",
                                 }}

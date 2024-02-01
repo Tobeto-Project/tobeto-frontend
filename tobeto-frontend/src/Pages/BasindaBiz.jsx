@@ -5,7 +5,7 @@ import Footer from "../Components/Layouts/Footer";
 
 const BasindaBiz = () => {
   return (
-    <div className="bg-dark body-container bg-dark">
+    <div className="body-container pages-content">
       <Banner />
       <Header />
 
