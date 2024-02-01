@@ -1,13 +1,14 @@
-import axios from "axios";
 
-const BASE_URL = "http://localhost:60629/api/Users/GetList/getlist";
+import axios from "axios";
+import API_CONFIG from "../../Services/ApiConfig";
+import * as ENDPOINTS from "../../Services/ApiEndpoints";
 
 export const fetchAllStudents = async (pageIndex = 0, pageSize = 15) => {
   try {
     const response = await axios.get(
-      `${BASE_URL}?PageIndex=${pageIndex}&PageSize=${pageSize}`
+      `${API_CONFIG.USERS}${ENDPOINTS.GET_LIST_ENDPOINT}?PageIndex=${pageIndex}&PageSize=${pageSize}`
     );
-    return response.data; // Varsayılan olarak, response'un data özelliğini döndürür
+    return response.data;
   } catch (error) {
     console.error("Öğrencileri alırken hata oluştu:", error);
     throw error;
