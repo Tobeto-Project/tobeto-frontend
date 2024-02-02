@@ -42,6 +42,7 @@ const Students = () => {
         getStudents();
     }, []);
 
+
     if (isLoading) {
         return 
         <Spinner animation="border" role="status">
@@ -59,7 +60,8 @@ const Students = () => {
                     <th>İsim</th>
                     <th>Soy İsim</th>
                     <th>Mail</th>
-                    <th>Tc Kimlik</th>
+                    <th>Telefon Numarası</th>
+                    <th>Tc Kimlik Numarası</th>
                     <th>Öğrenci Silme</th>
                 </tr>
             </thead>
@@ -70,6 +72,7 @@ const Students = () => {
                         <td>{student.firstName}</td>
                         <td>{student.lastname}</td>
                         <td>{student.email}</td>
+                        <td>{student.phoneNumber}</td>
                         <td>{student.identityNumber}</td>
                         <td><Button variant="danger" onClick={() => handleDeleteClick(student.id)}>Öğrenciyi Sil</Button></td>
                     </tr>
