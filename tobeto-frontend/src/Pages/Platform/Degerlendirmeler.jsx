@@ -300,8 +300,8 @@ const Degerlendirmeler = () => {
                   </p>
                 </div>
               </Col>
-              <Col md={6} className="d-flex align-items-center">
-                <div className="dashboard-card4 equal-box">
+              <Col md={6} className="p-0 m-0">
+                <div className="dashboard-card4 equal-box" style={{marginLeft:"auto"}}>
                   <span className="centered-text mt-4 align-items-center fw-bold fs-5">Huawei Talent Interview <br /> Teknik Bilgi Sınavı*</span>
                   <p className="centered-text mt-4 align-items-center fs-5 ">
                     <b><i>Sertifika alabilmen için,</i></b> eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.<br /><br />

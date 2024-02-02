@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../../Styles/LayoutStyles/BannerStyle.css";
 import logo from "../../Assets/Images/istanbulkodluyor-logo-white.svg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -15,9 +16,9 @@ const Banner = () => {
             Aradığın <span style={{color:"#00B077"}}>"</span>İş<span style={{color:"#00B077"}}>"</span> Burada!
           </Nav.Link>
         </Nav>
-        <Button className="px-5 rounded-pill shadow-0" style={{backgroundColor:"#00B077", color:"#1E0F40"}} variant="success" size="md">
+        <Link to="/istanbulkodluyor" ><Button className="px-5 rounded-pill shadow-0" style={{backgroundColor:"#00B077", color:"#1E0F40"}} variant="success" size="md">
           <span className="fw-bold">Başvur</span>
-        </Button>
+        </Button></Link>
       </Container>
     </Navbar>
   );

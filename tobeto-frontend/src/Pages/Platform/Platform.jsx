@@ -34,7 +34,7 @@ const Platform = () => {
               <div className="fs-1">
                 <span style={{ color: "#9933FC" }}>TOBETO</span>'ya hoş geldin
               </div>
-              {userDetails && <div className="fs-2 mb-3">Hoş geldin, {userDetails.firstName}</div>}
+              {userDetails && <div className="fs-2 mb-3">{userDetails.firstName}</div>}
               <div className="fs-4">
                 Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda
                 senin yanında!

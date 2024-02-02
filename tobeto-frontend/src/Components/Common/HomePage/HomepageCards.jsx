@@ -1,8 +1,8 @@
 import React from "react";
-import link from "/Users/mac/Desktop/Github's/react-pair1/tobeto-frontend/src/Assets/Images/anasayfa-left-first.svg"
-import link2 from "/Users/mac/Desktop/Github's/react-pair1/tobeto-frontend/src/Assets/Images/anasayfa-right.svg";
-import link3 from "/Users/mac/Desktop/Github's/react-pair1/tobeto-frontend/src/Assets/Images/anasayfa-left-inside.png";
-import link4 from "/Users/mac/Desktop/Github's/react-pair1/tobeto-frontend/src/Assets/Images/istanbulkodluyor-logo-white.svg";
+import link from "../../../../src/Assets/Images/anasayfa-left-first.svg"
+import link2 from "../../../../src/Assets/Images/anasayfa-right.svg";
+import link3 from "../../../../src/Assets/Images/anasayfa-left-inside.png";
+import link4 from "../../../../src/Assets/Images/istanbulkodluyor-logo-white.svg";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 

@@ -21,7 +21,7 @@ const MyEducation = () => {
       <MiddleBanner>
         <p style={{ fontSize: '6rem' }} className='text-white fw-bold'>Eğitimlerim</p>
       </MiddleBanner>
-      <Container className='mt-4'>
+      <Container className='my-5'>
         <Row xs={1} md={2} lg={4} className="g-1">
           {educationList.map((data) => (
             <Col key={data.id}>

@@ -4,6 +4,7 @@ import logo from "../../Assets/Images/istanbulkodluyor-black.svg";
 import PlatformEducationCard from "../Common/PlatformEducationCard";
 import ApplicationStatusCard from "../Common/ApplicationStatusCard";
 import NotificationContainer from "../Common/NotificationCard";
+import MySurveys from "../Common/MySurveys";
 
 
 const PlatformNavigation = () => {
@@ -23,7 +24,7 @@ const PlatformNavigation = () => {
           </Card.Body>
         );
       case "anketlerim":
-        return <Card.Body >anket içeriği burada olacak   </Card.Body>;
+        return <Card.Body ><MySurveys/></Card.Body>;
 
       default:
         return <Card.Body>İçerik bulunamadı.</Card.Body>;
@@ -36,7 +37,7 @@ const PlatformNavigation = () => {
       <p className="text-center fs-3">
         Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.
       </p>
-      <p className="text-center fs-2 fw-bold">Aradığın “İş” Burada!</p>
+      <p className="text-center fs-2 fw-bold">Aradığın <span style={{color:"#00D39B"}}>“</span>İş<span style={{color:"#00D39B"}}>“</span> Burada!</p>
       <Card.Header>
         <Nav variant="tabs" defaultActiveKey="#basvurularim">
           <Nav.Item>

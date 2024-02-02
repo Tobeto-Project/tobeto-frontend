@@ -117,7 +117,8 @@ const Header = () => {
               <Button
                 as={Link}
                 to="/uyeol"
-                className="btn btn-black rounded-pill btn-rainbow my-2 ms-2"
+                className="btn rounded-pill btn-rainbow my-2 ms-2 text-white"
+                style={{backgroundColor:"#181717"}}
                 variant="mx-1"
               >
                 Ücretsiz Üye Ol
@@ -142,6 +143,7 @@ const Header = () => {
                     />
                     {userDetails.firstName +" "+ userDetails.lastname}
                   </div></Link>
+                  <Button className="m-0 btn btn-lg" onClick={HandleLogout}>Çıkış Yap</Button>
               </>
             )}
           </Navbar.Collapse>

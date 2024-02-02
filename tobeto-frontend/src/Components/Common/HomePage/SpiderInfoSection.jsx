@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const SpiderInfoSection = () => {
     return (
@@ -23,9 +24,9 @@ const SpiderInfoSection = () => {
                             davranış ifadesinden oluşan Tobeto 'İşte Başarı Modeli' ile, profesyonellik yetkinliklerini ölç,
                             raporunu gör.
                         </p>
-                        <a href="/kayit-ol" className="btn btn-secondary mt-3 mx-2">
+                        <Link to="uyeol"><a className="btn btn-secondary mt-3 mx-2">
                             Hemen Başla
-                        </a>
+                        </a></Link>
                     </div>
                 </Col>
             </Row>
