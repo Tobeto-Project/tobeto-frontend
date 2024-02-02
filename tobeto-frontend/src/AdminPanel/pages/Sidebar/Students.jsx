@@ -10,6 +10,7 @@ import StudentsSearchMenu from '../../components/StudentsSearchMenu';
 const Students = () => {
     const [students, setStudents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const handleDeleteClick = async (studentId) => {
         try {
@@ -30,7 +31,7 @@ const Students = () => {
         const getStudents = async () => {
             try {
                 const data = await fetchAllStudents();
-                setStudents(data.items); // Varsayalım ki API'den gelen veri 'items' adında bir dizi içeriyor
+                setStudents(data.items);
                 setIsLoading(false);
             } catch (error) {
                 
@@ -42,6 +43,14 @@ const Students = () => {
         getStudents();
     }, []);
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredStudents = students.filter(student =>
+        student.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
 
     if (isLoading) {
         return 
@@ -52,7 +61,7 @@ const Students = () => {
 
     return (
         <>
-        <StudentsSearchMenu/>
+        <StudentsSearchMenu onSearchChange={handleSearchChange}/>
         <Table striped bordered hover variant="light" className='me-5'>
             <thead>
                 <tr>
@@ -66,7 +75,7 @@ const Students = () => {
                 </tr>
             </thead>
             <tbody>
-                {students.map((student, index) => (
+                {filteredStudents.map((student, index) => (
                     <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{student.firstName}</td>

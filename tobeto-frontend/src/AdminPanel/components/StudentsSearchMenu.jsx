@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { register } from '../../Services/RegisterService';
 
-const StudentsSearchMenu = () => {
+const StudentsSearchMenu = ({ onSearchChange }) => {
   const [show, setShow] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -55,11 +55,11 @@ const StudentsSearchMenu = () => {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Öğrenci Ara"
               className="me-2"
               aria-label="Search"
+              onChange={onSearchChange} 
             />
-            <Button variant="outline-success">Öğrenci Ara</Button>
            <Button variant="outline-success" className='ms-2' onClick={handleShow}>Öğrenci Ekle</Button>
 
           </Form>
