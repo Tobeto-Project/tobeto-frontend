@@ -14,3 +14,21 @@ export const fetchAllStudents = async (pageIndex = 0, pageSize = 15) => {
     throw error;
   }
 };
+
+export const deleteStudentById = async (studentId) => {
+  try {
+    const response = await axios.delete(`http://localhost:5082/api/Users/Delete/delete`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        id: studentId
+      }
+    });
+    console.log("Silme işlemi başarılı:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Öğrenci silinirken hata oluştu:", error.response ? error.response.data : error);
+    throw error;
+  }
+};

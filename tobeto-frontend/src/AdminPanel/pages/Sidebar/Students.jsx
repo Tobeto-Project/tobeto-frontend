@@ -1,14 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
-import { fetchAllStudents } from '../../services/studentService';
+import { deleteStudentById, fetchAllStudents } from '../../services/studentService';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import { toast } from 'react-toastify';
+import StudentsSearchMenu from '../../components/StudentsSearchMenu';
 
 
 const Students = () => {
     const [students, setStudents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const handleDeleteClick = async (studentId) => {
+        try {
+            await deleteStudentById(studentId);
+            // Silme işlemi başarılıysa, öğrenci listesini güncelleyin
+            const updatedStudents = students.filter(student => student.id !== studentId);
+            setStudents(updatedStudents);
+            // Kullanıcıya bildirim göster
+            toast.success('Öğrenci başarıyla silindi.');
+        } catch (error) {
+            // Hata yönetimi
+            console.error("Öğrenci silinirken bir hata oluştu.");
+            toast.error('Öğrenci silinirken bir hata oluştu.');
+        }
+    };
+      
     useEffect(() => {
         const getStudents = async () => {
             try {
@@ -16,6 +33,7 @@ const Students = () => {
                 setStudents(data.items); // Varsayalım ki API'den gelen veri 'items' adında bir dizi içeriyor
                 setIsLoading(false);
             } catch (error) {
+                
                 console.error('Öğrencileri yüklerken hata oluştu:', error);
                 setIsLoading(false);
             }
@@ -32,6 +50,8 @@ const Students = () => {
     }
 
     return (
+        <>
+        <StudentsSearchMenu/>
         <Table striped bordered hover variant="light" className='me-5'>
             <thead>
                 <tr>
@@ -51,11 +71,12 @@ const Students = () => {
                         <td>{student.lastname}</td>
                         <td>{student.email}</td>
                         <td>{student.identityNumber}</td>
-                        <td><Button variant="danger">Öğrenciyi Sil</Button></td>
+                        <td><Button variant="danger" onClick={() => handleDeleteClick(student.id)}>Öğrenciyi Sil</Button></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
+        </>
     );
 };
 
