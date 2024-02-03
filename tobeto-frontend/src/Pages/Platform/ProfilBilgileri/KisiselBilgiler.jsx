@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
 import PlatformHeader from '../../../Components/Layouts/PlatformHeader';
 import PlatformForm from '../../../Components/Layouts/PlatformForm';
+import PlatformExperiences from '../../../Components/Layouts/PlatformExperiences';
+import PlatformEducationLife from '../../../Components/Layouts/PlatformEducationLife';
+import Competencies from '../../../Components/Layouts/PlatformCompetencies';
 
 function PlatformKisiselMenu() {
   const [activeTab, setActiveTab] = useState("kisiselbilgilerim");
@@ -12,11 +15,11 @@ function PlatformKisiselMenu() {
       case "kisiselbilgilerim":
         return <Card.Body><PlatformForm/></Card.Body>;
       case "deneyimlerim":
-        return <Card.Body>Eğitimlerim içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body><PlatformExperiences/></Card.Body>;
       case "egitimhayatim":
-        return <Card.Body>Duyuru ve Haberlerim içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body><PlatformEducationLife/></Card.Body>;
       case "yetkinliklerim":
-        return <Card.Body>Anketlerim içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body><Competencies/></Card.Body>;
       case "sertifikalarım":
         return <Card.Body>Sertifikalarım</Card.Body>;
       case "medya":
