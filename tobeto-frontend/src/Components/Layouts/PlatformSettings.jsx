@@ -27,16 +27,16 @@ const PlatformSettings = () => {
                             </Form.Group>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
-                            <Button className='mb-2 w-100' variant="primary" type="submit">
+                    <Row className='mt-5'>
+                        <Col md={6}>
+                            <button className='w-100 btn btn-primary m-0' >
                                 Şifre Değiştir
-                            </Button>
+                            </button>
                         </Col>
-                        <Col>
-                            <Button className='btn-danger mb-2 w-100' variant="primary" type="submit">
-                                Üyeliği Sonlandır
-                            </Button>
+                        <Col md={6}>
+                            <button className='w-100 btn btn-danger rounded-pill'>
+                            Üyeliği Sonlandır
+                            </button>
                         </Col>
                     </Row>
                 </Form>
