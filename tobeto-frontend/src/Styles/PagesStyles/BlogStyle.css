@@ -1,0 +1,32 @@
+.card-container {
+    padding: 4px;
+    margin: 2.5rem;
+  }
+  
+  .custom-card {
+    width: 350px;
+    height: 450px!important;
+    background: url("https://images.nightcafe.studio//assets/tdraw-girl.jpg?tr=w-1200,c-at_max");
+    background-size: cover;
+  }
+  
+  .date-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    color: rgb(255, 255, 255);
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+  }
+  
+  .custom-card .card-title,
+  .custom-card .description {
+    color: #FFFFFF;
+  }
+  

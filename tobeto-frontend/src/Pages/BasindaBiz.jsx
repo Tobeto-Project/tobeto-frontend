@@ -2,22 +2,60 @@ import React from "react";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/esm/Col";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/esm/Container";
+import "../Styles/PagesStyles/BlogStyle.css";
 
 const BasindaBiz = () => {
   return (
     <div className="body-container pages-content">
       <Banner />
       <Header />
-
-      <div className="main-content">
-        <h1>BasindaBiz</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas totam nesciunt commodi consectetur impedit dolore? Soluta suscipit, dolores aliquid, voluptates expedita adipisci ea illum sapiente cupiditate numquam necessitatibus aspernatur architecto incidunt at ullam consectetur asperiores consequuntur! Inventore, tempora suscipit? Corrupti natus, doloribus dolorum fuga eius nulla veritatis! Eius hic sapiente mollitia nobis eaque officia asperiores consequatur quos iure, quae voluptatibus molestiae optio, nostrum vero facilis error blanditiis. Impedit quae numquam quidem, nemo magni illum consequuntur consequatur suscipit harum a sunt cupiditate fugiat deserunt dolores odio natus at nesciunt similique quo modi magnam mollitia itaque! Ad sunt explicabo ullam perferendis omnis, quasi ratione in, laudantium soluta delectus quibusdam, dicta aliquid voluptate hic odio expedita quaerat fuga et perspiciatis magnam nobis conseq
-        </p>
+      <div
+        className="container"
+        style={{
+          "padding-top": "12em",
+          "margin-bottom": "1em",
+          width: "max-content",
+        }}
+      >
+        <div className="row text-center">
+          <h1 className="ms-4">Basinda Biz</h1>
+        </div>
       </div>
-
+      <Container>
+        <Row>
+          <Col md={4}>
+            <div className="card-container">
+              <a>
+                <Card className="custom-card">
+                  <Card.Body
+                    className="d-flex flex-column justify-content-end"
+                    style={{ height: "100%" }}
+                  >
+                    <div className="date-label fw-bold">2 Şubat 2024</div>
+                    <div className="card-content">
+                      <div>
+                        <Card.Title className="fw-bold">Card Title</Card.Title>
+                        <Card.Text className="description">
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. Officia minus tenetur temporibus, assumenda sint
+                          voluptates?
+                        </Card.Text>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </a>
+            </div>
+          </Col>
+        </Row>
+      </Container>
       <Footer />
     </div>
   );
 };
-export default BasindaBiz
+
+export default BasindaBiz;
