@@ -5,6 +5,10 @@ import PlatformForm from '../../../Components/Layouts/PlatformForm';
 import PlatformExperiences from '../../../Components/Layouts/PlatformExperiences';
 import PlatformEducationLife from '../../../Components/Layouts/PlatformEducationLife';
 import Competencies from '../../../Components/Layouts/PlatformCompetencies';
+import PlatformCertificates from '../../../Components/Layouts/PlatformCertificates';
+import PlatformMediaAccounts from '../../../Components/Layouts/PlatformMediaAccounts';
+import { PlatformForeignLanguage } from '../../../Components/Layouts/PlatformForeignLanguage';
+import PlatformSettings from '../../../Components/Layouts/PlatformSettings';
 
 function PlatformKisiselMenu() {
   const [activeTab, setActiveTab] = useState("kisiselbilgilerim");
@@ -21,13 +25,13 @@ function PlatformKisiselMenu() {
       case "yetkinliklerim":
         return <Card.Body><Competencies/></Card.Body>;
       case "sertifikalarım":
-        return <Card.Body>Sertifikalarım</Card.Body>;
+        return <Card.Body><PlatformCertificates/></Card.Body>;
       case "medya":
-        return <Card.Body>Medya içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body><PlatformMediaAccounts/></Card.Body>;
       case "yabancı dillerim":
-        return <Card.Body>Yabancı içeriği burada gösterilecek.</Card.Body>;
+        return <Card.Body><PlatformForeignLanguage/></Card.Body>;
       case "ayarlar":
-        return <Card.Body>Ayarlar</Card.Body>;
+        return <Card.Body><PlatformSettings/></Card.Body>;
       default:
         return <Card.Body>İçerik bulunamadı.</Card.Body>;
     }
