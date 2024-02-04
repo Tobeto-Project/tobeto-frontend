@@ -8,8 +8,8 @@
     color: black;
     transition: color 0.3s
 }
-.nav-button-button:hover{
-    color: blueviolet;
+.nav-button-platform:hover {
+    color: #9833FF; /* Mouse üzerine gelindiğinde renk */
 }
 .nav-dropdown-dark-example-platform .dropdown-toggle::after {
     display: none;
