@@ -39,7 +39,7 @@ const PlatformEducationLife = () => {
                         <Col>
                             <Form.Group controlId="formStartYear">
                                 <Form.Label>Başlangıç Yılı*</Form.Label>
-                                <Form.Control type="calendar" placeholder={userDetails} />
+                                <Form.Control type="date" placeholder={userDetails} />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -47,7 +47,7 @@ const PlatformEducationLife = () => {
                         <Col>
                             <Form.Group controlId="formGraduate">
                                 <Form.Label>Mezuniyet Yılı*</Form.Label>
-                                <Form.Control type="gg.aa.yy" placeholder={userDetails} required />
+                                <Form.Control type="date" placeholder={userDetails} required />
                                 <label className='mt-2' for="checkbox" style={{ font: '14px' }}>
                                     <input className="me-2" name="checkbox" type="checkbox"></input>
                                     Devam ediyorum.

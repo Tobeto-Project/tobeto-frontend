@@ -123,13 +123,13 @@ const PlatformExperiences = () => {
                         <Col>
                             <Form.Group controlId="formStartWork">
                                 <Form.Label className='mb-0'>İş Başlangıcı*</Form.Label>
-                                <Form.Control type="gg.aa.yy" placeholder={userDetails} required />
+                                <Form.Control type="date" placeholder={userDetails} required />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group controlId="formEndWork">
                                 <Form.Label className='mb-0'>İş Bitiş*</Form.Label>
-                                <Form.Control type="gg.aa.yy" placeholder={userDetails} required />
+                                <Form.Control type="date" placeholder={userDetails} required />
                                 <label className='mt-2' for="checkbox" style={{ font: '14px' }}>
                                     <input className="me-2" name="checkbox" type="checkbox"></input>
                                     Çalışmaya devam ediyorum.
