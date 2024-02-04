@@ -21,7 +21,7 @@ const TabComponent = () => {
     ];
 
     const [buttonState, setButtonState] = useState({
-        button1: { background: "black", hover: false },
+        button1: { background: "#181717", hover: false },
         button2: { background: "white", hover: false },
     });
 
