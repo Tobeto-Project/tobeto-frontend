@@ -29,6 +29,14 @@ import React, { useState, useEffect } from "react";
 import Spinner from "./Components/Common/Spinner/Spinner";
 import { useDispatch } from "react-redux";
 import { checkTokenAndLogin } from "./Store/Actions/userActions";
+import Frontend from "./Pages/Programs/Frontend";
+import Backend from "./Pages/Programs/Backend";
+import CyberSecurity from "./Pages/Programs/CyberSecurity";
+import DataScience from "./Pages/Programs/DataScience";
+import FullStack from "./Pages/Programs/FullStack";
+import UI_UX from "./Pages/Programs/UI_UX";
+import Web_Mobile from "./Pages/Programs/Web_Mobile";
+import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 
 function App() {
   const dispatch = useDispatch();
@@ -77,6 +85,13 @@ function App() {
           <Route path="/girisyap" element={<SignIn />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/uyeol" element={<SignUp />} />
+          <Route path="/Frontend" element={<Frontend/>} />
+          <Route path="/Backend" element={<Backend/>} />
+          <Route path="/FullStack" element={<FullStack/>} />
+          <Route path="/Web_Mobile" element={<Web_Mobile/>} />
+          <Route path="/DataScience" element={<DataScience/>} />
+          <Route path="/CyberSecurity" element={<CyberSecurity/>} />
+          <Route path="/UI_UX" element={<UI_UX/>} />
           <Route
             path="/kurs"
             element={
