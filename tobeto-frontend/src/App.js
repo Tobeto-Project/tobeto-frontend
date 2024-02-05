@@ -36,7 +36,7 @@ import DataScience from "./Pages/Programs/DataScience";
 import FullStack from "./Pages/Programs/FullStack";
 import UI_UX from "./Pages/Programs/UI_UX";
 import Web_Mobile from "./Pages/Programs/Web_Mobile";
-import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
+import GetInformationFromPrograms from "./Pages/Programs/GetInformationFromPrograms";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,17 +60,8 @@ function App() {
         <Spinner />
       ) : (
         <Routes>
-          <Route
-            path="/admin"
-            element={<AdminLogin setIsAuthenticated={setIsAuthenticated} />}
-          />
-          <Route
-            path="/adminpanel"
-            element={
-              <PrivateRouteAdmin isAuthenticated={isAuthenticated}>
-                <AdminPanel />
-              </PrivateRouteAdmin>
-            }
+          <Route path="/admin" element={<AdminLogin setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path="/adminpanel" element={ <PrivateRouteAdmin isAuthenticated={isAuthenticated}><AdminPanel /> </PrivateRouteAdmin> }
           />
           <Route path="/" element={<HomePage />} />
           <Route path="/bizkimiz" element={<BizKimiz />} />
@@ -85,79 +76,23 @@ function App() {
           <Route path="/girisyap" element={<SignIn />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/uyeol" element={<SignUp />} />
-          <Route path="/Frontend" element={<Frontend/>} />
-          <Route path="/Backend" element={<Backend/>} />
-          <Route path="/FullStack" element={<FullStack/>} />
-          <Route path="/Web_Mobile" element={<Web_Mobile/>} />
-          <Route path="/DataScience" element={<DataScience/>} />
-          <Route path="/CyberSecurity" element={<CyberSecurity/>} />
-          <Route path="/UI_UX" element={<UI_UX/>} />
-          <Route
-            path="/kurs"
-            element={
-              <PrivateRoute>
-                <Education />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/platform"
-            element={
-              <PrivateRoute>
-                <Platform />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/degerlendirmeler"
-            element={
-              <PrivateRoute>
-                <Degerlendirmeler />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/profil"
-            element={
-              <PrivateRoute>
-                <Profil />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/platform-katalog"
-            element={
-              <PrivateRoute>
-                <PlatformKatalog />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/platform-takvim"
-            element={
-              <PrivateRoute>
-                <PlatformTakvim />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/kisiselbilgiler"
-            element={
-              <PrivateRoute>
-                <KisiselBilgiler />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/egitimlerim"
-            element={
-              <PrivateRoute>
-                <MyEducation />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      )}
+          <Route path="/Frontend" element={<Frontend />} />
+          <Route path="/Backend" element={<Backend />} />
+          <Route path="/FullStack" element={<FullStack />} />
+          <Route path="/Web_Mobile" element={<Web_Mobile />} />
+          <Route path="/DataScience" element={<DataScience />} />
+          <Route path="/CyberSecurity" element={<CyberSecurity />} />
+          <Route path="/UI_UX" element={<UI_UX />} />
+          <Route path="/bilgi-al" element={<GetInformationFromPrograms/>} />
+          <Route path="/kurs" element={<PrivateRoute><Education /></PrivateRoute>}/>
+          <Route path="/platform" element={<PrivateRoute><Platform /></PrivateRoute>}/>
+          <Route path="/degerlendirmeler"element={<PrivateRoute><Degerlendirmeler /></PrivateRoute>}/>
+          <Route path="/profil"element={<PrivateRoute><Profil /> </PrivateRoute>}/>
+          <Route path="/platform-katalog"element={<PrivateRoute><PlatformKatalog /> </PrivateRoute> } />
+          <Route path="/platform-takvim" element={ <PrivateRoute> <PlatformTakvim /> </PrivateRoute> } />
+          <Route path="/kisiselbilgiler" element={<PrivateRoute><KisiselBilgiler /> </PrivateRoute>}/>
+          <Route path="/egitimlerim" element={ <PrivateRoute> <MyEducation /> </PrivateRoute>}/>
+        </Routes>)}
     </Router>
   );
 }

@@ -1,33 +1,51 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import Header from '../../Components/Layouts/Header';
+import Banner from '../../Components/Layouts/Banner';
+import ProgramInfo from '../../Components/Common/NelerSunuyoruz/Bireylericin/Programs/ProgramInfo';
+import ProgramContent from '../../Components/Common/NelerSunuyoruz/Bireylericin/Programs/ProgramContent';
+import Footer from '../../Components/Layouts/Footer';
+import ProgramAudience from '../../Components/Common/NelerSunuyoruz/Bireylericin/Programs/ProgramAudience';
+
 
 const Frontend = () => {
     return (
-        <div> <Container fluid>
-            <Row className="align-items-center">
-                {/* Front-End Developer Div */}
-                <Col xs={12} lg={6} className="mt-32 order-last order-lg-first">
-                    <div className="mw-md mx-auto pt-20 pb-24 px-8 px-md-12 px-xl-14 rounded bg-light" style={{ boxShadow: '8px 80px 138px rgba(0, 0, 0, 0.11)' }}>
-                        <h3 className="mt-6 mb-8 text-center">Front-End Developer</h3>
-                        <Button className="btn btn-primary w-100" href="/bilgi-al">Eğitim tarihlerinden haberdar olmak için</Button>
-                    </div>
-                </Col>
+        <div className="body-container pages-content">
+            <Header />
+            <Banner />
+            <div className="position-relative main-content">
+                <Container >
+                    <Row className="align-items-center mt-5">
+                        {/* Front-End Developer Div */}
+                        <Col xs={12} lg={6} className="d-flex align-items-center justify-content-center h-100 ">
+                            <div className="rounded bg-light text-center p-5">
+                                <h3 className="text-dark">Front-End Developer</h3>
+                                <Button className="btn btn-primary w-100" href="/bilgi-al">Eğitim tarihlerinden haberdar olmak için</Button>
+                            </div>
+                        </Col>
 
-                {/* Tobeto ile yeni bir meslek Div */}
-                <Col xs={12} lg={6} className="mt-8">
-                    <div className="mw-lg text-center mx-auto border">
-                        <h2 className="h3 mb-12 text-white">
-                            Tobeto ile yeni bir meslek <span>&nbsp;edin, uzmanlaş ve yüksel.</span>
-                        </h2>
-                        <p className="text-white">
-                            Bütçene ve zamanına en uygun abonelik paketini belirle, eğitim yolculuğunu başlat. Eğitim
-                            yolcuğunu tamamladığında iş olanaklarıyla eşleş.
-                        </p>
-                        <Button className="btn btn-primary" href="/kayit-ol">Ücretsiz Üye Ol</Button>
-                    </div>
-                </Col>
-            </Row>
-        </Container></div>
+                        {/* Tobeto ile yeni bir meslek Div */}
+                        <Col xs={12} lg={6} className="d-flex align-items-center justify-content-center ">
+                            <div className="text-center">
+                                <h2 className="text-white ">
+                                    Tobeto ile yeni bir meslek <span>&nbsp;edin, uzmanlaş ve yüksel.</span>
+                                </h2>
+                                <p className="text-white pt-4 ">
+                                    Bütçene ve zamanına en uygun abonelik paketini belirle, eğitim
+                                    yolculuğunu başlat. Eğitim yolcuğunu tamamladığında iş olanaklarıyla eşleş.
+                                </p>
+                                <Button className="btn btn-primary my-0" href="/uyeol">Ücretsiz Üye Ol</Button>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+                <ProgramInfo />
+
+                <ProgramContent />
+                <ProgramAudience />
+            </div>
+            <Footer />
+        </div>
     );
 };
 
