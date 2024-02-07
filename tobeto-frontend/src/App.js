@@ -37,6 +37,7 @@ import FullStack from "./Pages/Programs/FullStack";
 import UI_UX from "./Pages/Programs/UI_UX";
 import Web_Mobile from "./Pages/Programs/Web_Mobile";
 import GetInformationFromPrograms from "./Pages/Programs/GetInformationFromPrograms";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -90,6 +91,7 @@ function App() {
           <Route path="/profil"element={<PrivateRoute><Profil /> </PrivateRoute>}/>
           <Route path="/platform-katalog"element={<PrivateRoute><PlatformKatalog /> </PrivateRoute> } />
           <Route path="/platform-takvim" element={ <PrivateRoute> <PlatformTakvim /> </PrivateRoute> } />
+          <Route path="/sifremi-unuttum" element={<ForgotPassword/>} />
           <Route path="/kisiselbilgiler" element={<PrivateRoute><KisiselBilgiler /> </PrivateRoute>}/>
           <Route path="/egitimlerim" element={ <PrivateRoute> <MyEducation /> </PrivateRoute>}/>
         </Routes>)}
