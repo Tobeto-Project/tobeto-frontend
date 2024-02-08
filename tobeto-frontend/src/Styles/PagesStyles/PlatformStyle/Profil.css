@@ -1,0 +1,80 @@
+.radar-labels .legend{
+color: #000;
+font-size: 0.7rem;
+min-width: 32px;
+padding: 4px 8px;
+text-align: center;
+margin-right: 8px;
+border-radius: 5px;
+border: 1px solid #ccc;
+}
+
+.radar-labels .legend1{
+    background-color: #85a0a9;
+    
+}
+
+.radar-labels .legend2{
+    background-color: #217925;
+}
+
+.radar-labels  .legend3{
+    background-color: #eec272;
+}
+.radar-labels  .legend4{
+    background-color:#6667ab ;
+}
+
+.radar-labels  .legend5{
+    background-color:#b38f6a ;
+    
+}
+
+.radar-labels  .legend6{
+    background-color:#e288b6 ;
+}
+.radar-labels  .legend7{
+    background-color:#d75078 ;
+}
+.radar-labels .legend8{
+    background-color:#d77e6f ;
+}
+
+.envantory-result {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 10px 24px hsla(0,0%,9%,.12);
+    background-color: #fff;
+    padding: 0.75em;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 12px;
+    transition: .3s;
+    border: 2px solid transparent;
+}
+.envantory-result .examName {
+    color: #828282;
+    font-weight: 500;
+}
+.envantory-result .examDate {
+    color: #828282;
+    font-weight: 500;
+    font-size: 14px;
+}
+.badge-card {
+    background: #fff;
+    box-shadow: 0 10px 24px 0 hsla(0,0%,9%,.05);
+    border-radius: 12px;
+   
+    width: calc(14% - 12px)!important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge-card .img-fluid{
+   max-width:2rem;
+   height: auto;
+}
+.chart-text {
+    font-size:0.9rem;
+}
