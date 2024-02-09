@@ -44,7 +44,7 @@ function BlogForm() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBlogText">
           <Form.Label>Blog İçeriği</Form.Label>
-          <ReactQuill rows={20} theme="snow" value={text} onChange={setText} />
+          <ReactQuill theme="snow" value={text} onChange={setText} />
         </Form.Group>
         <Button variant="primary" type="submit">
           Blog Ekle
