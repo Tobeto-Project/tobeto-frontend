@@ -18,9 +18,6 @@ const BireylerIcin = () => {
       <Banner />
       <Header />
 
-
-
-
       <div className="main-content">
         <CardImage />
 

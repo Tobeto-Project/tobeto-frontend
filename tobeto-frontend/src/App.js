@@ -38,6 +38,8 @@ import UI_UX from "./Pages/Programs/UI_UX";
 import Web_Mobile from "./Pages/Programs/Web_Mobile";
 import GetInformationFromPrograms from "./Pages/Programs/GetInformationFromPrograms";
 import ForgotPassword from "./Pages/ForgotPassword";
+import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
+import BlogIcerik from "./Pages/BlogIcerik";
 
 function App() {
   const dispatch = useDispatch();
@@ -94,7 +96,80 @@ function App() {
           <Route path="/sifremi-unuttum" element={<ForgotPassword/>} />
           <Route path="/kisiselbilgiler" element={<PrivateRoute><KisiselBilgiler /> </PrivateRoute>}/>
           <Route path="/egitimlerim" element={ <PrivateRoute> <MyEducation /> </PrivateRoute>}/>
-        </Routes>)}
+          <Route path="/Frontend" element={<Frontend/>} />
+          <Route path="/Backend" element={<Backend/>} />
+          <Route path="/FullStack" element={<FullStack/>} />
+          <Route path="/Web_Mobile" element={<Web_Mobile/>} />
+          <Route path="/DataScience" element={<DataScience/>} />
+          <Route path="/bloglar/:blogId" element={<BlogIcerik/>} />
+          <Route path="/CyberSecurity" element={<CyberSecurity/>} />
+          <Route path="/UI_UX" element={<UI_UX/>} />
+          <Route
+            path="/kurs"
+            element={
+              <PrivateRoute>
+                <Education />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/platform"
+            element={
+              <PrivateRoute>
+                <Platform />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/degerlendirmeler"
+            element={
+              <PrivateRoute>
+                <Degerlendirmeler />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profil"
+            element={
+              <PrivateRoute>
+                <Profil />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/platform-katalog"
+            element={
+              <PrivateRoute>
+                <PlatformKatalog />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/platform-takvim"
+            element={
+              <PrivateRoute>
+                <PlatformTakvim />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/kisiselbilgiler"
+            element={
+              <PrivateRoute>
+                <KisiselBilgiler />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/egitimlerim"
+            element={
+              <PrivateRoute>
+                <MyEducation />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      )}
     </Router>
   );
 }
