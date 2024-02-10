@@ -3,6 +3,7 @@ import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
 import Students from '../pages/student/Students';
 import BlogForm from '../pages/blog/BlogForm';
 import Bloglar from '../pages/blog/Bloglar';
+import { ToastContainer } from 'react-toastify';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -12,9 +13,11 @@ const Sidebar = () => {
         case "genel":
           return <Card.Body>Genel bilgilerin olduğu kısım</Card.Body>;
         case "blog":
-          return <Card.Body><BlogForm/></Card.Body>;
+          return <Card.Body><BlogForm/>
+            <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "bloglarımız":
-          return <Card.Body><Bloglar/></Card.Body>;
+          return <Card.Body><Bloglar/>
+          <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "ogrenci":
           return <Card.Body><Students/></Card.Body>;
         case "basindabiz":

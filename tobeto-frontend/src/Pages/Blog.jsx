@@ -9,6 +9,8 @@ import Container from "react-bootstrap/esm/Container";
 import "../Styles/PagesStyles/BlogStyle.css";
 import { Link } from "react-router-dom";
 import sanitizeHtml from 'sanitize-html';
+import API_CONFIG from "../Services/ApiConfig";
+import * as ENDPOINTS from '../Services/ApiEndpoints';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState({ items: [] });
@@ -16,7 +18,9 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:5082/api/Blogs/getList?PageIndex=0&PageSize=15");
+        const response = await fetch(`${API_CONFIG.BLOG_GET_LIST}?PageIndex=0&PageSize=15`);
+     
+
         if (!response.ok) throw new Error("Blog verisi çekilemedi.");
         const data = await response.json();
         setBlogs(data);
