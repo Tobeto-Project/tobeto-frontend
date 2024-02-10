@@ -29,4 +29,9 @@
   .custom-card .description {
     color: #FFFFFF;
   }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 eşit sütun */
+    gap: 20px; /* Sütunlar ve satırlar arası boşluk */
+  }
   

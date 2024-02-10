@@ -52,7 +52,7 @@ const BlogIcerik = () => {
           <Row>
           <Col md={12}>
             <div dangerouslySetInnerHTML={{ __html: blog.text }} />
-            </Col>
+          </Col>
           </Row>
         </Container>
 

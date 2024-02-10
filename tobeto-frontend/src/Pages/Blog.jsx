@@ -8,9 +8,10 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/esm/Container";
 import "../Styles/PagesStyles/BlogStyle.css";
 import { Link } from "react-router-dom";
+import sanitizeHtml from 'sanitize-html';
 
 const Blog = () => {
-  const [blogs, setBlogs] = useState({ items: [] }); // Başlangıç durumunu bir nesne olarak ayarlayın
+  const [blogs, setBlogs] = useState({ items: [] });
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -18,7 +19,7 @@ const Blog = () => {
         const response = await fetch("http://localhost:5082/api/Blogs/getList?PageIndex=0&PageSize=15");
         if (!response.ok) throw new Error("Blog verisi çekilemedi.");
         const data = await response.json();
-        setBlogs(data); // API'den gelen tüm veriyi saklayın
+        setBlogs(data);
       } catch (error) {
         console.error("Blog yüklenirken bir hata oluştu:", error);
       }
@@ -27,56 +28,56 @@ const Blog = () => {
     fetchBlogs();
   }, []);
 
-  const truncateText = (text, limit) => {
-    if (text.length > limit) {
-      return text.substring(0, limit) + "...";
+  const truncateHtml = (html, maxLength) => {
+    const strippedString = html.replace(/(<([^>]+)>)/gi, "");
+    if (strippedString.length > maxLength) {
+      return strippedString.substring(0, maxLength) + "...";
     }
-    return text;
+    return strippedString;
+  };
+  
+  const createMarkup = (htmlContent) => {
+    const truncatedContent = truncateHtml(htmlContent, 100);
+    const sanitizedContent = sanitizeHtml(truncatedContent, {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'u']),
+      allowedAttributes: {}
+    });
+    return { __html: sanitizedContent };
   };
 
   return (
     <div className="body-container pages-content">
       <Banner />
       <Header />
-      <div
-        className="container"
-        style={{
-          paddingTop: "12em",
-          marginBottom: "1em",
-          width: "max-content",
-        }}
-      >
+      <div className="container" style={{ paddingTop: "12em", marginBottom: "1em", width: "max-content" }}>
         <div className="row text-center">
           <h1 className="ms-4">Blog</h1>
         </div>
       </div>
       <Container>
-        <Row>
+        <div className="grid-container">
           {Array.isArray(blogs.items) && blogs.items.map((blog, index) => (
-            <Col md={4} key={index}>
-              <div className="card-container">
-                <Link to={`/bloglar/${blog.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-                  <Card className="custom-card">
-                    <Card.Body
-                      className="d-flex flex-column justify-content-end"
-                      style={{ height: "100%" }}
-                    >
-                      <div className="date-label fw-bold">10.03.1999</div>
-                      <div className="card-content">
-                        <div>
-                          <Card.Title className="fw-bold">{truncateText(blog.title, 50)}</Card.Title>
-                          <Card.Text className="description">
-                            {truncateText(blog.text, 100)}
-                          </Card.Text>
-                        </div>
+            <div key={index} className="card-container">
+              <Link to={`/bloglar/${blog.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                <Card className="custom-card">
+                  <Card.Body className="d-flex flex-column justify-content-end" style={{ height: "100%" }}>
+                    <div className="date-label fw-bold">10.03.1999</div>
+                    <div className="card-content">
+                      <div>
+                        <Card.Title className="fw-bold">
+                          {truncateHtml(blog.title, 50)}
+                        </Card.Title>
+                        <Card.Text className="description">
+                          <div dangerouslySetInnerHTML={createMarkup(blog.text)} />
+                        </Card.Text>
                       </div>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </div>
-            </Col>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </div>
           ))}
-        </Row>
+        </div>
       </Container>
       <Footer />
     </div>
