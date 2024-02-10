@@ -1,8 +1,11 @@
+// BlogForm.js
+
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
+import 'react-quill/dist/quill.snow.css';
+import { addBlog } from '../../services/blogService';
 
 function BlogForm() {
   const [title, setTitle] = useState('');
@@ -10,25 +13,8 @@ function BlogForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const blogData = { title, text };
-    // API'ye POST isteği gönder
-    try {
-      const response = await fetch('http://localhost:5082/api/Blogs/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(blogData),
-      });
-      if (response.ok) {
-        toast.success('Blog başarıyla eklendi');
-      } else {
-        toast.error('Blog eklenirken bir hata oluştu');
-      }
-    } catch (error) {
-      console.error('Blog eklenirken bir hata oluştu', error);
-    }
-  };
+    await addBlog(title, text);
+  }
 
   return (
     <Container className='mt-5'>
