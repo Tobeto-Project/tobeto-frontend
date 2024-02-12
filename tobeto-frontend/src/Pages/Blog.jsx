@@ -19,11 +19,10 @@ const Blog = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(`${API_CONFIG.BLOG_GET_LIST}?PageIndex=0&PageSize=15`);
-     
-
         if (!response.ok) throw new Error("Blog verisi çekilemedi.");
         const data = await response.json();
         setBlogs(data);
+
       } catch (error) {
         console.error("Blog yüklenirken bir hata oluştu:", error);
       }
@@ -54,6 +53,7 @@ const Blog = () => {
       <Banner />
       <Header />
       <div className="container" style={{ paddingTop: "12em", marginBottom: "1em", width: "max-content" }}>
+
         <div className="row text-center">
           <h1 className="ms-4">Blog</h1>
         </div>
@@ -82,6 +82,7 @@ const Blog = () => {
             </div>
           ))}
         </div>
+
       </Container>
       <Footer />
     </div>
