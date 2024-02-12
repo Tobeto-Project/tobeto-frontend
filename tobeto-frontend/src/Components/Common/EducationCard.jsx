@@ -1,4 +1,3 @@
-// EducationCard.js
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
@@ -12,9 +11,9 @@ const EducationCard = ({ data }) => {
                 <Card.Subtitle className="mb-2 text-muted">
                     {data.EducationDate} {data.EducationBroadcastTime}
                 </Card.Subtitle>
-                <Link><Button variant="primary" className="btn-primary mt-2 text-white">
+                <Button variant="primary" className="btn-primary mt-2 text-white">
                     Eğitime Git
-                </Button></Link>
+                </Button>
             </Card.Body>
         </Card>
     );
