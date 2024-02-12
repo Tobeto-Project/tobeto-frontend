@@ -20,6 +20,10 @@ const Sidebar = () => {
           <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "ogrenci":
           return <Card.Body><Students/></Card.Body>;
+        case "instructors":
+            return <Card.Body>Eğitmenlerimiz burada listelenecek</Card.Body>;
+        case "employee":
+            return <Card.Body>Görevliler burada listelenecek</Card.Body>;
         case "basindabiz":
             return <Card.Body>Basında Biz içerikleri</Card.Body>;
         case "egitimlerim":
@@ -46,7 +50,9 @@ const Sidebar = () => {
               <Nav className="flex-column vh-100 p-4" style={{backgroundColor:'#9833FF'}}>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("genel")}>Genel Bilgiler</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("ogrenci")}>Öğrencilerimiz</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog Ekle</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("instructors")}>Eğitmenlerimiz</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("employee")}>Görevliler</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog İşlemleri</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("bloglarımız")}>Bloglar</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basında Biz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("egitimlerim")}>Eğitimlerimiz</Nav.Link>

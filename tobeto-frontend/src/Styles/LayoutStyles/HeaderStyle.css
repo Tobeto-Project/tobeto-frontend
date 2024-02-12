@@ -24,6 +24,10 @@
     color: #fff
 }
 
+.nav-background:hover{
+    background-color: #ae63e4;
+}
+
 .btn-rainbow:before {
     animation: rainbow-border 1.5s linear infinite;
     background: linear-gradient(70deg, #0ebeff, #ffdd40, #ae63e4, #47cf73, #0ebeff, #ffdd40, #ae63e4, #47cf73);

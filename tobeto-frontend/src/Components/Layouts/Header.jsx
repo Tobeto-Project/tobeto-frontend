@@ -57,10 +57,10 @@ const Header = () => {
                 menuVariant="dark"
                 className="mt-3 nav-dropdown-dark-example"
               >
-                <NavDropdown.Item as={Link} to="/bireylericin">
+                <NavDropdown.Item className="nav-background" as={Link} to="/bireylericin">
                   Bireyler İçin
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/kurumlaricin">
+                <NavDropdown.Item className="nav-background" as={Link} to="/kurumlaricin">
                   Kurumlar İçin
                 </NavDropdown.Item>
               </NavDropdown>

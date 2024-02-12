@@ -5,7 +5,6 @@ import "../../Styles/LayoutStyles/FooterStyle.css";
 const Footer = () => {
   return (
     <MDBFooter bgColor="black" className="text-center text-lg-left">
-      <hr />
       <MDBContainer className="p-4">
         <MDBRow>
           <MDBCol lg="3" md="6" className="mb-4 mb-md-0">

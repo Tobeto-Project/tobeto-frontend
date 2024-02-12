@@ -40,6 +40,7 @@ import GetInformationFromPrograms from "./Pages/Programs/GetInformationFromProgr
 import ForgotPassword from "./Pages/ForgotPassword";
 import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import BlogIcerik from "./Pages/BlogIcerik";
+import Chatgptai from "./Pages/Platform/Chatgptai";
 
 function App() {
   const dispatch = useDispatch();
@@ -104,6 +105,7 @@ function App() {
           <Route path="/bloglar/:blogId" element={<BlogIcerik/>} />
           <Route path="/CyberSecurity" element={<CyberSecurity/>} />
           <Route path="/UI_UX" element={<UI_UX/>} />
+          <Route path="/chatgptai" element={<PrivateRoute><Chatgptai/></PrivateRoute>}/>
           <Route
             path="/kurs"
             element={
