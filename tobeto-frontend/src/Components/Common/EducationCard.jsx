@@ -2,7 +2,8 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-const EducationCard = ({ data, onClick }) => {
+const EducationCard = ({ data }) => {
+
     return (
         <Card className="education-card">
             <Card.Img variant="top" src={data.EducationImage} />
@@ -11,9 +12,9 @@ const EducationCard = ({ data, onClick }) => {
                 <Card.Subtitle className="mb-2 text-muted">
                     {data.EducationDate} {data.EducationBroadcastTime}
                 </Card.Subtitle>
-                <Button variant="primary" className="btn-primary mt-2 text-white" onClick={onClick}>
+                <Link><Button variant="primary" className="btn-primary mt-2 text-white">
                     Eğitime Git
-                </Button>
+                </Button></Link>
             </Card.Body>
         </Card>
     );
