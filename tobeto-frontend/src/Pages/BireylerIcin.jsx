@@ -18,7 +18,7 @@ const BireylerIcin = () => {
       <Banner />
       <Header />
 
-      <div className="main-content">
+      <div className="main-content" style={{paddingLeft:"10rem",paddingRight:"10rem"}}>
         <CardImage />
 
         <CareerControl />
@@ -52,20 +52,22 @@ const BireylerIcin = () => {
           </div>
         </Row>
 
-        <Row className="custom-container mb-3" style={{ backgroundColor: "black", padding: "20px", margin: "auto" }}>
+        <Row className="custom-container mb-3" style={{ backgroundColor: "#181717", padding: "20px", margin: "auto" }}>
           <Col lg={11} className="d-flex justify-content-center align-items-center">
             <div>
               <h1 className="text-white mb-4">Kendimi geliştirmek istiyorum</h1>
-
             </div>
           </Col>
           <Col lg={1} >
             <img src="https://tobeto.s3.cloud.ngn.com.tr/dot_gray_8a5a605556_eb3dd4f77d.svg" alt="Your Alt Text" style={{ width: "100px", height: "100px" }} />
           </Col>
         </Row>
-
-
-        <InfiniteScrollAnimation />
+        <Row>
+          <Col lg={12}>
+             <InfiniteScrollAnimation />
+          </Col>
+        </Row>
+        
       </div>
 
       <Footer />

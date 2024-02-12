@@ -1,6 +1,4 @@
 .animation {
-    min-width: 100vw;
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +6,7 @@
 }
 
 .tag-list {
-    width: 30rem;
+    width: 60rem;
     max-width: 90vw;
     display: flex;
     flex-shrink: 0;
@@ -37,7 +35,7 @@
     gap: 0 0.2rem;
     color: #e2e8f0;
     font-size: 0.9rem;
-    background-color: #334155;
+    background-color: #8100e3;
     border-radius: 0.4rem;
     padding: 0.7rem 1rem;
     margin-right: 2rem;

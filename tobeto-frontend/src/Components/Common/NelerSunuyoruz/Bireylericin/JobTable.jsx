@@ -29,9 +29,10 @@ const JobTable = () => {
     const secondRowData = data1.slice(4);
 
     return (
+        
         <div className="mx-5">
             {/* Üst kısım */}
-            <Row className="custom-container" style={{ backgroundColor: "black", padding: "20px", margin: "auto" }}>
+            <Row className="custom-container" style={{ backgroundColor: "#181717", padding: "20px", margin: "auto"}}>
                 <Col lg={11} className="d-flex justify-content-center align-items-center">
                     <div>
                         <h1 className="text-white mb-4">
@@ -47,10 +48,10 @@ const JobTable = () => {
             </Row>
 
             {/* İlk sıra */}
-            <Row className="custom-container" style={{ backgroundColor: "black", padding: "20px", margin: "auto" }}>
+            <Row className="custom-container" style={{ backgroundColor: "#181717", padding: "20px", margin: "auto" }}>
                 {firstRowData.map((item, index) => (
                     <Col key={index} lg={3} md={6} sm={12} xs={12} className="mb-3">
-                        <div className="tabs-box position-relative d-flex align-items-center justify-content-center px-3 text-white" style={{ backgroundColor: "black", color: "#000", textDecoration: "none", width: "70%", height: "150px", borderRadius: "10px", border: "1px solid white" }}>
+                        <div className="tabs-box position-relative d-flex align-items-center justify-content-center px-3 text-white" style={{ backgroundColor: "#181717", color: "#000", textDecoration: "none", width: "70%", height: "150px", borderRadius: "10px", border: "1px solid white" }}>
                             <Link to={`/${pageComponents[index].name}`} style={{ color: "white", textDecoration: "none" }}>
                                 {item}
                             </Link>
@@ -60,10 +61,10 @@ const JobTable = () => {
             </Row>
 
             {/* İkinci sıra */}
-            <Row className="custom-container" style={{ backgroundColor: "black", padding: "20px", margin: "auto" }}>
+            <Row className="custom-container shadow-4" style={{ backgroundColor: "##1A1A1A", padding: "20px", margin: "auto"}}>
                 {secondRowData.map((item, index) => (
                     <Col key={index} lg={3} md={6} sm={12} xs={12} className="mb-3">
-                        <div className="tabs-box position-relative d-flex align-items-center justify-content-center px-3 text-white" style={{ backgroundColor: "black", color: "#000", textDecoration: "none", width: "70%", height: "150px", borderRadius: "10px", border: "1px solid white" }}>
+                        <div className="tabs-box position-relative d-flex align-items-center justify-content-center px-3 text-white" style={{ backgroundColor: "##1A1A1A", color: "#000", textDecoration: "none", width: "70%", height: "150px", borderRadius: "10px", border: "1px solid white" }}>
                             <Link to={`/${pageComponents[index + 4].name}`} style={{ color: "white", textDecoration: "none" }}>
                                 {item}
                             </Link>
@@ -83,7 +84,8 @@ const JobTable = () => {
                     Uzmanlaşmak istediğin alanı seç, Tobeto platformda öğrenmeye başla!
                 </Button>
             </Row>
-        </div>
+       
+      </div>
     );
 };
 
