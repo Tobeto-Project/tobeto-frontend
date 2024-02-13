@@ -11,7 +11,7 @@ const EducationCard = ({ data }) => {
                 <Card.Subtitle className="mb-2 text-muted">
                     {data.EducationDate} {data.EducationBroadcastTime}
                 </Card.Subtitle>
-                <Button variant="primary" className="btn-primary mt-2 text-white">
+                <Button href='/lms' variant="primary" className="btn-primary mt-2 text-white">
                     Eğitime Git
                 </Button>
             </Card.Body>

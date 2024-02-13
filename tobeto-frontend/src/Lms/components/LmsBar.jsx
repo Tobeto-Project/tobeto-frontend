@@ -1,4 +1,7 @@
-import React from 'react'
+import { faBookmark, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from 'react'
+import { Row,Col,Button, Container, ProgressBar } from 'react-bootstrap';
 
 const LmsBar = () => {
     const [progress, setProgress] = useState(0);
