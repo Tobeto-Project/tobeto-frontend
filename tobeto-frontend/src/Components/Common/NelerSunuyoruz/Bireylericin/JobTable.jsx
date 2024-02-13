@@ -79,7 +79,7 @@ const JobTable = () => {
             </Row>
 
             <Row className="mx-5 px-5 m-auto mt-4">
-                <Button to="/kayit-ol" as={Link} className="btn btn-rainbow py-4 px-3 rainbow-text mt-4">
+                <Button href="/uyeol"  className="btn btn-rainbow py-4 px-3 rainbow-text mt-4">
                     Uzmanlaşmak istediğin alanı seç, Tobeto platformda öğrenmeye başla!
                 </Button>
             </Row>
