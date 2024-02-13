@@ -81,10 +81,10 @@ const Codeacademy = () => {
             etkileşimle yaparak öğren. Öğrenme deneyimine destek için makaleler,
             videolar ve projelerden faydalan.
           </p>
-          <Button className="m-0 mb-5">Hemen abone ol!</Button>
+          <Button className="m-0 mb-2">Hemen abone ol!</Button>
         </div>
       </div>
-      <div className="border-bottom border-secondary"></div>
+
       <Footer />
     </div>
   );

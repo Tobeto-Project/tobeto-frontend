@@ -7,8 +7,9 @@ import logo from '../../Assets/Images/tobeto-black.png'
 
 const Footer = () => {
  return (
-    <footer className="text-white pt-4 pb-4" style={{fontSize:"0.8rem"}}>
-              <hr className="my-4 mb-5" style={{ borderColor: 'gray' }} />
+  <>
+          
+    <footer className="text-white pb-4 border-top border-dark mt-5" style={{fontSize:"0.8rem",backgroundColor:"#181717"}}>
 
       <Container>
         <Row className="g-5 px-5 mt-5">
@@ -72,6 +73,7 @@ const Footer = () => {
         </Row>
       </Container>
     </footer>
+    </>
   );
 }
 
