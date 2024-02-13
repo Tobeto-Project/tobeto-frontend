@@ -41,6 +41,7 @@ import ForgotPassword from "./Pages/ForgotPassword";
 import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import BlogIcerik from "./Pages/BlogIcerik";
 import Chatgptai from "./Pages/Platform/Chatgptai";
+import LmsPage from "./Ims/pages/LmsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -106,6 +107,7 @@ function App() {
           <Route path="/CyberSecurity" element={<CyberSecurity/>} />
           <Route path="/UI_UX" element={<UI_UX/>} />
           <Route path="/chatgptai" element={<PrivateRoute><Chatgptai/></PrivateRoute>}/>
+          <Route path="/lms" element={<PrivateRoute><LmsPage/></PrivateRoute>}/>
           <Route
             path="/kurs"
             element={

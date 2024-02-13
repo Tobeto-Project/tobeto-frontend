@@ -1,18 +1,85 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap'; // Eğer react-bootstrap kullanıyorsanız
+// LmsPage.jsx
+import React, { useState } from 'react';
+import { Row, Col, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';  // React Router DOM'dan Link ekledik
 import LmsBar from '../components/LmsBar';
+import ContentAccordion from '../components/ContentAccordion';
+import AboutComponent from '../components/AboutComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const LmsPage = () => {
+  const [activeTab, setActiveTab] = useState('icerik');
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
-    <>
-      <Row>
-        <Col><LmsBar/></Col>
-      </Row>
-      <Row>
-        <Col md={5}></Col>
-        <Col md={7}></Col>
-      </Row>
-    </>
+    <div>
+      <div
+        style={{
+          position: 'fixed',
+          top: '20px',
+          left: '20px',
+          backgroundColor: 'purple',
+          padding: '8px',
+          borderRadius: '55%',
+          cursor: 'pointer',
+        }}
+      >
+        {/* Link componentini kullanarak geri dönüş butonunu düzenledik */}
+        <Link to="/platform">
+          <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white'  }} />
+        </Link>
+      </div>
+      <Container
+        style={{
+          backgroundColor: 'white',
+          boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+          padding: '20px',
+          borderRadius: '8px',
+          margin: '20px auto',
+        }}
+      >
+        <Row>
+          <Col><LmsBar /></Col>
+        </Row>
+        <Row>
+          <Col lg={12}>
+            {/* Navigation Links */}
+            <div className="mb-3" style={{ display: 'flex' }}>
+              <span
+                onClick={() => handleTabChange('icerik')}
+                style={{
+                  marginRight: '15px',
+                  padding: '5px',
+                  cursor: 'pointer',
+                  borderBottom: activeTab === 'icerik' ? '2px solid #007bff' : 'none',
+                }}
+              >
+                İçerik
+              </span>
+              <span
+                onClick={() => handleTabChange('hakkinda')}
+                style={{
+                  padding: '5px',
+                  cursor: 'pointer',
+                  borderBottom: activeTab === 'hakkinda' ? '2px solid #007bff' : 'none',
+                }}
+              >
+                Hakkında
+              </span>
+            </div>
+
+            {/* Content */}
+            {activeTab === 'icerik' && <ContentAccordion />}
+            {activeTab === 'hakkinda' && <AboutComponent />}
+          </Col>
+
+        </Row>
+      </Container>
+    </div>
   );
 };
 
