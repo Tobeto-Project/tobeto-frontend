@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/esm/Col";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/esm/Container";
 import "../Styles/PagesStyles/BlogStyle.css";
 import { Link } from "react-router-dom";
 import sanitizeHtml from 'sanitize-html';
 import API_CONFIG from "../Services/ApiConfig";
-import * as ENDPOINTS from '../Services/ApiEndpoints';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState({ items: [] });

@@ -4,6 +4,8 @@ import Students from '../pages/student/Students';
 import BlogForm from '../pages/blog/BlogForm';
 import Bloglar from '../pages/blog/Bloglar';
 import { ToastContainer } from 'react-toastify';
+import BasinForm from '../pages/press/BasinForm';
+import BasinBloglar from '../pages/press/BasinBloglar';
 
 
 const Sidebar = () => {
@@ -11,22 +13,23 @@ const Sidebar = () => {
 
     const renderContent = () => {
       switch (activeTab) {
-        case "genel":
-          return <Card.Body>Genel bilgilerin olduğu kısım</Card.Body>;
         case "blog":
           return <Card.Body><BlogForm/>
-            <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
+          <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "bloglarımız":
           return <Card.Body><Bloglar/>
           <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "ogrenci":
-          return <Card.Body><Students/></Card.Body>;
+          return <Card.Body><Students/>
+          <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "instructors":
             return <Card.Body>Eğitmenlerimiz burada listelenecek</Card.Body>;
         case "employee":
             return <Card.Body>Görevliler burada listelenecek</Card.Body>;
         case "basindabiz":
-            return <Card.Body>Basında Biz içerikleri</Card.Body>;
+            return <Card.Body><BasinForm/></Card.Body>;
+        case "basindabizbloglarımız":
+            return <Card.Body><BasinBloglar/></Card.Body>;
         case "egitimlerim":
             return <Card.Body>Eğitimlerim içeriği burada gösterilecek</Card.Body>;
         case "duyuruvehaberler":
@@ -49,13 +52,13 @@ const Sidebar = () => {
             {/* Sol Taraf: Dikey Menü */}
             <Col md={2} className='p-0'>
               <Nav className="flex-column vh-100 p-4" style={{backgroundColor:'#9833FF'}}>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("genel")}>Genel Bilgiler</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("ogrenci")}>Öğrencilerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("instructors")}>Eğitmenlerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("employee")}>Görevliler</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog İşlemleri</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("bloglarımız")}>Bloglar</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basında Biz</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabizbloglarımız")}>Basında Biz Bloglar</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("egitimlerim")}>Eğitimlerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("duyuruvehaberler")}>Duyuru ve Haberler</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("dil")}>Dil Seçenekleri</Nav.Link>
