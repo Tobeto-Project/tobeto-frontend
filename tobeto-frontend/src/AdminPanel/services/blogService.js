@@ -51,3 +51,20 @@ export const deleteBlog = async (blogId) => {
     return false;
   }
 };
+
+export const updateBlog = async (id, title, text) => {
+  try {
+    const response = await fetch(`${API_CONFIG.BLOG_UPDATE}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id, title, text }),
+    });
+    if (!response.ok) throw new Error("Blog güncellenirken bir hata oluştu");
+    toast.success("Blog başarıyla güncellendi!");
+  } catch (error) {
+    console.error("Blog güncellenirken bir hata oluştu:", error);
+    toast.error("Blog güncellenirken bir hata oluştu");
+  }
+};
