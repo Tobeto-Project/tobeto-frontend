@@ -1,6 +1,6 @@
 // config.js
 
-const PORT = 5082; //swagger browser port number
+const PORT = 60629; //swagger browser port number
 
 const API_URL = `http://localhost:${PORT}/api`;
 

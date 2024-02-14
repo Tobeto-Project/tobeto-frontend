@@ -1,11 +1,11 @@
 //ContentAccordion.jsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Accordion, Card, Button, Container, Col, Row } from "react-bootstrap";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import VideoComponent from "./VideoComponent";
 
-const ContentAccordion = () => {
+const ContentAccordion = ({ onLessonNameChange, setLikeToast: setLike, setBookmarkToast:setBookMark }) => {
     const data = [
         {
             moduleName: "Podcast Paketi - Etkili İletişim",
@@ -34,20 +34,39 @@ const ContentAccordion = () => {
         // Diğer modül ve dersleri de buraya ekleyebilirsin
     ];
 
-
-    const [openAccordion, setOpenAccordion] = useState(null);
+    const[openAccordion, setOpenAccordion] = useState(null);
     const [selectedLesson, setSelectedLesson] = useState(null);
+    const [initialLoad, setInitialLoad] = useState(true);
+    const [likeToast, setLikeToast] = useState(false);
+    const [bookmarkToast, setBookmarkToast] = useState(false);
 
     const handleToggleAccordion = (index) => {
         setOpenAccordion((prevOpenAccordion) => (prevOpenAccordion === index ? null : index));
-        setSelectedLesson(null); // Akordion kapanınca seçilen dersi sıfırla
+        setSelectedLesson(null);
     };
-
 
     const handleLessonClick = (lessonName, e) => {
-        e.stopPropagation(); // Akordionun kapanmasını önlemek için event'in yayılmasını durdur
+        e.stopPropagation();
         setSelectedLesson(lessonName);
+
+        // Reset like and bookmark states when a new lesson is selected
+        setLikeToast(false);
+        setBookmarkToast(false);
+
+        // Ensure onLessonNameChange is a function before calling it
+        if (typeof onLessonNameChange === 'function') {
+            onLessonNameChange(lessonName);
+        }
     };
+
+    useEffect(() => {
+        // Sayfa ilk yüklendiğinde bir ders seçili gibi davran
+        if (initialLoad && data.length > 0) {
+            setSelectedLesson(data[0].lessons[0]);
+            setInitialLoad(false);
+        }
+    }, [initialLoad, data]);
+
     return (
         <Container className="py-5">
             <Row>
@@ -112,9 +131,11 @@ const ContentAccordion = () => {
                 {/* Sağ Sütun - VideoComponent */}
                 <Col md={6}>
                     <VideoComponent
-                        lessonName={selectedLesson} 
+                        lessonName={selectedLesson}
+                        onLessonNameChange={setSelectedLesson}
+                        setLikeToast={setLikeToast}
+                        setBookmarkToast={setBookmarkToast}
                     />
-                
                 </Col>
             </Row>
         </Container>
