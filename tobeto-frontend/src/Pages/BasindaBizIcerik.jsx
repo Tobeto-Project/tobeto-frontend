@@ -5,6 +5,7 @@ import Header from '../Components/Layouts/Header';
 import Footer from '../Components/Layouts/Footer';
 import { Col, Container, Row } from 'react-bootstrap';
 import SocialMediaBar from '../Components/Common/SocialMediaBar';
+import '../Styles/PagesStyles/BlogIcerik.css';
 
 const BasindaBizIcerik = () => {
     const { pressId } = useParams();
@@ -53,7 +54,7 @@ const BasindaBizIcerik = () => {
           </Row>
           <Row>
           <Col md={12}>
-            <div dangerouslySetInnerHTML={{ __html: press.text }} />
+            <div className="blog-content" dangerouslySetInnerHTML={{ __html: press.text }} />
           </Col>
           </Row>
         </Container>

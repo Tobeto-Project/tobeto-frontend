@@ -5,6 +5,7 @@ import Header from '../Components/Layouts/Header';
 import Footer from '../Components/Layouts/Footer';
 import { Col, Container, Row } from 'react-bootstrap';
 import SocialMediaBar from '../Components/Common/SocialMediaBar';
+import '../Styles/PagesStyles/BlogIcerik.css';
 
 const BlogIcerik = () => {
     const { blogId } = useParams();
@@ -44,7 +45,7 @@ const BlogIcerik = () => {
         <Banner />
         <Header />
 
-        <Container style={{ paddingTop: "12em", marginBottom: "1em", maxWidth: "720px" }}>
+        <Container style={{ paddingTop: "12em", marginBottom: "1em" ,maxWidth:"720px"}}>
           <Row><SocialMediaBar/></Row>
           <Row className="text-center">
             <Col>
@@ -53,7 +54,7 @@ const BlogIcerik = () => {
           </Row>
           <Row>
           <Col md={12}>
-            <div dangerouslySetInnerHTML={{ __html: blog.text }} />
+            <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.text }} />
           </Col>
           </Row>
         </Container>
