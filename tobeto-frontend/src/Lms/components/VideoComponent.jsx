@@ -1,24 +1,21 @@
 // VideoComponent.jsx
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Offcanvas, Button } from "react-bootstrap";
+import AboutComponent from "./AboutComponent";
+import { BsX } from "react-icons/bs";
 
-const VideoComponent = ({ lessonName }) => {
-    const videoUrl = "https://www.youtube.com/embed/your-video-id"; // Gerçek video URL'nizi kullanarak değiştirin
+const VideoComponent = ({ lessonName, onLessonNameChange }) => {
+    const videoUrl = "https://www.youtube.com/embed/your-video-id"; // Replace with your actual video URL
     const [showOffcanvas, setShowOffcanvas] = useState(false);
-    const offcanvasRef = useRef(null);
-
-    const handleToggleOffcanvas = () => {
-        setShowOffcanvas(!showOffcanvas);
-    };
-
-    const handleCloseOffcanvas = () => {
-        setShowOffcanvas(false);
-    };
+    const [initialLoad, setInitialLoad] = useState(true);
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
-            if (offcanvasRef.current && !offcanvasRef.current.contains(e.target)) {
+            if (
+                !e.target.closest('.offcanvas') &&
+                !e.target.closest('.offcanvas-backdrop')
+            ) {
                 setShowOffcanvas(false);
             }
         };
@@ -29,6 +26,18 @@ const VideoComponent = ({ lessonName }) => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
     }, []);
+
+    useEffect(() => {
+        if (initialLoad) {
+            // Sadece sayfa ilk yüklendiğinde çalışacak olan kısım
+            setInitialLoad(true);
+        }
+    }, [initialLoad, lessonName]);
+
+    // lessonName'ı bağımlılık listesine ekledik
+    useEffect(() => {
+        onLessonNameChange(lessonName);
+    }, [lessonName, onLessonNameChange]);
 
     return (
         <Row>
@@ -53,26 +62,38 @@ const VideoComponent = ({ lessonName }) => {
                         {lessonName && `${lessonName}`}
                     </div>
 
-                    {/* Detay Butonu */}
-                    <Button onClick={handleToggleOffcanvas} style={{ marginTop: "10px" }}>
+                    {/* Detail Button */}
+                    <Button onClick={() => setShowOffcanvas(true)} style={{ marginTop: "10px" }}>
                         Detay
                     </Button>
 
                     {/* Offcanvas */}
                     <Offcanvas
                         show={showOffcanvas}
-                        onHide={handleCloseOffcanvas}
+                        onHide={() => setShowOffcanvas(false)}
                         placement="end"
-                    >
-                        <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Detay</Offcanvas.Title>
+                        style={{
+                            width: "100%",
+                            maxWidth: "50%",
+                            transition: " 0.4s ease",
+
+                        }}  >
+                        <Offcanvas.Header
+                            style={{
+                                backgroundColor: "#333",
+                                color: "#fff",
+                            }} >
+                            <Offcanvas.Title>Detail</Offcanvas.Title>
+                            <Button variant="link" onClick={() => setShowOffcanvas(false)}>
+                                <BsX size={30} />
+                            </Button>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            {/* Canvas içeriği veya başka içerik buraya eklenir */}
                             {lessonName && <p>{lessonName}</p>}
-                            Bu bir detay içeriği
+                            <AboutComponent />
                         </Offcanvas.Body>
                     </Offcanvas>
+
                 </Container>
             </Col>
         </Row>

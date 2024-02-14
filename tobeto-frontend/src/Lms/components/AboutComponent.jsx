@@ -4,7 +4,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 
-const ActivityDetailInfo = () => {
+const AboutComponent = () => {
     return (
         <div className="activity-detail-info">
             <div className="info-section">
@@ -112,4 +112,4 @@ const ActivityDetailInfo = () => {
     );
 };
 
-export default ActivityDetailInfo;
+export default AboutComponent;
