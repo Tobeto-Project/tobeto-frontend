@@ -27,9 +27,11 @@ const Sidebar = () => {
         case "employee":
             return <Card.Body>Görevliler burada listelenecek</Card.Body>;
         case "basindabiz":
-            return <Card.Body><BasinForm/></Card.Body>;
+            return <Card.Body><BasinForm/>
+            <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "basindabizbloglarımız":
-            return <Card.Body><BasinBloglar/></Card.Body>;
+            return <Card.Body><BasinBloglar/>
+            <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "egitimlerim":
             return <Card.Body>Eğitimlerim içeriği burada gösterilecek</Card.Body>;
         case "duyuruvehaberler":
@@ -55,9 +57,9 @@ const Sidebar = () => {
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("ogrenci")}>Öğrencilerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("instructors")}>Eğitmenlerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("employee")}>Görevliler</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog İşlemleri</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog Ekleme</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("bloglarımız")}>Bloglar</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basında Biz</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basın Bloğu Ekleme</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabizbloglarımız")}>Basında Biz Bloglar</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("egitimlerim")}>Eğitimlerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("duyuruvehaberler")}>Duyuru ve Haberler</Nav.Link>

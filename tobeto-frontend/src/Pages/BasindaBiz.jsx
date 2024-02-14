@@ -59,7 +59,7 @@ const BasindaBiz = () => {
         <div className="grid-container">
           {Array.isArray(press.items) && press.items.map((press, index) => (
             <div key={index} className="card-container">
-              <Link to={`/BlogsPress/getbyId?id=${press.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+              <Link to={`/basindabizblog/getbyId/${press.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <Card className="custom-card">
                   <Card.Body className="d-flex flex-column justify-content-end" style={{ height: "100%" }}>
                     <div className="date-label fw-bold">10.03.1999</div>

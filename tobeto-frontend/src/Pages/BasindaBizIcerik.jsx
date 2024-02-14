@@ -5,7 +5,7 @@ import Header from '../Components/Layouts/Header';
 import Footer from '../Components/Layouts/Footer';
 import { Col, Container, Row } from 'react-bootstrap';
 
-const BasındaBizIcerik = () => {
+const BasindaBizIcerik = () => {
     const { pressId } = useParams();
     const [press, setPress] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const BasındaBizIcerik = () => {
     useEffect(() => {
       const fetchPressDetail = async () => {
         try {
-          const response = await fetch(`http://localhost:5082/api/BlogsPress/${pressId}`);
+          const response = await fetch(`http://localhost:5082/api/BlogsPress/getbyId?id=${pressId}`);
           if (!response.ok) {
             throw new Error('Blog yüklenirken bir hata oluştu.');
           }
@@ -62,4 +62,4 @@ const BasındaBizIcerik = () => {
   );
 }
 
-export default BasındaBizIcerik
+export default BasindaBizIcerik

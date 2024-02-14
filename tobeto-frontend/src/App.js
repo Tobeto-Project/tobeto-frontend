@@ -42,6 +42,7 @@ import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import BlogIcerik from "./Pages/BlogIcerik";
 import Chatgptai from "./Pages/Platform/Chatgptai";
 import LmsPage from "./Ims/pages/LmsPage";
+import BasindaBizIcerik from "./Pages/BasindaBizIcerik";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +56,6 @@ function App() {
   }, []);
 
     useEffect(() => {
-      // Sayfa yüklendiğinde token kontrolünü yap ve oturumu aç
       dispatch(checkTokenAndLogin());
     }, [dispatch]);
 
@@ -72,6 +72,7 @@ function App() {
           <Route path="/bizkimiz" element={<BizKimiz />} />
           <Route path="/bireylericin" element={<BireylerIcın />} />
           <Route path="/BasindaBiz" element={<BasindaBiz />} />
+          <Route path="/basindabizblog/getbyId/:pressId" element={<BasindaBizIcerik />} />
           <Route path="/Blog" element={<Blog />} />
           <Route path="/Codeacademy" element={<Codeacademy />} />
           <Route path="/IstanbulKodluyor" element={<IstanbulKodluyor />} />
