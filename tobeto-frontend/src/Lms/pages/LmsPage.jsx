@@ -32,6 +32,7 @@ const LmsPage = () => {
         <Link to="/platform">
           <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white'  }} />
         </Link>
+        
       </div>
       <Container
         style={{

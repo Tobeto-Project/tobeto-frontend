@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { addBlog } from '../../services/blogService';
+import { formats, modules } from '../../utils/quillHelpers';
 
 function BlogForm() {
   const [title, setTitle] = useState('');
@@ -30,7 +31,13 @@ function BlogForm() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBlogText">
           <Form.Label>Blog İçeriği</Form.Label>
-          <ReactQuill theme="snow" value={text} onChange={setText} />
+          <ReactQuill
+            theme="snow"
+            value={text}
+            onChange={setText}
+            modules={modules}
+            formats={formats}
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Blog Ekle

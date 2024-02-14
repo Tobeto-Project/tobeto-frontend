@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import { Form, Button, Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { addPress } from '../../services/pressBlogService';
+import { formats, modules } from '../../utils/quillHelpers';
 
 const BasinForm = () => {
     const [title, setTitle] = useState('');
@@ -27,7 +28,13 @@ const BasinForm = () => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formPressText">
         <Form.Label>Haber Blog İçeriği</Form.Label>
-        <ReactQuill theme="snow" value={text} onChange={setText} />
+        <ReactQuill
+            theme="snow"
+            value={text}
+            onChange={setText}
+            modules={modules}
+            formats={formats}
+            />
       </Form.Group>
       <Button variant="primary" type="submit">
         Blog Ekle

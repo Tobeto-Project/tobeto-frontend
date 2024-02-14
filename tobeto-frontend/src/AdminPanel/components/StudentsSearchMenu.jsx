@@ -22,7 +22,7 @@ const StudentsSearchMenu = ({ onSearchChange }) => {
       toast.error("Parolalar eşleşmiyor!");
       return;
     }
-
+  
     try {
       const userData = {
         firstName,
@@ -35,7 +35,15 @@ const StudentsSearchMenu = ({ onSearchChange }) => {
       toast.success("Öğrenci başarıyla kaydedildi.");
       handleClose(); // Modalı kapat
     } catch (error) {
-      toast.error("Kayıt sırasında bir hata oluştu.");
+      // Hata mesajını daha spesifik hale getir
+      console.error(error);
+      if (error.response && error.response.data) {
+        // Sunucudan dönen hata mesajını göster
+        toast.error(`Kayıt sırasında bir hata oluştu: ${error.response.data.message}`);
+      } else {
+        // Genel bir hata mesajı göster
+        toast.error("Kayıt sırasında bir hata oluştu.");
+      }
     }
   };
 

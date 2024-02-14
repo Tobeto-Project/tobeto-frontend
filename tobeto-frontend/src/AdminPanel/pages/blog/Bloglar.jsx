@@ -6,6 +6,7 @@ import sanitizeHtml from 'sanitize-html';
 import { toast } from 'react-toastify';
 import { getBlogs, deleteBlog, updateBlog } from '../../services/blogService';
 import ReactQuill from 'react-quill';
+import { formats, modules } from '../../utils/quillHelpers';
 
 const Bloglar = () => {
   const [blogs, setBlogs] = useState([]);
@@ -114,7 +115,13 @@ const Bloglar = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>İçerik Düzenleme</Form.Label>
-            <ReactQuill theme="snow" value={editableBlog.text} onChange={handleTextChange} />
+            <ReactQuill
+            theme="snow"
+            value={editableBlog.text}
+            onChange={handleTextChange}
+            modules={modules}
+            formats={formats}
+          />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

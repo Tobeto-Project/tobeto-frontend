@@ -4,6 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 import { toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
 import { deletePress, getPress, updatePress } from '../../services/pressBlogService';
+import { formats, modules } from '../../utils/quillHelpers';
 
 const BasinBloglar = () => {
     const [press, setPress] = useState([]);
@@ -112,7 +113,13 @@ const BasinBloglar = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>İçerik Düzenleme</Form.Label>
-            <ReactQuill theme="snow" value={editablePress.text} onChange={handleTextChange} />
+            <ReactQuill
+            theme="snow"
+            value={editablePress.text}
+            onChange={handleTextChange}
+            modules={modules}
+            formats={formats}
+            />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

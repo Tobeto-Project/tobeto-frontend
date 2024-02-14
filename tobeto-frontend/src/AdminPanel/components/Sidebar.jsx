@@ -6,6 +6,8 @@ import Bloglar from '../pages/blog/Bloglar';
 import { ToastContainer } from 'react-toastify';
 import BasinForm from '../pages/press/BasinForm';
 import BasinBloglar from '../pages/press/BasinBloglar';
+import Employees from '../pages/employees/Employees';
+import Instructors from '../pages/instructors/Instructors';
 
 
 const Sidebar = () => {
@@ -23,9 +25,9 @@ const Sidebar = () => {
           return <Card.Body><Students/>
           <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "instructors":
-            return <Card.Body>Eğitmenlerimiz burada listelenecek</Card.Body>;
+            return <Card.Body><Instructors/></Card.Body>;
         case "employee":
-            return <Card.Body>Görevliler burada listelenecek</Card.Body>;
+            return <Card.Body><Employees/></Card.Body>;
         case "basindabiz":
             return <Card.Body><BasinForm/>
             <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
@@ -57,10 +59,10 @@ const Sidebar = () => {
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("ogrenci")}>Öğrencilerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("instructors")}>Eğitmenlerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("employee")}>Görevliler</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog Ekleme</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog Ekle</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("bloglarımız")}>Bloglar</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basın Bloğu Ekleme</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabizbloglarımız")}>Basında Biz Bloglar</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basın Yazısı Ekle</Nav.Link>
+                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabizbloglarımız")}>Basın Yazı İşlemleri</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("egitimlerim")}>Eğitimlerimiz</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("duyuruvehaberler")}>Duyuru ve Haberler</Nav.Link>
                 <Nav.Link className='text-white'  onClick={() => setActiveTab("dil")}>Dil Seçenekleri</Nav.Link>
