@@ -35,9 +35,9 @@ const LmsPage = () => {
       >
         {/* Link componentini kullanarak geri dönüş butonunu düzenledik */}
         <Link to="/platform">
-          <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white'  }} />
+          <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white' }} />
         </Link>
-        
+
       </div>
       <Container
         style={{
@@ -93,6 +93,8 @@ const LmsPage = () => {
 
         </Row>
       </Container>
+
+
     </div>
   );
 };
