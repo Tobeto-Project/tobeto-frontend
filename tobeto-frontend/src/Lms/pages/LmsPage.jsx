@@ -7,13 +7,18 @@ import ContentAccordion from '../components/ContentAccordion';
 import AboutComponent from '../components/AboutComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer } from 'react-toastify';
 
 const LmsPage = () => {
   const [activeTab, setActiveTab] = useState('icerik');
+  const [selectedLesson, setSelectedLesson] = useState(null);
+  const [likeToast, setLikeToast] = useState(false);
+  const [bookmarkToast, setBookmarkToast] = useState(false);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
+
 
   return (
     <div>
@@ -30,9 +35,9 @@ const LmsPage = () => {
       >
         {/* Link componentini kullanarak geri dönüş butonunu düzenledik */}
         <Link to="/platform">
-          <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white'  }} />
+          <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white' }} />
         </Link>
-        
+
       </div>
       <Container
         style={{
@@ -44,7 +49,9 @@ const LmsPage = () => {
         }}
       >
         <Row>
-          <Col><LmsBar /></Col>
+          <Col> <LmsBar lessonName={selectedLesson} />
+            <ToastContainer position="bottom-right" autoClose={2000} /></Col>
+
         </Row>
         <Row>
           <Col lg={12}>
@@ -74,12 +81,20 @@ const LmsPage = () => {
             </div>
 
             {/* Content */}
-            {activeTab === 'icerik' && <ContentAccordion />}
+            {activeTab === 'icerik' && (
+              <ContentAccordion
+                onLessonNameChange={setSelectedLesson}
+                setLikeToast={setLikeToast}
+                setBookmarkToast={setBookmarkToast}
+              />
+            )}
             {activeTab === 'hakkinda' && <AboutComponent />}
           </Col>
 
         </Row>
       </Container>
+
+
     </div>
   );
 };
