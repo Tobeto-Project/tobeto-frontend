@@ -4,6 +4,7 @@ import Banner from '../Components/Layouts/Banner';
 import Header from '../Components/Layouts/Header';
 import Footer from '../Components/Layouts/Footer';
 import { Col, Container, Row } from 'react-bootstrap';
+import SocialMediaBar from '../Components/Common/SocialMediaBar';
 
 const BlogIcerik = () => {
     const { blogId } = useParams();
@@ -44,6 +45,7 @@ const BlogIcerik = () => {
         <Header />
 
         <Container style={{ paddingTop: "12em", marginBottom: "1em", maxWidth: "720px" }}>
+          <Row><SocialMediaBar/></Row>
           <Row className="text-center">
             <Col>
             <h1>{blog.title}</h1>
