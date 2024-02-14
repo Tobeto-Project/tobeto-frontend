@@ -41,8 +41,8 @@ import ForgotPassword from "./Pages/ForgotPassword";
 import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import BlogIcerik from "./Pages/BlogIcerik";
 import Chatgptai from "./Pages/Platform/Chatgptai";
-import LmsPage from "./Ims/pages/LmsPage";
 import BasindaBizIcerik from "./Pages/BasindaBizIcerik";
+import LmsPage from "./Lms/pages/LmsPage";
 
 function App() {
   const dispatch = useDispatch();
