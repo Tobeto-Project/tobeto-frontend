@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
+import API_CONFIG from "../../Services/ApiConfig";
 
 export const addPress = async (title, text) => {
   try {
-    const response = await fetch(`http://localhost:5082/api/BlogsPress/add
+    const response = await fetch(`${API_CONFIG.BLOGSPRESS_ADD}
     `, {
       method: "POST",
       headers: {
@@ -23,7 +24,7 @@ export const addPress = async (title, text) => {
 export const getPress = async () => {
   try {
     const response = await fetch(
-      `http://localhost:5082/api/BlogsPress/getList?PageIndex=0&PageSize=15`
+      `${API_CONFIG.BLOGSPRESS_GET_LIST}?PageIndex=0&PageSize=15`
     );
     if (!response.ok) throw new Error("Blog verisi çekilemedi");
     const data = await response.json();
@@ -36,7 +37,7 @@ export const getPress = async () => {
 
 export const deletePress = async (pressId) => {
   try {
-    const response = await fetch(`http://localhost:5082/api/BlogsPress/delete`, {
+    const response = await fetch(`${API_CONFIG.BLOGSPRESS_DELETE}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +55,7 @@ export const deletePress = async (pressId) => {
 
 export const updatePress = async (id, title, text) => {
   try {
-    const response = await fetch(`http://localhost:5082/api/BlogsPress/update`, {
+    const response = await fetch(`${API_CONFIG.BLOGSPRESS_UPDATE}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
