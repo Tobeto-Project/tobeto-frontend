@@ -16,11 +16,11 @@ export const modules = {
     upload: file => {
         return new Promise((resolve, reject) => {
           const formData = new FormData();
-          formData.append("File", file); // "image" yerine "File" kullanın
+          formData.append("File", file);
       
           fetch("http://localhost:5082/api/Images/add", {
             method: "POST",
-            body: formData, // headers kısmını kaldırın
+            body: formData, 
           })
           .then(response => response.json())
           .then(result => {

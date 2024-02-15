@@ -68,7 +68,7 @@ const Bloglar = () => {
   };
 
   const createMarkup = (htmlContent) => {
-    const truncatedContent = truncateHtml(htmlContent, 100);
+    const truncatedContent = truncateHtml(htmlContent, 400);
     const sanitizedContent = sanitizeHtml(truncatedContent, {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'u']),
       allowedAttributes: {}
@@ -95,7 +95,7 @@ const Bloglar = () => {
                 <td>{blog.title}</td>
                 <td><div dangerouslySetInnerHTML={createMarkup(blog.text)} /></td>
                 <td>
-                  <Button variant="danger" onClick={() => handleDelete(blog.id)}>Sil</Button>
+                  <Button variant="danger"  className='ms-4 mb-2' onClick={() => handleDelete(blog.id)}>Sil</Button>
                   <Button variant="warning ms-2" onClick={() => handleShow(blog)}>Güncelle</Button>
                 </td>
               </tr>

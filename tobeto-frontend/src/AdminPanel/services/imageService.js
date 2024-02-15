@@ -27,13 +27,19 @@ const getImages = (pageIndex = 0, pageSize = 50) => {
   
   const addImage = (imageFile) => {
     const formData = new FormData();
-    formData.append('image', imageFile);
-  
+    formData.append('File', imageFile);
+    
     return fetch('http://localhost:5082/api/Images/add', {
       method: 'POST',
       body: formData,
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
     });
   };
+  
   
   export { getImages, deleteImage, addImage };
   

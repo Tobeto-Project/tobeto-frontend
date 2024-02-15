@@ -44,7 +44,8 @@ const Sidebar = () => {
         case "dil":
             return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
         case "image":
-            return <Card.Body><ImageList/></Card.Body>;
+            return <Card.Body><ImageList/>
+              <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "calendar":
             return <Card.Body>calendar Hayatım içeriği burada gösterilecek.</Card.Body>
         default:

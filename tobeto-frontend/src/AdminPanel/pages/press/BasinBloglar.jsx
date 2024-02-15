@@ -66,7 +66,7 @@ const BasinBloglar = () => {
     };
   
     const createMarkup = (htmlContent) => {
-      const truncatedContent = truncateHtml(htmlContent, 100);
+      const truncatedContent = truncateHtml(htmlContent, 400);
       const sanitizedContent = sanitizeHtml(truncatedContent, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'u']),
         allowedAttributes: {}
@@ -93,7 +93,7 @@ const BasinBloglar = () => {
                 <td>{press.title}</td>
                 <td><div dangerouslySetInnerHTML={createMarkup(press.text)} /></td>
                 <td>
-                  <Button variant="danger" onClick={() => handleDelete(press.id)}>Sil</Button>
+                  <Button variant="danger" className='ms-4 mb-2' onClick={() => handleDelete(press.id)}>Sil</Button>
                   <Button variant="warning ms-2" onClick={() => handleShow(press)}>Güncelle</Button>
                 </td>
               </tr>

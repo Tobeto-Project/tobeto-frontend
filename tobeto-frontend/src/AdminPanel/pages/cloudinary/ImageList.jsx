@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { getImages, deleteImage, addImage } from "../../services/imageService";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { toast } from 'react-toastify';
 
 function ImageList() {
   const [images, setImages] = useState([]);
@@ -12,8 +13,8 @@ function ImageList() {
 
   const fetchImages = () => {
     getImages().then(data => {
-      console.log(data); // API'den gelen veriyi konsolda kontrol edin
-      setImages(data || []); // veya setImages(data || []);
+      console.log(data);
+      setImages(data || []);
     });
   };
 
@@ -23,17 +24,20 @@ function ImageList() {
 
   const handleCopyUrl = (url) => {
     navigator.clipboard.writeText(url);
-    alert("URL copied to clipboard!");
+    toast.success("Görsel URL kopyalandı")
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      addImage(file).then(fetchImages);
+      addImage(file).then(() => {
+        fetchImages(); // Resim eklendikten sonra listeyi yenile
+      }).catch(error => {
+        console.error("Image upload failed:", error);
+      });
     }
   };
 
-  // images dizisini 3'erli gruplara ayırma
   const chunkedImages = chunk(images, 3);
 
   return (
