@@ -1,5 +1,7 @@
+import API_CONFIG from "../../Services/ApiConfig";
+
 const getImages = (pageIndex = 0, pageSize = 50) => {
-    return fetch(`http://localhost:5082/api/Images/getList?PageIndex=${pageIndex}&PageSize=${pageSize}`)
+    return fetch(`${API_CONFIG.IMAGE_GET_LIST}?PageIndex=${pageIndex}&PageSize=${pageSize}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -20,7 +22,7 @@ const getImages = (pageIndex = 0, pageSize = 50) => {
   };
   
   const deleteImage = (id) => {
-    return fetch(`http://localhost:5082/api/Images/delete?id=${id}`, {
+    return fetch(`${API_CONFIG.IMAGE_DELETE}?id=${id}`, {
       method: 'DELETE',
     });
   };
@@ -29,7 +31,7 @@ const getImages = (pageIndex = 0, pageSize = 50) => {
     const formData = new FormData();
     formData.append('File', imageFile);
     
-    return fetch('http://localhost:5082/api/Images/add', {
+    return fetch(`${API_CONFIG.IMAGE_ADD}`, {
       method: 'POST',
       body: formData,
     }).then(response => {

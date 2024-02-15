@@ -1,6 +1,8 @@
 // src/utils/quillHelpers.js
 import { Quill } from 'react-quill';
 import ImageUploader from 'quill-image-uploader';
+import API_CONFIG from '../../Services/ApiConfig';
+
 
 Quill.register("modules/imageUploader", ImageUploader);
 
@@ -18,7 +20,7 @@ export const modules = {
           const formData = new FormData();
           formData.append("File", file);
       
-          fetch("http://localhost:5082/api/Images/add", {
+          fetch(`${API_CONFIG.IMAGE_ADD}`, {
             method: "POST",
             body: formData, 
           })

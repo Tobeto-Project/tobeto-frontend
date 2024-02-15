@@ -17,7 +17,7 @@ export const fetchAllStudents = async (pageIndex = 0, pageSize = 15) => {
 
 export const deleteStudentById = async (studentId) => {
   try {
-    const response = await axios.delete(`http://localhost:5082/api/Users/Delete/delete`, {
+    const response = await axios.delete(`${API_CONFIG.USER_DELETE}`, {
       headers: {
         'Content-Type': 'application/json',
       },
