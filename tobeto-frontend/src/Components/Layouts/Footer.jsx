@@ -1,11 +1,22 @@
 import React from "react";
 import "../../Styles/LayoutStyles/FooterStyle.css";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faTwitter, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedinIn, faTwitter, faWhatsapp, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import logo from '../../Assets/Images/tobeto-black.png'
 
 const Footer = () => {
+
+  const buttonStyle = {
+    width: '30px',
+    height: '30px', 
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '0.5rem', 
+    fontSize: '1.2rem',
+  };
+  
  return (
   <>
           
@@ -59,16 +70,24 @@ const Footer = () => {
         <hr className="my-4" style={{ borderColor: 'gray' }} />
         <Row className="align-items-center">
           <Col md={4} className="text-md-start text-center mb-3 mb-md-0">
-            <img src={logo} alt="Your Logo" className="me-3" style={{width:"8rem"}} />
+            <img src={logo} alt="Your Logo" className="me-3" style={{width:"9rem"}} />
           </Col>
           <Col md={4} className="text-md-center">
             <span className="text-muted ">&copy; 2022 Tobeto | Her Hakkı Saklıdır</span>
           </Col>
-          <Col md={4} className="text-md-end text-center">
-            <a href="https://www.facebook.com/tobetoplatform" className="text-muted me-2"><FontAwesomeIcon icon={faFacebookF} /></a>
-            <a href="https://www.instagram.com/tobeto_official/?img_index=1" className="text-muted me-2"><FontAwesomeIcon icon={faInstagram} /></a>
-            <a href="https://twitter.com/tobeto_platform" className="text-muted me-2"><FontAwesomeIcon icon={faTwitter} /></a>
-            <a href="https://www.linkedin.com/company/tobeto/?originalSubdomain=tr" className="text-muted"><FontAwesomeIcon icon={faLinkedinIn} /></a>
+          <Col md={4} className="d-flex justify-content-end py-2">
+              <Button variant="primary" href="https://www.linkedin.com/company/tobeto?originalSubdomain=tr" className="rounded-circle text-white m-1" style={{ ...buttonStyle, backgroundColor: '#0e76a8' }}>
+              <FontAwesomeIcon icon={faLinkedinIn} />
+              </Button>
+              <Button variant="info" href="https://twitter.com/tobeto_platform" className="rounded-circle text-white m-1" style={{ ...buttonStyle, backgroundColor: '#1DA1F2' }}>
+              <FontAwesomeIcon icon={faTwitter} />
+              </Button>
+              <Button variant="success" href="#" className="rounded-circle text-white m-1" style={{ ...buttonStyle, backgroundColor: '#25D366' }}>
+              <FontAwesomeIcon icon={faWhatsapp} />
+              </Button>
+              <Button variant="primary" href="https://www.facebook.com/tobetoplatform/?paipv=0&eav=AfZrRwQd-x4mEYXkaOlo6hvSIMRnti7sXNb9M2Tu5bHhZwzf8cHDk61NYh2ksK-4OyY&_rdr" className="rounded-circle text-white m-1" style={{ ...buttonStyle, backgroundColor: '#3b5998' }}>
+              <FontAwesomeIcon icon={faFacebookF} />
+              </Button>
           </Col>
         </Row>
       </Container>
