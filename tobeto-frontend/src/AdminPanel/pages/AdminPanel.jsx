@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar'
 const AdminPanel = () => {
   return (
     <div className="admin-panel">
-    <Header />
+        <Header />
     <div className="container-fluid">
       <div className="row">
         <Sidebar />

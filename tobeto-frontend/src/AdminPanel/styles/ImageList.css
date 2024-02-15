@@ -1,0 +1,21 @@
+.image-container {
+    margin-bottom: 20px;
+    transition: transform 0.2s; /* Animasyon süresi */
+  }
+  
+  .image-container img {
+    border-radius: 8px; /* Yuvarlak köşeler */
+    width: 100%; /* Resmi container'a sığdır */
+    height: auto; /* Orantılı yükseklik */
+  }
+  
+  .image-container:hover {
+    transform: scale(1.05); /* Üzerine gelindiğinde büyüt */
+    cursor: pointer;
+  }
+  
+  .image-description {
+    text-align: center; /* Açıklamayı ortala */
+    margin-top: 5px;
+  }
+  

@@ -8,7 +8,10 @@ import BasinForm from '../pages/press/BasinForm';
 import BasinBloglar from '../pages/press/BasinBloglar';
 import Employees from '../pages/employees/Employees';
 import Instructors from '../pages/instructors/Instructors';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import '../../AdminPanel/styles/Sidebar.css'
+import ImageList from '../pages/cloudinary/ImageList';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -41,7 +44,7 @@ const Sidebar = () => {
         case "dil":
             return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
         case "image":
-            return <Card.Body>image Hayatım içeriği burada gösterilecek.</Card.Body>;
+            return <Card.Body><ImageList/></Card.Body>;
         case "calendar":
             return <Card.Body>calendar Hayatım içeriği burada gösterilecek.</Card.Body>
         default:
@@ -51,29 +54,28 @@ const Sidebar = () => {
   
     return (
       <>
-        <Container className='p-0'>
+        <Container className="p-0" >
           <Row>
             {/* Sol Taraf: Dikey Menü */}
-            <Col md={2} className='p-0'>
+            <Col lg={2} className='p-0'>
               <Nav className="flex-column vh-100 p-4" style={{backgroundColor:'#9833FF'}}>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("ogrenci")}>Öğrencilerimiz</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("instructors")}>Eğitmenlerimiz</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("employee")}>Görevliler</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("blog")}>Blog Ekle</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("bloglarımız")}>Bloglar</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabiz")}>Basın Yazısı Ekle</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("basindabizbloglarımız")}>Basın Yazı İşlemleri</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("egitimlerim")}>Eğitimlerimiz</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("duyuruvehaberler")}>Duyuru ve Haberler</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("dil")}>Dil Seçenekleri</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("image")}>Görseller</Nav.Link>
-                <Nav.Link className='text-white'  onClick={() => setActiveTab("calendar")}>Takvim</Nav.Link>
-
+              <Nav.Link className='text-white' onClick={() => setActiveTab("ogrenci")}><FontAwesomeIcon icon={faUserGraduate} /> Öğrencilerimiz</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("instructors")}><FontAwesomeIcon icon={faChalkboardTeacher} /> Eğitmenlerimiz</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("employee")}><FontAwesomeIcon icon={faUserTie} /> Görevliler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("blog")}><FontAwesomeIcon icon={faBlog} /> Blog Ekle</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("bloglarımız")}><FontAwesomeIcon icon={faRss} /> Bloglar</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("basindabiz")}><FontAwesomeIcon icon={faNewspaper} /> Basın Yazısı Ekle</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("basindabizbloglarımız")}><FontAwesomeIcon icon={faClipboardList} /> Basın Yazı İşlemleri</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("egitimlerim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimlerimiz</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("duyuruvehaberler")}><FontAwesomeIcon icon={faBullhorn} /> Duyuru ve Haberler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>
               </Nav>
             </Col>
   
             {/* Sağ Taraf: İçerik Alanı */}
-            <Col md={10} className='p-0'>
+            <Col lg={10} className='p-0'>
               {renderContent()}
             </Col>
           </Row>
