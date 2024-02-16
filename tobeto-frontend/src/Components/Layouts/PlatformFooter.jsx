@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import logo from '../../Assets/Images/tobeto-white-logo.png'
+import { Link } from 'react-router-dom';
 const PlatformFooter = () => {
   
   return (
@@ -15,7 +16,7 @@ const PlatformFooter = () => {
               © 2022 Tobeto
             </Col>
             <Col xs={12} md={4} className="footer-section text-md-end">
-              <Button variant="light">Bize Ulaşın</Button>
+              <Link to={"/iletisim"}><Button variant="light">Bize Ulaşın</Button></Link>
             </Col>
           </Row>
         </Container>

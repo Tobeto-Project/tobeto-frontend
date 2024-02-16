@@ -43,6 +43,7 @@ import BlogIcerik from "./Pages/BlogIcerik";
 import Chatgptai from "./Pages/Platform/Chatgptai";
 import BasindaBizIcerik from "./Pages/BasindaBizIcerik";
 import LmsPage from "./Lms/pages/LmsPage";
+import ContactUs from "./Pages/ContactUs";
 
 function App() {
   const dispatch = useDispatch();
@@ -107,16 +108,10 @@ function App() {
           <Route path="/bloglar/:blogId" element={<BlogIcerik/>} />
           <Route path="/CyberSecurity" element={<CyberSecurity/>} />
           <Route path="/UI_UX" element={<UI_UX/>} />
+          <Route path="/iletisim" element={<ContactUs/>} />
           <Route path="/chatgptai" element={<PrivateRoute><Chatgptai/></PrivateRoute>}/>
           <Route path="/lms" element={<PrivateRoute><LmsPage/></PrivateRoute>}/>
-          <Route
-            path="/kurs"
-            element={
-              <PrivateRoute>
-                <Education />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/kurs" element={<PrivateRoute> <Education /> </PrivateRoute>}/>
           <Route
             path="/platform"
             element={

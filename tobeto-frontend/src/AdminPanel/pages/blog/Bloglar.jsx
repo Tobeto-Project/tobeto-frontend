@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form } from 'react-bootstrap';
 import sanitizeHtml from 'sanitize-html';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { getBlogs, deleteBlog, updateBlog } from '../../services/blogService';
 import ReactQuill from 'react-quill';
 import { formats, modules } from '../../utils/quillHelpers';
@@ -126,7 +126,7 @@ const Bloglar = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Kapat</Button>
-          <Button variant="primary" onClick={handleUpdate}>Kaydet</Button>
+          <Button variant="primary" onClick={handleUpdate}>Kaydet <ToastContainer/></Button>
         </Modal.Footer>
       </Modal>
     </>
