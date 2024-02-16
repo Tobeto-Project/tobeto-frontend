@@ -19,24 +19,19 @@ const Sidebar = () => {
     const renderContent = () => {
       switch (activeTab) {
         case "blog":
-          return <Card.Body><BlogForm/>
-          <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
+          return <Card.Body><BlogForm/></Card.Body>;
         case "bloglarımız":
-          return <Card.Body><Bloglar/>
-          <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
+          return <Card.Body><Bloglar/></Card.Body>;
         case "ogrenci":
-          return <Card.Body><Students/>
-          <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
+          return <Card.Body><Students/></Card.Body>;
         case "instructors":
             return <Card.Body><Instructors/></Card.Body>;
         case "employee":
             return <Card.Body><Employees/></Card.Body>;
         case "basindabiz":
-            return <Card.Body><BasinForm/>
-            <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
+            return <Card.Body><BasinForm/></Card.Body>;
         case "basindabizbloglarımız":
-            return <Card.Body><BasinBloglar/>
-            <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
+            return <Card.Body><BasinBloglar/></Card.Body>;
         case "egitimlerim":
             return <Card.Body>Eğitimlerim içeriği burada gösterilecek</Card.Body>;
         case "duyuruvehaberler":

@@ -31,7 +31,6 @@ const Bloglar = () => {
     const isDeleted = await deleteBlog(blogId);
     if (isDeleted) {
       setBlogs(blogs.filter(blog => blog.id !== blogId));
-      toast.success("Blog başarıyla silindi!");
     }
   };
 
@@ -126,9 +125,10 @@ const Bloglar = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Kapat</Button>
-          <Button variant="primary" onClick={handleUpdate}>Kaydet <ToastContainer/></Button>
+          <Button variant="primary" onClick={handleUpdate}>Kaydet </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer/>
     </>
   );
 }

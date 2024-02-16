@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { deleteStudentById, fetchAllStudents } from '../../services/studentService';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import StudentsSearchMenu from '../../components/StudentsSearchMenu';
 
 
@@ -80,11 +80,12 @@ const Students = () => {
                         <td>{student.email}</td>
                         <td>{student.phoneNumber}</td>
                         <td>{student.identityNumber}</td>
-                        <td><Button variant="danger" onClick={() => handleDeleteClick(student.id)}>Öğrenciyi Sil</Button></td>
+                        <td><Button variant="danger" onClick={() => handleDeleteClick(student.id)}>Öğrenciyi Sil </Button></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
+        <ToastContainer/>
         </>
     );
 };

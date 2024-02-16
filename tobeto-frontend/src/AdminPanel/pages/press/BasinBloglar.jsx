@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form } from 'react-bootstrap';
 import sanitizeHtml from 'sanitize-html';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
 import { deletePress, getPress, updatePress } from '../../services/pressBlogService';
 import { formats, modules } from '../../utils/quillHelpers';
@@ -29,7 +29,6 @@ const BasinBloglar = () => {
       const isDeleted = await deletePress(pressId);
       if (isDeleted) {
         setPress(press.filter(press => press.id !== pressId));
-        toast.success("Blog başarıyla silindi!");
       }
     };
   
@@ -127,6 +126,7 @@ const BasinBloglar = () => {
           <Button variant="primary" onClick={handleUpdate}>Kaydet</Button>
         </Modal.Footer>
       </Modal>
+    <ToastContainer/>
     </>
   )
 }

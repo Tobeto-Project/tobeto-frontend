@@ -1,6 +1,6 @@
 import API_CONFIG from "../../Services/ApiConfig";
 
-const getImages = (pageIndex = 0, pageSize = 50) => {
+const getImages = (pageIndex = 0, pageSize = 100) => {
     return fetch(`${API_CONFIG.IMAGE_GET_LIST}?PageIndex=${pageIndex}&PageSize=${pageSize}`)
       .then(response => {
         if (!response.ok) {

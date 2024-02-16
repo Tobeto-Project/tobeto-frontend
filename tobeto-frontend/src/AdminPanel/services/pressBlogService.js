@@ -24,7 +24,7 @@ export const addPress = async (title, text) => {
 export const getPress = async () => {
   try {
     const response = await fetch(
-      `${API_CONFIG.BLOGSPRESS_GET_LIST}?PageIndex=0&PageSize=15`
+      `${API_CONFIG.BLOGSPRESS_GET_LIST}?PageIndex=0&PageSize=30`
     );
     if (!response.ok) throw new Error("Blog verisi çekilemedi");
     const data = await response.json();
@@ -44,7 +44,8 @@ export const deletePress = async (pressId) => {
       },
       body: JSON.stringify({ id: pressId }),
     });
-    if (!response.ok) throw new Error("Blog silinirken bir hata oluştu");
+    if (!response.ok) 
+    throw new Error("Blog silinirken bir hata oluştu");
     toast.success("Blog başarıyla silindi!");
     return true;
   } catch (error) {

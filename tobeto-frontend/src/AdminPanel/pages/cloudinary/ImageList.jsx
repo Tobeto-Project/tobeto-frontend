@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { getImages, deleteImage, addImage } from "../../services/imageService";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 function ImageList() {
   const [images, setImages] = useState([]);
@@ -57,6 +57,7 @@ function ImageList() {
           ))}
         </Row>
       ))}
+      <ToastContainer/>
     </Container>
   );
 }

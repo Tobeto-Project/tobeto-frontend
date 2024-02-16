@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { addBlog } from '../../services/blogService';
@@ -40,9 +40,10 @@ function BlogForm() {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Blog Ekle
+          Blog Ekle 
         </Button>
       </Form>
+      <ToastContainer/>
     </Container>
   );
 }

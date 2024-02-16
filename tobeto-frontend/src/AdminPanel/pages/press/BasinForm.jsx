@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Form, Button, Container } from 'react-bootstrap';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { addPress } from '../../services/pressBlogService';
 import { formats, modules } from '../../utils/quillHelpers';
 
@@ -40,6 +40,7 @@ const BasinForm = () => {
         Blog Ekle
       </Button>
     </Form>
+    <ToastContainer/>
   </Container>
   )
 }
