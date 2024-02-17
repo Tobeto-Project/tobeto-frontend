@@ -17,7 +17,7 @@ const getImages = (pageIndex = 0, pageSize = 100) => {
       })
       .catch(error => {
         console.error("Fetching images failed:", error);
-        throw error; // Hata yönetimi için hata fırlat
+        throw error;
       });
   };
   

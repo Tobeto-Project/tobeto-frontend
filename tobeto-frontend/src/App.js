@@ -44,6 +44,7 @@ import Chatgptai from "./Pages/Platform/Chatgptai";
 import BasindaBizIcerik from "./Pages/BasindaBizIcerik";
 import LmsPage from "./Lms/pages/LmsPage";
 import ContactUs from "./Pages/ContactUs";
+import MyNotification from "./Pages/Platform/MyNotification";
 
 function App() {
   const dispatch = useDispatch();
@@ -96,6 +97,7 @@ function App() {
           <Route path="/degerlendirmeler"element={<PrivateRoute><Degerlendirmeler /></PrivateRoute>}/>
           <Route path="/profil"element={<PrivateRoute><Profil /> </PrivateRoute>}/>
           <Route path="/platform-katalog"element={<PrivateRoute><PlatformKatalog /> </PrivateRoute> } />
+          <Route path="/Duyurularım" element={<PrivateRoute><MyNotification/></PrivateRoute>}/>
           <Route path="/platform-takvim" element={ <PrivateRoute> <PlatformTakvim /> </PrivateRoute> } />
           <Route path="/sifremi-unuttum" element={<ForgotPassword/>} />
           <Route path="/kisiselbilgiler" element={<PrivateRoute><KisiselBilgiler /> </PrivateRoute>}/>

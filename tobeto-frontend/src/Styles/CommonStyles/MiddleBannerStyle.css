@@ -1,4 +1,4 @@
-.middle-banner {
+.middle-banner-2{
     display: flex;
     justify-content: flex-start; /* Sola hizala */
     align-items: center;
@@ -9,3 +9,14 @@
     background-size: cover;
     background-position: center;
 }
+.middle-banner {
+    display: flex;
+    justify-content: flex-center; /* Sola hizala */
+    align-items: center;
+    width: 97%;
+    height: 200px;
+    background-image: url('../../Assets/Images/katalog-filtre-arka.svg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+  }

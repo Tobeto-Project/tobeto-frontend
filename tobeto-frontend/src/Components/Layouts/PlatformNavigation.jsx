@@ -3,8 +3,8 @@ import { Card, Nav } from "react-bootstrap";
 import logo from "../../Assets/Images/istanbulkodluyor-black.svg";
 import PlatformEducationCard from "../Common/PlatformEducationCard";
 import ApplicationStatusCard from "../Common/ApplicationStatusCard";
-import NotificationContainer from "../Common/NotificationCard";
 import MySurveys from "../../Components/Common/MySurveys";
+import NotificationContainer from "../Common/NotificationContainer";
 
 
 const PlatformNavigation = () => {
@@ -72,8 +72,6 @@ const PlatformNavigation = () => {
               Anketlerim
             </Nav.Link>
           </Nav.Item>
-
-
         </Nav>
       </Card.Header>
       {renderContent()}

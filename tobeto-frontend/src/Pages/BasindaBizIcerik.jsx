@@ -47,9 +47,9 @@ const BasindaBizIcerik = () => {
 
         <Container style={{ paddingTop: "12em", marginBottom: "1em", maxWidth: "720px" }}>
          <Row><SocialMediaBar/></Row>
-          <Row className="text-center">
+          <Row>
             <Col>
-            <h1>{press.title}</h1>
+            <h1 className='fw-bold mb-4'>{press.title}</h1>
             </Col>
           </Row>
           <Row>

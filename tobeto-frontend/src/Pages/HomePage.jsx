@@ -52,7 +52,6 @@ const HomePage = () => {
       <SpiderInfoSection />
       <Accordions />
       <CompanyList />
-
       <Footer />
     </div>
   );

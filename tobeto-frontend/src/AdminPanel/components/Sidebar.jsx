@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import '../../AdminPanel/styles/Sidebar.css'
 import ImageList from '../pages/cloudinary/ImageList';
+import NotificationAdmin from '../pages/notification/NotificationAdmin';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -35,7 +36,7 @@ const Sidebar = () => {
         case "egitimlerim":
             return <Card.Body>Eğitimlerim içeriği burada gösterilecek</Card.Body>;
         case "duyuruvehaberler":
-            return <Card.Body>image Hayatım içeriği burada gösterilecek.</Card.Body>;
+            return <Card.Body><NotificationAdmin/></Card.Body>;
         case "dil":
             return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
         case "image":
@@ -62,8 +63,8 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("bloglarımız")}><FontAwesomeIcon icon={faRss} /> Bloglar</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("basindabiz")}><FontAwesomeIcon icon={faNewspaper} /> Basın Yazısı Ekle</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("basindabizbloglarımız")}><FontAwesomeIcon icon={faClipboardList} /> Basın Yazı İşlemleri</Nav.Link>
-              <Nav.Link className='text-white' onClick={() => setActiveTab("egitimlerim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimlerimiz</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("duyuruvehaberler")}><FontAwesomeIcon icon={faBullhorn} /> Duyuru ve Haberler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("egitimlerim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimlerimiz</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>

@@ -7,7 +7,7 @@ import KatalogMenu from "../Components/Common/KatalogMenu";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import MiddleBanner from "../Components/Common/MiddleBanner";
+import MiddleBannerKatalog from "../Components/Common/MiddleBannerKatalog";
 
 const Katalog = () => {
   return (
@@ -15,9 +15,7 @@ const Katalog = () => {
       <Banner />
       <Header />
       <div className="main-content">
-      <MiddleBanner>
-        
-      </MiddleBanner>
+      <MiddleBannerKatalog/>
         <Container className="mt-4">
           <Row>
             <Col sm={3}><KatalogMenu /></Col>
