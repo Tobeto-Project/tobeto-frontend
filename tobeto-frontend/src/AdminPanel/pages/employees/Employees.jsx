@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import EmployeesSearchMenu from '../../components/EmployeesSearchMenu';
-import employeeService from '../../services/employeeService'; // Bu yolu kendi projenize göre düzenleyin.
 import { ToastContainer, toast } from 'react-toastify';
+import employeeService from '../../services/employeeService';
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);

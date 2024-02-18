@@ -113,7 +113,7 @@ const Header = () => {
               <Button
                 as={Link}
                 to="/girisyap"
-                className="btn rounded-pill btn-rainbow my-2 ms-2 text-white"
+                className="btn rounded-pill my-2 ms-2 text-white"
                 variant="outline-light"
               >
                 Giriş Yap
@@ -189,28 +189,7 @@ const Header = () => {
               Ücretsiz Üye Ol
             </Button>
           )}
-          {isLoggedIn && (
-            <>
-              <Link to={"/platform"}><div
-                variant="dark"
-                id="dropdown-basic"
-                className=" me-3  rounded-pill btn btn-primary border-light m-0 p-2 text-white"
-              >
-                <img
-                  src={userphoto}
-                  alt={`${userDetails.firstName}'s profile`}
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    marginRight: "10px",
-                    borderRadius: "50%",
-                  }} // Profil resmi için stil
-                />
-                {userDetails.firstName + " " + userDetails.lastname}
-              </div></Link>
-
-            </>
-          )}
+        
           <NavLink
             to="/bizkimiz"
             as={Link}
