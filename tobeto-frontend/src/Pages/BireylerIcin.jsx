@@ -10,6 +10,7 @@ import { Row,Col, Container } from "react-bootstrap";
 import SkillTable from "../Components/Common/NelerSunuyoruz/Bireylericin/SkillTable";
 import JobTable from "../Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import ProgramList from "../Components/Common/NelerSunuyoruz/Bireylericin/ProgramList";
+import CalendarButton from "../Components/Common/CalendarButton";
 
 
 const BireylerIcin = () => {
@@ -17,6 +18,7 @@ const BireylerIcin = () => {
     <div className="pages-content">
       <Banner />
       <Header />
+      <CalendarButton/>
 
       <div className="main-content" style={{paddingLeft:"10rem",paddingRight:"10rem"}}>
         <CardImage />

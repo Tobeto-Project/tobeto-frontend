@@ -7,25 +7,22 @@ import Container from "react-bootstrap/esm/Container";
 import "../Styles/PagesStyles/BlogStyle.css";
 import { Link } from "react-router-dom";
 import sanitizeHtml from 'sanitize-html';
-import API_CONFIG from "../Services/ApiConfig";
+import CalendarButton from "../Components/Common/CalendarButton";
+import { fetchBlogs } from "../Services/blogService";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState({ items: [] });
 
   useEffect(() => {
-    const fetchBlogs = async () => {
+    const fetchBlogsData = async () => {
       try {
-        const response = await fetch(`${API_CONFIG.BLOG_GET_LIST}?PageIndex=0&PageSize=15`);
-        if (!response.ok) throw new Error("Blog verisi çekilemedi.");
-        const data = await response.json();
+        const data = await fetchBlogs();
         setBlogs(data);
-
       } catch (error) {
-        console.error("Blog yüklenirken bir hata oluştu:", error);
       }
     };
 
-    fetchBlogs();
+    fetchBlogsData();
   }, []);
 
   const truncateHtml = (html, maxLength) => {
@@ -49,6 +46,7 @@ const Blog = () => {
     <div className="body-container pages-content">
       <Banner />
       <Header />
+      <CalendarButton/>
       <div className="container" style={{ paddingTop: "12em", marginBottom: "1em", width: "max-content" }}>
 
         <div className="row text-center">

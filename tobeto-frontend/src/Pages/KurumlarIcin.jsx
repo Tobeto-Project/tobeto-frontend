@@ -7,6 +7,7 @@ import FeaturesFirst from "../Components/Common/NelerSunuyoruz/Kurumlaricin/Feat
 import FeaturesSecond from "../Components/Common/NelerSunuyoruz/Kurumlaricin/FeaturesSecond";
 import ContactSection from "../Components/Common/NelerSunuyoruz/Kurumlaricin/ContactSection";
 import CardImage from "../Components/Common/NelerSunuyoruz/Kurumlaricin/CardImage";
+import CalendarButton from "../Components/Common/CalendarButton";
 
 
 const KurumlarIcin = () => {
@@ -14,6 +15,7 @@ const KurumlarIcin = () => {
     <div className="body-container pages-content">
       <Banner />
       <Header />
+      <CalendarButton/>
 
 
       <div className="main-content">

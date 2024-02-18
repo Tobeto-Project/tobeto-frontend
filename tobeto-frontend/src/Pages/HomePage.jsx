@@ -15,6 +15,7 @@ import SpiderInfoSection from "../Components/Common/HomePage/SpiderInfoSection";
 import Accordions from "../Components/Common/HomePage/Accordions";
 import CompanyList from "../Components/Common/HomePage/CompanyList";
 import HomepageCards from "../Components/Common/HomePage/HomepageCards";
+import CalendarButton from "../Components/Common/CalendarButton";
 
 
 
@@ -24,6 +25,7 @@ const HomePage = () => {
     <div className="body-container pages-content">
       <Banner />
       <Header />
+      <CalendarButton/>
 
       <div className="main-content">
         <Container className="mt-4">
