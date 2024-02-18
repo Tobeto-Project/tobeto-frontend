@@ -7,12 +7,14 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/esm/Button";
+import CalendarButton from "../Components/Common/CalendarButton";
 
 const Codeacademy = () => {
   return (
     <div className="body-container pages-content">
       <Banner />
       <Header />
+      <CalendarButton/>
       <div className="container">
         <div className="main-content">
           <h2 className="fw-bold text-center my-5">

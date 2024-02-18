@@ -7,24 +7,24 @@ import Container from "react-bootstrap/esm/Container";
 import "../Styles/PagesStyles/BlogStyle.css";
 import sanitizeHtml from 'sanitize-html';
 import { Link } from "react-router-dom";
+import CalendarButton from "../Components/Common/CalendarButton";
+import API_CONFIG from "../Services/ApiConfig";
+import { getPressList } from "../Services/blogpressService";
 
 const BasindaBiz = () => {
   const [press, setPress] = useState({ items: [] });
 
   useEffect(() => {
-    const fetchBlogs = async () => {
+    const fetchPressList = async () => {
       try {
-        const response = await fetch(`http://localhost:5082/api/BlogsPress/getList?PageIndex=0&PageSize=15`);
-        if (!response.ok) throw new Error("Blog verisi çekilemedi.");
-        const data = await response.json();
+        const data = await getPressList();
         setPress(data);
-
       } catch (error) {
-        console.error("Blog yüklenirken bir hata oluştu:", error);
+        console.error("Basında Biz yüklenirken bir hata oluştu:", error);
       }
     };
 
-    fetchBlogs();
+    fetchPressList();
   }, []);
 
 
@@ -35,7 +35,7 @@ const BasindaBiz = () => {
     }
     return strippedString;
   };
-  
+
   const createMarkup = (htmlContent) => {
     const truncatedContent = truncateHtml(htmlContent, 100);
     const sanitizedContent = sanitizeHtml(truncatedContent, {
@@ -49,6 +49,7 @@ const BasindaBiz = () => {
     <div className="body-container pages-content">
       <Banner />
       <Header />
+      <CalendarButton />
       <div className="container" style={{ paddingTop: "12em", marginBottom: "1em", width: "max-content" }}>
 
         <div className="row text-center">

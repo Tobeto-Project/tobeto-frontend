@@ -8,12 +8,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MiddleBannerKatalog from "../Components/Common/MiddleBannerKatalog";
+import CalendarButton from "../Components/Common/CalendarButton";
 
 const Katalog = () => {
   return (
     <div className="pages-content body-container">
       <Banner />
       <Header />
+      <CalendarButton/>
       <div className="main-content">
       <MiddleBannerKatalog/>
         <Container className="mt-4">

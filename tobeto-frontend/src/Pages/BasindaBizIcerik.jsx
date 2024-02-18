@@ -6,6 +6,8 @@ import Footer from '../Components/Layouts/Footer';
 import { Col, Container, Row } from 'react-bootstrap';
 import SocialMediaBar from '../Components/Common/SocialMediaBar';
 import '../Styles/PagesStyles/BlogIcerik.css';
+import CalendarButton from '../Components/Common/CalendarButton';
+import  { getPressById } from '../Services/blogpressService';
 
 const BasindaBizIcerik = () => {
     const { pressId } = useParams();
@@ -13,24 +15,20 @@ const BasindaBizIcerik = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
   
-    useEffect(() => {
-      const fetchPressDetail = async () => {
-        try {
-          const response = await fetch(`http://localhost:5082/api/BlogsPress/getbyId?id=${pressId}`);
-          if (!response.ok) {
-            throw new Error('Blog yüklenirken bir hata oluştu.');
-          }
-          const data = await response.json();
-          setPress(data);
-        } catch (error) {
-          setError(error.message);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-  
-      fetchPressDetail();
-    }, [pressId]);
+  useEffect(() => {
+    const fetchPressDetail = async () => {
+      try {
+        const data = await getPressById(pressId);
+        setPress(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPressDetail();
+  }, [pressId]);
   
     if (isLoading) {
       return <div>Yükleniyor...</div>;
@@ -44,6 +42,7 @@ const BasindaBizIcerik = () => {
       <div className="body-container pages-content">
         <Banner />
         <Header />
+        <CalendarButton/>
 
         <Container style={{ paddingTop: "12em", marginBottom: "1em", maxWidth: "720px" }}>
          <Row><SocialMediaBar/></Row>
