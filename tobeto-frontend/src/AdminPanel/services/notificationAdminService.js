@@ -1,9 +1,8 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:5082/api/Notifications';
+import API_CONFIG from "../../Services/ApiConfig";
 
 const getNotifications = (pageIndex = 0, pageSize = 100) => {
-    return axios.get(`http://localhost:5082/api/Notifications/getList`, {
+    return axios.get(`${API_CONFIG.ADMIN_NOTIFICATIONS_GET_LIST}`, {
         params: {
             PageIndex: pageIndex,
             PageSize: pageSize
@@ -12,15 +11,15 @@ const getNotifications = (pageIndex = 0, pageSize = 100) => {
 };
 
 const addNotification = (title, label) => {
-    return axios.post(`http://localhost:5082/api/Notifications/add`, { title, label });
+    return axios.post(`${API_CONFIG.ADMIN_NOTIFICATIONS_ADD}`, { title, label });
 };
 
 const updateNotification = (id, title, label) => {
-    return axios.put(`http://localhost:5082/api/Notifications/update`, { id, title, label });
+    return axios.put(`${API_CONFIG.ADMIN_NOTIFICATIONS_UPDATE}`, { id, title, label });
 };
 
 const deleteNotification = (id) => {
-    return axios.delete(`http://localhost:5082/api/Notifications/delete`, { data: { id } });
+    return axios.delete(`${API_CONFIG.ADMIN_NOTIFICATIONS_DELETE}`, { data: { id } });
 };
 
 export default {
