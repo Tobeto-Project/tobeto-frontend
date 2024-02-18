@@ -28,13 +28,13 @@ const SignUp = () => {
      <Banner/>
      <Header/>
 
-      <div className="main-content">
+      <div className="main-content-2">
         <Container>
           <Row className="justify-content-md-center">
-            <Col xs={12} md={6}>
+            <Col md={12} lg={6}>
               <RegistrationForm onSubmit={handleSubmit} />
             </Col>
-            <Col xs={12} md={6}>
+            <Col md={12} lg={6}>
               <Card
                 className="mt-4 border rounded-3 "
                 style={{ padding: '8.7rem' }}

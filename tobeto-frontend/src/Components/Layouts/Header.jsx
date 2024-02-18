@@ -154,7 +154,7 @@ const Header = () => {
             )}
           </Navbar.Collapse>
           <button
-            className="btn btn-dark d-xl-none d-block "
+            className="btn btn-dark ms-2 d-xl-none d-block "
             onClick={() => setShowOffcanvas(!showOffcanvas)}
           >
             ☰

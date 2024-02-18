@@ -53,10 +53,10 @@ const SignIn = () => {
       <Banner />
       <Header />
 
-      <div className="main-content">
+      <div className="main-content-2">
         <Container>
           <Row className="justify-content-md-center">
-            <Col xs={12} md={6}>
+            <Col md={12} lg={6}>
               <Form className="my-4 mb-5 p-5 btn-rainbow-card">
                 <div className="text-center mt-2 mb-5">
                   <Image className="my-2" src={link} fluid />
@@ -98,7 +98,7 @@ const SignIn = () => {
                 </div>
               </Form>
             </Col>
-            <Col xs={12} md={6}>
+            <Col md={12} lg={6}>
               <Card className="mt-4 border rounded-3">
                 <Card.Body className="mt-5 mb-5">
                   <div className="text-center mt-3 mb-5">
