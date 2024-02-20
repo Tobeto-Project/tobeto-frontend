@@ -10,6 +10,13 @@ const KatalogCard = () => {
   const [courseList, setCourseList] = useState([]);
   const { isLoggedIn } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+
+ 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
 
   const handleCardClick = () => {
     if (isLoggedIn) {
@@ -25,11 +32,15 @@ const KatalogCard = () => {
     });
   }, []);
 
+  const filteredCourses = courseList.filter(course =>
+    course.teacher.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       <div className="card-container">
         <Row xs={1} md={2} lg={3} xl={3} className="g-4">
-          {courseList.map((data) => (
+          {filteredCourses.map((data) => (
             <Col key={data.id}>
               <Card
                 className="education-card"

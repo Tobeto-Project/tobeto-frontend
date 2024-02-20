@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,
@@ -6,11 +6,36 @@ import {
   Col,
   InputGroup,
   FormControl,
-  Button,
 } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 
+
 const SearchComponent = () => {
+  const [educations, setEducations] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+ 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const fetchEducations = async () => {
+    try {
+      const response = await fetch();
+      const data = await response.json();
+      setEducations(data);
+    } catch (error) {
+      console.error("Eğitimler yüklenirken hata oluştu", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEducations();
+  }, []);
+  
+  const filteredEducations = educations.filter(education =>
+    education.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <Container
       className="text-center mx-5 w-50"
@@ -28,6 +53,7 @@ const SearchComponent = () => {
               className="rounded-pill pr-5"
               placeholder="Eğitim arayın"
               aria-label="Eğitim arayın"
+              onChange={handleSearchChange}
             />
             <InputGroup.Text
               className="position-absolute end-0 me-3 border-0"
