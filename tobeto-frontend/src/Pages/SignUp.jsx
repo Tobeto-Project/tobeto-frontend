@@ -1,5 +1,5 @@
 // SignUp.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import link2 from '../Assets/Images/istanbulkodluyor-black.svg';
@@ -9,14 +9,26 @@ import RegistrationForm from '../Components/Common/RegistrationForm';
 import Banner from '../Components/Layouts/Banner';
 import Header from '../Components/Layouts/Header';
 import Footer from '../Components/Layouts/Footer';
+import RegistrationModal from '../Components/Common/RegistrationModal';
 
 const SignUp = () => {
   const navigate = useNavigate();
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalShow = () => {
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+    navigate.push("/registermodal");
+  };
+
   const handleSubmit = async (userData) => {
     try {
       await register(userData);
- 
+      handleModalShow();
     } catch (error) {
    
       throw error;
@@ -52,14 +64,18 @@ const SignUp = () => {
                   </div>
 
                   <div className="d-flex flex-column justify-content-center align-items-center mb-5">
+                   <>
                     <Button
                       variant="primary"
                       type="submit"
                       className="btn-lg btn-info rounded-pill px-5 mb-5"
                       style={{ minWidth: '180px' }}
+                      onClick={handleModalShow}
                     >
                       Kayıt Ol
                     </Button>
+                    <RegistrationModal show={showModal} handleClose={handleModalClose} />
+                    </>
                     <ToastContainer position="bottom-right" autoClose={2000} />
                   </div>
                 </Card.Body>

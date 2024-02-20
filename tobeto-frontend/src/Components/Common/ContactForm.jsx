@@ -1,7 +1,14 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import ReCAPTCHA from "react-google-recaptcha";
 
 function ContactPage() {
+
+  const handleRecaptchaChange = (value) => {
+    console.log("reCAPTCHA value:", value);
+  };
+
+
   return (
     <Container className="py-5">
       <Row className="g-4">
@@ -40,6 +47,12 @@ function ContactPage() {
                   <Form.Control as="textarea" rows={3} placeholder="Mesajınız" />
                 </Form.Group>
                 <div className="d-grid gap-2">
+                <div>
+            <ReCAPTCHA
+              sitekey="6LeIknkpAAAAAPojboGDGIwsG3x38hJQt-5hrp8r"
+              onChange={handleRecaptchaChange}
+            />
+          </div>
                   <Button variant="primary" type="submit">
                     Gönder
                   </Button>

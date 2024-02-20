@@ -5,7 +5,7 @@ import link from '../../Assets/Images/tobeto-black.png';
 import { Link} from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const RegistrationForm = ({ onSubmit }) => {
+const RegistrationForm = ({ onSubmit,onModalShow  }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -44,6 +44,7 @@ const RegistrationForm = ({ onSubmit }) => {
         } catch (error) {
             toast.error('Kayıt sırasında hata oluştu');
         }
+        
     };
 
     return (

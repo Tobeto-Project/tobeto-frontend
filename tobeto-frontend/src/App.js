@@ -45,6 +45,7 @@ import BasindaBizIcerik from "./Pages/BasindaBizIcerik";
 import LmsPage from "./Lms/pages/LmsPage";
 import ContactUs from "./Pages/ContactUs";
 import MyNotification from "./Pages/Platform/MyNotification";
+import RegistrationModal from "./Components/Common/RegistrationModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -111,6 +112,7 @@ function App() {
           <Route path="/CyberSecurity" element={<CyberSecurity/>} />
           <Route path="/UI_UX" element={<UI_UX/>} />
           <Route path="/iletisim" element={<ContactUs/>} />
+          <Route path="/registermodal" element={<RegistrationModal/>} />
           <Route path="/chatgptai" element={<PrivateRoute><Chatgptai/></PrivateRoute>}/>
           <Route path="/lms" element={<PrivateRoute><LmsPage/></PrivateRoute>}/>
           <Route path="/kurs" element={<PrivateRoute> <Education /> </PrivateRoute>}/>
