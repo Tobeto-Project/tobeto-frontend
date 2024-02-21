@@ -37,6 +37,10 @@ const Sidebar = () => {
             return <Card.Body>Eğitimlerim içeriği burada gösterilecek</Card.Body>;
         case "duyuruvehaberler":
             return <Card.Body><NotificationAdmin/></Card.Body>;
+        case "asenkron":
+            return <Card.Body>Asenkron Eğitimler</Card.Body>;
+        case "senkron":
+            return <Card.Body>Senkron Eğitimler</Card.Body>;
         case "dil":
             return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
         case "image":
@@ -64,7 +68,8 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("basindabiz")}><FontAwesomeIcon icon={faNewspaper} /> Basın Yazısı Ekle</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("basindabizbloglarımız")}><FontAwesomeIcon icon={faClipboardList} /> Basın Yazı İşlemleri</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("duyuruvehaberler")}><FontAwesomeIcon icon={faBullhorn} /> Duyuru ve Haberler</Nav.Link>
-              <Nav.Link className='text-white' onClick={() => setActiveTab("egitimlerim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimlerimiz</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("asenkron")}><FontAwesomeIcon icon={faGraduationCap} /> Asenkron Eğitimler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("senkron")}><FontAwesomeIcon icon={faGraduationCap} /> Senkron Eğitimler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>

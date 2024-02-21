@@ -5,6 +5,7 @@ import { Col, Container, Pagination, Row } from "react-bootstrap";
 import NotificationService from "../../Services/NotificationService";
 import NotificationCard from "../../Components/Common/NotificationCard";
 import DOMPurify from "dompurify";
+import SearchFilterUI from "../../Components/Common/Notifications/SearchFilterUI";
 
 const MyNotification = () => {
   const [notifications, setNotifications] = useState([]);
@@ -63,6 +64,9 @@ const MyNotification = () => {
       </MiddleBanner>
 
       <Container className="my-5">
+        <Row>
+          <SearchFilterUI/>
+        </Row>
         <Row>
           {notifications.map((notification) => (
             <Col xs={4} key={notification.id}>

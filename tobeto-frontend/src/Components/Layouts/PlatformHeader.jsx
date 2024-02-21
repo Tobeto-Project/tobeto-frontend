@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -86,13 +85,6 @@ const PlatformHeader = () => {
                 className="text-white fw-bold ms-3 d-none d-xl-inline-block mt-3"
               >
                 <p className="nav-button-platform">İstanbul Kodluyor</p>
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/chatgptai"
-                className="text-white fw-bold ms-3 d-none d-xl-inline-block mt-3"
-              >
-                <p className="nav-button-platform">Yapay Zekaya Sor</p>
               </Nav.Link>
             </Nav>
 

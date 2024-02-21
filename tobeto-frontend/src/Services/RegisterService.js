@@ -6,7 +6,7 @@ import * as ENDPOINTS from "./ApiEndpoints";
 
 export const register = async (userData) => {
   try {
-     const response = await axios.post(API_CONFIG.REGISTER, userData);
+    const response = await axios.post(API_CONFIG.REGISTER, userData);
     return response.data;
   } catch (error) {
     throw error;

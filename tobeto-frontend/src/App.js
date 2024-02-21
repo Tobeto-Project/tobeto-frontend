@@ -38,9 +38,7 @@ import UI_UX from "./Pages/Programs/UI_UX";
 import Web_Mobile from "./Pages/Programs/Web_Mobile";
 import GetInformationFromPrograms from "./Pages/Programs/GetInformationFromPrograms";
 import ForgotPassword from "./Pages/ForgotPassword";
-import JobTable from "./Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import BlogIcerik from "./Pages/BlogIcerik";
-import Chatgptai from "./Pages/Platform/Chatgptai";
 import BasindaBizIcerik from "./Pages/BasindaBizIcerik";
 import LmsPage from "./Lms/pages/LmsPage";
 import ContactUs from "./Pages/ContactUs";
@@ -113,7 +111,6 @@ function App() {
           <Route path="/UI_UX" element={<UI_UX/>} />
           <Route path="/iletisim" element={<ContactUs/>} />
           <Route path="/registermodal" element={<RegistrationModal/>} />
-          <Route path="/chatgptai" element={<PrivateRoute><Chatgptai/></PrivateRoute>}/>
           <Route path="/lms" element={<PrivateRoute><LmsPage/></PrivateRoute>}/>
           <Route path="/kurs" element={<PrivateRoute> <Education /> </PrivateRoute>}/>
           <Route
