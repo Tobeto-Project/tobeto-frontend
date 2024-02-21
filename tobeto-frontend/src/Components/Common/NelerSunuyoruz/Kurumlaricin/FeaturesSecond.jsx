@@ -44,7 +44,7 @@ function FeaturesSecond() {
                 <Col md={6} className="mb-4">
                     <Row className="no-gutters" style={{ margin: 0 }}>
                         {/* İkinci Kolonun İlk Parçası */}
-                        <Col md={4}>
+                        <Col md={4} className="mb-3 mb-md-0">
                             <div
                                 className={`d-flex flex-column align-items-center justify-content-center ${hovered === 1 ? 'hovered' : ''
                                     }`}
@@ -78,7 +78,7 @@ function FeaturesSecond() {
                         </Col>
 
                         {/* İkinci Kolonun İkinci Parçası */}
-                        <Col md={4}>
+                        <Col md={4} className="mb-3 mb-md-0">
                             <div
                                 className={`d-flex flex-column align-items-center justify-content-center ${hovered === 2 ? 'hovered' : ''
                                     }`}

@@ -38,7 +38,7 @@ const SearchComponent = () => {
   );
   return (
     <Container
-      className="text-center mx-5 w-50"
+      className="text-center mx-5 w-100"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.24)",
         padding: "50px",

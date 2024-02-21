@@ -29,7 +29,7 @@ function FluidAdvertising() {
                                 height="75"
                             />
                         </Col>
-                        <Col xs={12} md={3} className="d-flex align-items-center justify-content-end" style={{ position: "absolute", top: "20px", right: "-40px", top: "120px" }}>
+                        <Col xs={10} md={3} className="d-flex align-items-center justify-content-end" style={{ position: "absolute", top: "20px", right: "-20px", top: "120px" }}>
                             <img
                                 src="https://tobeto.s3.cloud.ngn.com.tr/dot_white_1e7b4378ec.svg?updated_at=2022-09-20T12:52:57.424Z"
                                 alt=""

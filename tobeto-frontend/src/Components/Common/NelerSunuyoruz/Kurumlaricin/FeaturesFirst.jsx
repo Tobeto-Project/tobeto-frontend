@@ -17,7 +17,7 @@ function FeaturesFirst() {
         <Container style={{ padding: '20px' }}>
             <Row>
                 {/* İlk Kolon */}
-                <Col md={6} className="mb-4">
+                <Col md={6} className="mb-4 ">
                     <div
                         className={`d-flex flex-column align-items-center justify-content-center text-center`}
                         style={{
@@ -25,7 +25,7 @@ function FeaturesFirst() {
                             position: 'relative',
                             padding: '20px',
                             borderRadius: '20px',
-                            border: '1px solid white',  
+                            border: '1px solid white',
                         }}
                     >
                         <h1 className='mb-5' style={{ opacity: '0.7', fontSize: "1.7rem" }}>
@@ -42,10 +42,10 @@ function FeaturesFirst() {
 
 
                 {/* İkinci Kolon */}
-                <Col md={6} className="mb-4">
+                <Col md={6} className="mb-4 ">
                     <Row className="no-gutters" style={{ margin: 0 }}>
                         {/* İkinci Kolonun İlk Parçası */}
-                        <Col md={4}>
+                        <Col md={4} className="mb-3 mb-md-0">
                             <div
                                 className={`d-flex flex-column align-items-center justify-content-center ${hovered === 1 ? 'hovered' : ''
                                     }`}
@@ -80,7 +80,7 @@ function FeaturesFirst() {
                         </Col>
 
                         {/* İkinci Kolonun İkinci Parçası */}
-                        <Col md={4}>
+                        <Col md={4} className="mb-3 mb-md-0">          
                             <div
                                 className={`d-flex flex-column align-items-center justify-content-center ${hovered === 2 ? 'hovered' : ''
                                     }`}

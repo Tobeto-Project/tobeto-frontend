@@ -63,7 +63,6 @@ const TabComponent = () => {
     }, [activeButton]);
 
     const buttonStyle = (button, buttonIndex) => ({
-        width: "25rem",
         height: "12rem",
         borderRadius: "10px",
         background: buttonState[button].background,
@@ -76,10 +75,10 @@ const TabComponent = () => {
 
     return (
         <Row>
-            <Col lg={5} xs={12}>
+            <Col lg={6} md={6} sm={12} xs={12}>
                 <h3 className="text-white mt-5 fw-bold fs-2">Hangi Konuda Kendini Geliştirmek İstersin?</h3>
                 <div>
-                    <button
+                    <button 
                         className="mt-5"
                         style={buttonStyle("button1", "button1")}
                         onClick={() => handleClick("button1")}
@@ -89,7 +88,7 @@ const TabComponent = () => {
                         <div>
                             <h3> Teknik ve Profesyonel Eğitimler</h3>
                         </div>
-                        <div className="desc">
+                        <div  className="desc">
                             Kapsamlı beceri setlerinden, gelişmek istediğin konuyu seç, kariyerinde bir adım öne geç.
                         </div>
                     </button>
