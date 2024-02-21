@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Accordion, Card, Button, Container, Col, Row, Form, InputGroup, FormControl } from "react-bootstrap";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-const KatalogMenu = () => {
+const KatalogMenu = (menuClassName) => {
   const data = {
     "Bana özel": [],
     Kategori: ["Tüm Eğitimler", "Ücretli Eğitimler", "Ücretsiz Eğitimler"],
@@ -66,9 +66,9 @@ const KatalogMenu = () => {
     <Container className="py-5">
       {Object.keys(data).map((category, index) => (
         <Accordion key={index} activeKey={openAccordion === index ? `item-${index + 1}` : null}>
-          <Card
+          <Card className={`bg-dark ${menuClassName}`}
             onClick={() => handleToggleAccordion(index)}
-            style={{ cursor: "pointer", backgroundColor: "white", marginBottom: "10px" }}
+            style={{ cursor: "pointer", marginBottom: "10px" }}
           >
             <Card.Header className='px-3'
               style={{
@@ -83,7 +83,7 @@ const KatalogMenu = () => {
 
               }}
             >
-              <abc
+              <abc 
                 as={Button}
                 variant="link"
                 eventKey={`item-${index + 1}`}
@@ -94,7 +94,8 @@ const KatalogMenu = () => {
                 style={{
                   color: "white",
                   textDecoration: "none",
-                  fontSize: "1rem",
+                  fontSize: "1rem"
+                  
 
                 }}
               >
@@ -104,8 +105,8 @@ const KatalogMenu = () => {
                 {openAccordion === index ? <BsChevronUp /> : <BsChevronDown />}
               </div>
             </Card.Header>
-            <Accordion.Collapse eventKey={`item-${index + 1}`}>
-              <Card.Body onClick={stopPropagation} style={{ maxHeight: "200px", overflowY: "auto" }}>
+            <Accordion.Collapse className='bg-dark' eventKey={`item-${index + 1}`}>
+              <Card.Body  onClick={stopPropagation} style={{ maxHeight: "200px", overflowY: "auto" }}>
                 {category !== "Bana özel" && (
                   <>
                     {data[category].map((item, i) => (

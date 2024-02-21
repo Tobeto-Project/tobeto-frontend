@@ -20,9 +20,9 @@ const BireylerIcin = () => {
       <Header />
       <CalendarButton/>
 
-      <div className="main-content" style={{paddingLeft:"10rem",paddingRight:"10rem"}}>
+      <div className="main-content" style={{  marginTop: "130px" }}>
         <CardImage />
-
+    
         <CareerControl />
 
         <Row>

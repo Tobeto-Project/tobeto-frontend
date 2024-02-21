@@ -43,15 +43,15 @@ const CrawList = () => {
                 'https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falparslan.ad11a534.png&w=1920&q=75',
             linkedinUrl: 'https://www.linkedin.com/in/ahmethancer/',
         }
-    
+
     ];
 
     return (
         <Container style={{ marginTop: '20px' }}>
             <Row className='justify-content-center'>
                 {crawData.map((item, index) => (
-                    <Col key={index} md={2} style={{ textAlign: 'center', margin: '-10px' }}>
-                        <div style={{ width: '150px', height: '150px', overflow: 'hidden', borderRadius: '10px', margin: '0 auto 10px', border: '4px solid #A628FF' }}>
+                    <Col key={index} xs={5} sm={6} md={3} lg={2} style={{ textAlign: 'center', margin: '0px' }} className="mx-1 mb-md-4">
+                        <div style={{ width: '100%', height: '150px', overflow: 'hidden', borderRadius: '10px', margin: '0 auto 10px', border: '4px solid #A628FF' }}>
                             <a target="_blank" href={item.linkedinUrl}>
                                 <img
                                     src={item.imageSrc}

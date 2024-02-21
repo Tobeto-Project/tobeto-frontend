@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar expand="sm" style={{ backgroundColor: "#181717", marginTop: "70px" }} fixed="top">
+      <Navbar expand="sm" style={{ backgroundColor: "#181717", marginTop: "60px" }} fixed="top">
         <Container fluid>
           <Navbar.Brand href="#home">
             <Link to="/">

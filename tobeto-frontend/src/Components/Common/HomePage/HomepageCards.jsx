@@ -29,7 +29,7 @@ const HomepageCards = () => {
         <Col md={6} className="image-container">
           <Image src={link2} fluid className="rounded" />
           <div className="overlay2">
-            <div className="overlay2-box"></div><p className="fw-bold">Aradığın <span style={{color:"#00B078"}}>"</span> İş <span style={{color:"#00B078"}}>"</span> Burada!</p>
+            <div className="overlay2-box "></div><p className="fw-bold">Aradığın <span style={{color:"#00B078"}}>"</span> İş <span style={{color:"#00B078"}}>"</span> Burada!</p>
             <img
             className="me-4"
               src={link4}

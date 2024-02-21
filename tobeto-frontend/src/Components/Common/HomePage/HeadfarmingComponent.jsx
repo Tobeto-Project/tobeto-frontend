@@ -8,12 +8,11 @@ const HeadfarmingComponent = () => {
             style={{
                 maxWidth: "950px",
                 margin: "0 auto",
-                height: "140px",
+                height: "auto", // Set height to auto for better responsiveness
                 padding: "20px",
                 borderRadius: "30px",
-             
                 color: "white",
-                border: "2px solid purple", // Mor renkli border eklendi
+                border: "2px solid purple",
             }}
         >
             <p className="h6 text-center mt-2">

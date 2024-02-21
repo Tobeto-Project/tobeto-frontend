@@ -36,7 +36,7 @@ const BizKimiz = () => {
       <Banner />
       <Header />
       <CalendarButton />
-      <div className="position-relative main-content">
+      <div className="position-relative main-content" style={{marginTop:"130px"}}>
         <Container >
           <Row >
             <Col md={5} xs={12} className=" d-flex justify-content-between mt-5">

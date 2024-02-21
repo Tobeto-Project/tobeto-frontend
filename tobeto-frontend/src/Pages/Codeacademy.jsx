@@ -14,7 +14,7 @@ const Codeacademy = () => {
     <div className="body-container pages-content">
       <Banner />
       <Header />
-      <CalendarButton/>
+      <CalendarButton />
       <div className="container">
         <div className="main-content">
           <h2 className="fw-bold text-center my-5">
@@ -26,7 +26,7 @@ const Codeacademy = () => {
               <Col md={3}>
                 <img src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fca-1.cf0e22ca.png&w=256&q=75" />
               </Col>
-              <Col md={9}>
+              <Col md={8}>
                 <p className="fs-4">
                   Dünya çapında milyonlarca insanın günümüz dijital dünyasında
                   başarılı olmak için ihtiyaç duyduğu becerileri eğlenceli bir
@@ -61,16 +61,16 @@ const Codeacademy = () => {
             <Button className="m-0">Hemen abone ol!</Button>
           </div>
         </div>
-      </div>  
-        <div style={{ backgroundColor: "#11162F" }}>
-          <div className="d-flex justify-content-center">
-            <img
-              src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcacode.e3ffebc4.gif&w=1920&q=75"
-              className="my-5"
-              style={{ width: "50rem" }}
-            />
-          </div>
+      </div>
+      <div style={{ backgroundColor: "#11162F" }}>
+        <div className="d-flex justify-content-center">
+          <img
+            src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcacode.e3ffebc4.gif&w=1920&q=75"
+            className="my-5"
+            style={{ width: "%100" }}
+          />
         </div>
+      </div>
       <div className="container text-white">
         <div className="my-5">
           <h2>

@@ -51,7 +51,7 @@ const Team = () => {
         <Container style={{ marginTop: '20px' }}>
             <Row className='justify-content-center'  >
                 {teamData.slice(0, 4).map((item, index) => (
-                    <Col key={index} md={2} style={{ textAlign: 'center', margin: '15px' }}>
+                    <Col key={index} md={2} style={{ textAlign: 'center', margin: '25px' }}>
                         <div style={{ position: 'relative', width: '150px', height: '150px', overflow: 'hidden', margin: '0 auto 10px', border: '4px solid #A628FF', borderRadius: '10px' }}>
                             <a target="_blank" rel="noopener noreferrer" href={item.linkedinUrl}>
                                 <img
@@ -72,7 +72,7 @@ const Team = () => {
             </Row>
             <Row className='justify-content-center'>
                 {teamData.slice(4, 7).map((item, index) => (
-                    <Col key={index} md={2} style={{ textAlign: 'center', margin: '-10px' }}>
+                    <Col key={index} md={2} style={{ textAlign: 'center', margin: '25px' }}>
                         <div style={{ position: 'relative', width: '150px', height: '150px', overflow: 'hidden', margin: '0 auto 10px', border: '4px solid #A628FF', borderRadius: '10px' }}>
                             <a target="_blank" rel="noopener noreferrer" href={item.linkedinUrl}>
                                 <img
