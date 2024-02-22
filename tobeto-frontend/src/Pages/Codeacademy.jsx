@@ -67,7 +67,7 @@ const Codeacademy = () => {
           <img
             src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcacode.e3ffebc4.gif&w=1920&q=75"
             className="my-5"
-            style={{ width: "%100" }}
+            style={{ maxWidth: "100%", height: "auto" }}
           />
         </div>
       </div>
