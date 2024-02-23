@@ -8,6 +8,7 @@ import FeaturesSecond from "../Components/Common/NelerSunuyoruz/Kurumlaricin/Fea
 import ContactSection from "../Components/Common/NelerSunuyoruz/Kurumlaricin/ContactSection";
 import CardImage from "../Components/Common/NelerSunuyoruz/Kurumlaricin/CardImage";
 import CalendarButton from "../Components/Common/CalendarButton";
+import ChatBot from "../Components/Common/ChatBot";
 
 
 const KurumlarIcin = () => {
@@ -16,7 +17,7 @@ const KurumlarIcin = () => {
       <Banner />
       <Header />
       <CalendarButton/>
-
+      <ChatBot/>
 
       <div className="main-content">
         <New />

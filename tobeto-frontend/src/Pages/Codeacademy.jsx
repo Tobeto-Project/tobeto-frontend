@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/esm/Button";
 import CalendarButton from "../Components/Common/CalendarButton";
+import ChatBot from "../Components/Common/ChatBot";
 
 const Codeacademy = () => {
   return (
@@ -15,6 +16,7 @@ const Codeacademy = () => {
       <Banner />
       <Header />
       <CalendarButton />
+      <ChatBot/>
       <div className="container">
         <div className="main-content">
           <h2 className="fw-bold text-center my-5">

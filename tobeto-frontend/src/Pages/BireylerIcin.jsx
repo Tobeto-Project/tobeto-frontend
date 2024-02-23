@@ -11,6 +11,7 @@ import SkillTable from "../Components/Common/NelerSunuyoruz/Bireylericin/SkillTa
 import JobTable from "../Components/Common/NelerSunuyoruz/Bireylericin/JobTable";
 import ProgramList from "../Components/Common/NelerSunuyoruz/Bireylericin/ProgramList";
 import CalendarButton from "../Components/Common/CalendarButton";
+import ChatBot from "../Components/Common/ChatBot";
 
 
 const BireylerIcin = () => {
@@ -19,6 +20,7 @@ const BireylerIcin = () => {
       <Banner />
       <Header />
       <CalendarButton/>
+      <ChatBot/>
 
       <div className="main-content" style={{  marginTop: "130px" }}>
         <CardImage />

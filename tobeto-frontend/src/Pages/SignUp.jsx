@@ -10,6 +10,7 @@ import Banner from '../Components/Layouts/Banner';
 import Header from '../Components/Layouts/Header';
 import Footer from '../Components/Layouts/Footer';
 import RegistrationModal from '../Components/Common/RegistrationModal';
+import ChatBot from '../Components/Common/ChatBot';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const SignUp = () => {
     <div className="body-container">
      <Banner/>
      <Header/>
-
+     <ChatBot/>
       <div className="main-content-2">
         <Container>
           <Row className="justify-content-md-center">

@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import CalendarButton from "../Components/Common/CalendarButton";
 import API_CONFIG from "../Services/ApiConfig";
 import { getPressList } from "../Services/blogpressService";
+import ChatBot from "../Components/Common/ChatBot";
 
 const BasindaBiz = () => {
   const [press, setPress] = useState({ items: [] });
@@ -50,6 +51,7 @@ const BasindaBiz = () => {
       <Banner />
       <Header />
       <CalendarButton />
+      <ChatBot/>
       <div className="container" style={{ paddingTop: "12em", marginBottom: "1em", width: "max-content" }}>
 
         <div className="row text-center">

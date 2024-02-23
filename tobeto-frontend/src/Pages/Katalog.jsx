@@ -9,6 +9,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MiddleBannerKatalog from "../Components/Common/MiddleBannerKatalog";
 import CalendarButton from "../Components/Common/CalendarButton";
+import ChatBot from "../Components/Common/ChatBot";
 
 const Katalog = () => {
   return (
@@ -16,6 +17,7 @@ const Katalog = () => {
       <Banner />
       <Header />
       <CalendarButton />
+      <ChatBot/>
       <div className="main-content">
         <MiddleBannerKatalog />
         <Container fluid className="mt-4">

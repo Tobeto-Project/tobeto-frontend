@@ -2,13 +2,14 @@ import React from "react";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
+import ChatBot from "../Components/Common/ChatBot";
 
 const SignOut = () => {
   return (
     <div className="bg-dark body-container bg-dark">
       <Banner />
       <Header />
-
+      <ChatBot/>
       <div className="main-content">
         <h1>SignOut</h1>
         <p>

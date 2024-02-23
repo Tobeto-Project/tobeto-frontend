@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap'
 import Footer from '../Components/Layouts/Footer';
 import ContactForm from '../Components/Common/ContactForm';
 import CalendarButton from '../Components/Common/CalendarButton';
+import ChatBot from '../Components/Common/ChatBot';
 
 const ContactUs = () => {
   return (
@@ -12,6 +13,7 @@ const ContactUs = () => {
         <Banner/>
         <Header/>
         <CalendarButton/>
+        <ChatBot/>
         <div className="position-relative main-content">
             <Container>
                 <ContactForm/>
