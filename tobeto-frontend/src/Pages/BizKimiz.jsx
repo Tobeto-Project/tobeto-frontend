@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import FeatureList from "../Components/Common/AboutUs/FeatureList";
 import CalendarButton from "../Components/Common/CalendarButton";
+import ChatBot from "../Components/Common/ChatBot";
 
 const iconPath = 'https://tobeto.com/_next/static/media/tobeto-tag-purple.e3e78d87.svg';
 const videoUrl = 'https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4';
@@ -36,6 +37,8 @@ const BizKimiz = () => {
       <Banner />
       <Header />
       <CalendarButton />
+      <ChatBot/>
+
       <div className="position-relative main-content" style={{marginTop:"130px"}}>
         <Container >
           <Row >

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import sanitizeHtml from 'sanitize-html';
 import CalendarButton from "../Components/Common/CalendarButton";
 import { fetchBlogs } from "../Services/blogService";
+import ChatBot from "../Components/Common/ChatBot";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState({ items: [] });
@@ -47,6 +48,7 @@ const Blog = () => {
       <Banner />
       <Header />
       <CalendarButton/>
+      <ChatBot/>
       <div className="container" style={{ paddingTop: "12em", marginBottom: "1em", width: "max-content" }}>
 
         <div className="row text-center">

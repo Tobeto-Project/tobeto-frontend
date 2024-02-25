@@ -8,6 +8,7 @@ import SocialMediaBar from '../Components/Common/SocialMediaBar';
 import '../Styles/PagesStyles/BlogIcerik.css';
 import CalendarButton from '../Components/Common/CalendarButton';
 import  { getPressById } from '../Services/blogpressService';
+import ChatBot from '../Components/Common/ChatBot';
 
 const BasindaBizIcerik = () => {
     const { pressId } = useParams();
@@ -43,7 +44,7 @@ const BasindaBizIcerik = () => {
         <Banner />
         <Header />
         <CalendarButton/>
-
+        <ChatBot/>
         <Container style={{ paddingTop: "12em", marginBottom: "1em", maxWidth: "720px" }}>
          <Row><SocialMediaBar/></Row>
           <Row>

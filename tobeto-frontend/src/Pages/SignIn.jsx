@@ -11,6 +11,7 @@ import { validateUser } from "../Services/AuthService";
 import { useDispatch } from "react-redux";
 import { loginFailure, loginRequest, loginSuccess } from "../Store/Actions/authActions";
 import { toast, ToastContainer } from 'react-toastify';
+import ChatBot from "../Components/Common/ChatBot";
 
 
 const SignIn = () => {
@@ -52,7 +53,7 @@ const SignIn = () => {
     <div className="body-container">
       <Banner />
       <Header />
-
+      <ChatBot/>
       <div className="main-content-2">
         <Container>
           <Row className="justify-content-md-center">

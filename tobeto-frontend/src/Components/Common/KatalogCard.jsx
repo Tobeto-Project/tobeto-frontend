@@ -45,54 +45,29 @@ const KatalogCard = () => {
               <Card
                 className="education-card"
                 onClick={handleCardClick}
-                style={{ position: "relative", width: "90%" }}
+                style={{ width: "90%" ,height:'260px'}}
               >
                 <Card.Img variant="top" src={data.image} />
                 <div className="card-info">
                   <Row>
                     <Col xs={12} md={6}>
                       <div className="card-text">
-                        <h5 style={{ fontSize: "1rem" }}>{data.teacher}</h5>
+                        <h5 style={{ fontSize: "12px" }}><BsPeople style={{ marginRight: "0.5rem" }} />{data.teacher}</h5>
                       </div>
                     </Col>
                     <Col xs={12} md={6}>
                       <div className="card-text">
-                        <p style={{ fontSize: "1rem" }}>{data.duration}</p>
+                        <p style={{ fontSize: "12px" }}> <BsClock style={{ marginRight: "0.5rem" }} />{data.duration}</p>
                       </div>
                     </Col>
                   </Row>
                   <Row>
                   
-                      <h4 style={{ fontSize: "1rem" }}>{data.subject}</h4>
+                      <h4>{data.subject}</h4>
                    
                   </Row>
                 </div>
-                {/* Yeni eklenen bölüm */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "0",
-                    left: "0",
-                    width: "100%",
-                    backgroundColor: "#f8f9fa",
-                    padding: "10px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    height: "70px",  // Sabit yükseklik değeri
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <BsPeople style={{ marginRight: "0.5rem" }} />
-                    <span>{data.teacher}</span>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <BsClock style={{ marginRight: "0.5rem" }} />
-                    <span>{data.duration}</span>
-                  </div>
-                  <div style={{ textAlign: "center" }}>{data.subject}</div>
-                </div>
+            
               </Card>
             </Col>
           ))}

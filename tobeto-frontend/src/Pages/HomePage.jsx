@@ -16,6 +16,7 @@ import Accordions from "../Components/Common/HomePage/Accordions";
 import CompanyList from "../Components/Common/HomePage/CompanyList";
 import HomepageCards from "../Components/Common/HomePage/HomepageCards";
 import CalendarButton from "../Components/Common/CalendarButton";
+import ChatBot from "../Components/Common/ChatBot";
 
 
 
@@ -25,11 +26,11 @@ const HomePage = () => {
     <div className="body-container pages-content">
       <Banner />
       <Header />
-      <CalendarButton/>
-
+      <CalendarButton />
+      <ChatBot />
       <div className="main-content">
         <Container className="mt-4">
-            <HomepageCards/>
+          <HomepageCards />
         </Container>
 
         <Container>
