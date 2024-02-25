@@ -63,12 +63,12 @@ const KatalogMenu = (menuClassName) => {
     e.stopPropagation();
   };
   return (
-    <Container className="py-5">
+    <Container className="py-3">
       {Object.keys(data).map((category, index) => (
         <Accordion key={index} activeKey={openAccordion === index ? `item-${index + 1}` : null}>
           <Card className={`bg-dark ${menuClassName}`}
             onClick={() => handleToggleAccordion(index)}
-            style={{ cursor: "pointer", marginBottom: "10px" }}
+            style={{borderRadius: "30px", cursor: "pointer", marginBottom: "10px" }}
           >
             <Card.Header className='px-3'
               style={{
@@ -106,7 +106,7 @@ const KatalogMenu = (menuClassName) => {
               </div>
             </Card.Header>
             <Accordion.Collapse className='bg-dark' eventKey={`item-${index + 1}`}>
-              <Card.Body  onClick={stopPropagation} style={{ maxHeight: "200px", overflowY: "auto" }}>
+              <Card.Body  onClick={stopPropagation} style={{ maxHeight: "280px", overflowY: "auto" }}>
                 {category !== "Bana özel" && (
                   <>
                     {data[category].map((item, i) => (

@@ -1,5 +1,6 @@
 .education-card {
     width: 280px; 
+    height: 280px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -17,6 +18,7 @@
     color: white;
     width: 100%;
     padding: 10px;
+    border-radius: 10px;
   }
   
   .card-info .card-text {
@@ -27,9 +29,11 @@
   
   .card-info h4 {
     margin-top: 10px;
+    font-size: 14px;
   }
   .card-container {
     display: flex;
+    margin-top: 0;
     flex-wrap: wrap; /* Eğer kartlar sığmazsa, yeni satıra geçmesini sağlar */
     gap: 20px; /* Kartlar arasında boşluk bırakır */
     justify-content: center; /* Kartları merkeze hizalar */
