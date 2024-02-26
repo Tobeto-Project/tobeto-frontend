@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../Styles/CommonStyles/ChatBot.css';
 import { BsChatLeft } from "react-icons/bs";
+import { FaMessage } from "react-icons/fa6";
+
 
 const ChatBot = () => {
   const [userMessage, setUserMessage] = useState('');
@@ -82,8 +84,8 @@ const ChatBot = () => {
   return (
     <>
       <button className="chatbot-toggler" onClick={() => document.body.classList.toggle('show-chatbot')}>
-        <span className="material-symbols-rounded"><BsChatLeft /></span>
-        <span className="material-symbols-outlined">close</span>
+        <span className="material-symbols-rounded"><FaMessage size={25}/></span>
+        <span className="material-symbols-outlined"><FaMessage /></span>
       </button>
       <div className="chatbot">
         <header>
