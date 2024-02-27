@@ -8,9 +8,12 @@
     align-items: center;
     border-radius: 0 35px 35px 35px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-background: linear-gradient(to bottom left, #3C0B8C,#D89CF7);
-   
+    background: linear-gradient(to bottom left, #3C0B8C, #D89CF7);
 }
+
+
+
+        
 
 .details {
     text-align: center;
@@ -23,4 +26,20 @@ background: linear-gradient(to bottom left, #3C0B8C,#D89CF7);
     border-radius: 40px !important;
     background-color: #822BD9 !important;
     font-weight: bold !important;
+}
+
+
+
+@media (max-width: 992px) {
+    .package-card:last-child {
+        margin-top: 30px !important;
+       
+    }
+        .package-card {
+            margin: auto;
+        }
+}
+
+@media (max-width: 768px) {
+    
 }

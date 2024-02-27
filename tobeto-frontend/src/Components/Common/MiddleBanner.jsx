@@ -1,6 +1,5 @@
 import React from 'react';
 import "../../Styles/CommonStyles/MiddleBannerStyle.css";
-import SearchComponent from './PlatformKatalog/SearchComponent';
 
 const MiddleBanner = ({ children }) => {
   return (

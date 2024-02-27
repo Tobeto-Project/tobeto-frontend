@@ -97,13 +97,13 @@ const Degerlendirmeler = () => {
                 <Col>
                   <h3>
 
-                    <span className="fw-normal" style={{ fontWeight: 'normal', color:'#9933FC'}}>
+                    <span className="fw-normal" style={{ fontWeight: 'normal', color: '#9933FC' }}>
                       Yetkinlik
                     </span>
                     <span className="text-dark" style={{ fontWeight: 'normal' }}>
                       lerini ücretsiz ölç,
                     </span>
-                    <span className="fw-normal" style={{ fontWeight: 'normal' ,color:'#9933FC' }}>
+                    <span className="fw-normal" style={{ fontWeight: 'normal', color: '#9933FC' }}>
                       Bilgi
                     </span>
                     <span className="text-dark" style={{ fontWeight: 'normal' }}>
@@ -117,7 +117,7 @@ const Degerlendirmeler = () => {
           </div>
         </section>
         <section>
-          <Container>
+          <Container fluid>
             <Row>
               <Col md={12} className="mb-8">
                 <Card className="dashboard-card">
@@ -129,7 +129,7 @@ const Degerlendirmeler = () => {
 
                     {currentQuiz === 'Yetkinlik sınavı' ? (
                       <Button
-                      className='mx-auto'
+                        className='mx-auto'
                         variant="primary"
                         onClick={() => {
 
@@ -142,7 +142,7 @@ const Degerlendirmeler = () => {
 
                     ) : (
                       <Button
-                      className='mx-auto'
+                        className='mx-auto'
                         variant="primary"
                         onClick={() => handleStartQuiz('Yetkinlik sınavı')}
                         disabled={quizStates['Yetkinlik sınavı'].started}
@@ -153,7 +153,9 @@ const Degerlendirmeler = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={6}>
+            </Row>
+            <Row>
+              <Col lg={6} md={12} className="mb-3 " >
                 <Card className="dashboard-card1 equal-box">
                   <Card.Body className="d-flex flex-column justify-content-between text-center text-white">
                     <div className="mb-3">
@@ -177,7 +179,7 @@ const Degerlendirmeler = () => {
 
               </Col>
 
-              <Col md={6}>
+              <Col lg={5} className="mb-3">
                 <div className="d-flex flex-column " style={{ gap: '14px' }}>
                   <Card className="dashboard-card-slim rounded-pill">
                     <Card.Body className="d-flex justify-content-between align-items-center p-2">
@@ -236,7 +238,7 @@ const Degerlendirmeler = () => {
                     <Card.Body className="d-flex justify-content-between align-items-center p-2">
                       <span className='text-white ms-5 m-1 mt-2'>Microsoft SQL Server</span>
                       <Button
-                      className='btn btn-sm rounded-pill'
+                        className='btn btn-sm rounded-pill'
                         variant="light"
                         onClick={() => {
                           const quizName = 'Microsoft SQL Server';
@@ -254,7 +256,7 @@ const Degerlendirmeler = () => {
                     <Card.Body className="d-flex justify-content-between align-items-center p-2">
                       <span className='text-white ms-5 m-1 mt-2'>Masaüstü Programlama</span>
                       <Button
-                       className='btn btn-sm rounded-pill'
+                        className='btn btn-sm rounded-pill'
                         variant="light"
                         onClick={() => {
                           const quizName = 'Masaüstü Programlama';
@@ -269,8 +271,10 @@ const Degerlendirmeler = () => {
 
                 </div>
               </Col>
-
             </Row>
+
+
+
 
             <Row>
               <div style={gradientBarStyle} className='mx-auto mt-5'></div>
@@ -278,32 +282,32 @@ const Degerlendirmeler = () => {
 
 
             <Row className="justify-content-center">
-                  <div className="container text-center ">
-                      <p style={{  width: "100%" }}>
-                        <span className="text-secondary fw-bold fs-2" style={{ fontSize: "30px"}}>
-                          Aboneliğe özel
-                        </span>
-                        <span className="fw-normal ms-1 fs-2" style={{ fontSize: "30px", color:'#9933FC' }}>
-                          değerlendirme araçları için
-                        </span>
-                      </p>
-                  </div>
+              <div className="container text-center ">
+                <p style={{ width: "100%" }}>
+                  <span className="text-secondary fw-bold fs-2" style={{ fontSize: "30px" }}>
+                    Aboneliğe özel
+                  </span>
+                  <span className="fw-normal ms-1 fs-2" style={{ fontSize: "30px", color: '#9933FC' }}>
+                    değerlendirme araçları için
+                  </span>
+                </p>
+              </div>
             </Row>
 
             <Row className='mb-5 mt-5 text-center text-white'>
-              <Col md={6}>
+              <Col md={5} className=''>
 
                 <div className="dashboard-card4 equal-box ">
-                  <div className="centered-text fw-bold fs-3 pt-4">Kazanım Odaklı Testler</div>
+                  <div className="centered-text fw-bold fs-4 pt-4">Kazanım Odaklı Testler</div>
                   <p className="centered-text mt-5 fs-5 text-center">
                     Dijital gelişim kategorisindeki eğitimlere başlamadan önce konuyla ilgili bilgin ölçülür ve seviyene göre yönlendirilirsin.
                   </p>
                 </div>
               </Col>
-              <Col md={6} className="p-0 m-0">
-                <div className="dashboard-card4 equal-box" style={{marginLeft:"auto"}}>
+              <Col md={5}>
+                <div className="dashboard-card4 equal-box" >
                   <span className="centered-text mt-4 align-items-center fw-bold fs-5">Huawei Talent Interview <br /> Teknik Bilgi Sınavı*</span>
-                  <p className="centered-text mt-4 align-items-center fs-5 ">
+                  <p className="centered-text mt-4 align-items-center  ">
                     <b><i>Sertifika alabilmen için,</i></b> eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.<br /><br />
                     4400+ soru | 30+ programlama dili <br />
                     4 zorluk seviyesi

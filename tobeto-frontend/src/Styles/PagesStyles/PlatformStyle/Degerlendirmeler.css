@@ -5,7 +5,7 @@ border-radius: 0 35px 35px 35px !important;
 .equal-box {
     background: linear-gradient(to bottom left, #1D0B8B, #D89CF7) !important;
     border-radius: 0 35px 35px 35px !important;
-    width: 490px;
+    
     height: 340px !important;
 }
 .dashboard-card-slim {
@@ -13,4 +13,18 @@ border-radius: 0 35px 35px 35px !important;
 }
 .btn {
 
+}
+
+@media (max-width:768px) {
+    .equal-box {
+        margin-top: 20px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .equal-box {
+        font-size: 1em !important;
+        
+    
+    }
 }

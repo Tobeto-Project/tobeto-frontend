@@ -14,8 +14,8 @@ const PlatformKatalog = () => {
       <div>
         <Container className='my-4'>
           <Row>
-            <Col sm={3}><KatalogMenu/></Col>
-            <Col sm={9}><KatalogCard/></Col>
+            <Col sm={5} md={3} lg={3}><KatalogMenu/></Col>
+            <Col sm={7} md={9} lg={9}><KatalogCard/></Col>
           </Row>
         </Container>
       </div>

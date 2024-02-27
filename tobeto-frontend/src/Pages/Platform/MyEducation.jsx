@@ -19,7 +19,7 @@ const MyEducation = () => {
     <>
       <PlatformHeader />
       <MiddleBanner>
-        <p style={{ fontSize: '6rem',marginLeft:"12rem" }} className='text-white fw-bold'>Eğitimlerim</p>
+        <p style={{ fontSize: '6em', marginLeft: "1rem" }} className='text-white fw-bold'>Eğitimlerim</p>
       </MiddleBanner>
       <Container className='my-5'>
         <Row xs={1} md={2} lg={4} className="g-1">
