@@ -30,6 +30,8 @@ const SignUp = () => {
     try {
       await register(userData);
       handleModalShow();
+    
+     
     } catch (error) {
    
       throw error;

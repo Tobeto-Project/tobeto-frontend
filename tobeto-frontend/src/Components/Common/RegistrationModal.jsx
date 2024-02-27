@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from "react-router-dom";
 
 
 const RegistrationModal = ({ show, handleClose }) => {
+ 
   const [agreementChecked, setAgreementChecked] = useState(false);
   const [communicationPermission, setCommunicationPermission] = useState(false);
+
 
   const handleAgreementChange = () => {
     setAgreementChecked(!agreementChecked);
@@ -17,8 +20,14 @@ const RegistrationModal = ({ show, handleClose }) => {
   };
 
   const handleFormSubmit = () => {
-    handleClose();
+ 
+    if (agreementChecked && communicationPermission) {
+      handleClose();
+    } else {
+      console.log("Please complete all required actions");
+    }
   };
+
 
   const handleRecaptchaChange = (value) => {
     console.log("reCAPTCHA value:", value);
@@ -83,7 +92,7 @@ const RegistrationModal = ({ show, handleClose }) => {
               onChange={handleRecaptchaChange}
             />
           </div>
-          <Button variant="primary" type="submit" disabled={!agreementChecked}>
+          <Button href="/girisyap" variant="primary" type="submit" disabled={!agreementChecked} >
             Devam Et
           </Button>
         </Form>

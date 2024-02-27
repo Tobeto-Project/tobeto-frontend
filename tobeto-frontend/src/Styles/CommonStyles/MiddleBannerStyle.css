@@ -1,17 +1,9 @@
-.middle-banner-2{
-    display: flex;
-    justify-content: flex-start; /* Sola hizala */
-    align-items: center;
-    padding-left: 400px; /* İçeriği sola kaydırmak için */
-    width: 100%;
-    height: 300px;
-    background-image: url('../../Assets/Images/katalog-filtre-arka.svg');
-    background-size: cover;
-    background-position: center;
-}
+/* MiddleBannerStyle.css */
+
 .middle-banner {
     display: flex;
-    justify-content: flex-center; /* Sola hizala */
+    flex-direction: column;
+
     align-items: center;
     width: 97%;
     height: 200px;
@@ -19,4 +11,65 @@
     background-size: cover;
     background-position: center;
     border-radius: 40px;
-  }
+    text-align: center;
+
+}
+
+.middle-banner-2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+ 
+    width: 100%;
+    height: 300px;
+    background-image: url('../../Assets/Images/katalog-filtre-arka.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+@media (max-width: 768px) {
+
+    .middle-banner,
+    .middle-banner-2 {
+        height: 240px;
+      
+    }
+
+    .middle-banner-2 {
+        padding-left: 2%;
+      
+    }
+   
+}
+
+.middle-banner p {
+    font-size: 2rem;
+    @media (max-width: 576px) {
+        font-size: 1.5rem !important;
+       
+    }
+    
+    @media (min-width: 576px) and (max-width: 768px) {
+        font-size: 3.8rem !important;
+      margin-right: 50px !important;
+      margin-top: 25px !important ;
+      
+    }
+
+         @media (min-width: 768px) and (max-width: 992px) {
+            font-size: 4.5rem !important;
+            margin-top: 25px !important;
+         }
+
+         @media (min-width: 440px) and (max-width: 576px) {
+                     font-size: 3.5rem !important;
+                     margin-top: 25px !important;
+                 }
+
+   @media (min-width: 340px) and (max-width: 440px) {
+       font-size: 2.8rem !important;
+       margin-top: 25px !important;
+   }
+}

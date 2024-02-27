@@ -38,8 +38,8 @@ const RegistrationForm = ({ onSubmit,onModalShow  }) => {
             await onSubmit(userData);
 
             toast.success("Kaydınız oluşturuldu.", {
-                autoClose: 200,
-                onClose: () => window.location.href = '/girisyap' // Redirect when the toast closes
+                autoClose: 2000,
+                // Redirect when the toast closes
             });
         } catch (error) {
             toast.error('Kayıt sırasında hata oluştu');

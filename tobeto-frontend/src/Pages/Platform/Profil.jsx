@@ -232,63 +232,63 @@ const Profil = () => {
                     <div className="radar-labels">
                       <div>
                         <Row>
-                          <Col md={3}>
-                            <span className="legend legend1">puan</span>
+                          <Col md={5} >
+                            <span className="legend legend1 ">puan</span>
                           </Col>
-                          <Col md={9}><span className="chart-text">Yeni Dünyaya Hazırlanıyorum</span></Col>
+                          <Col md={7} ><span className="chart-text px-0">Yeni Dünyaya Hazırlanıyorum</span></Col>
                         </Row>
                       </div>
                       <div>
                         <Row>
-                          <Col md={3}>
+                          <Col md={5}>
                             <span className="legend legend2">puan</span>
                           </Col>
-                          <Col md={9}><span className="chart-text">Profesyonel duruşumu geliştiriyorum</span></Col>
+                          <Col md={7}><span className="chart-text">Profesyonel duruşumu geliştiriyorum</span></Col>
                         </Row>
                       </div>
                       <div>
                         <Row>
-                          <Col md={3}>
+                          <Col md={5}>
                             <span className="legend legend3">puan</span>
                           </Col>
-                          <Col md={9}><span className="chart-text">Kendimi tanıyor ve yönetiyorum</span></Col>
+                          <Col md={7}><span className="chart-text">Kendimi tanıyor ve yönetiyorum</span></Col>
                         </Row>
                       </div>
                       <div>  <Row>
-                        <Col md={3}>
+                        <Col md={5}>
                           <span className="legend legend4">puan</span>
                         </Col>
-                        <Col md={9}><span className="chart-text">Yaratıcı ve doğru çözümler geliştiriyorum</span></Col>
+                        <Col md={7}><span className="chart-text">Yaratıcı ve doğru çözümler geliştiriyorum</span></Col>
                       </Row></div>
                       <div>
                         <Row>
-                          <Col md={3}>
+                          <Col md={5}>
                             <span className="legend legend5">puan</span>
                           </Col>
-                          <Col md={9}><span className="chart-text">Başkaları ile birlikte çalışıyorum</span></Col>
+                          <Col md={7}><span className="chart-text">Başkaları ile birlikte çalışıyorum</span></Col>
                         </Row>
                       </div>
                       <div>
                         <Row>
-                          <Col md={3}>
+                          <Col md={5}>
                             <span className="legend legend6">puan</span>
                           </Col>
-                          <Col md={9}><span className="chart-text">Kendimi sürekli geliştiriyorum</span></Col>
+                          <Col md={7}><span className="chart-text">Kendimi sürekli geliştiriyorum</span></Col>
                         </Row>
                       </div>
                       <div>
                         <Row>
-                          <Col md={3}>
+                          <Col md={5}>
                             <span className="legend legend7">puan</span>
                           </Col>
-                          <Col md={9}><span className="chart-text">Sonuç ve başarı odaklıyım</span></Col>
+                          <Col md={7}><span className="chart-text">Sonuç ve başarı odaklıyım</span></Col>
                         </Row>
                       </div>
                       <div>  <Row>
-                        <Col md={3}>
+                        <Col md={5}>
                           <span className="legend legend8">puan</span>
                         </Col>
-                        <Col md={9}><span className="chart-text">Anlıyorum ve anlaşılıyorum</span></Col>
+                        <Col md={7}><span className="chart-text">Anlıyorum ve anlaşılıyorum</span></Col>
                       </Row></div>
                     </div>
                   </Col>
@@ -359,7 +359,7 @@ const Profil = () => {
                 <hr />
                 <Row className="pb-3">
                   <Container>
-                    <img className="github" src="http://ghchart.rshah.org/guluzarkarakoc" style={{width: '100%',height: '100%'}} />
+                    <img className="github" src="http://ghchart.rshah.org/guluzarkarakoc" style={{ width: '100%', height: '100%' }} />
                   </Container>
 
                 </Row>

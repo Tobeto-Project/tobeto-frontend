@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { MdOutlineTimer } from "react-icons/md";
@@ -9,58 +9,62 @@ const ExamCard = ({ examName, lessonName, examTime, examType, status, onClick })
     const statusClass = status ? `status-${status.toLowerCase()}` : '';
 
     return (
+
         <div
             className={`exam-card ${statusClass}`}
             onClick={onClick}
             style={{
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
                 width: "480px",
-                height: "110px",
+                height: "95%",
                 padding: "10px",
-                borderRadius: "10px", cursor: "pointer", 
+                borderRadius: "10px", cursor: "pointer",
                 transition: "transform 0.3s ease",
-             
-                
-                
+
+
             }}
         >
-            <div className="exam-header ">
-                <span style={{ marginRight: "40px" }} className="exam-name fw-bold">
-                    {examName}
-                </span>
-                <span
-                    className="status-icon"
-                    style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "20px",
-                        height: "20px",
-                        borderRadius: "5px",
-                        background: "#7348BF",
-                        marginRight: "5px",
-                        marginTop: "5px",
-                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                        float: "right"
-                    }}
-                >
-                    <FontAwesomeIcon icon={faCheck} style={{ color: "#FFF" }} />
-                </span>
-                <span className="lesson-name d-block text-muted mt-2">{lessonName}</span>
-            </div>
-            <div className="exam-details mt-2">
-                <div>
-                    <MdOutlineTimer style={{
-                        width: "20px",
-                        height: "20px",
-                        color: "#A54BFF"
-                    }} />
-                    <span className="exam-time fw-bold mx-1">{examTime}</span>
+            <Row sm={10}>
+                <div className="exam-header ">
+                    <span style={{ marginRight: "40px" }} className="exam-name fw-bold">
+                        {examName}
+                    </span>
+                    <span
+                        className="status-icon"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "20px",
+                            height: "20px",
+                            borderRadius: "5px",
+                            background: "#7348BF",
+                            marginRight: "5px",
+                            marginTop: "5px",
+                            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                            float: "right"
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faCheck} style={{ color: "#FFF" }} />
+                    </span>
+                    <span className="lesson-name d-block text-muted mt-2">{lessonName}</span>
                 </div>
-                <div>
-                    <span className="exam-type">{examType}</span>
+                <div className="exam-details mt-2">
+                    <div>
+                        <MdOutlineTimer style={{
+                            width: "20px",
+                            height: "20px",
+                            color: "#A54BFF"
+                        }} />
+                        <span className="exam-time fw-bold mx-1">{examTime}</span>
+                    </div>
+                    <div>
+                        <span className="exam-type">{examType}</span>
+                    </div>
                 </div>
-            </div>
+            </Row>
+
+
         </div>
     );
 };
@@ -77,27 +81,31 @@ const ExamList = () => {
     };
 
     return (
-        <div className="row cv-box cv-padding">
-            <div className="col-12 position-relative">
+        <div className="row ">
+            <div className=" position-relative">
                 <span className="fw-bold">Sınavlarım</span>
             </div>
             <div className="exams my-3">
-                <ExamCard
-                    examName="Herkes için Kodlama 2A Değerlendirme Sınavı"
-                    lessonName="Herkes İçin Kodlama - 2A"
-                    examTime="45 Dakika"
-                    onClick={handleShowModal}
-                />
+                <Row className="mx-1">
+                    <ExamCard
+                        examName="Herkes için Kodlama 2A Değerlendirme Sınavı"
+                        lessonName="Herkes İçin Kodlama - 2A"
+                        examTime="45 Dakika"
+                        onClick={handleShowModal}
+                    />
+                </Row>
+
 
             </div>
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
 
-                    <span className="quiz-details-header fw-bold">
+                    <span className=" fw-bold">
                         Herkes için Kodlama 2A Değerlendirme Sınavı
                     </span>
 
                 </Modal.Header>
+
                 <Modal.Body>
 
                     <div className="quiz-screen">

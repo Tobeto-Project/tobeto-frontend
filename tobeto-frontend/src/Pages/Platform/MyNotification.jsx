@@ -58,7 +58,7 @@ const MyNotification = () => {
     <>
       <PlatformHeader />
      <MiddleBanner>
-        <p style={{ fontSize: "6rem" , marginLeft:"12rem"}} className="text-white fw-bold">
+        <p style={{ fontSize: "5rem" , marginLeft:"3rem"}} className="text-white fw-bold">
           Duyurularım
         </p>
       </MiddleBanner>

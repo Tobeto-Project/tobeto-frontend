@@ -37,17 +37,18 @@ const SearchComponent = () => {
     education.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
-    <Container
+    <Container 
       className="text-center mx-5 w-100"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.24)",
         padding: "50px",
         borderRadius: "30px",
+        
       }}
     >
       <h2 className="text-light fs-1">Öğrenmeye Başla!</h2>
       <Row className="mt-4 justify-content-center ">
-        <Col md="11">
+        <Col md={11}>
           <InputGroup>
             <FormControl
               className="rounded-pill pr-5"
