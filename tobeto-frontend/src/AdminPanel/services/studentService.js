@@ -17,12 +17,9 @@ export const fetchAllStudents = async (pageIndex = 0, pageSize = 15) => {
 
 export const deleteStudentById = async (studentId) => {
   try {
-    const response = await axios.delete(`${API_CONFIG.USER_DELETE}`, {
+    const response = await axios.delete(`${API_CONFIG.USER_DELETE}?id=${studentId}`, {
       headers: {
         'Content-Type': 'application/json',
-      },
-      data: {
-        id: studentId
       }
     });
     console.log("Silme işlemi başarılı:", response.data);
