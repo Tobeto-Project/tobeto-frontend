@@ -20,7 +20,7 @@ const KatalogCard = () => {
 
   const handleCardClick = () => {
     if (isLoggedIn) {
-      navigate("/kurs");
+      navigate("/lms");
     } else {
       navigate("/girisyap");
     }

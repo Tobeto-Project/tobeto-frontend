@@ -117,7 +117,7 @@ const Degerlendirmeler = () => {
           </div>
         </section>
         <section>
-          <Container fluid>
+          <Container>
             <Row>
               <Col md={12} className="mb-8">
                 <Card className="dashboard-card">

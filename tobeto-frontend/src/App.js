@@ -91,7 +91,6 @@ function App() {
           <Route path="/CyberSecurity" element={<CyberSecurity />} />
           <Route path="/UI_UX" element={<UI_UX />} />
           <Route path="/bilgi-al" element={<GetInformationFromPrograms/>} />
-          <Route path="/kurs" element={<PrivateRoute><Education /></PrivateRoute>}/>
           <Route path="/platform" element={<PrivateRoute><Platform /></PrivateRoute>}/>
           <Route path="/degerlendirmeler"element={<PrivateRoute><Degerlendirmeler /></PrivateRoute>}/>
           <Route path="/profil"element={<PrivateRoute><Profil /> </PrivateRoute>}/>
@@ -112,7 +111,6 @@ function App() {
           <Route path="/iletisim" element={<ContactUs/>} />
           <Route path="/registermodal" element={<RegistrationModal/>} />
           <Route path="/lms" element={<PrivateRoute><LmsPage/></PrivateRoute>}/>
-          <Route path="/kurs" element={<PrivateRoute> <Education /> </PrivateRoute>}/>
           <Route
             path="/platform"
             element={
