@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 
 
 const RegistrationModal = ({ show, handleClose }) => {
@@ -19,7 +18,7 @@ const RegistrationModal = ({ show, handleClose }) => {
   const handleCommunicationPermissionChange = () => {
     setCommunicationPermission(!communicationPermission);
   };
-  const navigate = useNavigate();
+ 
 
 
 
@@ -29,13 +28,13 @@ const RegistrationModal = ({ show, handleClose }) => {
     
 
         toast.success("Kaydınız oluşturuldu.", {
-          autoClose: 2000,
+          autoClose: 2500,
 
         });
         handleClose();
 
    
-        navigate("/girisyap");
+        
       } catch (error) {
         console.error("Error during registration:", error);
       }
@@ -58,14 +57,14 @@ const RegistrationModal = ({ show, handleClose }) => {
         <Form onSubmit={handleFormSubmit}>
           <div>
             <Form.Group controlId="formAgreement">
-              <p>Kişisel verileriniz <a href="https://tobeto.com/yasal-metinler/kvkk-aydinlatma-metni">Aydınlatma Metni</a> kapsamında işlenmektedir.</p>
+              <p>Kişisel verileriniz <a target="_blank" href="https://tobeto.com/yasal-metinler/kvkk-aydinlatma-metni">Aydınlatma Metni</a> kapsamında işlenmektedir.</p>
               <Form.Check
                 type="checkbox"
                 checked={agreementChecked}
                 onChange={handleAgreementChange}
               />
               <Form.Label>
-                <a href="https://tobeto.com/yasal-metinler/acik-riza-metni">Açık Rıza Metni</a>’ni okudum ve anladım.
+                <a target="_blank" href="https://tobeto.com/yasal-metinler/acik-riza-metni">Açık Rıza Metni</a>’ni okudum ve anladım.
               </Form.Label>
             </Form.Group>
           </div>
@@ -75,7 +74,7 @@ const RegistrationModal = ({ show, handleClose }) => {
                 type="checkbox"
               />
               <Form.Label>
-                <a href="https://tobeto.com/yasal-metinler/tobeto-uyelik-sozlesmesi">Üyelik Sözleşmesi ve Kullanım Koşulları</a>’nı okudum ve anladım.*
+                <a target="_blank" href="https://tobeto.com/yasal-metinler/tobeto-uyelik-sozlesmesi">Üyelik Sözleşmesi ve Kullanım Koşulları</a>’nı okudum ve anladım.*
               </Form.Label>
             </Form.Group>
           </div>
@@ -108,7 +107,7 @@ const RegistrationModal = ({ show, handleClose }) => {
               onChange={handleRecaptchaChange}
             />
           </div>
-          <Button  variant="primary" type="submit" disabled={!agreementChecked} onClick={handleFormSubmit}>
+          <Button href="/girisyap"  variant="primary" type="submit" disabled={!agreementChecked} onClick={handleFormSubmit}>
             Devam Et
           </Button>
         </Form>
