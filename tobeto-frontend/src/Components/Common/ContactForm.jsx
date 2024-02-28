@@ -1,36 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import ReCAPTCHA from "react-google-recaptcha";
+import { getContactInformation } from '../../Services/ContactService';
 
 function ContactPage() {
+  const [contactInfo, setContactInfo] = useState(null);
 
   const handleRecaptchaChange = (value) => {
     console.log("reCAPTCHA value:", value);
   };
 
+  useEffect(() => {
+    const fetchContactInfo = async () => {
+      try {
+        const data = await getContactInformation();
+        if (data && data.items && data.items.length > 0) {
+          setContactInfo(data.items[0]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch contact information:', error);
+      }
+    };
+
+    fetchContactInfo();
+  }, []);
 
   return (
-    <Container className="py-5">
+    <Container>
       <Row className="g-4">
-        <Col md={6} className="d-flex">
+      <Col md={6} className="d-flex">
           <Card className="flex-fill shadow">
             <Card.Body>
               <Card.Title className='text-center my-4 border rounded-pill text-white' style={{backgroundColor:"#812CD9"}}>İletişim Bilgileri</Card.Title>
               <Card.Title className='text-center fw-bold fs-2 mb-5'>İletişim Bilgileri</Card.Title>
               <Card.Text>
-                <p><strong>Firma Adı:</strong> TOBETO</p>
-                <p><strong>Firma Unvan:</strong> Avez Elektronik İletişim Eğitim Danışmanlığı Ticaret Anonim Şirketi</p>
-                <p><strong>Vergi Dairesi:</strong> Beykoz</p>
-                <p><strong>Vergi No:</strong> 1050250859</p>
-                <p><strong>Telefon:</strong> (0216) 331 48 00</p>
-                <p><strong>E-Posta:</strong> info@tobeto.com</p>
-                <p><strong>Adres:</strong> Kavacık, Rüzgarlıbahçe Mah. Çamçınar Sok. No:4 Smart Plaza B Blok Kat:3 34805, Beykoz/İstanbul</p>
-                <p><strong>İstanbul Kolduyor için Telefon:</strong> (0216) 969 22 40</p>
+              {contactInfo ? (
+                <>
+                  <p><strong>Firma Adı:</strong> {contactInfo.companyName}</p>
+                  <p><strong>Firma Unvan:</strong> {contactInfo.companyTitle}</p>
+                  <p><strong>Vergi Dairesi:</strong> {contactInfo.taxDepartment}</p>
+                  <p><strong>Vergi No:</strong> {contactInfo.taxNumber}</p>
+                  <p><strong>Telefon:</strong> {contactInfo.phone}</p>
+                  <p><strong>E-Posta:</strong> {contactInfo.email.trim()}</p>
+                  <p><strong>Adres:</strong> {contactInfo.address}</p>
+                  <p><strong>İstanbul Kolduyor için Telefon:</strong> (0216) 969 22 40</p>
                 <p><strong>İstanbul Kolduyor için E-Posta:</strong> istanbulkolduyor@tobeto.com</p>
+                </>
+              ) : (
+                <p>Veri yükleniyor...</p>
+              )}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
+                        
         <Col md={6} className="d-flex">
           <Card className="flex-fill shadow">
             <Card.Body>

@@ -9,10 +9,11 @@ import BasinBloglar from '../pages/press/BasinBloglar';
 import Employees from '../pages/employees/Employees';
 import Instructors from '../pages/instructors/Instructors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt,faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import '../../AdminPanel/styles/Sidebar.css'
 import ImageList from '../pages/cloudinary/ImageList';
 import NotificationAdmin from '../pages/notification/NotificationAdmin';
+import AdminContact from '../pages/contact/AdminContact';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -37,6 +38,8 @@ const Sidebar = () => {
             return <Card.Body>Eğitimlerim içeriği burada gösterilecek</Card.Body>;
         case "duyuruvehaberler":
             return <Card.Body><NotificationAdmin/></Card.Body>;
+        case "contactus":
+            return <Card.Body><AdminContact/></Card.Body>;
         case "asenkron":
             return <Card.Body>Asenkron Eğitimler</Card.Body>;
         case "senkron":
@@ -68,10 +71,12 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("basindabiz")}><FontAwesomeIcon icon={faNewspaper} /> Basın Yazısı Ekle</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("basindabizbloglarımız")}><FontAwesomeIcon icon={faClipboardList} /> Basın Yazı İşlemleri</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("duyuruvehaberler")}><FontAwesomeIcon icon={faBullhorn} /> Duyuru ve Haberler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("contactus")}><FontAwesomeIcon icon={faAddressCard} /> İletişim Bilgileri</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("asenkron")}><FontAwesomeIcon icon={faGraduationCap} /> Asenkron Eğitimler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("senkron")}><FontAwesomeIcon icon={faGraduationCap} /> Senkron Eğitimler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
-              <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
+              
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>
               </Nav>
             </Col>
