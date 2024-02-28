@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { Form, Button, Image } from 'react-bootstrap';
 import link from '../../Assets/Images/tobeto-black.png';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const RegistrationForm = ({ onSubmit,onModalShow  }) => {
+const RegistrationForm = ({ onSubmit, onModalShow }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -24,6 +24,9 @@ const RegistrationForm = ({ onSubmit,onModalShow  }) => {
         if (password !== confirmPassword) {
             toast.error("Parolalar eşleşmiyor!");
             return;
+        }
+        if (phoneNumber.length !== 11) {
+            toast.error("Numaranız 11 haneli olmalıdır")
         }
 
         try {
@@ -44,7 +47,7 @@ const RegistrationForm = ({ onSubmit,onModalShow  }) => {
         } catch (error) {
             toast.error('Kayıt sırasında hata oluştu');
         }
-        
+
     };
 
     return (
