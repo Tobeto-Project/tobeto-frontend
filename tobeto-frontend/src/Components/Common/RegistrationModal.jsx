@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const RegistrationModal = ({ show, handleClose }) => {
@@ -18,11 +19,26 @@ const RegistrationModal = ({ show, handleClose }) => {
   const handleCommunicationPermissionChange = () => {
     setCommunicationPermission(!communicationPermission);
   };
+  const navigate = useNavigate();
 
-  const handleFormSubmit = () => {
- 
+
+
+  const handleFormSubmit = async () => {
     if (agreementChecked && communicationPermission) {
-      handleClose();
+      try {
+    
+
+        toast.success("Kaydınız oluşturuldu.", {
+          autoClose: 2000,
+
+        });
+        handleClose();
+
+   
+        navigate("/girisyap");
+      } catch (error) {
+        console.error("Error during registration:", error);
+      }
     } else {
       console.log("Please complete all required actions");
     }
@@ -92,7 +108,7 @@ const RegistrationModal = ({ show, handleClose }) => {
               onChange={handleRecaptchaChange}
             />
           </div>
-          <Button href="/girisyap" variant="primary" type="submit" disabled={!agreementChecked} >
+          <Button  variant="primary" type="submit" disabled={!agreementChecked} onClick={handleFormSubmit}>
             Devam Et
           </Button>
         </Form>
