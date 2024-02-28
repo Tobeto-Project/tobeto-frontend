@@ -40,10 +40,7 @@ const RegistrationForm = ({ onSubmit, onModalShow }) => {
 
             await onSubmit(userData);
 
-            toast.success("Kaydınız oluşturuldu.", {
-                autoClose: 2000,
-                // Redirect when the toast closes
-            });
+       
         } catch (error) {
             toast.error('Kayıt sırasında hata oluştu');
         }
