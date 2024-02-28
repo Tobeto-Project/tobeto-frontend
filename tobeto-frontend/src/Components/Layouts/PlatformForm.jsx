@@ -97,7 +97,7 @@ const PlatformForm = () => {
             <Form.Control
               as="textarea"
               rows={3}
-              placeholder="Mahalle ve Sokak"
+              placeholder={userDetails.aboutMe}
             />
           </Form.Group>
 
