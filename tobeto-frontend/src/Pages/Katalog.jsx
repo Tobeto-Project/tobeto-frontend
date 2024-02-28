@@ -20,13 +20,16 @@ const Katalog = () => {
       <ChatBot/>
       <div className="main-content">
         <MiddleBannerKatalog />
-        <Container fluid className="mt-4">
+        <Container className="mt-4">
           <Row>
      
-            <Col sm={5} md={3} lg={3}  className="mb-3 mb-sm-0">   <KatalogMenu menuClassName abc def /></Col>
+            <Col sm={5} md={3} lg={3}  className="mb-3 mb-sm-0">   
+              <KatalogMenu menuClassName abc def />
+            </Col>
 
-       
-            <Col sm={7} md={9} lg={9}  ><KatalogCard /></Col>
+            <Col sm={7} md={9} lg={9}  >
+              <KatalogCard />
+            </Col>
           </Row>
         </Container>
       </div>
