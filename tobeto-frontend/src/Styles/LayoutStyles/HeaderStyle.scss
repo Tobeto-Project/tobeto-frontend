@@ -1,7 +1,8 @@
+$primary-color: rgb(138, 43, 226);
+
 .navbar-img {
     width: 10rem;
     height: 2.2rem;
-    alt: "Logo";
     margin: 4px;
 }
 .nav-button{
@@ -9,15 +10,27 @@
     transition: color 0.3s
 }
 .nav-button:hover{
-    color: blueviolet;
+    color: $primary-color;
 }
-.nav-dropdown-dark-example .dropdown-toggle::after {
-    display: none;
+
+.nav-dropdown-dark-example {
+    .dropdown-toggle::after {
+        display: none;
+        transition: color 1s
+
+    }
 }
-.nav-dropdown-dark-example .dropdown-menu {
-    transform: translateY(-20px);
-    margin-left: 20px;
+
+.nav-dropdown-dark-example {
+    .dropdown-menu {
+        transform: translateY(-20px);
+        margin-left: 20px;
+        background-color: $primary-color;
+    }
 }
+
+
+
 .btn-rainbow {
     position: sticky;
     background: #181717;

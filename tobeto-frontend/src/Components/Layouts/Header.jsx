@@ -10,8 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Store/Actions/authActions.js";
-import "../../Styles/LayoutStyles/HeaderStyle.css";
 import { Dropdown, NavLink, Offcanvas } from "react-bootstrap";
+import "../../Styles/LayoutStyles/HeaderStyle.scss";
 
 const Header = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
