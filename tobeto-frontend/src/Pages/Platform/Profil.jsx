@@ -12,6 +12,21 @@ import 'react-calendar-heatmap/dist/styles.css';
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
+  const radarChartData = [
+    [5, 4, 2.5, 5, 4, 4.5, 5, 4],
+
+  ];
+
+  const radarChartLabels = [
+    'Yeni Dünyaya Hazırlanıyorum',
+    'Profesyonel duruşumu geliştiriyorum',
+    'Kendimi tanıyor ve yönetiyorum',
+    'Yaratıcı ve doğru çözümler geliştiriyorum',
+    'Başkaları ile birlikte çalışıyorum',
+    'Kendimi sürekli geliştiriyorum',
+    'Sonuç ve başarı odaklıyım',
+    'Anlıyorum ve anlaşılıyorum',
+  ];
   return (
     <>
       <PlatformHeader />
@@ -226,71 +241,34 @@ const Profil = () => {
                 <hr />
                 <Row>
                   <Col md={6}>
-                    <RadarChart />
+
+                    {radarChartData.map((data, index) => (
+                      <div key={index} className="mb-4">
+                        <Card>
+                          <Card.Body>
+                            <RadarChart dataSets={[data]} labels={radarChartLabels} />
+                          </Card.Body>
+                        </Card>
+                      </div>
+                    ))}
                   </Col>
                   <Col md={6}>
                     <div className="radar-labels">
-                      <div>
-                        <Row>
-                          <Col md={5} >
-                            <span className="legend legend1 ">puan</span>
-                          </Col>
-                          <Col md={7} ><span className="chart-text px-0">Yeni Dünyaya Hazırlanıyorum</span></Col>
-                        </Row>
-                      </div>
-                      <div>
-                        <Row>
-                          <Col md={5}>
-                            <span className="legend legend2">puan</span>
-                          </Col>
-                          <Col md={7}><span className="chart-text">Profesyonel duruşumu geliştiriyorum</span></Col>
-                        </Row>
-                      </div>
-                      <div>
-                        <Row>
-                          <Col md={5}>
-                            <span className="legend legend3">puan</span>
-                          </Col>
-                          <Col md={7}><span className="chart-text">Kendimi tanıyor ve yönetiyorum</span></Col>
-                        </Row>
-                      </div>
-                      <div>  <Row>
-                        <Col md={5}>
-                          <span className="legend legend4">puan</span>
-                        </Col>
-                        <Col md={7}><span className="chart-text">Yaratıcı ve doğru çözümler geliştiriyorum</span></Col>
-                      </Row></div>
-                      <div>
-                        <Row>
-                          <Col md={5}>
-                            <span className="legend legend5">puan</span>
-                          </Col>
-                          <Col md={7}><span className="chart-text">Başkaları ile birlikte çalışıyorum</span></Col>
-                        </Row>
-                      </div>
-                      <div>
-                        <Row>
-                          <Col md={5}>
-                            <span className="legend legend6">puan</span>
-                          </Col>
-                          <Col md={7}><span className="chart-text">Kendimi sürekli geliştiriyorum</span></Col>
-                        </Row>
-                      </div>
-                      <div>
-                        <Row>
-                          <Col md={5}>
-                            <span className="legend legend7">puan</span>
-                          </Col>
-                          <Col md={7}><span className="chart-text">Sonuç ve başarı odaklıyım</span></Col>
-                        </Row>
-                      </div>
-                      <div>  <Row>
-                        <Col md={5}>
-                          <span className="legend legend8">puan</span>
-                        </Col>
-                        <Col md={7}><span className="chart-text">Anlıyorum ve anlaşılıyorum</span></Col>
-                      </Row></div>
-                    </div>
+                      {radarChartData.map((data, dataIndex) => (
+                        <div key={dataIndex}>
+                          {data.map((point, pointIndex) => (
+                            <Row key={pointIndex}>
+                              <Col md={2}>
+                                <span className={`legend legend${pointIndex + 1}`}>{` ${point}`}</span>
+                              </Col>
+                              <Col md={10}>
+                                <span className="chart-text ">{radarChartLabels[pointIndex]}</span>
+                              </Col>
+                            </Row>
+                          ))}
+                        </div>
+                      ))}</div>
+
                   </Col>
                 </Row>
               </Container>
