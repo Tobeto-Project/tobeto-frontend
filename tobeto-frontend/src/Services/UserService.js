@@ -6,9 +6,8 @@ import * as ENDPOINTS from "./ApiEndpoints";
 
 export const getUserDetailsById = async (userId) => {
   try {
-    console.log("UserService userId", userId);
     const response = await axios.get(
-      `${API_CONFIG.USERS}${ENDPOINTS.GET_LIST_ENDPOINT}?PageIndex=0&PageSize=15`
+      `${API_CONFIG.USERS}${ENDPOINTS.GET_LIST_ENDPOINT}?PageIndex=0&PageSize=100`
     );
     const user = response.data.items.find(u => u.id === userId);
     return user;
@@ -24,5 +23,20 @@ export const fetchUserDetails = async (userId, dispatch) => {
     return userDetails;
   } catch (error) {
     console.error("Kullanıcı bilgileri alınırken hata", error);
+  }
+};
+// Kullanıcıyı güncellemek için servis fonksiyonu
+export const updateUserDetails = async (userData) => {
+  const url = 'http://localhost:5082/api/Users/Update/update';
+  try {
+    const response = await axios.put(url, userData, {
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': '*/*'
+      },
+    });
+    return response.data; // Güncelleme işlemi başarılıysa, yanıtı döndür
+  } catch (error) {
+    throw error; // Hata oluşursa, hatayı fırlat
   }
 };

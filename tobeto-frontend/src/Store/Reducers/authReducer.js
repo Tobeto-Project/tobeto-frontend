@@ -13,7 +13,7 @@ const authReducer = (state = initialState, action) => {
     case "LOGIN_REQUEST":
       return { ...state, isLoading: true, error: null };
       case "LOGIN_SUCCESS":
-        console.log("action.payload.userDetails:", action.payload.userDetails);// userDetails'ı console'a yazdırı
+        console.log("action.payload.userDetails:", action.payload.userDetails);
         return {
             ...state,
             isLoggedIn: true,
