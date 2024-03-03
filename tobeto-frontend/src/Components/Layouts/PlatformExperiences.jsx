@@ -3,10 +3,14 @@ import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import {
   fetchCitiesByCountry,
+  fetchCitiesByCountryTurkey,
   fetchCountries,
 } from "../../Services/LocationService";
-import { addExperience, getExperiencesByUser } from "../../Services/ExperienceService";
-import { toast, ToastContainer } from 'react-toastify';
+import {
+  addExperience,
+  getExperiencesByUser,
+} from "../../Services/ExperienceService";
+import { toast, ToastContainer } from "react-toastify";
 
 const PlatformExperiences = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
@@ -16,39 +20,51 @@ const PlatformExperiences = () => {
   const [position, setPosition] = useState("");
   const [sector, setSector] = useState("");
   const [description, setDescription] = useState("");
-  const [jobStart, setJobStart] = useState('');
-  const [jobCompletion, setJobCompletion] = useState('');
+  const [jobStart, setJobStart] = useState("");
+  const [jobCompletion, setJobCompletion] = useState("");
   const [isCurrentJob, setIsCurrentJob] = useState(false);
   const [experiences, setExperiences] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); 
-  const [cities, setCities] = useState([
-    { id: "1", name: "İstanbul" },
-    { id: "2", name: "Ankara" },
-    { id: "3", name: "İzmir" },
-  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [cities, setCities] = useState([]);
 
+  useEffect(() => {
+    fetchCitiesByCountryTurkey()
+      .then((data) => {
+        setCities(data.items || []);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch cities:", error);
+      });
+  }, []);
 
-
+  const getCityNameById = (cityId) => {
+    const city = cities.find((c) => c.id === cityId);
+    return city ? city.name : "Bilinmeyen Şehir";
+  };
+  
   useEffect(() => {
     if (userDetails && userDetails.id) {
       setIsLoading(true);
       getExperiencesByUser(userDetails.id)
-        .then(data => {
+        .then((data) => {
           setExperiences(data.items); // Assuming the response has an 'items' array
           setIsLoading(false);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Failed to fetch experiences:", error);
           setIsLoading(false);
         });
     }
   }, [userDetails]);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const jobStartIso = jobStart ? new Date(jobStart).toISOString() : null;
-    const jobCompletionIso = isCurrentJob || !jobCompletion ? null : new Date(jobCompletion).toISOString();
-  
+    const jobCompletionIso =
+      isCurrentJob || !jobCompletion
+        ? null
+        : new Date(jobCompletion).toISOString();
+
     const experienceData = {
       userId: userDetails.id,
       cityId: selectedCity,
@@ -62,20 +78,20 @@ const PlatformExperiences = () => {
 
     try {
       await addExperience(experienceData);
-      toast.success('Deneyim başarıyla eklendi.');
+      toast.success("Deneyim başarıyla eklendi.");
       setIsLoading(true); // Optionally refresh experiences list
       getExperiencesByUser(userDetails.id)
-        .then(data => {
+        .then((data) => {
           setExperiences(data.items || []);
           setIsLoading(false);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Failed to refresh experiences:", error);
           setIsLoading(false);
         });
     } catch (error) {
       console.error("Error adding experience:", error);
-      toast.error('Deneyim eklenirken bir hata oluştu. Lütfen tekrar deneyin.');
+      toast.error("Deneyim eklenirken bir hata oluştu. Lütfen tekrar deneyin.");
     }
   };
 
@@ -83,42 +99,47 @@ const PlatformExperiences = () => {
     if (userDetails && userDetails.id) {
       setIsLoading(true);
       getExperiencesByUser(userDetails.id)
-        .then(data => {
+        .then((data) => {
           setExperiences(data.items || []); // Ensuring a fallback to an empty array
           setIsLoading(false);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Failed to fetch experiences:", error);
           setIsLoading(false);
         });
     }
   };
-  
+
   useEffect(() => {
     refreshExperiences();
-  }, [userDetails]); 
-  
+  }, [userDetails]);
 
   const renderExperiences = () => {
     if (isLoading) {
-      return <div>Deneyimler yükleniyor...</div>; 
+      return <div>Deneyimler yükleniyor...</div>;
     }
   
     if (experiences.length === 0) {
-      return <div>Herhangi bir deneyim bulunamadı.</div>; 
+      return <div>Herhangi bir deneyim bulunamadı.</div>;
     }
   
     return experiences.map((experience) => (
       <Card key={experience.id} className="mb-2">
         <Card.Body>
           <Card.Title>{experience.companyName}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{experience.positionName} - {experience.sectorName}</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            {experience.positionName} - {experience.sectorName}
+          </Card.Subtitle>
           <Card.Text>
-            <strong>Şehir:</strong> {/* You might need to fetch the city name using the cityId */}
+            <strong>Şehir:</strong> {getCityNameById(experience.cityId)}
             <br />
-            <strong>Başlangıç Tarihi:</strong> {new Date(experience.jobStart).toLocaleDateString()}
+            <strong>Başlangıç Tarihi:</strong>{" "}
+            {new Date(experience.jobStart).toLocaleDateString()}
             <br />
-            <strong>Bitiş Tarihi:</strong> {experience.jobCompletion ? new Date(experience.jobCompletion).toLocaleDateString() : 'Devam Ediyor'}
+            <strong>Bitiş Tarihi:</strong>{" "}
+            {experience.jobCompletion
+              ? new Date(experience.jobCompletion).toLocaleDateString()
+              : "Devam Ediyor"}
             <br />
             <strong>Açıklama:</strong> {experience.description}
           </Card.Text>
@@ -127,7 +148,6 @@ const PlatformExperiences = () => {
     ));
   };
   
-
 
   return (
     <div>
@@ -172,27 +192,28 @@ const PlatformExperiences = () => {
               </Form.Group>
             </Col>
           </Row>
-        {/* Şehir Seçimi */}
-        <Row className="mt-2">
-          <Col>
-            <Form.Group controlId="formCity">
-              <Form.Label>Şehir Seçiniz*</Form.Label>
-              <Form.Control
-                as="select"
-                value={selectedCity}
-                onChange={(e) => setSelectedCity(e.target.value)}
-                required
-              >
-                <option value="">İl Seçiniz</option>
-                {cities.map((city) => (
-                  <option key={city.id} value={city.id}>
-                    {city.name}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-          </Col>
-        </Row>
+          {/* Şehir Seçimi */}
+          <Row className="mt-2">
+            <Col>
+              <Form.Group controlId="formCity">
+                <Form.Label>Şehir Seçiniz*</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                  required
+                >
+                  <option value="">Şehir Seçiniz</option>
+                  {cities.map((city) => (
+                    <option key={city.id} value={city.id}>
+                      {city.name}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+
           {/* İş Başlangıcı ve Bitişi */}
           <Row className="mt-2">
             <Col>
@@ -241,12 +262,12 @@ const PlatformExperiences = () => {
           </Button>
         </Form>
         <Row className="mt-3">
-        <Col>
-          <h5>Deneyimlerim</h5>
-          {renderExperiences()}
-        </Col>
+          <Col>
+            <h5>Deneyimlerim</h5>
+            {renderExperiences()}
+          </Col>
         </Row>
-        <ToastContainer/>
+        <ToastContainer />
       </Container>
     </div>
   );
