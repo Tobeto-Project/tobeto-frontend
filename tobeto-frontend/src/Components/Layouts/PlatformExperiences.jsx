@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import {
   fetchCitiesByCountry,
   fetchCountries,
 } from "../../Services/LocationService";
-import { addExperience } from "../../Services/ExperienceService";
+import { addExperience, getExperiencesByUser } from "../../Services/ExperienceService";
+import { toast, ToastContainer } from 'react-toastify';
 
 const PlatformExperiences = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
-  const [countries, setCountries] = useState([]);
-  const [cities, setCities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -20,25 +19,36 @@ const PlatformExperiences = () => {
   const [jobStart, setJobStart] = useState('');
   const [jobCompletion, setJobCompletion] = useState('');
   const [isCurrentJob, setIsCurrentJob] = useState(false);
-  
-  useEffect(() => {
-    fetchCountries().then(setCountries);
-  }, []);
+  const [experiences, setExperiences] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); 
+  const [cities, setCities] = useState([
+    { id: "1", name: "İstanbul" },
+    { id: "2", name: "Ankara" },
+    { id: "3", name: "İzmir" },
+  ]);
+
+
 
   useEffect(() => {
-    if (selectedCountry) {
-      fetchCitiesByCountry(selectedCountry).then(setCities);
-    } else {
-      setCities([]);
+    if (userDetails && userDetails.id) {
+      setIsLoading(true);
+      getExperiencesByUser(userDetails.id)
+        .then(data => {
+          setExperiences(data.items); // Assuming the response has an 'items' array
+          setIsLoading(false);
+        })
+        .catch(error => {
+          console.error("Failed to fetch experiences:", error);
+          setIsLoading(false);
+        });
     }
-  }, [selectedCountry]);
-
+  }, [userDetails]);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const jobStartIso = new Date(jobStart).toISOString();
-    const jobCompletionIso = isCurrentJob
-      ? null
-      : new Date(jobCompletion).toISOString();
+    const jobStartIso = jobStart ? new Date(jobStart).toISOString() : null;
+    const jobCompletionIso = isCurrentJob || !jobCompletion ? null : new Date(jobCompletion).toISOString();
+  
     const experienceData = {
       userId: userDetails.id,
       cityId: selectedCity,
@@ -47,17 +57,77 @@ const PlatformExperiences = () => {
       sectorName: sector,
       description,
       jobStart: jobStartIso,
-      jobCompletion: jobCompletionIso
+      jobCompletion: jobCompletionIso,
     };
-    console.log("Gönderilecek veri:", experienceData);
 
     try {
       await addExperience(experienceData);
-      console.log("Deneyim başarıyla eklendi");
+      toast.success('Deneyim başarıyla eklendi.');
+      setIsLoading(true); // Optionally refresh experiences list
+      getExperiencesByUser(userDetails.id)
+        .then(data => {
+          setExperiences(data.items || []);
+          setIsLoading(false);
+        })
+        .catch(error => {
+          console.error("Failed to refresh experiences:", error);
+          setIsLoading(false);
+        });
     } catch (error) {
-      console.error("Deneyim eklenirken hata oluştu", error);
+      console.error("Error adding experience:", error);
+      toast.error('Deneyim eklenirken bir hata oluştu. Lütfen tekrar deneyin.');
     }
   };
+
+  const refreshExperiences = () => {
+    if (userDetails && userDetails.id) {
+      setIsLoading(true);
+      getExperiencesByUser(userDetails.id)
+        .then(data => {
+          setExperiences(data.items || []); // Ensuring a fallback to an empty array
+          setIsLoading(false);
+        })
+        .catch(error => {
+          console.error("Failed to fetch experiences:", error);
+          setIsLoading(false);
+        });
+    }
+  };
+  
+  useEffect(() => {
+    refreshExperiences();
+  }, [userDetails]); 
+  
+
+  const renderExperiences = () => {
+    if (isLoading) {
+      return <div>Deneyimler yükleniyor...</div>; 
+    }
+  
+    if (experiences.length === 0) {
+      return <div>Herhangi bir deneyim bulunamadı.</div>; 
+    }
+  
+    return experiences.map((experience) => (
+      <Card key={experience.id} className="mb-2">
+        <Card.Body>
+          <Card.Title>{experience.companyName}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{experience.positionName} - {experience.sectorName}</Card.Subtitle>
+          <Card.Text>
+            <strong>Şehir:</strong> {/* You might need to fetch the city name using the cityId */}
+            <br />
+            <strong>Başlangıç Tarihi:</strong> {new Date(experience.jobStart).toLocaleDateString()}
+            <br />
+            <strong>Bitiş Tarihi:</strong> {experience.jobCompletion ? new Date(experience.jobCompletion).toLocaleDateString() : 'Devam Ediyor'}
+            <br />
+            <strong>Açıklama:</strong> {experience.description}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    ));
+  };
+  
+
 
   return (
     <div>
@@ -102,46 +172,27 @@ const PlatformExperiences = () => {
               </Form.Group>
             </Col>
           </Row>
-          {/* Sektör ve Şehir */}
-          <Row className="mt-2">
-            <Col>
-              <Form.Group controlId="formCountry">
-                <Form.Label>Ülke Seçiniz*</Form.Label>
-                <Form.Control
-                  as="select"
-                  value={selectedCountry}
-                  onChange={(e) => setSelectedCountry(e.target.value)}
-                  required
-                >
-                  <option value="">Ülke Seçiniz</option>
-                  {countries.map((country) => (
-                    <option key={country.id} value={country.id}>
-                      {country.name}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Col>
-
-            <Col>
-              <Form.Group controlId="formCity">
-                <Form.Label>Şehir Seçiniz*</Form.Label>
-                <Form.Control
-                  as="select"
-                  value={selectedCity}
-                  onChange={(e) => setSelectedCity(e.target.value)}
-                  required
-                >
-                  <option value="">İl Seçiniz</option>
-                  {cities.map((city) => (
-                    <option key={city.id} value={city.id}>
-                      {city.name}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
+        {/* Şehir Seçimi */}
+        <Row className="mt-2">
+          <Col>
+            <Form.Group controlId="formCity">
+              <Form.Label>Şehir Seçiniz*</Form.Label>
+              <Form.Control
+                as="select"
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+                required
+              >
+                <option value="">İl Seçiniz</option>
+                {cities.map((city) => (
+                  <option key={city.id} value={city.id}>
+                    {city.name}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
           {/* İş Başlangıcı ve Bitişi */}
           <Row className="mt-2">
             <Col>
@@ -189,6 +240,13 @@ const PlatformExperiences = () => {
             Kaydet
           </Button>
         </Form>
+        <Row className="mt-3">
+        <Col>
+          <h5>Deneyimlerim</h5>
+          {renderExperiences()}
+        </Col>
+        </Row>
+        <ToastContainer/>
       </Container>
     </div>
   );

@@ -28,14 +28,14 @@ const PlatformEducationLife = () => {
         try {
             const response = await getUserEducations(userDetails.id);
             if (response && Array.isArray(response.items)) {
-                setEducations(response.items); // Veriyi 'items' dizisi üzerinden ayarla
-                console.log("Eğitim bilgileri:", response.items); // Kontrol için eklendi
+                setEducations(response.items);
+                console.log("Eğitim bilgileri:", response.items); // 
             } else {
-                setEducations([]); // Hata durumunda veya boş veri geldiğinde dizi boşalt
+                setEducations([]);
             }
         } catch (error) {
             console.error("Eğitim bilgileri getirilirken bir hata oluştu", error);
-            setEducations([]); // Hata durumunda dizi boşalt
+            setEducations([]);
         }
     };
     
