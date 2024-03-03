@@ -1,6 +1,7 @@
 import axios from "axios";
+import API_URL from "./config";
 
-const API_BASE_URL = "http://localhost:5082/api";
+const API_BASE_URL = API_URL;
 
 // Ülkeleri çeken servis fonksiyonu
 export const fetchCountries = () => {

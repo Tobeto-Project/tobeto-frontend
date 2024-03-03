@@ -3,6 +3,7 @@ import axios from "axios";
 import { setUserDetails } from "../Store/Actions/userActions";
 import API_CONFIG from "./ApiConfig";
 import * as ENDPOINTS from "./ApiEndpoints";
+import API_URL from "./config";
 
 export const getUserDetailsById = async (userId) => {
   try {
@@ -27,7 +28,7 @@ export const fetchUserDetails = async (userId, dispatch) => {
 };
 // Kullanıcıyı güncellemek için servis fonksiyonu
 export const updateUserDetails = async (userData) => {
-  const url = 'http://localhost:5082/api/Users/Update/update';
+  const url = `${API_URL}/Users/Update/update`;
   try {
     const response = await axios.put(url, userData, {
       headers: {

@@ -14,6 +14,8 @@ import '../../AdminPanel/styles/Sidebar.css'
 import ImageList from '../pages/cloudinary/ImageList';
 import NotificationAdmin from '../pages/notification/NotificationAdmin';
 import AdminContact from '../pages/contact/AdminContact';
+import AddEducation from '../pages/education/AddEducation';
+import Educations from '../pages/education/Educations';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -40,10 +42,10 @@ const Sidebar = () => {
             return <Card.Body><NotificationAdmin/></Card.Body>;
         case "contactus":
             return <Card.Body><AdminContact/></Card.Body>;
-        case "asenkron":
-            return <Card.Body>Asenkron Eğitimler</Card.Body>;
-        case "senkron":
-            return <Card.Body>Senkron Eğitimler</Card.Body>;
+        case "egitim":
+            return <Card.Body><AddEducation/></Card.Body>;
+        case "egitimler":
+            return <Card.Body> <Educations/> </Card.Body>;
         case "dil":
             return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
         case "image":
@@ -73,8 +75,8 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("duyuruvehaberler")}><FontAwesomeIcon icon={faBullhorn} /> Duyuru ve Haberler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("contactus")}><FontAwesomeIcon icon={faAddressCard} /> İletişim Bilgileri</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
-              <Nav.Link className='text-white' onClick={() => setActiveTab("asenkron")}><FontAwesomeIcon icon={faGraduationCap} /> Asenkron Eğitimler</Nav.Link>
-              <Nav.Link className='text-white' onClick={() => setActiveTab("senkron")}><FontAwesomeIcon icon={faGraduationCap} /> Senkron Eğitimler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("egitim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitim Ekle</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("egitimler")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
               
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>

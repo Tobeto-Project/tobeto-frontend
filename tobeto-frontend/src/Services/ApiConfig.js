@@ -55,4 +55,11 @@ export default {
 
   AUTH_EMPLOYEES: `${API_URL}${ENDPOINTS.AUTH_EMPLOYEE_ENDPOINT}`, //http://localhost:5082/api/AuthEmployee
   AUTH_EMPLOYEES_REGISTER: `${API_URL}${ENDPOINTS.AUTH_EMPLOYEE_REGISTER_ENDPOINT}`, //http://localhost:5082/api/AuthEmployee/register
+
+  CONTACT_INFORMATIONS: `${API_URL}${ENDPOINTS.CONTACT_INFORMATIONS_ENDPOINT}`, //http://localhost:5082/api/ContactInformations
+  CONTACT_INFORMATIONS_GETLIST: `${API_URL}${ENDPOINTS.CONTACT_INFORMATIONS_GETLIST_ENDPOINT}`, //http://localhost:5082/api/ContactInformations/getList
+  CONTACT_INFORMATIONS_UPDATE: `${API_URL}${ENDPOINTS.CONTACT_INFORMATIONS_UPDATE_ENDPOINT}`, //http://localhost:5082/api/ContactInformations/update
+
+  EXPERIENCES: `${API_URL}${ENDPOINTS.EXPERIENCES_ENDPOINT}`, //http://localhost:5082/api/Experiences
+  EXPERIENCES_ADD: `${API_URL}${ENDPOINTS.EXPERIENCES_ADD_ENDPOINT}`, //http://localhost:5082/api/Experiences/add
 };
