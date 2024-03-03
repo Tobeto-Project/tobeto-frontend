@@ -41,7 +41,7 @@ const PlatformExperiences = () => {
     const city = cities.find((c) => c.id === cityId);
     return city ? city.name : "Bilinmeyen Şehir";
   };
-  
+
   useEffect(() => {
     if (userDetails && userDetails.id) {
       setIsLoading(true);
@@ -118,36 +118,39 @@ const PlatformExperiences = () => {
     if (isLoading) {
       return <div>Deneyimler yükleniyor...</div>;
     }
-  
+
     if (experiences.length === 0) {
       return <div>Herhangi bir deneyim bulunamadı.</div>;
     }
-  
+
     return experiences.map((experience) => (
       <Card key={experience.id} className="mb-2">
         <Card.Body>
-          <Card.Title>{experience.companyName}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            {experience.positionName} - {experience.sectorName}
-          </Card.Subtitle>
+          <Row><p style={{color:'rgba(153, 51, 255, 0.66)'}}>{experience.jobStart}-{experience.jobCompletion
+            ? new Date(experience.jobCompletion).toLocaleDateString()
+            : "Devam Ediyor"} </p>
+          </Row>
+          <Row>
+            <Col><strong style={{color:'#828282'}}>Kurum Adı</strong></Col>
+            <Col><strong style={{color:'#828282'}}>Pozisyon</strong></Col>
+            <Col><strong style={{color:'#828282'}}>Sektör</strong></Col>
+            <Col><strong style={{color:'#828282'}}>Şehir</strong></Col>
+          </Row>
+          <Row>
+            <Col>{experience.companyName}</Col>
+            <Col>{experience.positionName}</Col>
+            <Col>{experience.sectorName}</Col>
+            <Col>{getCityNameById(experience.cityId)}s</Col>
+          </Row>
+          <br/>
           <Card.Text>
-            <strong>Şehir:</strong> {getCityNameById(experience.cityId)}
-            <br />
-            <strong>Başlangıç Tarihi:</strong>{" "}
-            {new Date(experience.jobStart).toLocaleDateString()}
-            <br />
-            <strong>Bitiş Tarihi:</strong>{" "}
-            {experience.jobCompletion
-              ? new Date(experience.jobCompletion).toLocaleDateString()
-              : "Devam Ediyor"}
-            <br />
-            <strong>Açıklama:</strong> {experience.description}
+            <strong style={{color:'#828282'}}>Açıklama:</strong> {experience.description}
           </Card.Text>
         </Card.Body>
       </Card>
     ));
   };
-  
+
 
   return (
     <div>
