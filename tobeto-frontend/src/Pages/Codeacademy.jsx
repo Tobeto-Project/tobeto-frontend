@@ -3,7 +3,6 @@ import React from "react";
 import Banner from "../Components/Layouts/Banner";
 import Header from "../Components/Layouts/Header";
 import Footer from "../Components/Layouts/Footer";
-import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/esm/Button";
@@ -26,7 +25,7 @@ const Codeacademy = () => {
           <div>
             <Row>
               <Col md={3}>
-                <img src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fca-1.cf0e22ca.png&w=256&q=75" />
+                <img loading="lazy" src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fca-1.cf0e22ca.png&w=256&q=75" />
               </Col>
               <Col md={8}>
                 <p className="fs-4">

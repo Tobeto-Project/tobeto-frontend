@@ -41,7 +41,7 @@ const HomePage = () => {
         </Container>
 
         <Row className="m-auto text-end mt-5 mx-5 ">
-          <a className="d-block  " href="/egitimler" class="tab-link mobile-mx-auto">Tümünü İncele &gt;</a>
+          <a className="d-block tab-link mobile-mx-auto " href="/egitimler">Tümünü İncele &gt;</a>
         </Row>
 
 
