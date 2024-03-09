@@ -63,7 +63,7 @@ function App() {
   
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         {isLoading ? (
           <Spinner />
         ) : (
