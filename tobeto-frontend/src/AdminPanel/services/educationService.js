@@ -1,8 +1,23 @@
-import API_URL from "../../Services/config"
+//educationService1.js
+
+import API_URL from "../../Services/config";
 import axios from "axios";
 
-
 const API_BASE_URL = API_URL;
+
+export const fetchInstructors = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/Instructors/getList`, {
+      params: { PageIndex: 0, PageSize: 100 },
+    });
+
+    console.log("instructors", response.data);
+    return response.data.items || [];
+  } catch (error) {
+    console.error("Error fetching instructors:", error);
+    throw error;
+  }
+};
 
 const educationService = {
   getCourseTypes: async () => {
@@ -88,16 +103,37 @@ const educationService = {
     }
   },
 
-  addLesson: async (moduleId, lessonName, instructorId) => {
+  addLesson: async (moduleId, lessonName) => {
     try {
+      const currentDatetime = new Date();
+      const isoDatetimeString = currentDatetime.toISOString();
+
+      // Fetch instructors
+      const instructors = await fetchInstructors();
+
+    
+      const selectedInstructor =
+        instructors.length > 0 ? instructors[0].id : null;
+
       const response = await axios.post(`${API_BASE_URL}/AsyncLessons/add`, {
         CourseModuleId: moduleId,
         Name: lessonName,
-        InstructorId: instructorId, // Add the instructorId to the request payload
+        InstructorId: selectedInstructor,
+        Video: "string",
+        durationTime: isoDatetimeString,
+        timeSpent: isoDatetimeString,
       });
+
+      console.log("response", response.data);
       return response.data;
     } catch (error) {
-      throw error;
+      if (error.response && error.response.data) {
+        console.error("Error adding lesson:", error.response.data);
+        throw error.response.data; // or handle the error in a way that makes sense for your application
+      } else {
+        console.error("Error adding lesson:", error.message);
+        throw error;
+      }
     }
   },
 };

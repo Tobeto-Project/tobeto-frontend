@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Button, Container, ProgressBar } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { mapCourseToEducationData } from '../../Services/EducationService';
 
 const LmsBar = ({ lessonName }) => {
     const [progress, setProgress] = useState(0);
@@ -13,10 +14,31 @@ const LmsBar = ({ lessonName }) => {
     const [bookmarkToast, setBookmarkToast] = useState(false);
     const [likeIconColor, setLikeIconColor] = useState('text-secondary');
     const [bookmarkIconColor, setBookmarkIconColor] = useState('text-secondary');
+    const [educationTitle, setEducationTitle] = useState('');
+    const [loading, setLoading] = useState(true);
+
+
+
 
     useEffect(() => {
-        setProgress(50);
+        setLoading(true);
+
+        // Map courses and set the education title
+        mapCourseToEducationData()
+            .then((educationDataMapped) => {
+                console.log("Mapped Education Data in LmsBar:", educationDataMapped);
+
+                // Assuming the first item in the mapped data is relevant
+                if (educationDataMapped.length > 0) {
+                    setEducationTitle(educationDataMapped[0].EducationTitle);
+                }
+            })
+            .catch(error => console.error('Error mapping course data:', error))
+            .finally(() => setLoading(false));
     }, []);
+
+
+
 
     // LocalStorage'dan kayıtlı lessonName'leri al
     const likedLessons = JSON.parse(localStorage.getItem('likedLessons')) || [];
@@ -65,7 +87,7 @@ const LmsBar = ({ lessonName }) => {
                     <img src="https://lms.tobeto.com/tobeto/eep/common_show_picture_cached.aspx?pQS=eaAjNZ0uaOEJMI14cKs7Ww%3d%3d" alt="Resim" className="img-fluid" />
                 </Col>
                 <Col xs={6} md={8}>
-                    <h1 className="h3 font-weight-bold">Softskill: İletişim Becerileri</h1>
+                    <h1 className="h3 font-weight-bold">{educationTitle}</h1>
                     <p className="text-muted">30 Haziran 2024 tarihine kadar bitebilirsin</p>
                 </Col>
                 <Col xs={4} md={3} className="d-flex align-items-center justify-content-end">
