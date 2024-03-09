@@ -9,13 +9,14 @@ import BasinBloglar from '../pages/press/BasinBloglar';
 import Employees from '../pages/employees/Employees';
 import Instructors from '../pages/instructors/Instructors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt,faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt,faAddressCard, faBlackboard } from '@fortawesome/free-solid-svg-icons';
 import '../../AdminPanel/styles/Sidebar.css'
 import ImageList from '../pages/cloudinary/ImageList';
 import NotificationAdmin from '../pages/notification/NotificationAdmin';
 import AdminContact from '../pages/contact/AdminContact';
 import AddEducation from '../pages/education/AddEducation';
 import Educations from '../pages/education/Educations';
+import Exam from '../pages/exam/Exam';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -46,6 +47,8 @@ const Sidebar = () => {
             return <Card.Body><AddEducation/></Card.Body>;
         case "egitimler":
             return <Card.Body> <Educations/> </Card.Body>;
+            case "sınavlar":
+              return <Card.Body><Exam/></Card.Body>
         case "dil":
             return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
         case "image":
@@ -77,6 +80,7 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("image")}><FontAwesomeIcon icon={faImage} /> Görseller</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("egitim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitim Ekle</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("egitimler")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimler</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("sınavlar")}><FontAwesomeIcon icon={faBlackboard} /> Sınavlar</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
               
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>
