@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 const EducationCard = ({ data }) => {
+    console.log("educationcardata", data)
 
     return (
         <Card className="education-card">

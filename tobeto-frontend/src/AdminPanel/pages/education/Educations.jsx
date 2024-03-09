@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Modal, Form, Table } from 'react-bootstrap';
 import educationService from '../../services/educationService';
 import instructorsService from '../../services/instructorsService';
+import axios from 'axios';
+import API_CONFIG from '../../../Services/ApiConfig';
 
 const Educations = () => {
     const [courses, setCourses] = useState([]);
@@ -16,7 +18,11 @@ const Educations = () => {
     const [selectedModuleId, setSelectedModuleId] = useState(null);
     const [selectedLessons, setSelectedLessons] = useState([]);
     const [selectedModuleIdForLessons, setSelectedModuleIdForLessons] = useState(null);
-    const [instructorData, setInstructorData] = useState([]);
+    const [instructors, setInstructors] = useState([]);
+    const [selectedInstructorId, setSelectedInstructorId] = useState(null);
+
+
+
 
     useEffect(() => {
         educationService.getCourses()
@@ -25,7 +31,27 @@ const Educations = () => {
                 console.error('Error fetching courses:', error);
             });
     }, []);
-    
+
+
+    // Fetch courses
+
+
+    // Fetch instructors
+    const fetchInstructors = async () => {
+        try {
+            const response = await axios.get(`${API_CONFIG.INSTRUCTORS_GETLIST}`, {
+                params: { PageIndex: 0, PageSize: 100 },
+            });
+
+            console.log("instructors", response.data)
+            setInstructors(response.data.items || []);
+        } catch (error) {
+            console.error('Error fetching instructors:', error);
+        }
+    };
+
+
+
 
     const handleShowAddModuleModal = (course) => {
         setSelectedCourse(course);
@@ -60,6 +86,7 @@ const Educations = () => {
                         .then(items => {
                             const filteredModules = items.filter(module => module.courseId === CourseId);
                             setCourseModules(filteredModules);
+                            fetchInstructors();
                             setShowDetailsModal(true);
                         })
                         .catch(error => {
@@ -74,14 +101,18 @@ const Educations = () => {
             });
     };
 
-    const handleShowLessons = (moduleId) => {
+    const handleShowLessons = (moduleId, instructorId) => {
         const selectedModule = courseModules.find(module => module.id === moduleId);
 
         if (selectedModule) {
             educationService.getLessons(moduleId)
                 .then(items => {
-                    console.log("itemleeerrr", items);
+                    console.log("gelenderslerrr", items);
                     setSelectedLessons(items);
+
+             
+                    setSelectedInstructorId(instructorId);
+
                     setSelectedModuleIdForLessons(moduleId);
                     setShowAddLessonModal(true);
                 })
@@ -102,15 +133,30 @@ const Educations = () => {
     };
 
     const handleAddLesson = () => {
-        educationService.addLesson(selectedModuleIdForLessons, newLessonName)
+        educationService.addLesson(
+            selectedModuleIdForLessons,
+            newLessonName,
+           
+        )
             .then(data => {
                 console.log('Lesson added successfully:', data);
                 handleCloseAddLessonModal();
             })
             .catch(error => {
                 console.error('Error adding lesson:', error);
+                // Log additional details about the response
+                if (error.response) {
+                    console.error('Response status:', error.response.status);
+                    console.error('Response data:', error.response.data);
+                }
             });
     };
+
+
+
+
+
+
 
     return (
         <div>
@@ -168,6 +214,17 @@ const Educations = () => {
                     <Modal.Title>Course Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <h2>Instructors:</h2>
+                    <ul>
+                        {instructors.map(instructor => (
+                            <li key={instructor.id}>{instructor.firstName + ' ' + instructor.lastName}</li>
+                        ))}
+                    </ul>
+
+
+
+
+                    <h2>Course Modules:</h2>
                     <ul>
                         {courseModules.map(module => (
                             <li key={module.id}>
@@ -175,7 +232,7 @@ const Educations = () => {
                                 <Button variant="primary" onClick={() => handleShowLessons(module.id)}>
                                     Show Lessons
                                 </Button>
-                                {/* ... (other buttons or actions for the module) */}
+
                             </li>
                         ))}
                     </ul>
@@ -194,6 +251,17 @@ const Educations = () => {
                                 <li key={filteredLesson.id}>{filteredLesson.name}</li>
                             ))}
                     </ul>
+
+                    {/* Input for lesson details */}
+                    <Form.Group controlId="newLessonName">
+                        <Form.Label>Lesson Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter lesson name"
+                            value={newLessonName}
+                            onChange={(e) => setNewLessonName(e.target.value)}
+                        />
+                    </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseAddLessonModal}>
