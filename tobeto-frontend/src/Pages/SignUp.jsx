@@ -15,26 +15,24 @@ import ChatBot from '../Components/Common/ChatBot';
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const [showModal, setShowModal] = useState(false);
 
-  const handleModalShow = () => {
-    setShowModal(true);
-  };
+
+
 
   const handleModalClose = () => {
-    setShowModal(false);
+   
     navigate.push("/registermodal");
   };
 
   const handleSubmit = async (userData) => {
     try {
       await register(userData);
-      handleModalShow();
+ 
     
      
     } catch (error) {
    
-      throw error;
+      // throw error;
     }
   };
 
@@ -73,11 +71,12 @@ const SignUp = () => {
                       type="submit"
                       className="btn-lg btn-info rounded-pill px-5 mb-5"
                       style={{ minWidth: '180px' }}
-                      onClick={handleModalShow}
+                   onClick={() => toast.info("lütfen kayıt ol formunu doldurunuz")}
+                
                     >
                       Kayıt Ol
                     </Button>
-                    <RegistrationModal show={showModal} handleClose={handleModalClose} />
+                    <RegistrationModal  />
                     </>
                     <ToastContainer position="bottom-right" autoClose={2000} />
                   </div>

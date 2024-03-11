@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { Form, Button, Image } from 'react-bootstrap';
 import link from '../../Assets/Images/tobeto-black.png';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import RegistrationModal from './RegistrationModal';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationForm = ({ onSubmit, onModalShow }) => {
     const [firstName, setFirstName] = useState('');
@@ -12,8 +14,24 @@ const RegistrationForm = ({ onSubmit, onModalShow }) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
-    const handleFormSubmit = async (event) => {
+    const navigate = useNavigate();
+
+    
+
+    const handleModalClose = () => {
+        setShowModal(false);
+        navigate.push("/registermodal");
+    };
+
+
+    const handleModalShow = () => {
+        setShowModal(true);
+    };
+
+
+    const handleFormSubmit =  (event) => {
         event.preventDefault();
 
         if (!firstName || !lastName || !email || !phoneNumber || !password || !confirmPassword) {
@@ -25,27 +43,27 @@ const RegistrationForm = ({ onSubmit, onModalShow }) => {
             toast.error("Parolalar eşleşmiyor!");
             return;
         }
+
         if (phoneNumber.length !== 11) {
-            toast.error("Numaranız 11 haneli olmalıdır")
+            toast.error("Numaranız 11 haneli olmalıdır");
+            return;
         }
 
-        try {
-            const userData = {
-                firstName,
-                lastName,
-                email,
-                password,
-                phoneNumber
-            };
+        const userData = {
+            firstName,
+            lastName,
+            email,
+            password,
+            phoneNumber
+        };
 
-            await onSubmit(userData);
-
-       
-        } catch (error) {
-            toast.error('Kayıt sırasında hata oluştu');
-        }
-
+         onSubmit(userData);
+        handleModalShow();
     };
+
+
+
+
 
     return (
         <Form className="my-4 mb-5 p-5 btn-rainbow-card" onSubmit={handleFormSubmit}>
@@ -113,9 +131,18 @@ const RegistrationForm = ({ onSubmit, onModalShow }) => {
                     variant="primary"
                     type="submit"
                     className="btn-success rounded-pill px-5 btn-lg"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        handleFormSubmit(e);
+                    }}
                 >
                     Kayıt Ol
                 </Button>
+
+
+
+                <RegistrationModal show={showModal} handleClose={handleModalClose} />
+                <ToastContainer position="bottom-right" autoClose={2000} />
             </div>
 
             <div className="text-center mt-3">
