@@ -2,34 +2,31 @@ import React, { useState } from 'react';
 import { Button, Modal, Form, Navbar, Container, Nav } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { register } from '../../Services/RegisterService';
+import { addExam } from '../services/examService';
 
 const ExamsSearchMenu = ({ onSearchChange }) => {
   const [show, setShow] = useState(false);
   const [examName, setExamName] = useState('');
   const [examDate, setExamDate] = useState('');
-  const [confirmExamName, setConfirmExamName] = useState('');
 
-
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setExamName('');
+    setExamDate('');
+  };
   const handleShow = () => setShow(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (examName !== confirmExamName) {
-      toast.error("Sınav adları eşleşmiyor!");
-      return;
-    }
-  
+
     try {
       const examData = {
         examName,
         examDate,
-    
       };
-      await register(examData);
+      await addExam(examData);
       toast.success("Sınav başarıyla kaydedildi.");
-      handleClose(); 
+      handleClose();
     } catch (error) {
       console.error(error);
       if (error.response && error.response.data) {
@@ -40,34 +37,33 @@ const ExamsSearchMenu = ({ onSearchChange }) => {
       }
     }
   };
-
   return (
     <>
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container fluid className='mx-4'>
-        <Navbar.Brand href="#">Sınav Bilgileri</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-          </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Sınav Ara"
-              className="me-2"
-              aria-label="Search"
-              onChange={onSearchChange} 
-            />
-           <Button variant="outline-success" className='ms-2' onClick={handleShow}>Sınav Ekle</Button>
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container fluid className='mx-4'>
+          <Navbar.Brand href="#">Sınav Bilgileri</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: '100px' }}
+              navbarScroll
+            >
+            </Nav>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Sınav Ara"
+                className="me-2"
+                aria-label="Search"
+                onChange={onSearchChange}
+              />
+              <Button variant="outline-success" className='ms-2' onClick={handleShow}>Sınav Ekle</Button>
 
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
 
       <Modal show={show} onHide={handleClose}>

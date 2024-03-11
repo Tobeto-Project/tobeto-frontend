@@ -55,8 +55,10 @@ export const CONTACT_INFORMATIONS_UPDATE_ENDPOINT = `${CONTACT_INFORMATIONS_ENDP
 export const EXPERIENCES_ENDPOINT = "/Experiences";
 export const EXPERIENCES_ADD_ENDPOINT = `${EXPERIENCES_ENDPOINT}/add`;
 
-
-
+export const EXAMS_ENDPOINT ="/Exams";
+export const EXAMS_ADD_ENDPOINT= `${EXAMS_ENDPOINT}/add`;
+export const EXAMS_GET_LIST= `${EXAMS_ENDPOINT}/getlist`;
+export const EXAM_DELETE= `${EXAMS_ENDPOINT}/delete`;
 
 
 
