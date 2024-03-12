@@ -1,8 +1,16 @@
+// EducationCard.js
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const EducationCard = ({ data }) => {
-    console.log("educationcardata", data)
+const EducationCard = ({ data, setEducationTitle }) => {
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        setEducationTitle(data.EducationTitle);
+        navigate('/lms');
+    };
 
     return (
         <Card className="education-card">
@@ -12,7 +20,7 @@ const EducationCard = ({ data }) => {
                 <Card.Subtitle className="mb-2 text-muted">
                     {data.EducationDate} {data.EducationBroadcastTime}
                 </Card.Subtitle>
-                <Button href='/lms' variant="primary" className="btn-primary mt-2 text-white">
+                <Button onClick={handleButtonClick} variant="primary" className="btn-primary mt-2 text-white">
                     Eğitime Git
                 </Button>
             </Card.Body>
@@ -20,4 +28,8 @@ const EducationCard = ({ data }) => {
     );
 };
 
-export default EducationCard;
+const mapDispatchToProps = (dispatch) => ({
+    setEducationTitle: (title) => dispatch({ type: 'SET_EDUCATION_TITLE', payload: title }),
+});
+
+export default connect(null, mapDispatchToProps)(EducationCard);

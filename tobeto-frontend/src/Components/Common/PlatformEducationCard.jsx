@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { SlArrowRight } from "react-icons/sl";
+// PlatformEducationCard.js
+import React, { useState, useEffect } from 'react';
+import { SlArrowRight } from 'react-icons/sl';
+import { Card, Button, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux'; // Add this import
+import { getEducationData } from '../../Services/EducationService';
+import '../../Styles/CommonStyles/EducationCardStyles.css';
+import EducationCard from './EducationCard';
 
-import { Card, Button, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { getEducationData } from "../../Services/EducationService";
-import "../../Styles/CommonStyles/EducationCardStyles.css";
-import EducationCard from "./EducationCard";
-
-const PlatformEducationCard = () => {
+const PlatformEducationCard = ({ setEducationTitle }) => {
   const [educationList, setEducationList] = useState([]);
   const navigate = useNavigate();
 
- const handleMoreClick = async () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleMoreClick = async () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    navigate("/egitimlerim");
+    navigate('/egitimlerim');
   };
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const PlatformEducationCard = () => {
       <Row xs={1} md={2} lg={4} className="g-4">
         {educationList.slice(0, 4).map((data) => (
           <Col key={data.id}>
-            <EducationCard data={data} />
+            <EducationCard data={data} setEducationTitle={setEducationTitle} />
           </Col>
         ))}
       </Row>
@@ -38,7 +39,7 @@ const PlatformEducationCard = () => {
             onClick={handleMoreClick}
             variant="shadow-lg"
             className="rounded-circle shadow-sm"
-            style={{ width: "50px", height: "50px", padding: 0 }}
+            style={{ width: '50px', height: '50px', padding: 0 }}
           >
             <SlArrowRight className="fs-3 ms-1" />
           </Button>
@@ -49,4 +50,8 @@ const PlatformEducationCard = () => {
   );
 };
 
-export default PlatformEducationCard;
+const mapDispatchToProps = (dispatch) => ({
+  setEducationTitle: (title) => dispatch({ type: 'SET_EDUCATION_TITLE', payload: title }),
+});
+
+export default connect(null, mapDispatchToProps)(PlatformEducationCard);
