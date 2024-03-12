@@ -6,35 +6,23 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Button, Container, ProgressBar } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { mapCourseToEducationData } from '../../Services/EducationService';
+import { connect } from 'react-redux';
 
-const LmsBar = ({ lessonName }) => {
+
+const LmsBar = ({ lessonName, educationTitle }) => {
     const [progress, setProgress] = useState(0);
     const [likeToast, setLikeToast] = useState(false);
     const [bookmarkToast, setBookmarkToast] = useState(false);
     const [likeIconColor, setLikeIconColor] = useState('text-secondary');
     const [bookmarkIconColor, setBookmarkIconColor] = useState('text-secondary');
-    const [educationTitle, setEducationTitle] = useState('');
     const [loading, setLoading] = useState(true);
 
-
+    console.log("Received Education Title in LmsBar:", educationTitle);
 
 
     useEffect(() => {
+        setProgress(50);
         setLoading(true);
-
-        // Map courses and set the education title
-        mapCourseToEducationData()
-            .then((educationDataMapped) => {
-                console.log("Mapped Education Data in LmsBar:", educationDataMapped);
-
-                // Assuming the first item in the mapped data is relevant
-                if (educationDataMapped.length > 0) {
-                    setEducationTitle(educationDataMapped[0].EducationTitle);
-                }
-            })
-            .catch(error => console.error('Error mapping course data:', error))
-            .finally(() => setLoading(false));
     }, []);
 
 

@@ -1,15 +1,18 @@
 // LmsPage.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';  // React Router DOM'dan Link ekledik
+import { Link } from 'react-router-dom';  
 import LmsBar from '../components/LmsBar';
 import ContentAccordion from '../components/ContentAccordion';
 import AboutComponent from '../components/AboutComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer } from 'react-toastify';
+import { connect } from 'react-redux';
 
-const LmsPage = () => {
+const LmsPage = ({ educationTitle }) => {
+
+
   const [activeTab, setActiveTab] = useState('icerik');
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [likeToast, setLikeToast] = useState(false);
@@ -19,6 +22,15 @@ const LmsPage = () => {
     setActiveTab(tab);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+  
+    const contentElement = document.getElementById('icerik');
+    if (contentElement) {
+      contentElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [activeTab]);
 
   return (
     <div>
@@ -33,7 +45,7 @@ const LmsPage = () => {
           cursor: 'pointer',
         }}
       >
-        {/* Link componentini kullanarak geri dönüş butonunu düzenledik */}
+       
         <Link to="/platform">
           <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white' }} />
         </Link>
@@ -49,13 +61,13 @@ const LmsPage = () => {
         }}
       >
         <Row>
-          <Col> <LmsBar lessonName={selectedLesson} />
+          <Col>  <LmsBar lessonName={selectedLesson} educationTitle={educationTitle} />
             <ToastContainer position="bottom-right" autoClose={2000} /></Col>
 
         </Row>
         <Row>
           <Col lg={12}>
-            {/* Navigation Links */}
+       
             <div className="mb-3" style={{ display: 'flex' }}>
               <span
                 onClick={() => handleTabChange('icerik')}
@@ -96,7 +108,12 @@ const LmsPage = () => {
 
 
     </div>
+
   );
 };
 
-export default LmsPage;
+const mapStateToProps = (state) => ({
+  educationTitle: state.education.educationTitle,
+});
+
+export default connect(mapStateToProps)(LmsPage);
