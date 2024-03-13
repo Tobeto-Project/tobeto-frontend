@@ -3,7 +3,7 @@ export const AUTH_ENDPOINT = "/Auth";
 export const USERS_ENDPOINT = "/Users";
 export const GET_LIST_ENDPOINT = "/GetList/getlist";
 export const REGISTER_ENDPOINT = `${AUTH_ENDPOINT}/register`;
-export const USER_DELETE_ENDPOINT = `${USERS_ENDPOINT}/Delete/delete`
+export const USER_DELETE_ENDPOINT = `${USERS_ENDPOINT}/Delete/delete`;
 
 export const BLOG_ENDPOINT = "/Blogs";
 export const BLOG_GET_LIST_ENDPOINT = `${BLOG_ENDPOINT}/getlist`;
@@ -26,7 +26,7 @@ export const NOTIFICATIONS_ENDPOINT = "/Notifications";
 export const NOTIFICATIONS_ADD_ENDPOINT = `${NOTIFICATIONS_ENDPOINT}/add`;
 export const NOTIFICATIONS_UPDATE_ENDPOINT = `${NOTIFICATIONS_ENDPOINT}/update`;
 export const NOTIFICATIONS_DELETE_ENDPOINT = `${NOTIFICATIONS_ENDPOINT}/delete`;
-export const NOTIFICATIONS_GETLIST_ENDPOINT= `${NOTIFICATIONS_ENDPOINT}/getList`;
+export const NOTIFICATIONS_GETLIST_ENDPOINT = `${NOTIFICATIONS_ENDPOINT}/getList`;
 
 export const ADMIN_NOTIFICATIONS_ENDPOINT = "/Notifications";
 export const ADMIN_NOTIFICATIONS_ADD_ENDPOINT = `${ADMIN_NOTIFICATIONS_ENDPOINT}/add`;
@@ -46,7 +46,7 @@ export const EMPLOYEE_GETLIST_ENDPOINT = `${EMPLOYEE_ENDPOINT}/getList`;
 export const EMPLOYEE_DELETE_ENDPOINT = `${EMPLOYEE_ENDPOINT}/delete`;
 
 export const AUTH_EMPLOYEE_ENDPOINT = "/AuthEmployee";
-export const AUTH_EMPLOYEE_REGISTER_ENDPOINT = `${AUTH_EMPLOYEE_ENDPOINT}/register`; 
+export const AUTH_EMPLOYEE_REGISTER_ENDPOINT = `${AUTH_EMPLOYEE_ENDPOINT}/register`;
 
 export const CONTACT_INFORMATIONS_ENDPOINT = "/ContactInformations";
 export const CONTACT_INFORMATIONS_GETLIST_ENDPOINT = `${CONTACT_INFORMATIONS_ENDPOINT}/getList`;
@@ -55,16 +55,12 @@ export const CONTACT_INFORMATIONS_UPDATE_ENDPOINT = `${CONTACT_INFORMATIONS_ENDP
 export const EXPERIENCES_ENDPOINT = "/Experiences";
 export const EXPERIENCES_ADD_ENDPOINT = `${EXPERIENCES_ENDPOINT}/add`;
 
-export const EXAMS_ENDPOINT ="/Exams";
-export const EXAMS_ADD_ENDPOINT= `${EXAMS_ENDPOINT}/add`;
-export const EXAMS_GET_LIST= `${EXAMS_ENDPOINT}/getlist`;
-export const EXAM_DELETE= `${EXAMS_ENDPOINT}/delete`;
+export const EXAMS_ENDPOINT = "/Exams";
+export const EXAMS_ADD_ENDPOINT = `${EXAMS_ENDPOINT}/add`;
+export const EXAMS_GET_LIST = `${EXAMS_ENDPOINT}/getlist`;
+export const EXAM_DELETE = `${EXAMS_ENDPOINT}/delete`;
 
-
-
-
-
-
-
-
-
+export const CERTIFICATE_ENDPOINT = "/Certificates";
+export const CERTIFICATE_ADD_ENDPOINT = `${CERTIFICATE_ENDPOINT}/add`;
+export const CERTIFICATE_GETLIST_ENDPOINT = `${CERTIFICATE_ENDPOINT}/getList`;
+export const CERTIFICATE_DELETE_ENDPOINT = `${CERTIFICATE_ENDPOINT}/delete`

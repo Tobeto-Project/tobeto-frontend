@@ -1,5 +1,5 @@
 import PlatformHeader from "../../Components/Layouts/PlatformHeader";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import foto from "../../Assets/Images/user-photo.png";
 import { useSelector } from "react-redux";
@@ -9,9 +9,13 @@ import { TfiWorld } from "react-icons/tfi";
 import '../../Styles/PagesStyles/PlatformStyle/Profil.css';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
+import { fetchCertificatesList } from "../../Services/certificateService"
+import { useEffect, useState } from "react";
+
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
+  const [certificates, setCertificates] = useState([]);
   const radarChartData = [
     [5, 4, 2.5, 5, 4, 4.5, 5, 4],
 
@@ -27,6 +31,21 @@ const Profil = () => {
     'Sonuç ve başarı odaklıyım',
     'Anlıyorum ve anlaşılıyorum',
   ];
+
+
+  useEffect(() => {
+    const fetchCertificates = async () => {
+      const fetchedCertificates = await fetchCertificatesList();
+      setCertificates(fetchedCertificates);
+    };
+
+    fetchCertificates();
+  }, []);
+
+  const handleDownload = (certificateUrl) => {
+    window.open(certificateUrl, '_blank');
+  };
+
   return (
     <>
       <PlatformHeader />
@@ -203,14 +222,28 @@ const Profil = () => {
               <Card>
                 <Card.Body>
                   <Card.Title>Sertifikalarım</Card.Title>
-                  <hr style={{ color: "purple" }} />
+                  <hr style={{ color: 'purple' }} />
                   <Card.Text>
-                    Henüz bir sertifika yüklemedin.
+                    {certificates.length > 0 ? (
+                      <ul style={{ listStyle: 'none', padding: 0 }}>
+                        {certificates.map((certificate, index) => (
+                          <li key={index} style={{ marginBottom: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                              <span style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', marginRight: '10px', maxWidth: '200px' }}>{certificate.fileName}</span>
+                              <button onClick={() => handleDownload(certificate.fileUrl)} style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}>
+                                <img src="https://tobeto.com/pdf.png" alt="PDF icon" style={{ width: '20px', height: '20px' }} />
+                              </button>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>Henüz bir sertifika yüklemedin.</p>
+                    )}
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
-
             <div className="mb-4">
               <Card>
                 <Card.Body>
