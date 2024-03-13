@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
+import { Container, Row, Col, Nav, Card, NavLink } from 'react-bootstrap';
 import Students from '../pages/student/Students';
 import BlogForm from '../pages/blog/BlogForm';
 import Bloglar from '../pages/blog/Bloglar';
@@ -9,7 +9,7 @@ import BasinBloglar from '../pages/press/BasinBloglar';
 import Employees from '../pages/employees/Employees';
 import Instructors from '../pages/instructors/Instructors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt,faAddressCard, faBlackboard } from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt,faAddressCard, faBlackboard, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import '../../AdminPanel/styles/Sidebar.css'
 import ImageList from '../pages/cloudinary/ImageList';
 import NotificationAdmin from '../pages/notification/NotificationAdmin';
@@ -17,6 +17,7 @@ import AdminContact from '../pages/contact/AdminContact';
 import AddEducation from '../pages/education/AddEducation';
 import Educations from '../pages/education/Educations';
 import Exam from '../pages/exam/Exam';
+import AdminGuide from '../pages/userGuide/AdminGuide';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -56,6 +57,8 @@ const Sidebar = () => {
               <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
         case "calendar":
             return <Card.Body>calendar Hayatım içeriği burada gösterilecek.</Card.Body>
+        case "guide":
+          return <Card.Body><AdminGuide/></Card.Body>
         default:
             return <Card.Body>İçerik bulunamadı.</Card.Body>;
       }
@@ -67,7 +70,7 @@ const Sidebar = () => {
           <Row>
             {/* Sol Taraf: Dikey Menü */}
             <Col lg={2} className='p-0'>
-              <Nav className="flex-column vh-100 p-4" style={{backgroundColor:'#9833FF'}}>
+              <Nav className="flex-column vh-120 p-4" style={{backgroundColor:'#9833FF'}}>
               <Nav.Link className='text-white' onClick={() => setActiveTab("ogrenci")}><FontAwesomeIcon icon={faUserGraduate} /> Öğrencilerimiz</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("instructors")}><FontAwesomeIcon icon={faChalkboardTeacher} /> Eğitmenlerimiz</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("employee")}><FontAwesomeIcon icon={faUserTie} /> Görevliler</Nav.Link>
@@ -82,8 +85,8 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("egitimler")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("sınavlar")}><FontAwesomeIcon icon={faBlackboard} /> Sınavlar</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
-              
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>
+              <NavLink className='text-white' onClick={() => setActiveTab("guide")}><FontAwesomeIcon icon={faQuestionCircle}/>Admin Rehberi</NavLink>
               </Nav>
             </Col>
   
