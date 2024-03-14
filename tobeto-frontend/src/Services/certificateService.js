@@ -36,16 +36,23 @@ export const deleteCertificate = async (certificateId) => {
   }
 };
 
-export const fetchCertificatesList = async () => {
+export const fetchCertificatesList = async (userId) => {
   try {
     const response = await axios.get(
-      `${API_CONFIG.CERTIFICATE_GET_LIST}?PageIndex=0&PageSize=15`
+      `${API_CONFIG.CERTIFICATE_GET_LIST}?PageIndex=0&PageSize=15&UserId=${userId}`
     );
-    return response.data.items;
+    const certificates = response.data.items.filter(
+      (certificate) => certificate.userId === userId
+    );
+    return certificates;
   } catch (error) {
     throw error;
   }
 };
+
+
+
+
 
 export const downloadCertificate = (certificateUrl) => {
   window.open(certificateUrl, "_blank");

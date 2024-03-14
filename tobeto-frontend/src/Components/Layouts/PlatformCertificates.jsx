@@ -10,8 +10,8 @@ const PlatformCertificates = () => {
     const userId = useSelector(state => state.auth.userDetails.id);
 
     useEffect(() => {
-        fetchCertificates();
-    }, []);
+        fetchCertificates(userId);
+    }, [userId]);
 
     const handleFileChange = (event) => {
         setCertificateFile(event.target.files[0]);
@@ -34,9 +34,11 @@ const PlatformCertificates = () => {
         }
     };
 
-    const fetchCertificates = async () => {
+    const fetchCertificates = async (userId) => {
         try {
-            const certificates = await fetchCertificatesList();
+            // console.log("Fetching certificates for user with ID:", userId);
+            const certificates = await fetchCertificatesList(userId);
+            //  console.log("certificates", certificates)
             setCertificatesList(certificates);
         } catch (error) {
             console.error('Error fetching certificates list:', error);
