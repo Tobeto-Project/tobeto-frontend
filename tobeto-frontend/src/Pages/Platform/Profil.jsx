@@ -15,7 +15,8 @@ import { useEffect, useState } from "react";
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
-  const [certificates, setCertificates] = useState([]);
+  const [certificatesList, setCertificatesList] = useState([]);
+
   const radarChartData = [
     [5, 4, 2.5, 5, 4, 4.5, 5, 4],
 
@@ -33,18 +34,29 @@ const Profil = () => {
   ];
 
 
-  useEffect(() => {
-    const fetchCertificates = async () => {
-      const fetchedCertificates = await fetchCertificatesList();
-      setCertificates(fetchedCertificates);
-    };
+ 
 
-    fetchCertificates();
-  }, []);
+  const userId = useSelector(state => state.auth.userDetails.id);
+
+  useEffect(() => {
+    fetchCertificates(userId);
+  }, [userId]);
 
   const handleDownload = (certificateUrl) => {
     window.open(certificateUrl, '_blank');
   };
+
+  const fetchCertificates = async (userId) => {
+    try {
+      console.log("Fetching certificates for user with ID:", userId);
+      const certificates = await fetchCertificatesList(userId);
+      console.log("certificates", certificates)
+      setCertificatesList(certificates);
+    } catch (error) {
+      console.error('Error fetching certificates list:', error);
+    }
+  };
+
 
   return (
     <>
@@ -224,16 +236,14 @@ const Profil = () => {
                   <Card.Title>Sertifikalarım</Card.Title>
                   <hr style={{ color: 'purple' }} />
                   <Card.Text>
-                    {certificates.length > 0 ? (
+                    {certificatesList.length > 0 ? (
                       <ul style={{ listStyle: 'none', padding: 0 }}>
-                        {certificates.map((certificate, index) => (
-                          <li key={index} style={{ marginBottom: '10px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                              <span style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', marginRight: '10px', maxWidth: '200px' }}>{certificate.fileName}</span>
-                              <button onClick={() => handleDownload(certificate.fileUrl)} style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}>
-                                <img src="https://tobeto.com/pdf.png" alt="PDF icon" style={{ width: '20px', height: '20px' }} />
-                              </button>
-                            </div>
+                        {certificatesList.map((certificate, index) => (
+                          <li key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                            <span style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', marginRight: '10px', maxWidth: '200px' }}>{certificate.fileName}</span>
+                            <button onClick={() => handleDownload(certificate.fileUrl)} style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}>
+                              <img src="https://tobeto.com/pdf.png" alt="PDF icon" style={{ width: '20px', height: '20px' }} />
+                            </button>
                           </li>
                         ))}
                       </ul>
@@ -241,9 +251,11 @@ const Profil = () => {
                       <p>Henüz bir sertifika yüklemedin.</p>
                     )}
                   </Card.Text>
+
                 </Card.Body>
               </Card>
             </div>
+
             <div className="mb-4">
               <Card>
                 <Card.Body>
