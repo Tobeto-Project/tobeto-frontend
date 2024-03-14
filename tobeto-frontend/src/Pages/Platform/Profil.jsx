@@ -11,11 +11,24 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import { fetchCertificatesList } from "../../Services/certificateService"
 import { useEffect, useState } from "react";
-
+import socialMediaService from "../../Services/socialmediaService";
+import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaDribbble, FaBehance } from 'react-icons/fa'; //sosyal media ikonu import et
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
   const [certificatesList, setCertificatesList] = useState([]);
+  const [userSocials, setUserSocials] = useState([]);
+
+  const socialMediaIcons = {
+    instagram: FaInstagram,
+    twitter: FaTwitter,
+    linkedin: FaLinkedin,
+    github: FaGithub,
+    dribble: FaDribbble,
+    behance: FaBehance
+    // Diğer sosyal medya türleri ve ikonları varsa önce PlatformMediaAccounts içinde 'react-icons/fa'dan import edilicek sonra getSocialMediaIcon fonksiyonuna eklenicek, daha sonra burada import edilip , socialMediaIcons'a eklenicek
+  };
+
 
   const radarChartData = [
     [5, 4, 2.5, 5, 4, 4.5, 5, 4],
@@ -34,12 +47,17 @@ const Profil = () => {
   ];
 
 
- 
+
 
   const userId = useSelector(state => state.auth.userDetails.id);
 
   useEffect(() => {
-    fetchCertificates(userId);
+    const fetchData = async () => {
+      await fetchCertificates(userId);
+      await fetchUserSocials(userId);
+    };
+
+    fetchData();
   }, [userId]);
 
   const handleDownload = (certificateUrl) => {
@@ -54,6 +72,16 @@ const Profil = () => {
       setCertificatesList(certificates);
     } catch (error) {
       console.error('Error fetching certificates list:', error);
+    }
+  };
+
+  const fetchUserSocials = async (userId) => {
+    try {
+      const response = await socialMediaService.getUserSocialsByUserId(userId);
+      console.log("responseeee", response)
+      setUserSocials(response.items);
+    } catch (error) {
+      console.error('Hata:', error);
     }
   };
 
@@ -262,11 +290,30 @@ const Profil = () => {
                   <Card.Title>Medya Hesaplarım</Card.Title>
                   <hr style={{ color: "purple" }} />
                   <Card.Text>
-                    Henüz bir hesap eklemedin.
+                    {console.log("userSocials:", userSocials)}
+                    {userSocials.length > 0 ? (
+                      <ul style={{ listStyle: "none", padding: 0 }}>
+                        {userSocials.map((social, index) => {
+                          const Icon = socialMediaIcons[social.socialMediaName];
+                          return (
+                            <li key={index} style={{ marginBottom: "10px" }}>
+                              <a href={social.link} target="_blank" rel="noopener noreferrer">
+                                {Icon && <Icon style={{ marginRight: "5px" }} />}
+                                {social.link}
+                              </a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : (
+                      <p>Henüz bir hesap eklemedin.</p>
+                    )}
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
+
+
           </Col>
 
           {/* Hasan Can */}
