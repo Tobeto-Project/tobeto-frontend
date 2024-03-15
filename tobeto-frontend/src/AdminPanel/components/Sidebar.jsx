@@ -18,6 +18,7 @@ import AddEducation from '../pages/education/AddEducation';
 import Educations from '../pages/education/Educations';
 import Exam from '../pages/exam/Exam';
 import AdminGuide from '../pages/userGuide/AdminGuide';
+import AddLanguege from '../pages/langueges/AddLanguege';
 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('ogrenci');
@@ -51,7 +52,7 @@ const Sidebar = () => {
             case "sınavlar":
               return <Card.Body><Exam/></Card.Body>
         case "dil":
-            return <Card.Body>İngilizce Ve Türkçe Dil seçenekleri</Card.Body>;
+            return <Card.Body> <AddLanguege/> </Card.Body>;
         case "image":
             return <Card.Body><ImageList/>
               <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
@@ -84,7 +85,7 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("egitim")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitim Ekle</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("egitimler")}><FontAwesomeIcon icon={faGraduationCap} /> Eğitimler</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("sınavlar")}><FontAwesomeIcon icon={faBlackboard} /> Sınavlar</Nav.Link>
-              <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri / Dil Ekleme</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>
               <NavLink className='text-white' onClick={() => setActiveTab("guide")}><FontAwesomeIcon icon={faQuestionCircle}/>Admin Rehberi</NavLink>
               </Nav>
