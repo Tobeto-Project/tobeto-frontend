@@ -3,33 +3,32 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { TfiWorld } from 'react-icons/tfi';
 import { useSelector } from 'react-redux';
-import API_URL from '../../Services/config';
-const BASE_URL = API_URL; 
-
+import { fetchLanguages, fetchLevels, fetchUserLanguages, addUserLanguage, deleteUserLanguage } from "../../Services/LanguageService";
+import API_CONFIG from '../../Services/ApiConfig';
 
 export const PlatformForeignLanguage = () => {
     const [languages, setLanguages] = useState([]);
     const [levels, setLevels] = useState([]);
     const [selectedLanguage, setSelectedLanguage] = useState(0);
     const [selectedLevel, setSelectedLevel] = useState(0);
+    const [userLanguages, setUserLanguages] = useState([]);
+    const [userLanguagesLevel, setUserLanguagesLevel] = useState([]);
 
     const userId = useSelector(state => state.auth.userDetails.id);
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        const fetchDataAsync = async () => {
+            const fetchedLanguages = await fetchLanguages();
+            setLanguages(fetchedLanguages);
+            const fetchedLevels = await fetchLevels();
+            setLevels(fetchedLevels);
+            const fetchedUserLanguages = await fetchUserLanguages(userId);
+            setUserLanguages(fetchedUserLanguages);
+            setUserLanguagesLevel(fetchedUserLanguages);
+        };
 
-    const fetchData = async () => {
-        try {
-            const languagesResponse = await axios.get(`${BASE_URL}/ForeignLanguages/getlist?PageIndex=0&PageSize=15`);
-            setLanguages(languagesResponse.data.items);
-
-            const levelsResponse = await axios.get(`${BASE_URL}/ForeignLanguageLevels/getlist?PageIndex=0&PageSize=15`);
-            setLevels(levelsResponse.data.items);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+        fetchDataAsync();
+    }, [userId]);
 
     const handleLanguageChange = (e) => {
         setSelectedLanguage(e.target.value);
@@ -41,32 +40,32 @@ export const PlatformForeignLanguage = () => {
 
     const handleSubmit = async () => {
         try {
-            const selectedLanguageName = languages.find(language => language.id === selectedLanguage)?.name;
-            const selectedLevelName = levels.find(level => level.id === selectedLevel)?.name;
+            const newLanguage = languages.find(language => language.id === parseInt(selectedLanguage));
+            const newLevel = levels.find(level => level.id === parseInt(selectedLevel));
 
-            // post öncesi öncesi loglama, giden veri kontrolü 
-            console.log('Gönderilen veri:', {
-                UserId: userId,
-                ForeignLanguageId: selectedLanguage,
-                ForeignLanguageName: selectedLanguageName,
-                LanguageLevelId: selectedLevel,
-                LanguageLevelName: selectedLevelName,
-            });
+            await addUserLanguage(userId, selectedLanguage, selectedLevel);
 
-            await axios.post(`${BASE_URL}/UserLanguages/add`, {
-                UserId: userId,
-                ForeignLanguageId: selectedLanguage,
-                LanguageLevelId: selectedLevel,
-               
-            });
+            const response = await axios.get(`${API_CONFIG.USER_LANGUAGE_GET_LIST_BY_USER}?id=${userId}`);
+            const updatedUserLanguages = response.data.items;
+            setUserLanguages(updatedUserLanguages);
+            setUserLanguagesLevel(updatedUserLanguages);
 
-            console.log('Kullanıcı dil bilgisi başarıyla eklendi');
-
-            // Başarılı ekleme sonrası seçili dil ve seviye temizleme
             setSelectedLanguage(0);
             setSelectedLevel(0);
         } catch (error) {
-            console.error('Kullanıcı dil bilgisi eklenirken hata oluştu:', error);
+            console.error('Error adding user language:', error);
+        }
+    };
+
+    const handleDeleteUserLanguage = async (userLanguageId) => {
+        try {
+            await deleteUserLanguage(userLanguageId);
+            console.log('Başarıyla silindi.');
+            const updatedUserLanguages = userLanguages.filter(language => language.id !== userLanguageId);
+            setUserLanguages(updatedUserLanguages);
+            setUserLanguagesLevel(updatedUserLanguages);
+        } catch (error) {
+            console.error('Hata:', error);
         }
     };
 
@@ -104,31 +103,46 @@ export const PlatformForeignLanguage = () => {
                         Kaydet
                     </Button>
                     <br /><br />
-                    {/* Yabancı Dillerin Geleceği Yer */}
                     <Row>
-                        <Col md={4}>
-                            <div>
-                                <span className='delete-lang' style={{ psition: 'absolute', }}></span>
-                                <div className="mylanguage w-100" style={{ padding: 5 }}>
+                        <Col className='px-3' md={6}>
+
+                            {userLanguages && userLanguages.map(language => (
+                                <Col key={language.id} md={8}>
                                     <Row>
                                         <Col md={2}>
-                                            <TfiWorld />
+                                            <TfiWorld className='mt-1' />
                                         </Col>
-                                        <Col md={8}>
+                                        <Col className='mt-1' md={6}>
                                             <div className="d-flex flex-column">
-                                                <span style={{ fontSize: "15px", color: "#828282" }}>Dil  </span>
-                                                <span style={{ fontSize: "12px", color: "#828282CC" }}> Seviye </span>
+                                                <span style={{ fontSize: "16px", color: "#828282" }}>{language.foreignLanguageName}</span>
                                             </div>
                                         </Col>
-                                        <Col md={2}>
-                                            <img src="https://tobeto.com/home.svg" alt="home" />
+                                        <Col>
+                                            <Button className='mt-1' variant="danger" size="sm" onClick={() => handleDeleteUserLanguage(language.id)}>Sil</Button>
                                         </Col>
                                     </Row>
-                                </div>
-                            </div>
+                                </Col>
+                            ))}
+
+
                         </Col>
-                        <Col md={4}></Col>
-                        <Col md={4}></Col>
+                        <Col className='px-0' >
+                            {/* User Languages Level */}
+                            {userLanguagesLevel.map(languageLevel => (
+                                <Row key={languageLevel.id}>
+                                    <Col className='mt-1' >
+                                        <span style={{ fontSize: "18px", fontWeight: "bold", color: "#828282CC" }}>{languageLevel.foreignLanguageLevelName}</span>
+                                    </Col>
+
+
+                                </Row>
+                            ))}
+                        </Col>
+
+                        <Col>
+
+                        </Col>
+
                     </Row>
                 </Form>
             </Container>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, ListGroup, Col } from 'react-bootstrap';
-import axios from 'axios';
-import API_URL from '../../../Services/config';
-const BASE_URL = API_URL;
+import { fetchData, addLanguage, addLanguageLevel, deleteLanguage, deleteLanguageLevel } from "../../services/languagesService";
 
 const AddLanguage = () => {
     const [language, setLanguage] = useState('');
@@ -10,20 +8,18 @@ const AddLanguage = () => {
     const [languagesList, setLanguagesList] = useState([]);
     const [levelsList, setLevelsList] = useState([]);
 
-    const fetchData = async () => {
+    const fetchDataAndLists = async () => {
         try {
-            const languagesResponse = await axios.get(`${BASE_URL}/ForeignLanguages/getlist?PageIndex=0&PageSize=15`);
-            setLanguagesList(languagesResponse.data.items);
-
-            const levelsResponse = await axios.get(`${BASE_URL}/ForeignLanguageLevels/getlist?PageIndex=0&PageSize=15`);
-            setLevelsList(levelsResponse.data.items);
+            const { languages, levels } = await fetchData();
+            setLanguagesList(languages);
+            setLevelsList(levels);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
     useEffect(() => {
-        fetchData();
+        fetchDataAndLists();
     }, []);
 
     const handleLanguageChange = (e) => {
@@ -36,15 +32,10 @@ const AddLanguage = () => {
 
     const handleAddLanguage = async () => {
         try {
-            const response = await axios.post(`${BASE_URL}/ForeignLanguages/add`, {
-                Name: language
-            });
-            console.log('Language added:', response.data);
-
-            // Başarılı yüklelemeden sonra inputu temizle
+            const response = await addLanguage(language);
+            console.log('Language added:', response);
             setLanguage('');
-            // Refresh the list 
-            fetchData();
+            fetchDataAndLists();
         } catch (error) {
             console.error('Error adding language:', error);
         }
@@ -52,15 +43,10 @@ const AddLanguage = () => {
 
     const handleAddLevel = async () => {
         try {
-            const response = await axios.post(`${BASE_URL}/ForeignLanguageLevels/add`, {
-                Name: level
-            });
-            console.log('Language level added:', response.data);
-
-            // Başarılı yüklelemeden sonra inputu temizle
+            const response = await addLanguageLevel(level);
+            console.log('Language level added:', response);
             setLevel('');
-            // Başarılı yüklelemeden sonra inputu yenile
-            fetchData();
+            fetchDataAndLists();
         } catch (error) {
             console.error('Error adding language level:', error);
         }
@@ -68,19 +54,9 @@ const AddLanguage = () => {
 
     const handleDeleteLanguage = async (id) => {
         try {
-            await axios.delete(`${BASE_URL}/ForeignLanguages/delete`, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: {
-                    Id: id
-                }
-            });
-
+            await deleteLanguage(id);
             console.log('Language deleted:', id);
-
-            // Başarılı yüklelemeden sonra inputu yenile
-            fetchData();
+            fetchDataAndLists();
         } catch (error) {
             console.error('Error deleting language:', error);
         }
@@ -88,19 +64,9 @@ const AddLanguage = () => {
 
     const handleDeleteLevel = async (id) => {
         try {
-            await axios.delete(`${BASE_URL}/ForeignLanguageLevels/delete`, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: {
-                    Id: id
-                }
-            });
-
+            await deleteLanguageLevel(id);
             console.log('Language level deleted:', id);
-
-            // Refresh the list after deletion
-            fetchData();
+            fetchDataAndLists();
         } catch (error) {
             console.error('Error deleting language level:', error);
         }

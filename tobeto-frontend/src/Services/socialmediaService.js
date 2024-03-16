@@ -1,5 +1,6 @@
 import axios from "axios";
 import API_URL from "./config";
+import API_CONFIG from "./ApiConfig";
 
 //update fonksiyonları yoruma alındı daha sonra düzenlenecek
 //api url endpointleri ve konfigürasyonları oluşturulmadı, hazırlanıcak, geçici url verildi
@@ -9,7 +10,7 @@ const BASE_URL = API_URL;
  const socialMediaService = {
   addUserSocial: async (userId, socialMediaId, link) => {
     try {
-      const response = await axios.post(`${BASE_URL}/UserSocials/add`, {
+      const response = await axios.post(`${API_CONFIG.USER_SOCIAL_ADD}`, {
         userId: userId,
         socialMediaId: socialMediaId,
         link: link,
@@ -39,7 +40,7 @@ const BASE_URL = API_URL;
 
   deleteUserSocial: async (userSocialId) => {
     try {
-      const response = await axios.delete(`${BASE_URL}/UserSocials/delete`, {
+      const response = await axios.delete(`${API_CONFIG.USER_SOCIAL_DELETE}`, {
         data: { Id: userSocialId },
       });
       return response.data;
@@ -52,7 +53,7 @@ const BASE_URL = API_URL;
   getUserSocialsByUserId: async (userId) => {
     try {
       const response = await axios.get(
-        `${BASE_URL}/UserSocials/getListByUser`,
+        `${API_CONFIG.USER_SOCIAL_GET_LIST}/ByUser`,
         {
           params: { id: userId },
         }
@@ -66,7 +67,7 @@ const BASE_URL = API_URL;
 
   addSocialMedia: async (name) => {
     try {
-      const response = await axios.post(`${BASE_URL}/SocialMedias/add`, {
+      const response = await axios.post(`${API_CONFIG.SOCIAL_MEDIA_ADD}`, {
         name: name,
       });
       return response.data;
@@ -91,7 +92,7 @@ const BASE_URL = API_URL;
 
   deleteSocialMedia: async (socialMediaId) => {
     try {
-      const response = await axios.delete(`${BASE_URL}/SocialMedias/delete`, {
+      const response = await axios.delete(`${API_CONFIG.SOCIAL_MEDIA_DELETE}`, {
         params: { id: socialMediaId },
       });
       return response.data;
@@ -103,7 +104,7 @@ const BASE_URL = API_URL;
 
   getSocialMedias: async (pageIndex, pageSize) => {
     try {
-      const response = await axios.get(`${BASE_URL}/SocialMedias/getList`, {
+      const response = await axios.get(`${API_CONFIG.SOCIAL_MEDIA_GET_LIST}`, {
         params: {
           PageIndex: pageIndex,
           PageSize: pageSize,
@@ -122,7 +123,7 @@ const BASE_URL = API_URL;
 
   getUserSocials: async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/UserSocials/getList`);
+      const response = await axios.get(`${API_CONFIG.USER_SOCIAL_GET_LIST}`);
       console.log("Received data:", response.data); 
       return response.data; 
     } catch (error) {
