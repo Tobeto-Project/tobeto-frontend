@@ -53,7 +53,7 @@ const BASE_URL = API_URL;
   getUserSocialsByUserId: async (userId) => {
     try {
       const response = await axios.get(
-        `${API_CONFIG.USER_SOCIAL_GET_LIST}/ByUser`,
+        `${API_CONFIG.USER_SOCIAL_GET_LIST}ByUser`,
         {
           params: { id: userId },
         }
