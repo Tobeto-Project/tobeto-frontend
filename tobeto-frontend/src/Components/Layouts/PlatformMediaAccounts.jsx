@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Container, Form, Row, Col, Button, Toast } from "react-bootstrap"; // Toast eklendi
 import socialMediaService from '../../Services/socialmediaService';
-import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaBehance, FaDribbble } from 'react-icons/fa';
+import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaBehance, FaDribbble, FaFacebook, FaShareAlt, FaShareSquare } from 'react-icons/fa';
 
 const PlatformMediaAccounts = () => {
     const [selectedSocialMedia, setSelectedSocialMedia] = useState(null);
@@ -111,10 +111,12 @@ const PlatformMediaAccounts = () => {
                     return <FaGithub />;
                 case 'behance.com':
                     return <FaBehance />
-                case 'dribble.com': 
-                    return <FaDribbble/>        
+                case 'dribble.com':
+                    return <FaDribbble />
+                case 'facebook.com':
+                    return <FaFacebook />
                 default:
-                    return null;
+                    return <FaShareSquare/>;
             }
         } catch (error) {
             console.error('Hata:', error.message);

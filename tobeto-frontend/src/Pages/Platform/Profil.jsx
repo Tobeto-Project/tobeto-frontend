@@ -12,7 +12,7 @@ import 'react-calendar-heatmap/dist/styles.css';
 import { fetchCertificatesList } from "../../Services/certificateService"
 import { useEffect, useState } from "react";
 import socialMediaService from "../../Services/socialmediaService";
-import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaDribbble, FaBehance } from 'react-icons/fa'; //sosyal media ikonu import et
+import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaDribbble, FaBehance, FaFacebook, } from 'react-icons/fa'; //sosyal media ikonu import et
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
@@ -25,7 +25,8 @@ const Profil = () => {
     linkedin: FaLinkedin,
     github: FaGithub,
     dribble: FaDribbble,
-    behance: FaBehance
+    behance: FaBehance,
+    facebook: FaFacebook
     // Diğer sosyal medya türleri ve ikonları varsa önce PlatformMediaAccounts içinde 'react-icons/fa'dan import edilicek sonra getSocialMediaIcon fonksiyonuna eklenicek, daha sonra burada import edilip , socialMediaIcons'a eklenicek
   };
 
