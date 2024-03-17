@@ -12,12 +12,16 @@ import 'react-calendar-heatmap/dist/styles.css';
 import { fetchCertificatesList } from "../../Services/certificateService"
 import { useEffect, useState } from "react";
 import socialMediaService from "../../Services/socialmediaService";
-import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaDribbble, FaBehance, FaFacebook, } from 'react-icons/fa'; //sosyal media ikonu import et
+import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaDribbble, FaBehance, FaFacebook, FaShareSquare, } from 'react-icons/fa'; //sosyal media ikonu import et
+import { fetchUserLanguages } from "../../Services/LanguageService";
+import { fetchUserCompetences } from "../../Services/compatienceService";
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
   const [certificatesList, setCertificatesList] = useState([]);
   const [userSocials, setUserSocials] = useState([]);
+  const [userLanguages, setUserLanguages] = useState([]);
+  const [userCompetences, setUserCompetences] = useState([]);
 
   const socialMediaIcons = {
     instagram: FaInstagram,
@@ -26,7 +30,8 @@ const Profil = () => {
     github: FaGithub,
     dribble: FaDribbble,
     behance: FaBehance,
-    facebook: FaFacebook
+    facebook: FaFacebook,
+    fasharesquare: FaShareSquare
     // Diğer sosyal medya türleri ve ikonları varsa önce PlatformMediaAccounts içinde 'react-icons/fa'dan import edilicek sonra getSocialMediaIcon fonksiyonuna eklenicek, daha sonra burada import edilip , socialMediaIcons'a eklenicek
   };
 
@@ -56,6 +61,8 @@ const Profil = () => {
     const fetchData = async () => {
       await fetchCertificates(userId);
       await fetchUserSocials(userId);
+      await fetchLanguages(userId);;
+      await userCompatences(userId);
     };
 
     fetchData();
@@ -85,6 +92,29 @@ const Profil = () => {
       console.error('Hata:', error);
     }
   };
+
+  const fetchLanguages = async (userId) => {
+    try {
+      console.log("Fetching languages for user with ID:", userId);
+      const languages = await fetchUserLanguages(userId);
+      console.log("certificates", languages)
+      setUserLanguages(languages);
+    } catch (error) {
+      console.error('Error fetching certificates list:', error);
+    }
+  };
+
+  const userCompatences = async(userId) => {
+    
+    try { 
+      const compatences = await fetchUserCompetences(userId);
+    setUserCompetences(compatences);}
+   catch(error) {
+      console.error('Error fetching compatences list:', error);
+  }
+};
+
+
 
 
   return (
@@ -226,11 +256,26 @@ const Profil = () => {
                   <Card.Title>Yetkinliklerim</Card.Title>
                   <hr style={{ color: "purple" }} />
                   <Card.Text>
-                    Henüz bir yetkinlik eklemedin.
+                    <div className="mylanguage w-100" style={{ padding: 5 }}>
+                      {userCompetences.map(compatence => (
+                        <Row key={compatence.id}>
+                          <Col md={2}>
+                            <TfiWorld />
+                          </Col>
+                          <Col md={8}>
+                            <div className="d-flex justify-content-between">
+                              <span style={{ fontSize: "15px", color: "#828282" }}>{compatence.skillName}</span>
+                            
+                            </div>
+                          </Col>
+                        </Row>
+                      ))}
+                    </div>
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
+
 
             <div className="mb-4">
               <Card>
@@ -239,25 +284,25 @@ const Profil = () => {
                   <hr style={{ color: "purple" }} />
                   <Card.Text>
                     <div className="mylanguage w-100" style={{ padding: 5 }}>
-                      <Row>
-                        <Col md={2}>
-                          <TfiWorld />
-                        </Col>
-                        <Col md={8}>
-                          <div className="d-flex flex-column">
-                            <span style={{ fontSize: "15px", color: "#828282" }}>Dil  {userDetails.userLanguage}</span>
-                            <span style={{ fontSize: "12px", color: "#828282CC" }}> Seviye </span>
-                          </div>
-                        </Col>
-                        <Col md={2}>
-                          <img src="https://tobeto.com/home.svg" />
-                        </Col>
-                      </Row>
+                      {userLanguages.map(language => (
+                        <Row key={language.id}>
+                          <Col md={2}>
+                            <TfiWorld />
+                          </Col>
+                          <Col md={8}>
+                            <div className="d-flex justify-content-between">
+                              <span style={{ fontSize: "15px", color: "#828282" }}>{language.foreignLanguageName}</span>
+                              <span  style={{ fontSize: "12px", color: "#828282CC" }}>Seviye: {language.foreignLanguageLevelName}</span>
+                            </div>
+                          </Col>
+                        </Row>
+                      ))}
                     </div>
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
+
 
             <div className="mb-4">
               <Card>
@@ -268,7 +313,7 @@ const Profil = () => {
                     {certificatesList.length > 0 ? (
                       <ul style={{ listStyle: 'none', padding: 0 }}>
                         {certificatesList.map((certificate, index) => (
-                          <li key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                          <li key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
                             <span style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', marginRight: '10px', maxWidth: '200px' }}>{certificate.fileName}</span>
                             <button onClick={() => handleDownload(certificate.fileUrl)} style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}>
                               <img src="https://tobeto.com/pdf.png" alt="PDF icon" style={{ width: '20px', height: '20px' }} />

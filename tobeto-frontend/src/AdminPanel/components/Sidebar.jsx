@@ -9,7 +9,7 @@ import BasinBloglar from '../pages/press/BasinBloglar';
 import Employees from '../pages/employees/Employees';
 import Instructors from '../pages/instructors/Instructors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt, faAddressCard, faBlackboard, faQuestionCircle, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faChalkboardTeacher, faUserTie, faBlog, faRss, faNewspaper, faClipboardList, faGraduationCap, faBullhorn, faLanguage, faImage, faCalendarAlt, faAddressCard, faBlackboard, faQuestionCircle, faShareAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 import '../../AdminPanel/styles/Sidebar.css'
 import ImageList from '../pages/cloudinary/ImageList';
 import NotificationAdmin from '../pages/notification/NotificationAdmin';
@@ -20,6 +20,7 @@ import Exam from '../pages/exam/Exam';
 import AdminGuide from '../pages/userGuide/AdminGuide';
 import AddLanguege from '../pages/langueges/AddLanguege';
 import AddSocialMedia from '../pages/socialMedia/AddSocialMedia';
+import AddCompetence from '../pages/competence/AddCompetence';
 
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState('ogrenci');
@@ -55,7 +56,9 @@ const Sidebar = () => {
       case "dil":
         return <Card.Body> <AddLanguege /> </Card.Body>;
       case "sosyalmedya":
-        return <Card.Body><AddSocialMedia/></Card.Body>
+        return <Card.Body><AddSocialMedia/></Card.Body>;
+        case "yetkinlikler":
+          return <Card.Body> <AddCompetence/></Card.Body>
       case "image":
         return <Card.Body><ImageList />
           <ToastContainer position="bottom-right" autoClose={2000} /></Card.Body>;
@@ -90,6 +93,7 @@ const Sidebar = () => {
               <Nav.Link className='text-white' onClick={() => setActiveTab("sınavlar")}><FontAwesomeIcon icon={faBlackboard} /> Sınavlar</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("dil")}><FontAwesomeIcon icon={faLanguage} /> Dil Seçenekleri / Dil Ekleme</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("sosyalmedya")}><FontAwesomeIcon icon={faShareAlt} /> Sosyal Medya Ekleme</Nav.Link>
+              <Nav.Link className='text-white' onClick={() => setActiveTab("yetkinlikler")}><FontAwesomeIcon icon={faStar} /> Yetkinlik Ekleme</Nav.Link>
               <Nav.Link className='text-white' onClick={() => setActiveTab("calendar")}><FontAwesomeIcon icon={faCalendarAlt} /> Takvim</Nav.Link>
               <NavLink className='text-white' onClick={() => setActiveTab("guide")}><FontAwesomeIcon icon={faQuestionCircle} />Admin Rehberi</NavLink>
             </Nav>

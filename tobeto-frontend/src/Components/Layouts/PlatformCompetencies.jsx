@@ -1,8 +1,55 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-
+import { useSelector } from 'react-redux';
+import { fetchCompetenceList, fetchUserCompetences, addCompetence, deleteCompetence } from "../../Services/compatienceService";
 
 const PlatformCompetencies = () => {
+  const [competenceList, setCompetenceList] = useState([]);
+  const userId = useSelector(state => state.auth.userDetails.id);
+  const [selectedCompetence, setSelectedCompetence] = useState('');
+  const [userCompetences, setUserCompetences] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const competenceData = await fetchCompetenceList();
+        setCompetenceList(competenceData);
+        const userCompetenceData = await fetchUserCompetences(userId);
+        setUserCompetences(userCompetenceData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [userId]);
+
+
+  const handleSave = async () => {
+    if (!selectedCompetence) {
+      console.error('Please select a competence');
+      return;
+    }
+
+    try {
+      await addCompetence(userId, selectedCompetence);
+      const updatedUserCompetences = await fetchUserCompetences(userId);
+      setUserCompetences(updatedUserCompetences);
+    } catch (error) {
+      console.error('Error saving competence:', error);
+    }
+  };
+
+  const handleDeleteCompetence = async (id) => {
+    try {
+      await deleteCompetence(id);
+      const updatedUserCompetences = await fetchUserCompetences(userId);
+      setUserCompetences(updatedUserCompetences);
+    } catch (error) {
+      console.error('Error deleting competence:', error);
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -11,34 +58,41 @@ const PlatformCompetencies = () => {
             <Col>
               <Form.Group controlId="formMyCompetencies">
                 <Form.Label className='mb-0'>Yetkinlik</Form.Label>
-                <Form.Select name='MyCompetencies' size="lg">
-                  <option value="0">Yetkinlik Seçiniz</option>
-                  <option value="1">C#</option>
-                  <option value="2">SQL</option>
-                  <option value="3">Aktif Öğrenme</option>
-                  <option value="4">JavaScript</option>
-                  <option value="5">Reklam</option>
-                  <option value="6">Aktif Dinleme</option>
-                  <option value="7">Algoritma</option>
-                  <option value="8">Büyük veri</option>
-                  <option value="9">Blockchain</option>
-                  <option value="10">Backend</option>
-                  <option value="11">Boostrap</option>
-                  <option value="12">İletişim</option>
-                  <option value="13">Pazarlama</option>
-                  <option value="14">Marka Yönetimi</option>
-                  <option value="15">E-Ticaret</option>
+                <Form.Select
+                  name='MyCompetencies'
+                  size="lg"
+                  onChange={(e) => setSelectedCompetence(e.target.value)}
+                  value={selectedCompetence}
+                >
+                  <option value="">Yetkinlik Seçiniz</option>
+                  {competenceList.map((competenceItem, index) => (
+                    <option key={index} value={competenceItem.id}>{competenceItem.name}</option>
+                  ))}
                 </Form.Select>
               </Form.Group>
             </Col>
           </Row>
-          <Button variant="primary" type="submit" className="mt-2">
+          <Button variant="primary" type="button" className="mt-2" onClick={handleSave}>
             Kaydet
           </Button>
         </Form>
+      </Container>
+
+      <hr />
+
+      <h2>Kullanıcı Yetkinlikleri</h2>
+      <Container>
+        <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          {userCompetences.map((competenceItem, index) => (
+            <li key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span>{competenceItem.skillName}</span>
+              <Button variant="danger" onClick={() => handleDeleteCompetence(competenceItem.id)}>Delete</Button>
+            </li>
+          ))}
+        </ul>
       </Container>
     </div>
   )
 }
 
-export default PlatformCompetencies
+export default PlatformCompetencies;
