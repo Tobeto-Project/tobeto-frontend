@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import {
-  fetchCitiesByCountry,
-  fetchCitiesByCountryTurkey,
-  fetchCountries,
-} from "../../Services/LocationService";
-import {
-  addExperience,
-  getExperiencesByUser,
-} from "../../Services/ExperienceService";
+import { fetchCitiesByCountry, fetchCountries } from "../../Services/LocationService";
+import { addExperience, getExperiencesByUser } from "../../Services/ExperienceService";
 import { toast, ToastContainer } from "react-toastify";
 
 const PlatformExperiences = () => {
@@ -28,34 +21,29 @@ const PlatformExperiences = () => {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    fetchCitiesByCountryTurkey()
-      .then((data) => {
-        setCities(data.items || []);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch cities:", error);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        // Fetch cities by country
+        const citiesData = await fetchCitiesByCountry();
+        setCities(citiesData || []);
 
-  const getCityNameById = (cityId) => {
-    const city = cities.find((c) => c.id === cityId);
-    return city ? city.name : "Bilinmeyen Şehir";
-  };
+        // Fetch experiences by user
+        if (userDetails && userDetails.id) {
+          setIsLoading(true);
+          const experiencesData = await getExperiencesByUser(userDetails.id);
+          setExperiences(experiencesData.items || []);
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
+    };
 
-  useEffect(() => {
-    if (userDetails && userDetails.id) {
-      setIsLoading(true);
-      getExperiencesByUser(userDetails.id)
-        .then((data) => {
-          setExperiences(data.items); // Assuming the response has an 'items' array
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Failed to fetch experiences:", error);
-          setIsLoading(false);
-        });
-    }
+    fetchData();
   }, [userDetails]);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,25 +83,6 @@ const PlatformExperiences = () => {
     }
   };
 
-  const refreshExperiences = () => {
-    if (userDetails && userDetails.id) {
-      setIsLoading(true);
-      getExperiencesByUser(userDetails.id)
-        .then((data) => {
-          setExperiences(data.items || []); // Ensuring a fallback to an empty array
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Failed to fetch experiences:", error);
-          setIsLoading(false);
-        });
-    }
-  };
-
-  useEffect(() => {
-    refreshExperiences();
-  }, [userDetails]);
-
   const renderExperiences = () => {
     if (isLoading) {
       return <div>Deneyimler yükleniyor...</div>;
@@ -126,31 +95,38 @@ const PlatformExperiences = () => {
     return experiences.map((experience) => (
       <Card key={experience.id} className="mb-2">
         <Card.Body>
-          <Row><p style={{color:'rgba(153, 51, 255, 0.66)'}}>{experience.jobStart}-{experience.jobCompletion
-            ? new Date(experience.jobCompletion).toLocaleDateString()
-            : "Devam Ediyor"} </p>
+          <Row>
+            <p style={{ color: 'rgba(153, 51, 255, 0.66)' }}>
+              {experience.jobStart}-{experience.jobCompletion
+                ? new Date(experience.jobCompletion).toLocaleDateString()
+                : "Devam Ediyor"}
+            </p>
           </Row>
           <Row>
-            <Col><strong style={{color:'#828282'}}>Kurum Adı</strong></Col>
-            <Col><strong style={{color:'#828282'}}>Pozisyon</strong></Col>
-            <Col><strong style={{color:'#828282'}}>Sektör</strong></Col>
-            <Col><strong style={{color:'#828282'}}>Şehir</strong></Col>
+            <Col><strong style={{ color: '#828282' }}>Kurum Adı</strong></Col>
+            <Col><strong style={{ color: '#828282' }}>Pozisyon</strong></Col>
+            <Col><strong style={{ color: '#828282' }}>Sektör</strong></Col>
+            <Col><strong style={{ color: '#828282' }}>Şehir</strong></Col>
           </Row>
           <Row>
             <Col>{experience.companyName}</Col>
             <Col>{experience.positionName}</Col>
             <Col>{experience.sectorName}</Col>
-            <Col>{getCityNameById(experience.cityId)}s</Col>
+            <Col>{getCityNameById(experience.cityId)}</Col>
           </Row>
-          <br/>
+          <br />
           <Card.Text>
-            <strong style={{color:'#828282'}}>Açıklama:</strong> {experience.description}
+            <strong style={{ color: '#828282' }}>Açıklama:</strong> {experience.description}
           </Card.Text>
         </Card.Body>
       </Card>
     ));
   };
 
+  const getCityNameById = (cityId) => {
+    const city = cities.find((c) => c.id === cityId);
+    return city ? city.name : "Bilinmeyen Şehir";
+  };
 
   return (
     <div>
