@@ -18,10 +18,12 @@ import { fetchUserCompetences } from "../../Services/compatienceService";
 
 const Profil = () => {
   const userDetails = useSelector((state) => state.auth.userDetails);
+  console.log("userdetailsss", userDetails)
   const [certificatesList, setCertificatesList] = useState([]);
   const [userSocials, setUserSocials] = useState([]);
   const [userLanguages, setUserLanguages] = useState([]);
   const [userCompetences, setUserCompetences] = useState([]);
+  const [aboutMe, setAboutMe] = useState("");
 
   const socialMediaIcons = {
     instagram: FaInstagram,
@@ -61,8 +63,11 @@ const Profil = () => {
     const fetchData = async () => {
       await fetchCertificates(userId);
       await fetchUserSocials(userId);
-      await fetchLanguages(userId);;
+      await fetchLanguages(userId);
       await userCompatences(userId);
+      if (userDetails) {
+        setAboutMe(userDetails.aboutMe);
+      }
     };
 
     fetchData();
@@ -245,7 +250,7 @@ const Profil = () => {
                 <Card.Body>
                   <Card.Title>Hakkımda</Card.Title>
                   <hr style={{ color: "purple" }} />
-                  <Card.Text></Card.Text>
+                  <Card.Text>{aboutMe}</Card.Text>
                 </Card.Body>
               </Card>
             </div>

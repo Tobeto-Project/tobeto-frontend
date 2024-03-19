@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+// PlatformForm.js
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import userphoto from "../../Assets/Images/user-photo.png";
-import {
-  fetchCitiesByCountry,
-  fetchCountries,
-  fetchTownsByCity,
-} from "../../Services/LocationService";
-import { updateUserDetails } from "../../Services/UserService";
+import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from 'react-toastify';
+import { fetchCountries, fetchCitiesByCountry, fetchTownsByCity } from "../../Services/LocationService";
+import { updateUserDetails, uploadImage, getImageList, fetchUserDetails } from "../../Services/UserService";
+import userphoto from "../../Assets/Images/user-photo.png";
 
 const PlatformForm = () => {
   const userDetailsRedux = useSelector((state) => state.auth.userDetails);
+  console.log("userdetailsreduxxxx", userDetailsRedux);
 
-  // Local state'ler
+  const dispatch = useDispatch();
   const [userDetails, setUserDetails] = useState({
     id: userDetailsRedux.id || "",
     firstName: "",
@@ -24,6 +22,8 @@ const PlatformForm = () => {
     aboutMe: "",
     birthDate: "",
     description: "",
+    imageid: userphoto,
+    imageId: null
   });
 
   const [countries, setCountries] = useState([]);
@@ -35,21 +35,7 @@ const PlatformForm = () => {
   const [towns, setTowns] = useState([]);
   const [selectedTown, setSelectedTown] = useState("");
 
-  useEffect(() => {
-    fetchCountries().then(setCountries);
-    // Redux'dan gelen userDetails'i local state'e kopyala
-    setUserDetails({
-      ...userDetails,
-      firstName: userDetailsRedux.firstName || "",
-      lastname: userDetailsRedux.lastname || "",
-      phoneNumber: userDetailsRedux.phoneNumber || "",
-      email: userDetailsRedux.email || "",
-      identityNumber: userDetailsRedux.identityNumber || "",
-      aboutMe: userDetailsRedux.aboutMe || "",
-      birthDate: userDetailsRedux.birthDate || "",
-      description: userDetailsRedux.description || "",
-    });
-  }, [userDetailsRedux]);
+  const [userPhotoFile, setUserPhotoFile] = useState(null);
 
   useEffect(() => {
     if (selectedCountry) {
@@ -61,25 +47,96 @@ const PlatformForm = () => {
 
   useEffect(() => {
     if (selectedCity) {
-      fetchTownsByCity(selectedCity).then(setTowns);
+      fetchTownsByCity(selectedCity)
+        .then(setTowns)
+        .catch(error => {
+          console.error("Failed to fetch towns:", error);
+          toast.error("İlçeler getirilirken bir hata oluştu.");
+        });
     }
   }, [selectedCity]);
 
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+
+        // Ülkeleri getir
+        const countriesData = await fetchCountries();
+        setCountries(countriesData);
+
+        // Kullanıcı detaylarını Redux'tan al ve userDetails state'ini güncelle
+        setUserDetails(prevDetails => ({
+          ...prevDetails,
+          firstName: userDetailsRedux.firstName || "",
+          lastname: userDetailsRedux.lastname || "",
+          phoneNumber: userDetailsRedux.phoneNumber || "",
+          email: userDetailsRedux.email || "",
+          identityNumber: userDetailsRedux.identityNumber || "",
+          aboutMe: userDetailsRedux.aboutMe || "",
+          birthDate: userDetailsRedux.birthDate || "",
+          description: userDetailsRedux.description || "",
+        }));
+
+        // Fotoğraf listesini getir
+        const images = await getImageList();
+        if (images.length > 0) {
+          // userPhoto state'ini güncelle
+          setUserDetails(prevDetails => ({
+            ...prevDetails,
+            imageid: images[0].fileUrl
+          }));
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        toast.error("Bir hata oluştu.");
+      }
+    };
+
+    fetchData();
+  }, [userDetailsRedux, userPhotoFile]);
+
+
+  const handleFileChange = (e) => {
+    // Seçilen dosyayı alın
+    const selectedFile = e.target.files[0];
+
+    // Eğer dosya seçilmediyse veya seçilen dosya null ise, işlemi sonlandırın
+    if (!selectedFile) return;
+
+    // Yeni resmi userDetails state'ine ekleyin
+    setUserDetails(prevDetails => ({
+      ...prevDetails,
+      imageId: selectedFile,
+    }));
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //tarihi formatladım
+
     const birthDateToSend = new Date(userDetails.birthDate).toISOString();
 
+    // userData nesnesine imageId alanını ekleyin
     const userData = {
       ...userDetails,
-      birthDate: birthDateToSend, // Formatlanmış tarih
+      birthDate: birthDateToSend,
       countryId: selectedCountry,
       cityId: selectedCity,
       townId: selectedTown,
+      imageId: userDetailsRedux.imageId // Eğer imageId yoksa null olacak
     };
-    console.log("Gönderilen veri:", userData);
 
     try {
+      // Eğer image alanı doluysa, önce image'i yükleyin
+      if (userDetails.imageId) {
+        const imageResponse = await uploadImage(userDetails.imageId);
+        console.log("imageresponseeeee", imageResponse)
+        userDetailsRedux.imageId = imageResponse.id; // Yüklenen image'in ID'sini userData'ya ekleyin
+      }
+
       await updateUserDetails(userData);
       console.log("Kullanıcı başarıyla güncellendi");
       toast.success("Başarıyla Güncellendi")
@@ -89,7 +146,8 @@ const PlatformForm = () => {
     }
   };
 
-  // Form alanlarını güncelleme için onChange handler'ları
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserDetails((prevDetails) => ({
@@ -98,20 +156,50 @@ const PlatformForm = () => {
     }));
   };
 
+  const handleUploadImage = async () => {
+    if (!userPhotoFile) {
+      toast.error("Lütfen bir dosya seçin.");
+      return; // Dosya seçilmediyse işlem yapmayı sonlandır
+    }
+
+    try {
+      // Dosya seçildiyse yükleme işlemini gerçekleştir
+      const response = await uploadImage(userPhotoFile);
+      console.log("Dosya yükleme başarılı:", response);
+      toast.success("Dosya başarıyla yüklendi.");
+
+      // Fotoğraf yüklendikten sonra istenilen ek işlemleri buraya ekleyebilirsiniz
+
+    } catch (error) {
+      console.error("Dosya yüklenirken hata oluştu:", error);
+      toast.error("Dosya yüklenirken bir hata oluştu.");
+    }
+  };
+
   return (
     <div>
       <Container>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <div className="my-3 d-flex justify-content-center align-items-center">
-              <img
-                src={userphoto}
-                alt="Profil Resmi"
-                style={{ width: "300px", height: "300px", borderRadius: "50%" }} // Profil resmi için stil
-              />
-            </div>
-          </Form.Group>
+        <Container>
+          <div className="my-3 d-flex justify-content-center align-items-center" style={{ position: "relative", display: "inline-block", textAlign: "center" }}>
+            <img
+              src={userDetails.imageid}
+              style={{ width: "250px", height: "250px", borderRadius: "50%", margin: "0 auto" }}
+              alt="Profil Resmi"
+            />
 
+            <label htmlFor="file-input" style={{ position: "absolute", bottom: "10px", left: "63%", transform: "translateX(-85%)", display: userPhotoFile ? 'none' : 'flex', alignItems: "center", backgroundColor: "white", color: "#fff", padding: "15px 15px", borderRadius: "50%", cursor: "pointer", transition: "background-color 0.3s ease", fontSize: "25px" }}>
+              <img src="https://tobeto.com/edit.svg" alt="Dosya Seç" style={{ width: "20px", marginRight: "8px" }} />
+              <input id="file-input" type="file" style={{ display: "none" }} onChange={handleFileChange} />
+            </label>
+          </div>
+          <Button variant="primary" className="mt-2" onClick={handleUploadImage} style={{ display: userPhotoFile ? 'block' : 'none' }}>
+            Fotoğrafı Yükle
+          </Button>
+
+
+
+        </Container>
+        <Form onSubmit={handleSubmit}>
           {/* Ad ve Soyad */}
           <Row className="mt-2">
             <Col>
@@ -157,7 +245,7 @@ const PlatformForm = () => {
                 <Form.Control
                   type="date"
                   name="birthDate"
-                  value={userDetails.birthDate.split("T")[0]}                  
+                  value={userDetails.birthDate.split("T")[0]}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -215,7 +303,13 @@ const PlatformForm = () => {
                 <Form.Control
                   as="select"
                   value={selectedCity}
-                  onChange={(e) => setSelectedCity(e.target.value)}
+                  onChange={(e) => {
+                    if (!selectedCountry) {
+                      toast.warning("Önce ülke seçiniz.");
+                      return;
+                    }
+                    setSelectedCity(e.target.value);
+                  }}
                   disabled={!selectedCountry}
                 >
                   <option value="">Şehir Seçiniz</option>
@@ -247,9 +341,9 @@ const PlatformForm = () => {
             </Col>
           </Row>
 
-          {/* Mahalle ve Sokak */}
+          {/* adress */}
           <Form.Group controlId="formDescription">
-            <Form.Label>Açıklama</Form.Label>
+            <Form.Label>adres ekleme</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -258,6 +352,7 @@ const PlatformForm = () => {
               onChange={handleChange}
             />
           </Form.Group>
+
           {/* Hakkında */}
           <Form.Group controlId="formAbout">
             <Form.Label>Hakkında</Form.Label>
@@ -270,12 +365,11 @@ const PlatformForm = () => {
             />
           </Form.Group>
 
-          {/* Kaydet Butonu */}
           <Button variant="primary" type="submit" className="mt-2">
             Kaydet
           </Button>
         </Form>
-        <ToastContainer/>
+        <ToastContainer />
       </Container>
     </div>
   );
