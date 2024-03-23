@@ -34,6 +34,8 @@ function App() {
     dispatch(checkTokenAndLogin());
   }, [dispatch]);
 
+  
+
   const HomePage = React.lazy(() => import('./Pages/HomePage'));
   const BizKimiz = lazy(() => import('./Pages/BizKimiz'));
   const BireylerIcın = lazy (() => import('./Pages/BireylerIcin'));
