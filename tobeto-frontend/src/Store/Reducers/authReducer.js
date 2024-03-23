@@ -9,13 +9,13 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-  console.log("Reducer action:", action);
+  
 
   switch (action.type) {
     case "LOGIN_REQUEST":
       return { ...state, isLoading: true, error: null };
       case "LOGIN_SUCCESS":
-        console.log("action.payload.userDetails:", action.payload.userDetails);
+      
         return {
             ...state,
             isLoggedIn: true,
