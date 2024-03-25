@@ -147,7 +147,7 @@ const Header = () => {
                       borderRadius: "50%",
                     }} // Profil resmi için stil
                   />
-                  {userDetails.firstName + " " + userDetails.lastname}
+                  {userDetails.firstName + " " + userDetails.lastName}
                 </div></Link>
 
               </>
@@ -189,7 +189,7 @@ const Header = () => {
               Ücretsiz Üye Ol
             </Button>
           )}
-        
+
           <NavLink
             to="/bizkimiz"
             as={Link}
@@ -279,7 +279,7 @@ const Header = () => {
                       borderRadius: "50%",
                     }}
                   />
-                  {userDetails.firstName + " " + userDetails.lastname}
+                  {userDetails.firstName + " " + userDetails.lastName}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

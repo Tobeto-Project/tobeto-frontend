@@ -112,7 +112,7 @@ const PlatformHeader = () => {
                         borderRadius: "50%",
                       }}
                     />
-                    {userDetails.firstName + " " + userDetails.lastname}
+                    {userDetails.firstName + " " + userDetails.lastName}
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>

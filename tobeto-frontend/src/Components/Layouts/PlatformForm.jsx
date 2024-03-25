@@ -15,7 +15,7 @@ const PlatformForm = () => {
   const [userDetails, setUserDetails] = useState({
     id: userDetailsRedux.id || "",
     firstName: "",
-    lastname: "",
+    lastName: "",
     phoneNumber: "",
     email: "",
     identityNumber: "",
@@ -71,7 +71,7 @@ const PlatformForm = () => {
         setUserDetails(prevDetails => ({
           ...prevDetails,
           firstName: userDetailsRedux.firstName || "",
-          lastname: userDetailsRedux.lastname || "",
+          lastName: userDetailsRedux.lastName || "",
           phoneNumber: userDetailsRedux.phoneNumber || "",
           email: userDetailsRedux.email || "",
           identityNumber: userDetailsRedux.identityNumber || "",
@@ -219,7 +219,7 @@ const PlatformForm = () => {
                 <Form.Control
                   type="text"
                   name="lastname"
-                  value={userDetails.lastname}
+                  value={userDetails.lastName}
                   onChange={handleChange}
                 />
               </Form.Group>
