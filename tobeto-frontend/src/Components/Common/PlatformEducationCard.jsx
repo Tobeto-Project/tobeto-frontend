@@ -1,14 +1,13 @@
-// PlatformEducationCard.js
 import React, { useState, useEffect } from 'react';
 import { SlArrowRight } from 'react-icons/sl';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux'; // Add this import
-import { getEducationData } from '../../Services/EducationService';
+import { connect } from 'react-redux';
+import { mapCourseToEducationData } from '../../Services/EducationService'; // mapCourseToEducationData fonksiyonunu import ediyoruz
 import '../../Styles/CommonStyles/EducationCardStyles.css';
 import EducationCard from './EducationCard';
 
-const PlatformEducationCard = ({ setEducationTitle }) => {
+const PlatformEducationCard = ({ setEducationTitle, setCourseModules }) => {
   const [educationList, setEducationList] = useState([]);
   const navigate = useNavigate();
 
@@ -19,9 +18,19 @@ const PlatformEducationCard = ({ setEducationTitle }) => {
   };
 
   useEffect(() => {
-    getEducationData().then((data) => {
-      setEducationList(data);
-    });
+    const fetchData = async () => {
+      try {
+        const educationData = await mapCourseToEducationData(); // Kurs verilerini almak için mapCourseToEducationData fonksiyonunu kullanıyoruz
+        setEducationList(educationData);
+        // Burada kurs modüllerini de Redux store'a gönderiyoruz
+        const modules = educationData.flatMap((edu) => edu.courseModules);
+        setCourseModules(modules);
+      } catch (error) {
+        console.error('Error fetching education data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -52,6 +61,7 @@ const PlatformEducationCard = ({ setEducationTitle }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setEducationTitle: (title) => dispatch({ type: 'SET_EDUCATION_TITLE', payload: title }),
+  setCourseModules: (modules) => dispatch({ type: 'SET_COURSE_MODULES', payload: modules }),
 });
 
 export default connect(null, mapDispatchToProps)(PlatformEducationCard);

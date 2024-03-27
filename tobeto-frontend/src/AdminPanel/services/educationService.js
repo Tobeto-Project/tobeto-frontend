@@ -1,4 +1,4 @@
-//educationService1.js
+//educationService.js
 
 import API_URL from "../../Services/config";
 import axios from "axios";
@@ -111,7 +111,6 @@ const educationService = {
       // Fetch instructors
       const instructors = await fetchInstructors();
 
-    
       const selectedInstructor =
         instructors.length > 0 ? instructors[0].id : null;
 
@@ -134,6 +133,17 @@ const educationService = {
         console.error("Error adding lesson:", error.message);
         throw error;
       }
+    }
+  },
+
+  getListModulesByCourse: async (courseId) => {
+    try {
+      const response = await axios.get(
+        `${API_BASE_URL}/CourseModules/getListByCourse?id=${courseId}`
+      );
+      return response.data.items;
+    } catch (error) {
+      throw error;
     }
   },
 };

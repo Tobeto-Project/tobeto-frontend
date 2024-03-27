@@ -1,16 +1,22 @@
-// EducationCard.js
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getCourseModules } from '../../Services/EducationService';// getCourseModules fonksiyonunu import edin
 
 const EducationCard = ({ data, setEducationTitle }) => {
     const navigate = useNavigate();
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         setEducationTitle(data.EducationTitle);
         navigate('/lms');
+        try {
+            await getCourseModules(data.id); // "Eğitime Git" butonuna tıklandığında ilgili kurs ID'sini iletiyoruz
+        } catch (error) {
+            // Hata durumunu işleyin
+        }
     };
+
 
     return (
         <Card className="education-card">
