@@ -1,17 +1,17 @@
-// VideoComponent.jsx
-
 import React, { useState, useEffect } from "react";
-import { Col, Container, Row, Offcanvas, Button } from "react-bootstrap";
+import { Col, Row, Offcanvas, Button, Container } from "react-bootstrap";
 import AboutComponent from "./AboutComponent";
 import { BsX } from "react-icons/bs";
+import ReactPlayer from "react-player";
 
-const VideoComponent = ({ lessonName, onLessonNameChange }) => {
-    const videoUrl = "https://www.youtube.com/embed/your-video-id"; // Replace with your actual video URL
+const VideoComponent = ({ lesson }) => {
     const [showOffcanvas, setShowOffcanvas] = useState(false);
     const [initialLoad, setInitialLoad] = useState(true);
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
+            console.log("Outside click detected.");
+            console.log("Iframe data:", lesson && lesson.video);
             if (
                 !e.target.closest('.offcanvas') &&
                 !e.target.closest('.offcanvas-backdrop')
@@ -29,27 +29,49 @@ const VideoComponent = ({ lessonName, onLessonNameChange }) => {
 
     useEffect(() => {
         if (initialLoad) {
-            // Sadece sayfa ilk yüklendiğinde çalışacak olan kısım
-            setInitialLoad(true);
+            setInitialLoad(false);
         }
-    }, [initialLoad, lessonName]);
+    }, [initialLoad]);
 
-    // lessonName'ı bağımlılık listesine ekledik
-    useEffect(() => {
-        onLessonNameChange(lessonName);
-    }, [lessonName, onLessonNameChange]);
+    if (!lesson) {
+        return null;
+    }
 
     return (
         <Row>
             <Col>
-                <iframe
-                    title="Lesson Video"
-                    width="100%"
-                    height="315"
-                    src={videoUrl}
-                    frameBorder="0"
-                    allowFullScreen
-                ></iframe>
+                <div style={{ borderRadius: "25px", overflow: "hidden" }}>
+                    <ReactPlayer
+                        url={`${lesson.video}`}
+                        controls
+                        width="100%"
+                        height="450px"
+                        style={{ maxWidth: "100%" }}
+                        config={{
+                            youtube: {
+                                playerVars: {
+                                    controls: 1,
+                                    disablekb: 0,
+                                    fs: 1,
+                                    iv_load_policy: 3,
+                                    modestbranding: 1,
+                                    rel: 0,
+                                    showinfo: 0,
+                                    color: 'white', // Kontrol düğmelerinin rengi
+                                    disablekb: 0, // Klavye kontrolünü etkinleştir
+                                    cc_load_policy: 0,
+                                    start: 0,
+                                    end: 0,
+                                    loop: 0,
+                                }
+                            }
+                        }}
+                    />
+                </div>
+
+
+
+
 
                 <Container style={{
                     backgroundColor: 'white',
@@ -59,15 +81,13 @@ const VideoComponent = ({ lessonName, onLessonNameChange }) => {
                     margin: '20px auto',
                 }}>
                     <div style={{ marginTop: "10px", fontSize: "1.2rem", fontWeight: "bold" }}>
-                        {lessonName && `${lessonName}`}
+                        {lesson.name}
                     </div>
 
-                    {/* Detail Button */}
                     <Button onClick={() => setShowOffcanvas(true)} style={{ marginTop: "10px" }}>
                         Detay
                     </Button>
 
-                    {/* Offcanvas */}
                     <Offcanvas
                         show={showOffcanvas}
                         onHide={() => setShowOffcanvas(false)}
@@ -75,25 +95,25 @@ const VideoComponent = ({ lessonName, onLessonNameChange }) => {
                         style={{
                             width: "100%",
                             maxWidth: "50%",
-                            transition: " 0.4s ease",
-
-                        }}  >
+                            transition: "0.4s ease",
+                        }}
+                    >
                         <Offcanvas.Header
                             style={{
                                 backgroundColor: "#333",
                                 color: "#fff",
-                            }} >
-                            <Offcanvas.Title>Detail</Offcanvas.Title>
+                            }}
+                        >
+                            <Offcanvas.Title>Detay</Offcanvas.Title>
                             <Button variant="link" onClick={() => setShowOffcanvas(false)}>
                                 <BsX size={30} />
                             </Button>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            {lessonName && <p>{lessonName}</p>}
+                            <p>{lesson.name}</p>
                             <AboutComponent />
                         </Offcanvas.Body>
                     </Offcanvas>
-
                 </Container>
             </Col>
         </Row>

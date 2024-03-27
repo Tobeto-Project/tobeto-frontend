@@ -103,14 +103,13 @@ const educationService = {
     }
   },
 
-  addLesson: async (moduleId, lessonName) => {
+  addLesson: async (moduleId, lessonName, videoLink) => {
     try {
       const currentDatetime = new Date();
       const isoDatetimeString = currentDatetime.toISOString();
 
       // Fetch instructors
       const instructors = await fetchInstructors();
-
       const selectedInstructor =
         instructors.length > 0 ? instructors[0].id : null;
 
@@ -118,21 +117,13 @@ const educationService = {
         CourseModuleId: moduleId,
         Name: lessonName,
         InstructorId: selectedInstructor,
-        Video: "string",
+        Video: videoLink,
         durationTime: isoDatetimeString,
         timeSpent: isoDatetimeString,
       });
-
-      console.log("response", response.data);
       return response.data;
     } catch (error) {
-      if (error.response && error.response.data) {
-        console.error("Error adding lesson:", error.response.data);
-        throw error.response.data; // or handle the error in a way that makes sense for your application
-      } else {
-        console.error("Error adding lesson:", error.message);
-        throw error;
-      }
+      throw error;
     }
   },
 

@@ -59,14 +59,16 @@ export const getCourseModules = async (courseId) => {
 
 export const getAsyncLessonsByCourseModule = async (courseModuleId) => {
   try {
+ 
     const response = await axios.get(
       `${API_BASE_URL}/AsyncLessons/getListByCourseModule?id=${courseModuleId}`
     );
-    console.log("Async lessons:", response.data.items); // Gelen veriyi kontrol etmek için console.log ekledik
-    return response.data.items; // Sadece öğeleri döndür
+    console.log("Async lessons:", response.data.items);
+    return response.data.items;
   } catch (error) {
     console.error("Error fetching async lessons by course module:", error);
     throw error;
   }
 };
+
 

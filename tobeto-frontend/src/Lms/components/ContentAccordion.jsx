@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Accordion, Card, Button, Container, Col, Row } from "react-bootstrap";
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 import VideoComponent from "./VideoComponent";
+import { getAsyncLessonsByCourseModule } from "../../Services/EducationService";
 
 const ContentAccordion = ({ onLessonNameChange, courseModules, setLikeToast, setBookmarkToast }) => {
     const [openAccordion, setOpenAccordion] = useState(null);
     const [selectedLesson, setSelectedLesson] = useState(null);
-
-    useEffect(() => {
-        console.log("Course Modules:", courseModules);
-        if (courseModules && courseModules.length > 0 && !selectedLesson) {
-            setSelectedLesson(courseModules[0].lessons && courseModules[0].lessons[0]); // İlk dersi seçiyoruz
-        }
-    }, [courseModules, selectedLesson]);
+    const [asyncLessons, setAsyncLessons] = useState({});
 
     const handleToggleAccordion = (index) => {
         setOpenAccordion((prevOpenAccordion) => (prevOpenAccordion === index ? null : index));
         setSelectedLesson(null);
+        const clickedModuleId = courseModules[index].id;
+        if (!asyncLessons[clickedModuleId]) {
+            getAsyncLessonsByCourseModule(clickedModuleId)
+                .then(lessons => {
+                    setAsyncLessons(prevAsyncLessons => ({ ...prevAsyncLessons, [clickedModuleId]: lessons }));
+                })
+                .catch(error => {
+                    console.error('Error fetching async lessons:', error);
+                });
+        }
     };
 
-    const handleLessonClick = (lessonName) => {
-        setSelectedLesson(lessonName);
+    const handleLessonClick = (lesson, e) => {
+        e.stopPropagation();
+        setSelectedLesson(lesson); // Seçili dersi ayarla
         setLikeToast(false);
         setBookmarkToast(false);
         if (typeof onLessonNameChange === "function") {
-            onLessonNameChange(lessonName);
+            onLessonNameChange(lesson.name); // Sadece ders adını iletiyoruz
         }
     };
 
@@ -83,12 +89,11 @@ const ContentAccordion = ({ onLessonNameChange, courseModules, setLikeToast, set
                                     </Card.Header>
                                     <Accordion.Collapse eventKey={`module-${moduleIndex + 1}`}>
                                         <Card.Body style={{ display: "flex", flexDirection: "column" }}>
-                                            {module.lessons &&
-                                                module.lessons.map((lesson, lessonIndex) => (
-                                                    <button key={lessonIndex} style={{ marginBottom: "5px", border: "none", textAlign: "left" }} onClick={() => handleLessonClick(lesson)}>
-                                                        {lesson}
-                                                    </button>
-                                                ))}
+                                            {asyncLessons[module.id] && asyncLessons[module.id].map((lesson, lessonIndex) => (
+                                                <button key={lessonIndex} style={{ marginBottom: "5px", border: "none", textAlign: "left" }} onClick={(e) => handleLessonClick(lesson, e)}>
+                                                    {lesson.name}
+                                                </button>
+                                            ))}
                                         </Card.Body>
                                     </Accordion.Collapse>
                                 </Card>
@@ -98,8 +103,7 @@ const ContentAccordion = ({ onLessonNameChange, courseModules, setLikeToast, set
 
                 <Col md={6}>
                     <VideoComponent
-                        lessonName={selectedLesson}
-                        onLessonNameChange={setSelectedLesson}
+                        lesson={selectedLesson} // Seçili dersi props olarak geçir
                         setLikeToast={setLikeToast}
                         setBookmarkToast={setBookmarkToast}
                     />

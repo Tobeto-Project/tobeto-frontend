@@ -24,28 +24,30 @@ const LmsPage = ({ educationTitle, courseModules }) => {
   };
 
   useEffect(() => {
+    // Sayfanın en üstüne kaydır
     window.scrollTo(0, 0);
+
+    // İçerik elementini bul ve görüntülenebilir hale getir
     const contentElement = document.getElementById('icerik');
     if (contentElement) {
       contentElement.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [activeTab]);
 
-  useEffect(() => {
+    // Seçilen ders değiştiğinde async dersleri getir
     if (selectedLesson) {
       const fetchAsyncLessons = async () => {
         try {
           const lessons = await getAsyncLessonsByCourseModule(selectedLesson.id);
-          console.log('Fetched async lessons:', lessons); // Seçilen dersin id'sini geçiyoruz
+          console.log('Fetched async lessons:', lessons);
           setAsyncLessons(lessons);
         } catch (error) {
           console.error("Error fetching async lessons:", error);
         }
       };
-
       fetchAsyncLessons();
     }
-  }, [selectedLesson]);
+  }, [activeTab, selectedLesson]);
+
 
   return (
     <div>
