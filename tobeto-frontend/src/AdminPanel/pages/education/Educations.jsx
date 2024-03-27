@@ -20,7 +20,7 @@ const Educations = () => {
     const [selectedModuleIdForLessons, setSelectedModuleIdForLessons] = useState(null);
     const [instructors, setInstructors] = useState([]);
     const [selectedInstructorId, setSelectedInstructorId] = useState(null);
-
+    const [newVideoLink, setNewVideoLink] = useState('');
 
 
 
@@ -110,7 +110,7 @@ const Educations = () => {
                     console.log("gelenderslerrr", items);
                     setSelectedLessons(items);
 
-             
+
                     setSelectedInstructorId(instructorId);
 
                     setSelectedModuleIdForLessons(moduleId);
@@ -136,7 +136,7 @@ const Educations = () => {
         educationService.addLesson(
             selectedModuleIdForLessons,
             newLessonName,
-           
+            newVideoLink // Video linkini de API'ye gönder
         )
             .then(data => {
                 console.log('Lesson added successfully:', data);
@@ -221,9 +221,6 @@ const Educations = () => {
                         ))}
                     </ul>
 
-
-
-
                     <h2>Course Modules:</h2>
                     <ul>
                         {courseModules.map(module => (
@@ -232,27 +229,38 @@ const Educations = () => {
                                 <Button variant="primary" onClick={() => handleShowLessons(module.id)}>
                                     Show Lessons
                                 </Button>
-
                             </li>
                         ))}
                     </ul>
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowDetailsModal(false)}>
+                        Close
+                    </Button>
+                </Modal.Footer>
             </Modal>
 
             <Modal show={showAddLessonModal} onHide={handleCloseAddLessonModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Lessons for Course Module</Modal.Title>
+                    <Modal.Title>Add Lesson</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    {/* Input for lesson name */}
                     <ul>
                         {selectedLessons
                             .filter(lesson => lesson.courseModuleId === selectedModuleIdForLessons)
                             .map(filteredLesson => (
-                                <li key={filteredLesson.id}>{filteredLesson.name}</li>
+                                <li key={filteredLesson.id}>
+                                    <div>
+                                        <strong>Lesson Name: </strong> {filteredLesson.name}
+                                    </div>
+                                    <div>
+                                        <strong>Video Link: </strong> {filteredLesson.video}
+                                    </div>
+                                </li>
                             ))}
                     </ul>
 
-                    {/* Input for lesson details */}
                     <Form.Group controlId="newLessonName">
                         <Form.Label>Lesson Name</Form.Label>
                         <Form.Control
@@ -260,6 +268,17 @@ const Educations = () => {
                             placeholder="Enter lesson name"
                             value={newLessonName}
                             onChange={(e) => setNewLessonName(e.target.value)}
+                        />
+                    </Form.Group>
+
+                    {/* Input for video link */}
+                    <Form.Group controlId="newVideoLink">
+                        <Form.Label>Video Link</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter video link"
+                            value={newVideoLink}
+                            onChange={(e) => setNewVideoLink(e.target.value)}
                         />
                     </Form.Group>
                 </Modal.Body>
@@ -272,6 +291,7 @@ const Educations = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
 
             {/* ... (remaining code) */}
         </div>
