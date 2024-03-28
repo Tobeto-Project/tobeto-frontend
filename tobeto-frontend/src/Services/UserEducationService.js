@@ -31,3 +31,19 @@ export const addUserEducation = async (educationData) => {
     throw error;
   }
 };
+
+
+export const deleteEducationById = async (educationId) => {
+  try {
+    const response = await axios.delete(
+      `${API_BASE_URL}/UserEducation/delete`,
+      {
+        data: { id: educationId }, 
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    return response.data; 
+  } catch (error) {
+    throw error; 
+  }
+};

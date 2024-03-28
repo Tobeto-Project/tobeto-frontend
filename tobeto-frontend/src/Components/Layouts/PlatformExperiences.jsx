@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { fetchCitiesByCountry, fetchCountries } from "../../Services/LocationService";
-import { addExperience, getExperiencesByUser } from "../../Services/ExperienceService";
+import { addExperience, getExperiencesByUser, deleteExperienceById } from "../../Services/ExperienceService";
 import { toast, ToastContainer } from "react-toastify";
 
 const PlatformExperiences = () => {
@@ -83,6 +83,25 @@ const PlatformExperiences = () => {
     }
   };
 
+
+
+  const handleDeleteExperience = async (experienceId) => {
+    try {
+      await deleteExperienceById(experienceId);
+      toast.success("Deneyim başarıyla silindi.");
+
+      // Deneyimleri yeniden getir
+      setIsLoading(true);
+      const updatedExperiences = await getExperiencesByUser(userDetails.id);
+      setExperiences(updatedExperiences.items || []);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Deneyim silinirken hata oluştu:", error);
+      toast.error("Deneyim silinirken bir hata oluştu. Lütfen tekrar deneyin.");
+    }
+  };
+
+
   const renderExperiences = () => {
     if (isLoading) {
       return <div>Deneyimler yükleniyor...</div>;
@@ -118,6 +137,13 @@ const PlatformExperiences = () => {
           <Card.Text>
             <strong style={{ color: '#828282' }}>Açıklama:</strong> {experience.description}
           </Card.Text>
+          <Button
+            variant="danger"
+            size="sm"
+            onClick={() => handleDeleteExperience(experience.id)}
+          >
+            Deneyimi Sil
+          </Button>
         </Card.Body>
       </Card>
     ));

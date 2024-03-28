@@ -70,13 +70,13 @@ const PlatformSettings = () => {
                         </Col>
                     </Row>
                     <Row className='mt-5'>
-                        <Col md={6}>
-                            <Button variant="primary" className='w-100' onClick={handlePasswordChange}>
+                        <Col md={6} className="d-flex justify-content-center">
+                            <Button variant="primary" className='w-50 rounded-pill' onClick={handlePasswordChange}>
                                 Şifre Değiştir
                             </Button>
                         </Col>
-                        <Col md={6}>
-                            <Button variant="danger" className='w-100 rounded-pill'>
+                        <Col md={6} className="d-flex justify-content-center">
+                            <Button variant="danger" className='w-50 rounded-pill'>
                                 Üyeliği Sonlandır
                             </Button>
                         </Col>
