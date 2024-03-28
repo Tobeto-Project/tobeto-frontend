@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { addUserEducation, getUserEducations } from "../../Services/UserEducationService";
+import { addUserEducation, deleteEducationById, getUserEducations } from "../../Services/UserEducationService";
 import { FaTimesCircle } from 'react-icons/fa';
 import { ToastContainer, toast } from "react-toastify";
 
@@ -68,6 +68,20 @@ const PlatformEducationLife = () => {
           toast.error("Eğitim bilgisi eklenirken bir hata oluştu");
         }
       };
+
+  const handleDeleteEducation = async (educationId) => {
+    try {
+    
+      await deleteEducationById(educationId);
+      toast.success("Eğitim bilgisi başarıyla silindi");
+      fetchEducations();
+    
+    } catch (error) {
+      console.error("Eğitim bilgisi silinirken bir hata oluştu", error);
+      toast.error("Eğitim bilgisi silinirken bir hata oluştu");
+    }
+  };
+
     
 
   return (
@@ -175,7 +189,8 @@ const PlatformEducationLife = () => {
               </Col>
             </Row>
               <Col xs="auto" className="text-danger">
-                <FaTimesCircle onClick={() => console.log("Silme işlemi", edu.id)}/>
+                  <Button variant="danger" onClick={() => handleDeleteEducation(edu.id)}>Eğitimi Sil</Button>
+
               </Col>
         
           </Container>
