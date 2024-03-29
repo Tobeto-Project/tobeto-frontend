@@ -12,10 +12,13 @@ const MyEducation = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [showNoResultsMessage, setShowNoResultsMessage] = useState(false);
+  const [sortOption, setSortOption] = useState('a-z');
+  const [sortedResults, setSortedResults] = useState([]);
 
   useEffect(() => {
     getEducationData().then((data) => {
       setEducationList(data);
+      setSortedResults(sortSearchResults(data));
     });
   }, []);
 
@@ -28,10 +31,33 @@ const MyEducation = () => {
         console.log("Arama sonuçları:", response.items); // Arama sonuçlarını konsola yazdır
         setSearchResults(response.items);
         setShowNoResultsMessage(response.items.length === 0);
+        setSortedResults(sortSearchResults(response.items));
       })
       .catch((error) => {
         console.error('Error searching:', error);
       });
+  };
+
+  const sortSearchResults = (results) => {
+    const sortedResults = [...results];
+    if (sortOption === 'a-z') {
+      sortedResults.sort((a, b) => (a.name && b.name) ? a.name.localeCompare(b.name) : 0);
+    } else if (sortOption === 'z-a') {
+      sortedResults.sort((a, b) => (a.name && b.name) ? b.name.localeCompare(a.name) : 0);
+    } else if (sortOption === 'new-old') {
+      sortedResults.sort((a, b) => (a.createdDate && b.createdDate) ? new Date(b.createdDate) - new Date(a.createdDate) : 0);
+    } else if (sortOption === 'old-new') {
+      sortedResults.sort((a, b) => (a.createdDate && b.createdDate) ? new Date(a.createdDate) - new Date(b.createdDate) : 0);
+    }
+    return sortedResults;
+  };
+
+
+  const handleSortChange = (option) => {
+    setSortOption(option);
+    const resultsToSort = searchText ? searchResults : educationList;
+    const sortedResults = sortSearchResults(resultsToSort);
+    setSortedResults(sortedResults);
   };
 
   return (
@@ -69,10 +95,10 @@ const MyEducation = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">A'dan Z'ye</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Z'den A'ya</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Yeniden Eskiye</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">Eskiden Yeniye</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSortChange('a-z')}>A'dan Z'ye</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSortChange('z-a')}>Z'den A'ya</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSortChange('new-old')}>Yeniden Eskiye</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSortChange('old-new')}>Eskiden Yeniye</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Col>
@@ -82,7 +108,7 @@ const MyEducation = () => {
           <Alert variant="info">Arama sonucu bulunamadı.</Alert>
         )}
         <Row xs={1} md={2} lg={4} className="g-1">
-          {(searchText === '' ? educationList : searchResults).map((searchData) => {
+          {sortedResults.map((searchData) => {
             const matchingData = educationList.find((data) => data.id === searchData.id);
             const displayData = matchingData ? matchingData : searchData;
             return (
