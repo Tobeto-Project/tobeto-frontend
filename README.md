@@ -63,9 +63,9 @@ Projenin çalıştırılması için aşağıdaki gereksinimlerin kurulu olması 
 - .NET SDK
 - Visual Studio veya Visual Studio Code (Backend için)
 
-### Kurulum
-
-1. Projeyi klonlayın: `git clone https://github.com/kullanıcı/adı.git`
+## Kurulum
+### Frontend için;
+1. Projeyi klonlayın: `git clone https://github.com/Tobeto-Project/tobeto-frontend.git` 
 2. Frontend klasörüne gidin: `cd frontend`
 3. Bağımlılıkları yükleyin: `npm install`
 
@@ -77,12 +77,13 @@ Projenin çalıştırılması için aşağıdaki gereksinimlerin kurulu olması 
 2. `npm install` komutu ile bağımlılıkları yükleyin.
 3. Frontend'i başlatmak için `npm start` komutunu çalıştırın.
 
-#### Backend İçin
+### Backend İçin
 
-1. Visual Studio'yu açın ve "Open Project/Solution" ile projeyi açın.
-2. Database Migration için DataAccess katmanındaki TobetoDbContext.cs dosyasını açın. `Database.EnsureCreated()` satırını yorumdan kaldırın.
-3. Web API Swagger ekranından herhangi bir katman için getList yaparak database oluşturun.
-4. `Set as Startup Project` seçeneği ile wepapi klasörünü başlatın.
+1. Projeyi klonlayın: `git clone https://github.com/Tobeto-Pair1/Tobeto_.git`
+2. Visual Studio'yu açın ve "Open Project/Solution" ile projeyi açın.
+3. Database Migration için DataAccess katmanındaki TobetoDbContext.cs dosyasını açın. `Database.EnsureCreated()` satırını yorumdan kaldırın.
+4. Web API Swagger ekranından herhangi bir katman için getList yaparak database oluşturun.
+5. `Set as Startup Project` seçeneği ile wepapi klasörünü başlatın.
 
 ## Kullanım
 
@@ -208,10 +209,10 @@ Projeye katkıda bulunmak isteyenler için aşağıdaki adımları izleyebilirle
 Fork ettiğiniz projeyi yerel ortamınıza klonlayın. Bunun için terminale şu komutu girin:
 
 Frontend için;
-git clone https://github.com/Tobeto-Project/tobeto-frontend.git
+`git clone https://github.com/Tobeto-Project/tobeto-frontend.git`
 
 Backend için;
-git clone https://github.com/Tobeto-Pair1/Tobeto_.git
+`git clone https://github.com/Tobeto-Pair1/Tobeto_.git`
 
 
 #### Yeniden Adlandırma
